@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{827B207D-2429-4C05-A769-186C7CB35FC3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DotNetBuild.Tests</RootNamespace>
+    <AssemblyName>DotNetBuild.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.1.1309.0919\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Runner.CommandLine\Given_a_CommandLineInterpreter\Todo.cs" />
+    <Compile Include="Runner\Given_a_BuildRepository\Todo.cs" />
+    <Compile Include="Runner\Given_a_Build\Todo.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_AssemblyLoader\When_told_to_Load_a_invalid_Assembly.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_AssemblyLoader\When_told_to_Load_a_Assembly.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_AssemblyTypeFilter\When_told_to_Get_its_Filter.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_AssemblyWrapper\When_told_to_Get_one_type_with_no_filter_and_multiple_matches.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_AssemblyWrapper\When_told_to_Get_one_type_with_a_filter.cs" />
+    <Compile Include="Runner.CommandLine\StartBuild\Given_a_StartBuildCommandBuilder\When_told_to_BuildFrom_an_argument_array.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_BuildRunner\When_told_to_Run_with_an_empty_assembly.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_BuildRunner\When_told_to_Run_with_an_empty_target.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_BuildRunner\When_told_to_Run_with_an_unknown_target.cs" />
+    <Compile Include="Core\Given_a_ConfigurationRegistration\When_told_to_Get_its_Configuration.cs" />
+    <Compile Include="Core\Given_a_ConfigurationRegistration\When_told_to_Get_its_UseIf.cs" />
+    <Compile Include="Core\Given_a_ConfigurationRegistry\When_told_to_give_its_Registrations.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_ConfigurationResolver\When_told_to_Resolve_a_Configuration.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_ConfigurationResolver\When_told_to_Resolve_a_Configuration_with_no_assembly_wrapper.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_ConfigurationResolver\When_told_to_Resolve_a_Configuration_with_no_configuration_registry.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_ConfigurationResolver\When_told_to_Resolve_a_Configuration_with_no_configuration_selector_type.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_ConfigurationSelector\When_told_to_Select_a_Configuration_with_multiple_matches.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_ConfigurationSelector\When_told_to_Select_a_Configuration.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_ConfigurationSelector\When_told_to_Select_a_Configuration_with_no_match.cs" />
+    <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Get_a_setting_of_the_wrong_type.cs" />
+    <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Get_a_setting.cs" />
+    <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Get_a_setting_that_does_not_exist.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TargetExecutor\When_told_to_Execute_a_Target_with_a_safe_exception.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TargetExecutor\When_told_to_Execute_a_Target_with_a_safe_exception_and_continue_on_error.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TargetInspector\When_told_to_CheckForCircularDependencies_on_a_none_circular_execution_path.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TargetInspector\When_told_to_CheckForCircularDependencies_on_a_circular_execution_path.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TypeActivator\When_told_to_Activate_a_Type_with_no_Type.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TypeActivator\When_told_to_Activate_a_Type_with_no_default_constructor.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TypeActivator\When_told_to_Activate_a_Type.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TargetExecutor\When_told_to_Execute_a_null_Target.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TargetExecutor\When_told_to_Execute_a_Target_with_a_circular_dependency.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TargetExecutor\When_told_to_Execute_a_Target_with_an_exception_and_continue_on_error.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TargetExecutor\When_told_to_Execute_a_Target_with_an_exception.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TargetExecutor\When_told_to_Execute_a_Target.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TargetResolver\When_told_to_Resolve_a_Target_with_no_target.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TargetResolver\When_told_to_Resolve_a_Target_with_no_assembly_wrapper.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TargetResolver\When_told_to_Resolve_a_Target_with_no_target_name.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TargetResolver\When_told_to_Resolve_a_Target.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TargetTypeFilter\When_told_to_Get_its_Filter.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_TargetTypeFilter\When_told_to_Execute_its_Filter.cs" />
+    <Compile Include="Runner\StartBuild\BuildRequestedToStart\Given_a_BuildRequestedToStartHandler\Todo.cs" />
+    <Compile Include="Runner\StartBuild\Given_a_StartBuildHandler\Todo.cs" />
+    <Compile Include="TestHelpers.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_BuildRunner\When_told_to_Run_with_an_unknown_assembly.cs" />
+    <Compile Include="TestData.cs" />
+    <Compile Include="TestSpecification.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_BuildRunner\When_told_to_Run_with_valid_arguments.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DotNetBuild.Runner.CommandLine\DotNetBuild.Runner.CommandLine.csproj">
+      <Project>{b477828c-5a65-4b3a-a180-42782f420aa1}</Project>
+      <Name>DotNetBuild.Runner.CommandLine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DotNetBuild.Runner\DotNetBuild.Runner.csproj">
+      <Project>{b12bbf26-d91f-4516-99e8-0ae27a40069e}</Project>
+      <Name>DotNetBuild.Runner</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DotNetBuild.Tests.TestAssembly\DotNetBuild.Tests.TestAssembly.csproj">
+      <Project>{ea116e5a-b97d-47d4-8375-a72b28df61b1}</Project>
+      <Name>DotNetBuild.Tests.TestAssembly</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DotNetBuild.Core\DotNetBuild.Core.csproj">
+      <Project>{8b2fec24-dc07-4b6c-8f5b-abf90d40c9d8}</Project>
+      <Name>DotNetBuild.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

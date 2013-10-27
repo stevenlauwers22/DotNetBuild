@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B12BBF26-D91F-4516-99E8-0AE27A40069E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DotNetBuild.Runner</RootNamespace>
+    <AssemblyName>DotNetBuild.Runner</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BuildRepository.cs" />
+    <Compile Include="StartBuild\BuildRequestedToStart\BuildRequestedToStartHandler.cs" />
+    <Compile Include="Infrastructure\AssemblyLoader.cs" />
+    <Compile Include="Infrastructure\AssemblyTypeFilter.cs" />
+    <Compile Include="Infrastructure\AssemblyWrapper.cs" />
+    <Compile Include="Build.cs" />
+    <Compile Include="StartBuild\BuildRequestedToStart\BuildRequestedToStart.cs" />
+    <Compile Include="Infrastructure\BuildRunner.cs" />
+    <Compile Include="Infrastructure\BuildRunnerParameters.cs" />
+    <Compile Include="Infrastructure\Commands\CommandDispatcher.cs" />
+    <Compile Include="Infrastructure\ConfigurationResolver.cs" />
+    <Compile Include="Infrastructure\ConfigurationSelector.cs" />
+    <Compile Include="Infrastructure\Events\DomainEventDispatcher.cs" />
+    <Compile Include="Infrastructure\Events\DomainEventExtensions.cs" />
+    <Compile Include="Infrastructure\Events\DomainEventInitializer.cs" />
+    <Compile Include="Infrastructure\Events\IDomainEventHandler.cs" />
+    <Compile Include="Infrastructure\TargetConstants.cs" />
+    <Compile Include="Infrastructure\Events\DomainEventDelegate.cs" />
+    <Compile Include="Infrastructure\Exceptions\UnableToExecuteTargetsWithCircularDependenciesException.cs" />
+    <Compile Include="Infrastructure\Exceptions\DotNetBuildException.cs" />
+    <Compile Include="Infrastructure\Exceptions\UnableToActivateConfigurationRegistryException.cs" />
+    <Compile Include="Infrastructure\Exceptions\UnableToActivateTargetException.cs" />
+    <Compile Include="Infrastructure\Exceptions\UnableToActivateTargetWithNoDefaultConstructorException.cs" />
+    <Compile Include="Infrastructure\Exceptions\UnableToDetermineCorrectImplementationException.cs" />
+    <Compile Include="Infrastructure\Exceptions\UnableToExecuteTargetException.cs" />
+    <Compile Include="Infrastructure\Exceptions\UnableToLoadAssemblyException.cs" />
+    <Compile Include="Infrastructure\Exceptions\UnableToResolveTargetException.cs" />
+    <Compile Include="Infrastructure\TargetInspector.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Infrastructure\TargetExecutor.cs" />
+    <Compile Include="Infrastructure\TargetResolver.cs" />
+    <Compile Include="Infrastructure\TargetTypeFilter.cs" />
+    <Compile Include="Infrastructure\TypeActivator.cs" />
+    <Compile Include="Infrastructure\Exceptions\UnableToDetermineCorrectConfigurationSettingsException.cs" />
+    <Compile Include="Infrastructure\TinyIoC\TinyIoC.cs" />
+    <Compile Include="Infrastructure\Commands\ICommand.cs" />
+    <Compile Include="Infrastructure\Commands\ICommandHandler.cs" />
+    <Compile Include="StartBuild\StartBuildCommand.cs" />
+    <Compile Include="StartBuild\StartBuildHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DotNetBuild.Core\DotNetBuild.Core.csproj">
+      <Project>{8b2fec24-dc07-4b6c-8f5b-abf90d40c9d8}</Project>
+      <Name>DotNetBuild.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

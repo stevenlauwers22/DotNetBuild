@@ -1,0 +1,16 @@
+/DotNetBuild.Core/obj
+/DotNetBuild.Core/bin
+/DotNetBuild.Runner/bin
+/DotNetBuild.Runner/obj
+/DotNetBuild.Runner.CommandLine/bin
+/DotNetBuild.Runner.CommandLine/obj
+/DotNetBuild.Tests/bin
+/DotNetBuild.Tests/obj
+/DotNetBuild.Tests.TestAssembly/bin
+/DotNetBuild.Tests.TestAssembly/obj
+
+/DotNetBuild.ncrunchsolution
+/DotNetBuild.ncrunchsolution.user
+/DotNetBuild.sln.DotSettings
+/DotNetBuild.sln.DotSettings.user
+/DotNetBuild.v11.suo
