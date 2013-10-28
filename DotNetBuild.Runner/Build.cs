@@ -15,7 +15,7 @@ namespace DotNetBuild.Runner
 
         public Build(string assembly, string target, string configuration, IEnumerable<KeyValuePair<string, string>> additionalParameters)
         {
-            _id = Guid.Empty;
+            _id = Guid.NewGuid();
             _assembly = assembly;
             _target = target;
             _configuration = configuration;

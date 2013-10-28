@@ -14,3 +14,5 @@
 /DotNetBuild.sln.DotSettings
 /DotNetBuild.sln.DotSettings.user
 /DotNetBuild.v11.suo
+
+/DotNetBuild.Runner.CommandLine/DotNetBuild.Runner.CommandLine.csproj.user

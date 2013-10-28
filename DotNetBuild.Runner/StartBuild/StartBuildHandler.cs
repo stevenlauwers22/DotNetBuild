@@ -22,7 +22,7 @@ namespace DotNetBuild.Runner.StartBuild
             var build = new Build(command.Assembly, command.Target, command.Configuration, command.AdditionalParameters);
             _buildRepository.Add(build);
             _domainEventInitializer.Initialize(build);
-            
+
             build.RequestStart();
         }
     }

@@ -4,6 +4,11 @@ namespace DotNetBuild.Tests
 {
     public class TestData
     {
+        public static Guid GenerateGuid()
+        {
+            return Guid.NewGuid();
+        }
+
         public static string GenerateString()
         {
             return Guid.NewGuid().ToString();

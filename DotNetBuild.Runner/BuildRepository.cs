@@ -19,6 +19,11 @@ namespace DotNetBuild.Runner
             _store = new List<Build>();
         }
 
+        public IEnumerable<Build> Store
+        {
+            get { return _store; }
+        }
+
         public void Add(Build build)
         {
             if (build == null) 

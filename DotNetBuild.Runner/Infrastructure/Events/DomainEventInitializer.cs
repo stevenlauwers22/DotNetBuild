@@ -8,28 +8,26 @@ namespace DotNetBuild.Runner.Infrastructure.Events
 {
     public interface IDomainEventInitializer
     {
-        T Initialize<T>(T obj) where T : class;
+        void Initialize<T>(T obj) where T : class;
     }
 
     public class DomainEventInitializer
         : IDomainEventInitializer
     {
-        private readonly IDomainEventDispatcher _domainEventDispatcher;
+        private readonly DomainEvent _domainEventHandler;
 
-        public DomainEventInitializer(IDomainEventDispatcher domainEventDispatcher)
+        public DomainEventInitializer(DomainEvent domainEventHandler)
         {
-            _domainEventDispatcher = domainEventDispatcher;
+            _domainEventHandler = domainEventHandler;
         }
 
-        public T Initialize<T>(T obj) where T : class
+        public void Initialize<T>(T obj) where T : class
         {
             if (obj == null)
                 throw new ArgumentNullException("obj");
 
             var seen = new HashSet<object>();
-
-            InitializeObject(obj, seen, @event => _domainEventDispatcher.Dispatch(@event));
-            return obj;
+            InitializeObject(obj, seen, _domainEventHandler);
         }
 
         private void InitializeObject<TClass>(TClass obj, HashSet<object> seen, DomainEvent eventHandler)

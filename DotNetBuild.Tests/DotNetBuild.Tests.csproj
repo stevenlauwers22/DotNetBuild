@@ -42,9 +42,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Runner.CommandLine\Given_a_CommandLineInterpreter\Todo.cs" />
-    <Compile Include="Runner\Given_a_BuildRepository\Todo.cs" />
-    <Compile Include="Runner\Given_a_Build\Todo.cs" />
+    <Compile Include="Runner.CommandLine\Given_a_CommandLineInterpreter\When_told_to_Interpret_empty_arguments.cs" />
+    <Compile Include="Runner.CommandLine\Given_a_CommandLineInterpreter\When_told_to_Interpret_null_arguments.cs" />
+    <Compile Include="Runner.CommandLine\Given_a_CommandLineInterpreter\When_told_to_Interpret_unknown_command_argument.cs" />
+    <Compile Include="Runner.CommandLine\Given_a_CommandLineInterpreter\When_told_to_Interpret_valid_arguments.cs" />
+    <Compile Include="Runner\Given_a_BuildRepository\When_told_to_run_a_storage_scenario.cs" />
+    <Compile Include="Runner\Given_a_Build\When_told_to_RequestStart.cs" />
     <Compile Include="Runner\Infrastructure\Given_a_AssemblyLoader\When_told_to_Load_a_invalid_Assembly.cs" />
     <Compile Include="Runner\Infrastructure\Given_a_AssemblyLoader\When_told_to_Load_a_Assembly.cs" />
     <Compile Include="Runner\Infrastructure\Given_a_AssemblyTypeFilter\When_told_to_Get_its_Filter.cs" />
@@ -85,8 +88,8 @@
     <Compile Include="Runner\Infrastructure\Given_a_TargetResolver\When_told_to_Resolve_a_Target.cs" />
     <Compile Include="Runner\Infrastructure\Given_a_TargetTypeFilter\When_told_to_Get_its_Filter.cs" />
     <Compile Include="Runner\Infrastructure\Given_a_TargetTypeFilter\When_told_to_Execute_its_Filter.cs" />
-    <Compile Include="Runner\StartBuild\BuildRequestedToStart\Given_a_BuildRequestedToStartHandler\Todo.cs" />
-    <Compile Include="Runner\StartBuild\Given_a_StartBuildHandler\Todo.cs" />
+    <Compile Include="Runner\StartBuild\BuildRequestedToStart\Given_a_BuildRequestedToStartHandler\When_told_to_Handle.cs" />
+    <Compile Include="Runner\StartBuild\Given_a_StartBuildHandler\When_told_to_Handle.cs" />
     <Compile Include="TestHelpers.cs" />
     <Compile Include="Runner\Infrastructure\Given_a_BuildRunner\When_told_to_Run_with_an_unknown_assembly.cs" />
     <Compile Include="TestData.cs" />

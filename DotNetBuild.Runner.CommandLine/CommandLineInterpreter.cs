@@ -1,4 +1,5 @@
-﻿using DotNetBuild.Runner.Infrastructure.Commands;
+﻿using System;
+using DotNetBuild.Runner.Infrastructure.Commands;
 using DotNetBuild.Runner.Infrastructure.TinyIoC;
 
 namespace DotNetBuild.Runner.CommandLine
@@ -10,22 +11,29 @@ namespace DotNetBuild.Runner.CommandLine
 
     public class CommandLineInterpreter : ICommandLineInterpreter
     {
+        private readonly TinyIoCContainer _container;
+
+        public CommandLineInterpreter(TinyIoCContainer container)
+        {
+            if (container == null) 
+                throw new ArgumentNullException("container");
+
+            _container = container;
+        }
+
         public ICommand Interpret(string[] args)
         {
-            var container = TinyIoCContainer.Current;
-            if (args != null && args.Length > 0)
-            {
-                var commandName = args[0];
+            if (args == null || args.Length == 0) 
+                return null;
 
-                ICommandBuilder commandBuilder;
-                if (container.TryResolve(commandName, out commandBuilder))
-                {
-                    var command = commandBuilder.BuildFrom(args);
-                    return command;
-                }
-            }
+            ICommandBuilder commandBuilder;
 
-            return null;
+            var commandName = args[0];
+            if (!_container.TryResolve(commandName, out commandBuilder)) 
+                return null;
+
+            var command = commandBuilder.BuildFrom(args);
+            return command;
         }
     }
 }

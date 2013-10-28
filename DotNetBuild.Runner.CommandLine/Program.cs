@@ -11,9 +11,9 @@ namespace DotNetBuild.Runner.CommandLine
         {
             try
             {
-                Bootstrapper.Boot();
-
                 var container = TinyIoCContainer.Current;
+                Bootstrapper.Boot(container);
+
                 var commandLineInterpreter = container.Resolve<ICommandLineInterpreter>();
                 var command = commandLineInterpreter.Interpret(args);
                 if (command != null)
@@ -23,7 +23,7 @@ namespace DotNetBuild.Runner.CommandLine
                 }
                 else
                 {
-                    PrintHelp();
+                    PrintHelp(container);
                 }
             }
             catch (DotNetBuildException exception)
@@ -40,9 +40,8 @@ namespace DotNetBuild.Runner.CommandLine
             return 0;
         }
 
-        private static void PrintHelp()
+        private static void PrintHelp(TinyIoCContainer container)
         {
-            var container = TinyIoCContainer.Current;
             var commandHelp = container.ResolveAll<ICommandHelp>();
             foreach (var ch in commandHelp)
             {

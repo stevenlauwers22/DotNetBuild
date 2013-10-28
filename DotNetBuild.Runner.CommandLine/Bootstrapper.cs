@@ -10,19 +10,17 @@ namespace DotNetBuild.Runner.CommandLine
 {
     public class Bootstrapper
     {
-        public static void Boot()
+        public static void Boot(TinyIoCContainer container)
         {
-            var container = TinyIoCContainer.Current;
-
             container.Register<ICommandLineInterpreter, CommandLineInterpreter>();
             container.Register<ICommandBuilder, StartBuildCommandBuilder>("start-build");
             container.Register<ICommandHelp, StartBuildCommandHelp>("start-build-help");
 
-            container.Register<ICommandDispatcher, CommandDispatcher>();
+            container.Register<ICommandDispatcher, CommandDispatcher>().UsingConstructor(() => new CommandDispatcher(container));
             container.Register<ICommandHandler<StartBuildCommand>, StartBuildHandler>();
 
-            container.Register<IDomainEventDispatcher, DomainEventDispatcher>();
-            container.Register<IDomainEventInitializer, DomainEventInitializer>();
+            container.Register<IDomainEventDispatcher, DomainEventDispatcher>().UsingConstructor(() => new DomainEventDispatcher(container));
+            container.Register<IDomainEventInitializer, DomainEventInitializer>().UsingConstructor(() => new DomainEventInitializer(@event => container.Resolve<IDomainEventDispatcher>().Dispatch(@event)));
             container.Register<IDomainEventHandler<BuildRequestedToStart>, BuildRequestedToStartHandler>();
 
             container.Register<IAssemblyLoader, AssemblyLoader>();

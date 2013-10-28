@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Linq;
+using DotNetBuild.Runner.Infrastructure.TinyIoC;
 
 namespace DotNetBuild.Runner.Infrastructure.Events
 {
@@ -11,6 +13,16 @@ namespace DotNetBuild.Runner.Infrastructure.Events
     public class DomainEventDispatcher
         : IDomainEventDispatcher
     {
+        private readonly TinyIoCContainer _container;
+
+        public DomainEventDispatcher(TinyIoCContainer container)
+        {
+            if (container == null) 
+                throw new ArgumentNullException("container");
+
+            _container = container;
+        }
+
         public void Dispatch(object @event)
         {
             var eventHandlers = GetEventHandlersFor(@event);
@@ -29,7 +41,7 @@ namespace DotNetBuild.Runner.Infrastructure.Events
         protected IEnumerable GetEventHandlersFor(object @event)
         {
             var eventHandlerType = typeof(IDomainEventHandler<>).MakeGenericType(@event.GetType());
-            var eventHandlers = TinyIoC.TinyIoCContainer.Current.ResolveAll(eventHandlerType, true);
+            var eventHandlers = _container.ResolveAll(eventHandlerType, true);
             return eventHandlers;
         }
     }
