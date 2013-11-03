@@ -1,5 +1,6 @@
 ﻿using System;
 using DotNetBuild.Runner.Infrastructure.Exceptions;
+using DotNetBuild.Runner.Infrastructure.Logging;
 
 namespace DotNetBuild.Runner.Infrastructure
 {
@@ -15,12 +16,14 @@ namespace DotNetBuild.Runner.Infrastructure
         private readonly IConfigurationResolver _configurationResolver;
         private readonly ITargetResolver _targetResolver;
         private readonly ITargetExecutor _targetExecutor;
+        private readonly ILogger _logger;
 
         public BuildRunner(
             IAssemblyLoader assemblyLoader, 
             IConfigurationResolver configurationResolver,
             ITargetResolver targetResolver, 
-            ITargetExecutor targetExecutor)
+            ITargetExecutor targetExecutor,
+            ILogger logger)
         {
             if (assemblyLoader == null)
                 throw new ArgumentNullException("assemblyLoader");
@@ -34,10 +37,14 @@ namespace DotNetBuild.Runner.Infrastructure
             if (targetExecutor == null) 
                 throw new ArgumentNullException("targetExecutor");
 
+            if (logger == null) 
+                throw new ArgumentNullException("logger");
+
             _assemblyLoader = assemblyLoader;
             _configurationResolver = configurationResolver;
             _targetResolver = targetResolver;
             _targetExecutor = targetExecutor;
+            _logger = logger;
         }
 
         public void Run(BuildRunnerParameters parameters)
@@ -59,6 +66,7 @@ namespace DotNetBuild.Runner.Infrastructure
             if (target == null)
                 throw new UnableToResolveTargetException(targetName, assemblyName);
 
+            _logger.Write("Build started");
             _targetExecutor.Execute(target, configurationSettings);
         }
     }

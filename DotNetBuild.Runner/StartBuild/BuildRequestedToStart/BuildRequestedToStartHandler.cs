@@ -1,5 +1,7 @@
-﻿using DotNetBuild.Runner.Infrastructure;
+﻿using System;
+using DotNetBuild.Runner.Infrastructure;
 using DotNetBuild.Runner.Infrastructure.Events;
+using DotNetBuild.Runner.Infrastructure.Logging;
 
 namespace DotNetBuild.Runner.StartBuild.BuildRequestedToStart
 {
@@ -7,11 +9,25 @@ namespace DotNetBuild.Runner.StartBuild.BuildRequestedToStart
     {
         private readonly IBuildRepository _buildRepository;
         private readonly IBuildRunner _buildRunner;
+        private readonly ILogger _logger;
 
-        public BuildRequestedToStartHandler(IBuildRepository buildRepository, IBuildRunner buildRunner)
+        public BuildRequestedToStartHandler(
+            IBuildRepository buildRepository, 
+            IBuildRunner buildRunner,
+            ILogger logger)
         {
+            if (buildRepository == null) 
+                throw new ArgumentNullException("buildRepository");
+
+            if (buildRunner == null)
+                throw new ArgumentNullException("buildRunner");
+
+            if (logger == null) 
+                throw new ArgumentNullException("logger");
+
             _buildRepository = buildRepository;
             _buildRunner = buildRunner;
+            _logger = logger;
         }
 
         public void Handle(BuildRequestedToStart @event)
@@ -21,6 +37,7 @@ namespace DotNetBuild.Runner.StartBuild.BuildRequestedToStart
                 return;
 
             var buildRunnerParameters = new BuildRunnerParameters(build.Assembly, build.Target, build.Configuration, build.AdditionalParameters);
+            _logger.Write("Build is about to start");
             _buildRunner.Run(buildRunnerParameters);
         }
     }

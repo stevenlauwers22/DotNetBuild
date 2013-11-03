@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using DotNetBuild.Runner;
 using DotNetBuild.Runner.Infrastructure;
+using DotNetBuild.Runner.Infrastructure.Logging;
 using DotNetBuild.Runner.StartBuild.BuildRequestedToStart;
 using Moq;
 using Xunit;
@@ -14,6 +15,7 @@ namespace DotNetBuild.Tests.Runner.StartBuild.BuildRequestedToStart.Given_a_Buil
         private Build _build;
         private Mock<IBuildRepository> _buildRepository;
         private Mock<IBuildRunner> _buildRunner;
+        private Mock<ILogger> _logger;
 
         protected override void Arrange()
         {
@@ -24,11 +26,12 @@ namespace DotNetBuild.Tests.Runner.StartBuild.BuildRequestedToStart.Given_a_Buil
             _buildRepository.Setup(r => r.GetById(_event.BuildId)).Returns(_build);
 
             _buildRunner = new Mock<IBuildRunner>();
+            _logger = new Mock<ILogger>();
         }
 
         protected override BuildRequestedToStartHandler CreateSubjectUnderTest()
         {
-            return new BuildRequestedToStartHandler(_buildRepository.Object, _buildRunner.Object);
+            return new BuildRequestedToStartHandler(_buildRepository.Object, _buildRunner.Object, _logger.Object);
         }
 
         protected override void Act()

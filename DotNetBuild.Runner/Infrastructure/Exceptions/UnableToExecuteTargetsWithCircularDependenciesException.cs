@@ -10,7 +10,7 @@ namespace DotNetBuild.Runner.Infrastructure.Exceptions
         private readonly IEnumerable<Type> _circularDependencies;
 
         public UnableToExecuteTargetWithCircularDependenciesException(ICollection<Type> circularDependencies)
-            : base(-17, string.Format("An circular dependency was found: {0}", GetCircularDependencyChain(circularDependencies)))
+            : base(-17, string.Format("A circular dependency was found: {0}", GetCircularDependencyChain(circularDependencies)))
         {
             _circularDependencies = circularDependencies;
         }

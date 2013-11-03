@@ -1,31 +1,30 @@
-using System;
+using DotNetBuild.Runner.Infrastructure.Logging;
 
 namespace DotNetBuild.Runner.CommandLine.StartBuild
 {
     public class StartBuildCommandHelp 
         : ICommandHelp
     {
-        public void Print()
+        public void Print(ILogger logger)
         {
-            Console.WriteLine("START-BUILD");
-            Console.WriteLine("-----------");
-            Console.WriteLine();
+            logger.Write("START-BUILD");
+            logger.Write("-----------");
+            logger.Write(string.Empty);
 
-            Console.WriteLine("Example:");
-            Console.WriteLine("\tstart-build " +
+            logger.Write("Example:");
+            logger.Write("\tstart-build " +
                 StartBuildCommandConstants.BuildParameterAssembly + "[Assembly] " +
                 StartBuildCommandConstants.BuildParameterTarget + "[Target] " +
                 StartBuildCommandConstants.BuildParameterConfiguration + "[Configuration] ");
 
-            Console.WriteLine("Description:");
-            Console.WriteLine("\tstarts a build using the DotNetBuild runner");
+            logger.Write("Description:");
+            logger.Write("\tstarts a build using the DotNetBuild runner");
 
-            Console.WriteLine("Parameters:");
-            Console.WriteLine("\t" + StartBuildCommandConstants.BuildParameterAssembly + "\tThe Path to the assembly you want to execute");
-            Console.WriteLine("\t" + StartBuildCommandConstants.BuildParameterTarget + "\tOPTIONAL The target you want to run");
-            Console.WriteLine("\t" + StartBuildCommandConstants.BuildParameterConfiguration + "\tOPTIONAL The configuration you want to use");
-            Console.WriteLine();
-            Console.WriteLine();
+            logger.Write("Parameters:");
+            logger.Write("\t" + StartBuildCommandConstants.BuildParameterAssembly + "\tThe Path to the assembly you want to execute");
+            logger.Write("\t" + StartBuildCommandConstants.BuildParameterTarget + "\tOPTIONAL The target you want to run");
+            logger.Write("\t" + StartBuildCommandConstants.BuildParameterConfiguration + "\tOPTIONAL The configuration you want to use");
+            logger.Write(string.Empty);
         }
     }
 }

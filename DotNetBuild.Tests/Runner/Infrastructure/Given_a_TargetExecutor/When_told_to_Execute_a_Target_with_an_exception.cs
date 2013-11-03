@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DotNetBuild.Core;
 using DotNetBuild.Runner.Infrastructure;
 using DotNetBuild.Runner.Infrastructure.Exceptions;
+using DotNetBuild.Runner.Infrastructure.Logging;
 using Moq;
 using Xunit;
 
@@ -14,6 +15,7 @@ namespace DotNetBuild.Tests.Runner.Infrastructure.Given_a_TargetExecutor
         private Mock<ITarget> _target;
         private Mock<ITarget> _dependentTarget;
         private Mock<ITargetInspector> _targetInspector;
+        private Mock<ILogger> _logger;
         private Exception _exceptionToThrow;
         private UnableToExecuteTargetException _exception;
 
@@ -30,11 +32,13 @@ namespace DotNetBuild.Tests.Runner.Infrastructure.Given_a_TargetExecutor
 
             _targetInspector = new Mock<ITargetInspector>();
             _targetInspector.Setup(ti => ti.CheckForCircularDependencies(_target.Object)).Returns(new List<Type>());
+
+            _logger = new Mock<ILogger>();
         }
 
         protected override TargetExecutor CreateSubjectUnderTest()
         {
-            return new TargetExecutor(_targetInspector.Object);
+            return new TargetExecutor(_targetInspector.Object, _logger.Object);
         }
 
         protected override void Act()

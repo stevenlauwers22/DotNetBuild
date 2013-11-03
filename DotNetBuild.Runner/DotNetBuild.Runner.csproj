@@ -41,6 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BuildRepository.cs" />
+    <Compile Include="Infrastructure\Logging\ILoggerFactory.cs" />
+    <Compile Include="Infrastructure\Logging\LoggerFactory.cs" />
+    <Compile Include="Infrastructure\Logging\Loggers\StandardLogger.cs" />
+    <Compile Include="Infrastructure\Logging\ILogger.cs" />
+    <Compile Include="Infrastructure\Logging\Loggers\TeamCityLogger.cs" />
     <Compile Include="StartBuild\BuildRequestedToStart\BuildRequestedToStartHandler.cs" />
     <Compile Include="Infrastructure\AssemblyLoader.cs" />
     <Compile Include="Infrastructure\AssemblyTypeFilter.cs" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DotNetBuild.Runner;
 using DotNetBuild.Runner.Infrastructure.Events;
+using DotNetBuild.Runner.Infrastructure.Logging;
 using DotNetBuild.Runner.StartBuild;
 using Moq;
 using Xunit;
@@ -15,6 +16,7 @@ namespace DotNetBuild.Tests.Runner.StartBuild.Given_a_StartBuildHandler
         private StartBuildCommand _command;
         private Mock<IBuildRepository> _buildRepository;
         private Mock<IDomainEventInitializer> _domainEventInitializer;
+        private Mock<ILogger> _logger;
         private DomainEvent _domainEventCatcher;
         private List<object> _domainEvents;
 
@@ -29,11 +31,13 @@ namespace DotNetBuild.Tests.Runner.StartBuild.Given_a_StartBuildHandler
             _domainEventInitializer
                 .Setup(i => i.Initialize(It.IsAny<object>()))
                 .Callback<object>(obj => new DomainEventInitializer(_domainEventCatcher).Initialize(obj));
+
+            _logger = new Mock<ILogger>();
         }
 
         protected override StartBuildHandler CreateSubjectUnderTest()
         {
-            return new StartBuildHandler(_buildRepository.Object, _domainEventInitializer.Object);
+            return new StartBuildHandler(_buildRepository.Object, _domainEventInitializer.Object, _logger.Object);
         }
 
         protected override void Act()

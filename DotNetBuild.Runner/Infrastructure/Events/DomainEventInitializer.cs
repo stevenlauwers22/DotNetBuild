@@ -18,6 +18,9 @@ namespace DotNetBuild.Runner.Infrastructure.Events
 
         public DomainEventInitializer(DomainEvent domainEventHandler)
         {
+            if (domainEventHandler == null) 
+                throw new ArgumentNullException("domainEventHandler");
+
             _domainEventHandler = domainEventHandler;
         }
 
@@ -103,7 +106,6 @@ namespace DotNetBuild.Runner.Infrastructure.Events
             where TClass : class
         {
             var collection = (IEnumerable) prop.GetValue(obj, null);
-
             if (collection == null)
                 return;
 
@@ -121,7 +123,7 @@ namespace DotNetBuild.Runner.Infrastructure.Events
             return typeof (IEnumerable).IsAssignableFrom(propertyType) && propertyType != typeof (string);
         }
 
-        private bool IsClassWithDomainEvents(PropertyInfo propertyInfo)
+        private static bool IsClassWithDomainEvents(PropertyInfo propertyInfo)
         {
             return propertyInfo.PropertyType.GetEvents().Any(@event => @event.EventHandlerType == typeof(DomainEvent));
         }

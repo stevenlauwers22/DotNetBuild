@@ -38,7 +38,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="ContainerConfiguration.cs" />
     <Compile Include="CommandLineInterpreter.cs" />
     <Compile Include="ICommandBuilder.cs" />
     <Compile Include="ICommandHelp.cs" />
