@@ -32,6 +32,9 @@ namespace DotNetBuild.Runner.Infrastructure
 
             var targetTypeFilter = new TargetTypeFilter(targetName);
             var targetType = assembly.Get<ITarget>(targetTypeFilter);
+            if (targetType == null)
+                throw new UnableToResolveTargetException(targetName, assembly.Assembly.FullName);
+
             var target = _typeActivator.Activate<ITarget>(targetType);
             if (target == null)
                 throw new UnableToActivateTargetException(targetType);

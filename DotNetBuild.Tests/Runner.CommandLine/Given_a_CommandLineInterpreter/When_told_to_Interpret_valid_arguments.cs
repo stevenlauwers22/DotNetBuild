@@ -44,6 +44,7 @@ namespace DotNetBuild.Tests.Runner.CommandLine.Given_a_CommandLineInterpreter
             _result = Sut.Interpret(_args);
         }
 
+        [Fact]
         public void Tells_the_CommandBuilder_to_build_the_Command()
         {
             _commandBuilder1.Verify(cb => cb.BuildFrom(_args));

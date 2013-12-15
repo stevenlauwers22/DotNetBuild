@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>DotNetBuild.Tasks</id>
+    <version>$version$</version>
+    <title>DotNetBuild.Tasks</title>
+    <authors>Steven Lauwers</authors>
+    <owners>Steven Lauwers</owners>
+    <description>Common tasks for DotNetBuild scripts</description>
+    <language>en-US</language>
+    <projectUrl>https://github.com/stevenlauwers22/dotnetbuild</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <tags>DotNetBuild.Tasks DotNetBuild DotNet MSBuild</tags>
+  </metadata>
+  <files>
+    <file src="..\..\DotNetBuild.Tasks\bin\Release\DotNetBuild.Tasks.dll" target="lib\net45" />
+  </files>
+</package>

@@ -16,3 +16,11 @@
 /DotNetBuild.v11.suo
 
 /DotNetBuild.Runner.CommandLine/DotNetBuild.Runner.CommandLine.csproj.user
+/DotNetBuild.Build/obj
+/DotNetBuild.Build/bin
+/DotNetBuild.Tasks/obj
+/DotNetBuild.Tasks/bin
+
+/DotNetBuild.Tasks/DotNetBuild.Tasks.csproj.user
+
+/DotNetBuild.Build/DotNetBuild.Build.csproj.user
