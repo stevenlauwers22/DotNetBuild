@@ -48,13 +48,13 @@ namespace DotNetBuild.Tests.Runner.StartBuild.Given_a_StartBuildHandler
         [Fact]
         public void Adds_the_Build_to_the_Repository()
         {
-            _buildRepository.Verify(r => r.Add(It.Is<Build>(b => Works_on_the_correct_Build(b))));
+            _buildRepository.Verify(r => r.Add(It.Is<Build>(b => WorksOnTheCorrectBuild(b))));
         }
 
         [Fact]
         public void Initializes_the_DomainEvents_on_the_Build()
         {
-            _domainEventInitializer.Verify(i => i.Initialize(It.Is<Build>(b => Works_on_the_correct_Build(b))));
+            _domainEventInitializer.Verify(i => i.Initialize(It.Is<Build>(b => WorksOnTheCorrectBuild(b))));
         }
 
         [Fact]
@@ -64,7 +64,7 @@ namespace DotNetBuild.Tests.Runner.StartBuild.Given_a_StartBuildHandler
             Assert.IsAssignableFrom<DotNetBuild.Runner.StartBuild.BuildRequestedToStart.BuildRequestedToStart>(_domainEvents.ElementAt(0));
         }
 
-        private bool Works_on_the_correct_Build(Build build)
+        private bool WorksOnTheCorrectBuild(Build build)
         {
             if (build == null) 
                 throw new ArgumentNullException("build");

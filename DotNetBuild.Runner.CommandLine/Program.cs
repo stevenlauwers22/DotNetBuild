@@ -10,7 +10,7 @@ namespace DotNetBuild.Runner.CommandLine
     {
         public static int Main(string[] args)
         {
-            var container = ContainerConfiguration.CreateAndConfigure();
+            var container = ProgramConfiguration.ConfigureContainer();
             var logger = container.Resolve<ILogger>();
             logger.Write("DotNetBuild started");
 

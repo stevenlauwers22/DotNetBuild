@@ -38,7 +38,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContainerConfiguration.cs" />
+    <Compile Include="ProgramConfiguration.cs" />
     <Compile Include="CommandLineInterpreter.cs" />
     <Compile Include="ICommandBuilder.cs" />
     <Compile Include="ICommandHelp.cs" />
@@ -52,6 +52,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DotNetBuild.Core\DotNetBuild.Core.csproj">
+      <Project>{8B2FEC24-DC07-4B6C-8F5B-ABF90D40C9D8}</Project>
+      <Name>DotNetBuild.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DotNetBuild.Runner\DotNetBuild.Runner.csproj">
       <Project>{b12bbf26-d91f-4516-99e8-0ae27a40069e}</Project>
       <Name>DotNetBuild.Runner</Name>

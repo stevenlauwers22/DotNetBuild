@@ -46,6 +46,10 @@
     <Compile Include="Infrastructure\Logging\Loggers\StandardLogger.cs" />
     <Compile Include="Infrastructure\Logging\ILogger.cs" />
     <Compile Include="Infrastructure\Logging\Loggers\TeamCityLogger.cs" />
+    <Compile Include="Infrastructure\Facilities\FacilityProvider.cs" />
+    <Compile Include="Infrastructure\Facilities\State\StateReaderFacilityProvider.cs" />
+    <Compile Include="Infrastructure\StateRepository.cs" />
+    <Compile Include="Infrastructure\Facilities\State\StateWriterFacilityProvider.cs" />
     <Compile Include="StartBuild\BuildRequestedToStart\BuildRequestedToStartHandler.cs" />
     <Compile Include="Infrastructure\AssemblyLoader.cs" />
     <Compile Include="Infrastructure\AssemblyTypeFilter.cs" />

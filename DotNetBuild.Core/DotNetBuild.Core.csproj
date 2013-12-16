@@ -42,7 +42,13 @@
     <Compile Include="ConfigurationRegistration.cs" />
     <Compile Include="ConfigurationRegistry.cs" />
     <Compile Include="ConfigurationSettings.cs" />
+    <Compile Include="Facilities\IFacility.cs" />
+    <Compile Include="Facilities\IFacilityAcceptor.cs" />
+    <Compile Include="Facilities\State\IStateReader.cs" />
+    <Compile Include="Facilities\State\IStateWriter.cs" />
     <Compile Include="ITarget.cs" />
+    <Compile Include="Facilities\State\IWantToReadState.cs" />
+    <Compile Include="Facilities\State\IWantToWriteState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -56,7 +56,7 @@ namespace DotNetBuild.Runner.Infrastructure
             {
                 _logger.WriteBlockStart(target.Name);
                 _logger.Write("Target executing");
-
+                
                 if (target.DependsOn != null && target.DependsOn.Any())
                 {
                     foreach (var dependentTarget in target.DependsOn)

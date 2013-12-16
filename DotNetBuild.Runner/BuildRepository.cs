@@ -6,8 +6,8 @@ namespace DotNetBuild.Runner
 {
     public interface IBuildRepository
     {
-        void Add(Build build);
         Build GetById(Guid id);
+        void Add(Build build);
     }
 
     public class BuildRepository : IBuildRepository
@@ -24,18 +24,18 @@ namespace DotNetBuild.Runner
             get { return _store; }
         }
 
+        public Build GetById(Guid id)
+        {
+            var build = _store.SingleOrDefault(b => b.Id == id);
+            return build;
+        }
+
         public void Add(Build build)
         {
             if (build == null) 
                 throw new ArgumentNullException("build");
 
             _store.Add(build);
-        }
-
-        public Build GetById(Guid id)
-        {
-            var build = _store.SingleOrDefault(b => b.Id == id);
-            return build;
         }
     }
 }
