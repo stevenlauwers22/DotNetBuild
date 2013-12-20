@@ -1,6 +1,6 @@
 ﻿using DotNetBuild.Core.Facilities;
 
-namespace DotNetBuild.Tests.Runner.Infrastructure.Facilities.Given_a_FacilityProvider
+namespace DotNetBuild.Tests.Runner.Infrastructure.Facilities
 {
     public interface ITestFacility
         : IFacility

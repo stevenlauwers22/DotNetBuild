@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using DotNetBuild.Core;
+using DotNetBuild.Core.Facilities.State;
 using MSBuild.ExtensionPack.Framework;
 
 namespace DotNetBuild.Build.Versioning
 {
-    public class UpdateVersionNumber : ITarget
+    public class UpdateVersionNumber : ITarget, IWantToWriteState
     {
         public string Name
         {
@@ -24,7 +25,7 @@ namespace DotNetBuild.Build.Versioning
         public bool Execute(IConfigurationSettings configurationSettings)
         {
             // TODO: don't use full path + clean up assemblyinfo task
-            var assemblyInfoTasks = new AssemblyInfo
+            var assemblyInfoTask = new AssemblyInfo
             {
                 AssemblyInfoFiles = new[]
                 {
@@ -38,11 +39,16 @@ namespace DotNetBuild.Build.Versioning
                 AssemblyFileBuildNumberFormat="0"
             };
 
-            var result = assemblyInfoTasks.Execute();
-            VersionNumber = assemblyInfoTasks.MaxAssemblyVersion;
+            var result = assemblyInfoTask.Execute();
+            _stateWriter.Add("VersionNumber", assemblyInfoTask.MaxAssemblyVersion);
+
             return result;
         }
 
-        public static string VersionNumber { get; set; }
+        private IStateWriter _stateWriter;
+        public void Inject(IStateWriter stateWriter)
+        {
+            _stateWriter = stateWriter;
+        }
     }
 }

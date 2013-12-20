@@ -2,6 +2,7 @@
 using System.Linq;
 using DotNetBuild.Core;
 using DotNetBuild.Runner.Infrastructure.Exceptions;
+using DotNetBuild.Runner.Infrastructure.Facilities;
 using DotNetBuild.Runner.Infrastructure.Logging;
 
 namespace DotNetBuild.Runner.Infrastructure
@@ -16,19 +17,27 @@ namespace DotNetBuild.Runner.Infrastructure
     {
         private readonly ITargetInspector _targetInspector;
         private readonly ILogger _logger;
+        private readonly IFacilityProvider[] _facilityProviders;
+
+        public TargetExecutor(ITargetInspector targetInspector, ILogger logger)
+            : this(targetInspector, logger, null)
+        {
+        }
 
         public TargetExecutor(
             ITargetInspector targetInspector, 
-            ILogger logger)
+            ILogger logger,
+            IFacilityProvider[] facilityProviders)
         {
             if (targetInspector == null) 
                 throw new ArgumentNullException("targetInspector");
-            
+
             if (logger == null) 
                 throw new ArgumentNullException("logger");
 
             _targetInspector = targetInspector;
             _logger = logger;
+            _facilityProviders = facilityProviders;
         }
 
         public void Execute(ITarget target, IConfigurationSettings configurationSettings)
@@ -56,12 +65,20 @@ namespace DotNetBuild.Runner.Infrastructure
             {
                 _logger.WriteBlockStart(target.Name);
                 _logger.Write("Target executing");
-                
+
                 if (target.DependsOn != null && target.DependsOn.Any())
                 {
                     foreach (var dependentTarget in target.DependsOn)
                     {
                         ExecuteTarget(dependentTarget, configurationSettings);
+                    }
+                }
+
+                if (_facilityProviders != null && _facilityProviders.Any())
+                {
+                    foreach (var facilityProvider in _facilityProviders)
+                    {
+                        facilityProvider.InjectIfRequired(target);
                     }
                 }
 

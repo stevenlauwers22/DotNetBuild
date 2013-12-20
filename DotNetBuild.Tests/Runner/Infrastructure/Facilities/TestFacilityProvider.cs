@@ -1,13 +1,15 @@
 ﻿using DotNetBuild.Runner.Infrastructure.Facilities;
+using DotNetBuild.Runner.Infrastructure.Logging;
 
-namespace DotNetBuild.Tests.Runner.Infrastructure.Facilities.Given_a_FacilityProvider
+namespace DotNetBuild.Tests.Runner.Infrastructure.Facilities
 {
     public class TestFacilityProvider
         : FacilityProvider<ITestFacilityAcceptor, ITestFacility>
     {
         private readonly ITestFacility _testFacility;
 
-        public TestFacilityProvider(ITestFacility testFacility)
+        public TestFacilityProvider(ILogger logger, ITestFacility testFacility)
+            : base(logger)
         {
             _testFacility = testFacility;
         }

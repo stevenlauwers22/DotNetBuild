@@ -1,5 +1,6 @@
 ﻿using System;
 using DotNetBuild.Core.Facilities.State;
+using DotNetBuild.Runner.Infrastructure.Logging;
 
 namespace DotNetBuild.Runner.Infrastructure.Facilities.State
 {
@@ -8,7 +9,8 @@ namespace DotNetBuild.Runner.Infrastructure.Facilities.State
     {
         private readonly Func<IStateWriter> _stateWriterFunc;
 
-        public StateWriterFacilityProvider(Func<IStateWriter> stateWriterFunc)
+        public StateWriterFacilityProvider(ILogger logger, Func<IStateWriter> stateWriterFunc)
+            : base(logger)
         {
             _stateWriterFunc = stateWriterFunc;
         }

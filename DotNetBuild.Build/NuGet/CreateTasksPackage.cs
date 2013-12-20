@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using DotNetBuild.Build.Versioning;
 using DotNetBuild.Core;
+using DotNetBuild.Core.Facilities.State;
 using DotNetBuild.Tasks.NuGet;
 
 namespace DotNetBuild.Build.NuGet
 {
-    public class CreateTasksPackage : ITarget
+    public class CreateTasksPackage : ITarget, IWantToReadState
     {
         public string Name
         {
@@ -29,10 +29,16 @@ namespace DotNetBuild.Build.NuGet
                 NuGetExe = @"C:\Projects\DotNetBuild\DotNetBuild\packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe",
                 NuSpecFile = @"C:\Projects\DotNetBuild\DotNetBuild\packagesForNuGet\DotNetBuild.Tasks\DotNetBuild.Tasks.nuspec",
                 OutputDir = @"C:\Projects\DotNetBuild\DotNetBuild\packagesForNuGet\DotNetBuild.Tasks",
-                Version = UpdateVersionNumber.VersionNumber
+                Version = _stateReader.Get<string>("VersionNumber")
             };
 
             return nugetPackTask.Execute();
+        }
+
+        private IStateReader _stateReader;
+        public void Inject(IStateReader stateReader)
+        {
+            _stateReader = stateReader;
         }
     }
 }

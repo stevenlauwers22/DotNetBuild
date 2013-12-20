@@ -45,8 +45,8 @@ namespace DotNetBuild.Runner.CommandLine
 
             container.Register<IStateReader, StateRepository>();
             container.Register<IStateWriter, StateRepository>();
-            container.Register((c, p) => new StateReaderFacilityProvider(c.Resolve<IStateReader>));
-            container.Register((c, p) => new StateWriterFacilityProvider(c.Resolve<IStateWriter>));
+            container.Register((c, p) => new StateReaderFacilityProvider(c.Resolve<ILogger>(), c.Resolve<IStateReader>));
+            container.Register((c, p) => new StateWriterFacilityProvider(c.Resolve<ILogger>(), c.Resolve<IStateWriter>));
             container.RegisterMultiple<IFacilityProvider>(new []
             {
                 typeof (StateReaderFacilityProvider),

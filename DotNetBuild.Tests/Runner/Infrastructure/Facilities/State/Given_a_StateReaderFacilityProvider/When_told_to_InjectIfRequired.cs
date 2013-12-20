@@ -1,5 +1,6 @@
 ﻿using DotNetBuild.Core.Facilities.State;
 using DotNetBuild.Runner.Infrastructure.Facilities.State;
+using DotNetBuild.Runner.Infrastructure.Logging;
 using Moq;
 using Xunit;
 
@@ -10,16 +11,18 @@ namespace DotNetBuild.Tests.Runner.Infrastructure.Facilities.State.Given_a_State
     {
         private Mock<IStateReader> _stateReader;
         private StateReaderFacilityAcceptor _stateReaderFacilityAcceptor;
+        private Mock<ILogger> _logger;
 
         protected override void Arrange()
         {
             _stateReader = new Mock<IStateReader>();
             _stateReaderFacilityAcceptor = new StateReaderFacilityAcceptor();
+            _logger = new Mock<ILogger>();
         }
 
         protected override StateReaderFacilityProvider CreateSubjectUnderTest()
         {
-            return new StateReaderFacilityProvider(() => _stateReader.Object);
+            return new StateReaderFacilityProvider(_logger.Object, () => _stateReader.Object);
         }
 
         protected override void Act()
