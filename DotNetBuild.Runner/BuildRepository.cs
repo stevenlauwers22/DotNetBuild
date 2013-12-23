@@ -12,7 +12,7 @@ namespace DotNetBuild.Runner
 
     public class BuildRepository : IBuildRepository
     {
-        private readonly IList<Build> _store;
+        private static IList<Build> _store;
 
         public BuildRepository()
         {

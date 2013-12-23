@@ -38,13 +38,14 @@ namespace DotNetBuild.Runner.CommandLine
             container.Register<IBuildRunner, BuildRunner>();
             container.Register<IConfigurationResolver, ConfigurationResolver>();
             container.Register<IConfigurationSelector, ConfigurationSelector>();
+            container.Register<IStateRepository, StateRepository>();
             container.Register<ITargetExecutor, TargetExecutor>();
             container.Register<ITargetInspector, TargetInspector>();
             container.Register<ITargetResolver, TargetResolver>();
             container.Register<ITypeActivator, TypeActivator>();
 
-            container.Register<IStateReader, StateRepository>();
-            container.Register<IStateWriter, StateRepository>();
+            container.Register<IStateReader, StateReader>();
+            container.Register<IStateWriter, StateWriter>();
             container.Register((c, p) => new StateReaderFacilityProvider(c.Resolve<ILogger>(), c.Resolve<IStateReader>));
             container.Register((c, p) => new StateWriterFacilityProvider(c.Resolve<ILogger>(), c.Resolve<IStateWriter>));
             container.RegisterMultiple<IFacilityProvider>(new []
@@ -53,7 +54,7 @@ namespace DotNetBuild.Runner.CommandLine
                 typeof (StateWriterFacilityProvider)
             });
 
-            container.Register<IBuildRepository, BuildRepository>().AsSingleton();
+            container.Register<IBuildRepository, BuildRepository>();
 
             return container;
         }

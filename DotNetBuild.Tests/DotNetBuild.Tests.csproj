@@ -46,11 +46,14 @@
     <Compile Include="Runner.CommandLine\Given_a_CommandLineInterpreter\When_told_to_Interpret_null_arguments.cs" />
     <Compile Include="Runner.CommandLine\Given_a_CommandLineInterpreter\When_told_to_Interpret_unknown_command_argument.cs" />
     <Compile Include="Runner.CommandLine\Given_a_CommandLineInterpreter\When_told_to_Interpret_valid_arguments.cs" />
+    <Compile Include="Runner\Given_a_BuildRepository\StaticTests\When_having_multiple_StateRepository_instances.cs" />
     <Compile Include="Runner\Given_a_BuildRepository\When_told_to_Add_a_Build_to_the_store_which_is_null.cs" />
     <Compile Include="Runner\Given_a_BuildRepository\When_told_to_Add_a_Build_to_the_store.cs" />
     <Compile Include="Runner\Given_a_BuildRepository\When_told_to_Get_a_Build_from_the_store.cs" />
     <Compile Include="Runner\Given_a_BuildRepository\When_told_to_Get_a_Build_from_the_store_with_unexisting_ID.cs" />
     <Compile Include="Runner\Given_a_Build\When_told_to_RequestStart.cs" />
+    <Compile Include="Runner\Infrastructure\Facilities\State\Given_a_StateReader\When_told_to_Get_state.cs" />
+    <Compile Include="Runner\Infrastructure\Facilities\State\Given_a_StateWriter\When_told_to_Add_state.cs" />
     <Compile Include="Runner\Infrastructure\Facilities\TestFacility.cs" />
     <Compile Include="Runner\Infrastructure\Facilities\TestFacilityAcceptor.cs" />
     <Compile Include="Runner\Infrastructure\Facilities\TestFacilityProvider.cs" />
@@ -87,6 +90,7 @@
     <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Get_a_setting_of_the_wrong_type.cs" />
     <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Get_a_setting.cs" />
     <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Get_a_setting_that_does_not_exist.cs" />
+    <Compile Include="Runner\Infrastructure\Given_a_StateRepository\StaticTests\When_having_multiple_StateRepository_instances.cs" />
     <Compile Include="Runner\Infrastructure\Given_a_TargetExecutor\When_told_to_Execute_a_Target_with_facilities.cs" />
     <Compile Include="Runner\Infrastructure\Given_a_TargetExecutor\When_told_to_Execute_a_Target_with_a_safe_exception.cs" />
     <Compile Include="Runner\Infrastructure\Given_a_TargetExecutor\When_told_to_Execute_a_Target_with_a_safe_exception_and_continue_on_error.cs" />

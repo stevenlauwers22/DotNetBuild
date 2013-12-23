@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DotNetBuild.Core;
 using DotNetBuild.Runner.Infrastructure.Exceptions;
@@ -17,7 +18,7 @@ namespace DotNetBuild.Runner.Infrastructure
     {
         private readonly ITargetInspector _targetInspector;
         private readonly ILogger _logger;
-        private readonly IFacilityProvider[] _facilityProviders;
+        private readonly IEnumerable<IFacilityProvider> _facilityProviders;
 
         public TargetExecutor(ITargetInspector targetInspector, ILogger logger)
             : this(targetInspector, logger, null)
@@ -27,7 +28,7 @@ namespace DotNetBuild.Runner.Infrastructure
         public TargetExecutor(
             ITargetInspector targetInspector, 
             ILogger logger,
-            IFacilityProvider[] facilityProviders)
+            IEnumerable<IFacilityProvider> facilityProviders)
         {
             if (targetInspector == null) 
                 throw new ArgumentNullException("targetInspector");

@@ -29,7 +29,7 @@ namespace DotNetBuild.Build.NuGet
                 NuGetExe = @"C:\Projects\DotNetBuild\DotNetBuild\packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe",
                 NuSpecFile = @"C:\Projects\DotNetBuild\DotNetBuild\packagesForNuGet\DotNetBuild\DotNetBuild.nuspec",
                 OutputDir = @"C:\Projects\DotNetBuild\DotNetBuild\packagesForNuGet\DotNetBuild",
-                Version = _stateReader.Get<string>("Version")
+                Version = _stateReader.Get<string>("VersionNumber")
             };
 
             return nugetPackTask.Execute();

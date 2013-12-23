@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using DotNetBuild.Core.Facilities.State;
 
 namespace DotNetBuild.Runner.Infrastructure
 {
-    public class StateRepository
-        : IStateReader, IStateWriter
+    public interface IStateRepository
     {
-        private readonly IDictionary<string, object> _store;
+        T Get<T>(string key);
+        void Add(string key, object value);
+    }
+
+    public class StateRepository
+        : IStateRepository
+    {
+        private static IDictionary<string, object> _store;
 
         public StateRepository()
         {
