@@ -44,6 +44,8 @@
     <Compile Include="ConfigurationSettings.cs" />
     <Compile Include="Facilities\IFacility.cs" />
     <Compile Include="Facilities\IFacilityAcceptor.cs" />
+    <Compile Include="Facilities\Logging\ILogger.cs" />
+    <Compile Include="Facilities\Logging\IWantToLog.cs" />
     <Compile Include="Facilities\State\IStateReader.cs" />
     <Compile Include="Facilities\State\IStateWriter.cs" />
     <Compile Include="ITarget.cs" />

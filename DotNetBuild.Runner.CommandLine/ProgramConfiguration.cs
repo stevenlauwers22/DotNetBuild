@@ -1,11 +1,12 @@
-﻿using DotNetBuild.Core.Facilities.State;
+﻿using DotNetBuild.Core.Facilities.Logging;
+using DotNetBuild.Core.Facilities.State;
 using DotNetBuild.Runner.CommandLine.StartBuild;
 using DotNetBuild.Runner.Infrastructure;
 using DotNetBuild.Runner.Infrastructure.Commands;
 using DotNetBuild.Runner.Infrastructure.Events;
 using DotNetBuild.Runner.Infrastructure.Facilities;
+using DotNetBuild.Runner.Infrastructure.Facilities.Logging;
 using DotNetBuild.Runner.Infrastructure.Facilities.State;
-using DotNetBuild.Runner.Infrastructure.Logging;
 using DotNetBuild.Runner.Infrastructure.TinyIoC;
 using DotNetBuild.Runner.StartBuild;
 using DotNetBuild.Runner.StartBuild.BuildRequestedToStart;
@@ -20,8 +21,8 @@ namespace DotNetBuild.Runner.CommandLine
 
             container.Register(container);
 
-            container.Register<ILoggerFactory, LoggerFactory>();
-            container.Register((c, p) => c.Resolve<ILoggerFactory>().CreateLogger());
+            container.Register<Infrastructure.Logging.ILoggerFactory, Infrastructure.Logging.LoggerFactory>();
+            container.Register((c, p) => c.Resolve<Infrastructure.Logging.ILoggerFactory>().CreateLogger());
 
             container.Register<IDomainEventDispatcher, DomainEventDispatcher>();
             container.Register<IDomainEventInitializer>((c, p) => new DomainEventInitializer(@event => c.Resolve<IDomainEventDispatcher>().Dispatch(@event)));
@@ -44,12 +45,15 @@ namespace DotNetBuild.Runner.CommandLine
             container.Register<ITargetResolver, TargetResolver>();
             container.Register<ITypeActivator, TypeActivator>();
 
+            container.Register<ILogger, Logger>();
             container.Register<IStateReader, StateReader>();
             container.Register<IStateWriter, StateWriter>();
-            container.Register((c, p) => new StateReaderFacilityProvider(c.Resolve<ILogger>(), c.Resolve<IStateReader>));
-            container.Register((c, p) => new StateWriterFacilityProvider(c.Resolve<ILogger>(), c.Resolve<IStateWriter>));
+            container.Register((c, p) => new LoggerFacilityProvider(c.Resolve<Infrastructure.Logging.ILogger>(), c.Resolve<ILogger>));
+            container.Register((c, p) => new StateReaderFacilityProvider(c.Resolve<Infrastructure.Logging.ILogger>(), c.Resolve<IStateReader>));
+            container.Register((c, p) => new StateWriterFacilityProvider(c.Resolve<Infrastructure.Logging.ILogger>(), c.Resolve<IStateWriter>));
             container.RegisterMultiple<IFacilityProvider>(new []
             {
+                typeof (LoggerFacilityProvider),
                 typeof (StateReaderFacilityProvider),
                 typeof (StateWriterFacilityProvider)
             });

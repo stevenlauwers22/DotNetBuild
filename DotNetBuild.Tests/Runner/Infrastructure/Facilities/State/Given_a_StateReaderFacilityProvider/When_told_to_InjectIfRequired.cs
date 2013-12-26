@@ -9,15 +9,15 @@ namespace DotNetBuild.Tests.Runner.Infrastructure.Facilities.State.Given_a_State
     public class When_told_to_InjectIfRequired
         : TestSpecification<StateReaderFacilityProvider>
     {
+        private Mock<ILogger> _logger;
         private Mock<IStateReader> _stateReader;
         private StateReaderFacilityAcceptor _stateReaderFacilityAcceptor;
-        private Mock<ILogger> _logger;
 
         protected override void Arrange()
         {
+            _logger = new Mock<ILogger>();
             _stateReader = new Mock<IStateReader>();
             _stateReaderFacilityAcceptor = new StateReaderFacilityAcceptor();
-            _logger = new Mock<ILogger>();
         }
 
         protected override StateReaderFacilityProvider CreateSubjectUnderTest()

@@ -52,6 +52,9 @@
     <Compile Include="Runner\Given_a_BuildRepository\When_told_to_Get_a_Build_from_the_store.cs" />
     <Compile Include="Runner\Given_a_BuildRepository\When_told_to_Get_a_Build_from_the_store_with_unexisting_ID.cs" />
     <Compile Include="Runner\Given_a_Build\When_told_to_RequestStart.cs" />
+    <Compile Include="Runner\Infrastructure\Facilities\Logging\Given_a_LoggerFacilityProvider\When_told_to_InjectIfRequired.cs" />
+    <Compile Include="Runner\Infrastructure\Facilities\Logging\Given_a_Logger\When_told_to_LogError.cs" />
+    <Compile Include="Runner\Infrastructure\Facilities\Logging\Given_a_Logger\When_told_to_LogInfo.cs" />
     <Compile Include="Runner\Infrastructure\Facilities\State\Given_a_StateReader\When_told_to_Get_state.cs" />
     <Compile Include="Runner\Infrastructure\Facilities\State\Given_a_StateWriter\When_told_to_Add_state.cs" />
     <Compile Include="Runner\Infrastructure\Facilities\TestFacility.cs" />

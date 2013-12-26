@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BuildRepository.cs" />
+    <Compile Include="Infrastructure\Facilities\Logging\Logger.cs" />
+    <Compile Include="Infrastructure\Facilities\Logging\LoggerFacilityProvider.cs" />
     <Compile Include="Infrastructure\Facilities\State\StateReader.cs" />
     <Compile Include="Infrastructure\Facilities\State\StateWriter.cs" />
     <Compile Include="Infrastructure\Logging\ILoggerFactory.cs" />

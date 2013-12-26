@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using DotNetBuild.Core;
+using DotNetBuild.Core.Facilities.Logging;
 using DotNetBuild.Core.Facilities.State;
 using MSBuild.ExtensionPack.Framework;
 
 namespace DotNetBuild.Build.Versioning
 {
-    public class UpdateVersionNumber : ITarget, IWantToWriteState
+    public class UpdateVersionNumber : ITarget, IWantToWriteState, IWantToLog
     {
         public string Name
         {
@@ -40,6 +41,7 @@ namespace DotNetBuild.Build.Versioning
             };
 
             var result = assemblyInfoTask.Execute();
+            _logger.LogInfo("Building version: " +assemblyInfoTask.MaxAssemblyVersion);
             _stateWriter.Add("VersionNumber", assemblyInfoTask.MaxAssemblyVersion);
 
             return result;
@@ -49,6 +51,12 @@ namespace DotNetBuild.Build.Versioning
         public void Inject(IStateWriter stateWriter)
         {
             _stateWriter = stateWriter;
+        }
+
+        private ILogger _logger;
+        public void Inject(ILogger logger)
+        {
+            _logger = logger;
         }
     }
 }
