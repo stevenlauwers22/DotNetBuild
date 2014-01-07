@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using DotNetBuild.Runner.Infrastructure.Exceptions;
 using DotNetBuild.Runner.Infrastructure.Logging;
 
@@ -56,24 +55,7 @@ namespace DotNetBuild.Runner.Infrastructure
             var assemblyName = parameters.Assembly;
             if (assemblyName == null)
                 throw new UnableToLoadAssemblyException(assemblyName);
-
-            // TODO: clean up
-            var assemblyFile = new FileInfo(assemblyName);
-            var assemblyFiles = assemblyFile.Directory.GetFiles();
-            var assemblyFilesTarget = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-            if (!assemblyFilesTarget.Exists)
-                assemblyFilesTarget.Create();
-
-            foreach (var fileInfo in assemblyFiles)
-            {
-                var fileInfoTarget = new FileInfo(Path.Combine(assemblyFilesTarget.FullName, fileInfo.Name));
-                if (fileInfoTarget.Exists)
-                    continue;
-
-                _logger.Write(string.Format("Copy {0} to {1} ", fileInfo.FullName, fileInfoTarget.FullName));
-                fileInfo.CopyTo(fileInfoTarget.FullName);
-            }
-
+            
             var assembly = _assemblyLoader.Load(assemblyName);
             if (assembly == null)
                 throw new UnableToLoadAssemblyException(assemblyName);
