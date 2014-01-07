@@ -1,5 +1,4 @@
 ﻿using System;
-using DotNetBuild.Runner.Infrastructure;
 using DotNetBuild.Runner.Infrastructure.Events;
 using DotNetBuild.Runner.Infrastructure.Logging;
 

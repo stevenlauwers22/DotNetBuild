@@ -1,6 +1,6 @@
 ﻿using System;
+using DotNetBuild.Runner.Exceptions;
 using DotNetBuild.Runner.Infrastructure.Commands;
-using DotNetBuild.Runner.Infrastructure.Exceptions;
 using DotNetBuild.Runner.Infrastructure.Logging;
 using DotNetBuild.Runner.Infrastructure.TinyIoC;
 

@@ -1,12 +1,11 @@
 ﻿using DotNetBuild.Core.Facilities.Logging;
 using DotNetBuild.Core.Facilities.State;
 using DotNetBuild.Runner.CommandLine.StartBuild;
-using DotNetBuild.Runner.Infrastructure;
+using DotNetBuild.Runner.Facilities;
+using DotNetBuild.Runner.Facilities.Logging;
+using DotNetBuild.Runner.Facilities.State;
 using DotNetBuild.Runner.Infrastructure.Commands;
 using DotNetBuild.Runner.Infrastructure.Events;
-using DotNetBuild.Runner.Infrastructure.Facilities;
-using DotNetBuild.Runner.Infrastructure.Facilities.Logging;
-using DotNetBuild.Runner.Infrastructure.Facilities.State;
 using DotNetBuild.Runner.Infrastructure.TinyIoC;
 using DotNetBuild.Runner.StartBuild;
 using DotNetBuild.Runner.StartBuild.BuildRequestedToStart;
