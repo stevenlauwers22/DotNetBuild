@@ -1,6 +1,5 @@
 ﻿using System;
 using DotNetBuild.Runner.Exceptions;
-using DotNetBuild.Runner.Infrastructure.Commands;
 using DotNetBuild.Runner.Infrastructure.Logging;
 using DotNetBuild.Runner.Infrastructure.TinyIoC;
 
@@ -16,15 +15,14 @@ namespace DotNetBuild.Runner.CommandLine
 
             try
             {
-
-                var commandLineInterpreter = container.Resolve<ICommandLineInterpreter>();
-                var command = commandLineInterpreter.Interpret(args);
-                if (command != null)
+                var buildRunnerParametersBuilder = new BuildRunnerParametersBuilder();
+                var buildRunnerParameters = buildRunnerParametersBuilder.BuildFrom(args);
+                if (buildRunnerParameters != null)
                 {
-                    logger.Write("Command parsed: " + command.GetType());
-
-                    var commandDispatcher = container.Resolve<ICommandDispatcher>();
-                    commandDispatcher.Dispatch(command);
+                    logger.Write("Command parsed: " + buildRunnerParameters.GetType());
+                    
+                    var buildRunner = container.Resolve<IBuildRunner>();
+                    buildRunner.Run(buildRunnerParameters);
                 }
                 else
                 {
@@ -53,11 +51,8 @@ namespace DotNetBuild.Runner.CommandLine
 
         private static void PrintHelp(TinyIoCContainer container, ILogger logger)
         {
-            var commandHelp = container.ResolveAll<ICommandHelp>();
-            foreach (var ch in commandHelp)
-            {
-                ch.Print(logger);
-            }
+            var commandHelp = container.Resolve<IBuildRunnerParametersHelp>();
+            commandHelp.Print(logger);
         }
 
         private static void PrintExpectedException(Exception exception, ILogger logger)

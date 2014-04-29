@@ -39,14 +39,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ProgramConfiguration.cs" />
-    <Compile Include="CommandLineInterpreter.cs" />
-    <Compile Include="ICommandBuilder.cs" />
-    <Compile Include="ICommandHelp.cs" />
+    <Compile Include="BuildRunnerParametersBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StartBuild\StartBuildCommandHelp.cs" />
-    <Compile Include="StartBuild\StartBuildCommandConstants.cs" />
-    <Compile Include="StartBuild\StartBuildCommandBuilder.cs" />
+    <Compile Include="BuildRunnerParametersHelp.cs" />
+    <Compile Include="BuildRunnerParametersConstants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

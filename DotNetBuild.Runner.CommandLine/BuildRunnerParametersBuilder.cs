@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using DotNetBuild.Runner.Infrastructure.Commands;
-using DotNetBuild.Runner.StartBuild;
 
-namespace DotNetBuild.Runner.CommandLine.StartBuild
+namespace DotNetBuild.Runner.CommandLine
 {
-    public class StartBuildCommandBuilder
-        : ICommandBuilder
+    public interface IBuildRunnerParametersBuilder
     {
-        public ICommand BuildFrom(string[] args)
+        BuildRunnerParameters BuildFrom(string[] args);
+    }
+    public class BuildRunnerParametersBuilder
+        : IBuildRunnerParametersBuilder
+    {
+        public BuildRunnerParameters BuildFrom(string[] args)
         {
             string assembly = null;
             string target = null;
@@ -19,21 +21,21 @@ namespace DotNetBuild.Runner.CommandLine.StartBuild
                 if (arg == null)
                     continue;
 
-                if (arg.StartsWith(StartBuildCommandConstants.BuildParameterAssembly))
+                if (arg.StartsWith(BuildRunnerParametersConstants.Assembly))
                 {
-                    assembly = arg.Substring(StartBuildCommandConstants.BuildParameterAssembly.Length);
+                    assembly = arg.Substring(BuildRunnerParametersConstants.Assembly.Length);
                     continue;
                 }
 
-                if (arg.StartsWith(StartBuildCommandConstants.BuildParameterTarget))
+                if (arg.StartsWith(BuildRunnerParametersConstants.Target))
                 {
-                    target = arg.Substring(StartBuildCommandConstants.BuildParameterTarget.Length);
+                    target = arg.Substring(BuildRunnerParametersConstants.Target.Length);
                     continue;
                 }
 
-                if (arg.StartsWith(StartBuildCommandConstants.BuildParameterConfiguration))
+                if (arg.StartsWith(BuildRunnerParametersConstants.Configuration))
                 {
-                    configuration = arg.Substring(StartBuildCommandConstants.BuildParameterConfiguration.Length);
+                    configuration = arg.Substring(BuildRunnerParametersConstants.Configuration.Length);
                     continue;
                 }
 
@@ -51,7 +53,7 @@ namespace DotNetBuild.Runner.CommandLine.StartBuild
                 additionalParameters[argKey] = argValue;
             }
 
-            var parameters = new StartBuildCommand(assembly, target, configuration, additionalParameters);
+            var parameters = new BuildRunnerParameters(assembly, target, configuration, additionalParameters);
             return parameters;
         }
     }

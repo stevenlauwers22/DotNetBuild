@@ -1,19 +1,19 @@
 ﻿using System.Linq;
-using DotNetBuild.Runner.CommandLine.StartBuild;
-using DotNetBuild.Runner.StartBuild;
+using DotNetBuild.Runner;
+using DotNetBuild.Runner.CommandLine;
 using Xunit;
 
-namespace DotNetBuild.Tests.Runner.CommandLine.StartBuild.Given_a_StartBuildCommandBuilder
+namespace DotNetBuild.Tests.Runner.CommandLine.Given_a_BuildRunnerParametersBuilder
 {
     public class When_told_to_BuildFrom_an_argument_array
-        : TestSpecification<StartBuildCommandBuilder>
+        : TestSpecification<BuildRunnerParametersBuilder>
     {
         private string[] _args;
         private string _assembly;
         private string _target;
         private string _configuration;
         private string _additionalParameterInvalid;
-        private StartBuildCommand _result;
+        private BuildRunnerParameters _result;
 
         protected override void Arrange()
         {
@@ -34,14 +34,14 @@ namespace DotNetBuild.Tests.Runner.CommandLine.StartBuild.Given_a_StartBuildComm
             };
         }
 
-        protected override StartBuildCommandBuilder CreateSubjectUnderTest()
+        protected override BuildRunnerParametersBuilder CreateSubjectUnderTest()
         {
-            return new StartBuildCommandBuilder();
+            return new BuildRunnerParametersBuilder();
         }
 
         protected override void Act()
         {
-            _result = (StartBuildCommand) Sut.BuildFrom(_args);
+            _result = Sut.BuildFrom(_args);
         }
 
         [Fact]

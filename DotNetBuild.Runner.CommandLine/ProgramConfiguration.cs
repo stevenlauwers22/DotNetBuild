@@ -1,14 +1,9 @@
 ﻿using DotNetBuild.Core.Facilities.Logging;
 using DotNetBuild.Core.Facilities.State;
-using DotNetBuild.Runner.CommandLine.StartBuild;
 using DotNetBuild.Runner.Facilities;
 using DotNetBuild.Runner.Facilities.Logging;
 using DotNetBuild.Runner.Facilities.State;
-using DotNetBuild.Runner.Infrastructure.Commands;
-using DotNetBuild.Runner.Infrastructure.Events;
 using DotNetBuild.Runner.Infrastructure.TinyIoC;
-using DotNetBuild.Runner.StartBuild;
-using DotNetBuild.Runner.StartBuild.BuildRequestedToStart;
 
 namespace DotNetBuild.Runner.CommandLine
 {
@@ -23,16 +18,8 @@ namespace DotNetBuild.Runner.CommandLine
             container.Register<Infrastructure.Logging.ILoggerFactory, Infrastructure.Logging.LoggerFactory>();
             container.Register((c, p) => c.Resolve<Infrastructure.Logging.ILoggerFactory>().CreateLogger());
 
-            container.Register<IDomainEventDispatcher, DomainEventDispatcher>();
-            container.Register<IDomainEventInitializer>((c, p) => new DomainEventInitializer(@event => c.Resolve<IDomainEventDispatcher>().Dispatch(@event)));
-            container.Register<IDomainEventHandler<BuildRequestedToStart>, BuildRequestedToStartHandler>();
-
-            container.Register<ICommandLineInterpreter, CommandLineInterpreter>();
-            container.Register<ICommandBuilder, StartBuildCommandBuilder>("start-build");
-            container.Register<ICommandHelp, StartBuildCommandHelp>("start-build-help");
-
-            container.Register<ICommandDispatcher, CommandDispatcher>();
-            container.Register<ICommandHandler<StartBuildCommand>, StartBuildHandler>();
+            container.Register<IBuildRunnerParametersBuilder, BuildRunnerParametersBuilder>();
+            container.Register<IBuildRunnerParametersHelp, BuildRunnerParametersHelp>();
 
             container.Register<IAssemblyLoader, AssemblyLoader>();
             container.Register<IBuildRunner, BuildRunner>();
@@ -56,8 +43,6 @@ namespace DotNetBuild.Runner.CommandLine
                 typeof (StateReaderFacilityProvider),
                 typeof (StateWriterFacilityProvider)
             });
-
-            container.Register<IBuildRepository, BuildRepository>();
 
             return container;
         }

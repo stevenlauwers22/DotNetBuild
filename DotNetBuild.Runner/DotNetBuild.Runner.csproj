@@ -40,7 +40,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuildRepository.cs" />
     <Compile Include="Facilities\Logging\Logger.cs" />
     <Compile Include="Facilities\Logging\LoggerFacilityProvider.cs" />
     <Compile Include="Facilities\State\StateReader.cs" />
@@ -54,23 +53,14 @@
     <Compile Include="Facilities\State\StateReaderFacilityProvider.cs" />
     <Compile Include="StateRepository.cs" />
     <Compile Include="Facilities\State\StateWriterFacilityProvider.cs" />
-    <Compile Include="StartBuild\BuildRequestedToStart\BuildRequestedToStartHandler.cs" />
     <Compile Include="AssemblyLoader.cs" />
     <Compile Include="AssemblyTypeFilter.cs" />
     <Compile Include="AssemblyWrapper.cs" />
-    <Compile Include="Build.cs" />
-    <Compile Include="StartBuild\BuildRequestedToStart\BuildRequestedToStart.cs" />
     <Compile Include="BuildRunner.cs" />
     <Compile Include="BuildRunnerParameters.cs" />
-    <Compile Include="Infrastructure\Commands\CommandDispatcher.cs" />
     <Compile Include="ConfigurationResolver.cs" />
     <Compile Include="ConfigurationSelector.cs" />
-    <Compile Include="Infrastructure\Events\DomainEventDispatcher.cs" />
-    <Compile Include="Infrastructure\Events\DomainEventExtensions.cs" />
-    <Compile Include="Infrastructure\Events\DomainEventInitializer.cs" />
-    <Compile Include="Infrastructure\Events\IDomainEventHandler.cs" />
     <Compile Include="TargetConstants.cs" />
-    <Compile Include="Infrastructure\Events\DomainEventDelegate.cs" />
     <Compile Include="Exceptions\UnableToExecuteTargetsWithCircularDependenciesException.cs" />
     <Compile Include="Exceptions\DotNetBuildException.cs" />
     <Compile Include="Exceptions\UnableToActivateConfigurationRegistryException.cs" />
@@ -88,10 +78,6 @@
     <Compile Include="TypeActivator.cs" />
     <Compile Include="Exceptions\UnableToDetermineCorrectConfigurationSettingsException.cs" />
     <Compile Include="Infrastructure\TinyIoC\TinyIoC.cs" />
-    <Compile Include="Infrastructure\Commands\ICommand.cs" />
-    <Compile Include="Infrastructure\Commands\ICommandHandler.cs" />
-    <Compile Include="StartBuild\StartBuildCommand.cs" />
-    <Compile Include="StartBuild\StartBuildHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DotNetBuild.Core\DotNetBuild.Core.csproj">
