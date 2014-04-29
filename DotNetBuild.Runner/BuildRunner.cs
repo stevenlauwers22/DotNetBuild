@@ -1,4 +1,5 @@
 ﻿using System;
+using DotNetBuild.Core;
 using DotNetBuild.Runner.Exceptions;
 using DotNetBuild.Runner.Infrastructure.Logging;
 
@@ -6,7 +7,8 @@ namespace DotNetBuild.Runner
 {
     public interface IBuildRunner
     {
-        void Run(BuildRunnerParameters parameters);
+        void Run(String assemblyName, String targetName, String configurationName);
+        void Run(ITarget target, IConfigurationSettings configurationSettings);
     }
 
     public class BuildRunner 
@@ -47,25 +49,24 @@ namespace DotNetBuild.Runner
             _logger = logger;
         }
 
-        public void Run(BuildRunnerParameters parameters)
+        public void Run(String assemblyName, String targetName, String configurationName)
         {
-            if (parameters == null)
-                throw new ArgumentNullException("parameters");
-
-            var assemblyName = parameters.Assembly;
-            if (assemblyName == null)
-                throw new UnableToLoadAssemblyException(assemblyName);
-            
             var assembly = _assemblyLoader.Load(assemblyName);
             if (assembly == null)
                 throw new UnableToLoadAssemblyException(assemblyName);
 
-            var configurationSettings = _configurationResolver.Resolve(parameters.Configuration, assembly);
-            var targetName = string.IsNullOrEmpty(parameters.Target) ? TargetConstants.DefaultTarget : parameters.Target;
-            var target = _targetResolver.Resolve(targetName, assembly);
+            var targetNameOrDefault = String.IsNullOrEmpty(targetName) ? TargetConstants.DefaultTarget : targetName;
+            var target = _targetResolver.Resolve(targetNameOrDefault, assembly);
             if (target == null)
-                throw new UnableToResolveTargetException(targetName, assemblyName);
+                throw new UnableToResolveTargetException(targetNameOrDefault, assemblyName);
 
+            var configurationSettings = _configurationResolver.Resolve(configurationName, assembly);
+            _logger.Write("Build started");
+            _targetExecutor.Execute(target, configurationSettings);
+        }
+
+        public void Run(ITarget target, IConfigurationSettings configurationSettings)
+        {
             _logger.Write("Build started");
             _targetExecutor.Execute(target, configurationSettings);
         }

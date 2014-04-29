@@ -22,7 +22,7 @@ namespace DotNetBuild.Runner.CommandLine
                     logger.Write("Command parsed: " + buildRunnerParameters.GetType());
                     
                     var buildRunner = container.Resolve<IBuildRunner>();
-                    buildRunner.Run(buildRunnerParameters);
+                    buildRunner.Run(buildRunnerParameters.Assembly, buildRunnerParameters.Target, buildRunnerParameters.Configuration);
                 }
                 else
                 {

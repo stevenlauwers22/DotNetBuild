@@ -1,4 +1,5 @@
-﻿using DotNetBuild.Runner;
+﻿using System;
+using DotNetBuild.Runner;
 using DotNetBuild.Runner.Exceptions;
 using DotNetBuild.Runner.Infrastructure.Logging;
 using Moq;
@@ -9,7 +10,9 @@ namespace DotNetBuild.Tests.Runner.Given_a_BuildRunner
     public class When_told_to_Run_with_an_empty_assembly
         : TestSpecification<BuildRunner>
     {
-        private BuildRunnerParameters _parameters;
+        private String _assemblyName;
+        private String _targetName;
+        private String _configurationName;
         private Mock<IAssemblyLoader> _assemblyLoader;
         private Mock<IConfigurationResolver> _configurationResolver;
         private Mock<ITargetResolver> _targetResolver;
@@ -19,7 +22,9 @@ namespace DotNetBuild.Tests.Runner.Given_a_BuildRunner
 
         protected override void Arrange()
         {
-            _parameters = new BuildRunnerParameters(null, null, null, null);
+            _assemblyName = null;
+            _targetName = null;
+            _configurationName = null;
 
             _assemblyLoader = new Mock<IAssemblyLoader>();
             _configurationResolver = new Mock<IConfigurationResolver>();
@@ -35,7 +40,13 @@ namespace DotNetBuild.Tests.Runner.Given_a_BuildRunner
 
         protected override void Act()
         {
-            _exception = TestHelpers.CatchException<UnableToLoadAssemblyException>(() => Sut.Run(_parameters));
+            _exception = TestHelpers.CatchException<UnableToLoadAssemblyException>(() => Sut.Run(_assemblyName, _targetName, _configurationName));
+        }
+
+        [Fact]
+        public void Loads_the_assembly()
+        {
+            _assemblyLoader.Verify(al => al.Load(_assemblyName));
         }
 
         [Fact]

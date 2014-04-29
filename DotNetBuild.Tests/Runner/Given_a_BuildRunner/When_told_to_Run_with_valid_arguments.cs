@@ -1,4 +1,5 @@
-﻿using DotNetBuild.Core;
+﻿using System;
+using DotNetBuild.Core;
 using DotNetBuild.Runner;
 using DotNetBuild.Runner.Infrastructure.Logging;
 using Moq;
@@ -9,7 +10,9 @@ namespace DotNetBuild.Tests.Runner.Given_a_BuildRunner
     public class When_told_to_Run_with_valid_arguments
         : TestSpecification<BuildRunner>
     {
-        private BuildRunnerParameters _parameters;
+        private String _assemblyName;
+        private String _targetName;
+        private String _configurationName;
         private Mock<IAssemblyLoader> _assemblyLoader;
         private Mock<IAssemblyWrapper> _assembly;
         private Mock<IConfigurationSettings> _configurationSettings;
@@ -21,19 +24,21 @@ namespace DotNetBuild.Tests.Runner.Given_a_BuildRunner
 
         protected override void Arrange()
         {
-            _parameters = new BuildRunnerParameters(TestData.GenerateString(), TestData.GenerateString(), TestData.GenerateString(), null);
+            _assemblyName = TestData.GenerateString();
+            _targetName = TestData.GenerateString();
+            _configurationName = TestData.GenerateString();
 
             _assembly = new Mock<IAssemblyWrapper>();
             _assemblyLoader = new Mock<IAssemblyLoader>();
-            _assemblyLoader.Setup(al => al.Load(_parameters.Assembly)).Returns(_assembly.Object);
-
-            _configurationSettings = new Mock<IConfigurationSettings>();
-            _configurationResolver = new Mock<IConfigurationResolver>();
-            _configurationResolver.Setup(csr => csr.Resolve(_parameters.Configuration, _assembly.Object)).Returns(_configurationSettings.Object);
+            _assemblyLoader.Setup(al => al.Load(_assemblyName)).Returns(_assembly.Object);
 
             _target = new Mock<ITarget>();
             _targetResolver = new Mock<ITargetResolver>();
-            _targetResolver.Setup(tr => tr.Resolve(_parameters.Target, _assembly.Object)).Returns(_target.Object);
+            _targetResolver.Setup(tr => tr.Resolve(_targetName, _assembly.Object)).Returns(_target.Object);
+
+            _configurationSettings = new Mock<IConfigurationSettings>();
+            _configurationResolver = new Mock<IConfigurationResolver>();
+            _configurationResolver.Setup(csr => csr.Resolve(_configurationName, _assembly.Object)).Returns(_configurationSettings.Object);
 
             _targetExecutor = new Mock<ITargetExecutor>();
             _logger = new Mock<ILogger>();
@@ -46,25 +51,25 @@ namespace DotNetBuild.Tests.Runner.Given_a_BuildRunner
 
         protected override void Act()
         {
-            Sut.Run(_parameters);
+            Sut.Run(_assemblyName, _targetName, _configurationName);
         }
 
         [Fact]
         public void Loads_the_assembly()
         {
-            _assemblyLoader.Verify(al => al.Load(_parameters.Assembly));
-        }
-
-        [Fact]
-        public void Resolves_the_configuration()
-        {
-            _configurationResolver.Verify(cr => cr.Resolve(_parameters.Configuration, _assembly.Object));
+            _assemblyLoader.Verify(al => al.Load(_assemblyName));
         }
 
         [Fact]
         public void Resolves_the_target()
         {
-            _targetResolver.Verify(tr => tr.Resolve(_parameters.Target, _assembly.Object));
+            _targetResolver.Verify(tr => tr.Resolve(_targetName, _assembly.Object));
+        }
+
+        [Fact]
+        public void Resolves_the_configuration()
+        {
+            _configurationResolver.Verify(cr => cr.Resolve(_configurationName, _assembly.Object));
         }
 
         [Fact]
