@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Core", "DotNetBuild.Core\DotNetBuild.Core.csproj", "{8B2FEC24-DC07-4B6C-8F5B-ABF90D40C9D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Tests", "DotNetBuild.Tests\DotNetBuild.Tests.csproj", "{827B207D-2429-4C05-A769-186C7CB35FC3}"
@@ -22,6 +24,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{EB5D7DE2-7032-4757-9E4F-1E739D75DBC4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Build", "DotNetBuild.Build\DotNetBuild.Build.csproj", "{2CC8AB38-DF99-41B1-884B-4EFAA37FF6C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildScriptCs", "BuildScriptCs", "{09EB6761-627A-453C-808F-11D5A6A687D9}"
+	ProjectSection(SolutionItems) = preProject
+		DotNetBuild.BuildScriptCs\CI.csx = DotNetBuild.BuildScriptCs\CI.csx
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,9 +67,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8B2FEC24-DC07-4B6C-8F5B-ABF90D40C9D8} = {DF735577-ADB0-4D0D-A8EB-B29F91AB336E}
 		{B12BBF26-D91F-4516-99E8-0AE27A40069E} = {DF735577-ADB0-4D0D-A8EB-B29F91AB336E}
 		{B477828C-5A65-4B3A-A180-42782F420AA1} = {DF735577-ADB0-4D0D-A8EB-B29F91AB336E}
+		{8B2FEC24-DC07-4B6C-8F5B-ABF90D40C9D8} = {DF735577-ADB0-4D0D-A8EB-B29F91AB336E}
 		{EA116E5A-B97D-47D4-8375-A72B28DF61B1} = {698F167C-511A-4098-91ED-C345864A9D8D}
 		{827B207D-2429-4C05-A769-186C7CB35FC3} = {698F167C-511A-4098-91ED-C345864A9D8D}
 		{3C191818-AD7D-49C5-8AA6-6034852AF35D} = {B5C358E9-A7D2-4AB1-8251-8338038B6EC1}
