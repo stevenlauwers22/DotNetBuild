@@ -1,15 +1,18 @@
 ﻿using System;
+using DotNetBuild.Runner.Configuration;
 using DotNetBuild.Runner.Exceptions;
 using DotNetBuild.Runner.Infrastructure.Logging;
 using DotNetBuild.Runner.Infrastructure.TinyIoC;
 
 namespace DotNetBuild.Runner.CommandLine
 {
-    public class Program
+    public class DotNetBuild
     {
         public static int Main(string[] args)
         {
-            var container = ProgramConfiguration.ConfigureContainer();
+            var container = TinyIoCContainer.Current;
+            Container.Install(container);
+
             var logger = container.Resolve<ILogger>();
             logger.Write("DotNetBuild started");
 
@@ -28,7 +31,7 @@ namespace DotNetBuild.Runner.CommandLine
                 {
                     logger.Write("Command could not be understood due to invalid command line parameters.");
                     logger.Write("Usage of the application:");
-                    PrintHelp(container, logger);
+                    PrintHelp(logger);
                 }
             }
             catch (DotNetBuildException exception)
@@ -49,9 +52,9 @@ namespace DotNetBuild.Runner.CommandLine
             return 0;
         }
 
-        private static void PrintHelp(TinyIoCContainer container, ILogger logger)
+        private static void PrintHelp(ILogger logger)
         {
-            var commandHelp = container.Resolve<IBuildRunnerParametersHelp>();
+            var commandHelp = new BuildRunnerParametersHelp();
             commandHelp.Print(logger);
         }
 

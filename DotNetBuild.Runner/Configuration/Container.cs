@@ -5,21 +5,16 @@ using DotNetBuild.Runner.Facilities.Logging;
 using DotNetBuild.Runner.Facilities.State;
 using DotNetBuild.Runner.Infrastructure.TinyIoC;
 
-namespace DotNetBuild.Runner.CommandLine
+namespace DotNetBuild.Runner.Configuration
 {
-    public class ProgramConfiguration
+    public class Container
     {
-        public static TinyIoCContainer ConfigureContainer()
+        public static void Install(TinyIoCContainer container)
         {
-            var container = TinyIoCContainer.Current;
-
             container.Register(container);
 
             container.Register<Infrastructure.Logging.ILoggerFactory, Infrastructure.Logging.LoggerFactory>();
             container.Register((c, p) => c.Resolve<Infrastructure.Logging.ILoggerFactory>().CreateLogger());
-
-            container.Register<IBuildRunnerParametersBuilder, BuildRunnerParametersBuilder>();
-            container.Register<IBuildRunnerParametersHelp, BuildRunnerParametersHelp>();
 
             container.Register<IAssemblyLoader, AssemblyLoader>();
             container.Register<IBuildRunner, BuildRunner>();
@@ -43,8 +38,6 @@ namespace DotNetBuild.Runner.CommandLine
                 typeof (StateReaderFacilityProvider),
                 typeof (StateWriterFacilityProvider)
             });
-
-            return container;
         }
     }
 }

@@ -28,3 +28,5 @@
 /DotNetBuild.Runner/DotNetBuild.Runner.csproj.user
 
 /DotNetBuild.v12.suo
+/DotNetBuild.Runner.ScriptCs/obj
+/DotNetBuild.Runner.ScriptCs/bin

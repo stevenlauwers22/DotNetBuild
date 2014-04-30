@@ -60,12 +60,6 @@ namespace DotNetBuild.Tests.Runner.Given_a_BuildRunner
         }
 
         [Fact]
-        public void Resolves_the_configuration()
-        {
-            _configurationResolver.Verify(cr => cr.Resolve(_configurationName, _assembly.Object));
-        }
-
-        [Fact]
         public void Throws_an_exception()
         {
             Assert.NotNull(_exception);

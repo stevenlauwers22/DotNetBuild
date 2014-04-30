@@ -1,19 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B477828C-5A65-4B3A-A180-42782F420AA1}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{8FF41F36-65F1-4503-BEA2-06F0FAC850AF}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DotNetBuild.Runner.CommandLine</RootNamespace>
-    <AssemblyName>DotNetBuild.Runner.CommandLine</AssemblyName>
+    <RootNamespace>DotNetBuild.Runner.ScriptCs</RootNamespace>
+    <AssemblyName>DotNetBuild.Runner.ScriptCs</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -21,41 +20,40 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ScriptCs.Contracts">
+      <HintPath>..\packages\ScriptCs.Contracts.0.9.0\lib\net45\ScriptCs.Contracts.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuildRunnerParametersBuilder.cs" />
-    <Compile Include="DotNetBuild.cs" />
+    <Compile Include="DotNetBuildScriptPackContext.cs" />
+    <Compile Include="DotNetBuildScriptPack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BuildRunnerParametersHelp.cs" />
-    <Compile Include="BuildRunnerParametersConstants.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DotNetBuild.Core\DotNetBuild.Core.csproj">
-      <Project>{8B2FEC24-DC07-4B6C-8F5B-ABF90D40C9D8}</Project>
+      <Project>{8b2fec24-dc07-4b6c-8f5b-abf90d40c9d8}</Project>
       <Name>DotNetBuild.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\DotNetBuild.Runner\DotNetBuild.Runner.csproj">
       <Project>{b12bbf26-d91f-4516-99e8-0ae27a40069e}</Project>
       <Name>DotNetBuild.Runner</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

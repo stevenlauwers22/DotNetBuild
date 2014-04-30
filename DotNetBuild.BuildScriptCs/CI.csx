@@ -1,11 +1,12 @@
 #r "DotNetBuild.Core.dll"
 #r "DotNetBuild.Tasks.dll"
 #r "DotNetBuild.Runner.dll"
+#r "DotNetBuild.Runner.ScriptCs.dll"
 
 using System.Collections.Generic;
 using DotNetBuild.Core;
 using DotNetBuild.Tasks;
-using DotNetBuild.Runner;
+using DotNetBuild.Runner.ScriptCs;
 
 public class CI : ITarget
 {
@@ -66,14 +67,5 @@ public class BuildRelease : ITarget
     }
 }
 
-var targetInspector = new DotNetBuild.Runner.TargetInspector();
-var loggerFactory = new DotNetBuild.Runner.Infrastructure.Logging.LoggerFactory();
-var logger = loggerFactory.CreateLogger();
-var targetExecutor = new TargetExecutor(targetInspector, logger, new DotNetBuild.Runner.Facilities.IFacilityProvider[] 
-{ 
-	new DotNetBuild.Runner.Facilities.Logging.LoggerFacilityProvider(logger, () => new DotNetBuild.Runner.Facilities.Logging.Logger(logger)),
-	new DotNetBuild.Runner.Facilities.State.StateReaderFacilityProvider(logger, () => new DotNetBuild.Runner.Facilities.State.StateReader(new StateRepository())),
-	new DotNetBuild.Runner.Facilities.State.StateWriterFacilityProvider(logger, () => new DotNetBuild.Runner.Facilities.State.StateWriter(new StateRepository())),
-});
-
-targetExecutor.Execute(new CI(), null);
+var dotNetBuild = Require<DotNetBuildScriptPackContext>();
+dotNetBuild.Run(new CI(), null);
