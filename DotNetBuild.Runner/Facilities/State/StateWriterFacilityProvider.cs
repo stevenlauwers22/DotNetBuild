@@ -12,6 +12,9 @@ namespace DotNetBuild.Runner.Facilities.State
         public StateWriterFacilityProvider(ILogger logger, Func<IStateWriter> stateWriterFunc)
             : base(logger)
         {
+            if (stateWriterFunc == null)
+                throw new ArgumentNullException("stateWriterFunc");
+
             _stateWriterFunc = stateWriterFunc;
         }
 

@@ -17,6 +17,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_StateRepository.StaticTests
             _key = TestData.GenerateString();
             _value = new object();
         }
+
         protected override StateRepository CreateSubjectUnderTest()
         {
             return null;

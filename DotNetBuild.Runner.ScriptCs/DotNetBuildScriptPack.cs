@@ -1,4 +1,6 @@
-﻿using ScriptCs.Contracts;
+﻿using DotNetBuild.Runner.Configuration;
+using DotNetBuild.Runner.Infrastructure.TinyIoC;
+using ScriptCs.Contracts;
 
 namespace DotNetBuild.Runner.ScriptCs
 {
@@ -11,11 +13,8 @@ namespace DotNetBuild.Runner.ScriptCs
 
         void IScriptPack.Initialize(IScriptPackSession session)
         {
-            session.AddReference("DotNetBuild.Core.dll");
-            session.ImportNamespace("DotNetBuild.Core");
-
-            session.AddReference("DotNetBuild.Runner.dll");
-            session.ImportNamespace("DotNetBuild.Runner");
+            var container = TinyIoCContainer.Current;
+            Container.Install(container);
         }
 
         void IScriptPack.Terminate()

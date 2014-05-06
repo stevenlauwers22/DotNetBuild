@@ -12,6 +12,9 @@ namespace DotNetBuild.Runner.Facilities.State
         public StateReaderFacilityProvider(ILogger logger, Func<IStateReader> stateReaderFunc)
             : base(logger)
         {
+            if (stateReaderFunc == null)
+                throw new ArgumentNullException("stateReaderFunc");
+
             _stateReaderFunc = stateReaderFunc;
         }
 

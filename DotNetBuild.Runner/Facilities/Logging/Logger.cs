@@ -10,6 +10,9 @@ namespace DotNetBuild.Runner.Facilities.Logging
 
         public Logger(Infrastructure.Logging.ILogger logger)
         {
+            if (logger == null)
+                throw new ArgumentNullException("logger");
+
             _logger = logger;
         }
 

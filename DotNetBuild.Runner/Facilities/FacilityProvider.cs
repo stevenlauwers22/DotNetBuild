@@ -1,4 +1,5 @@
-﻿using DotNetBuild.Core.Facilities;
+﻿using System;
+using DotNetBuild.Core.Facilities;
 using DotNetBuild.Runner.Infrastructure.Logging;
 
 namespace DotNetBuild.Runner.Facilities
@@ -16,6 +17,9 @@ namespace DotNetBuild.Runner.Facilities
 
         protected FacilityProvider(ILogger logger)
         {
+            if (logger == null) 
+                throw new ArgumentNullException("logger");
+
             _logger = logger;
         }
 

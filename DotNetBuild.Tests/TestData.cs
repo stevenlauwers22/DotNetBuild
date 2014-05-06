@@ -20,5 +20,12 @@ namespace DotNetBuild.Tests
             var value = new decimal(generator.NextDouble() * generator.Next());
             return value;
         }
+
+        public static bool GenerateBoolean()
+        {
+            var generator = new Random();
+            var value = generator.Next();
+            return value % 2 == 0;
+        }
     }
 }
