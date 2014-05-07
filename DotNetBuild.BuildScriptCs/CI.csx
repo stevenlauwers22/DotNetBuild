@@ -10,7 +10,7 @@ using DotNetBuild.Runner.ScriptCs;
 
 public class CI : ITarget
 {
-    public string Name
+    public string Description
     {
         get { return "Continuous integration target"; }
     }
@@ -39,7 +39,7 @@ public class CI : ITarget
 
 public class BuildRelease : ITarget
 {
-    public string Name
+    public string Description
     {
         get { return "Build in release mode"; }
     }
@@ -56,9 +56,10 @@ public class BuildRelease : ITarget
 
     public bool Execute(IConfigurationSettings configurationSettings)
     {
+        var baseDir = configurationSettings.Get<string>("baseDir");
         var msBuildTask = new MsBuildTask
         {
-            Project = @"G:\Steven\Werk\Private\DotNetBuild\DotNetBuild\DotNetBuild.sln",
+            Project = Path.Combine(baseDir, "DotNetBuild.sln"),
             Target = "Rebuild",
             Parameters = "Configuration=Release"
         };
@@ -69,7 +70,7 @@ public class BuildRelease : ITarget
 
 public class ConfigurationSettingsForTest : ConfigurationSettings
 {
-    public ConfigurationSettingsTest()
+    public ConfigurationSettingsForTest()
     {
         Add("baseDir", @"G:\Steven\Werk\Private\DotNetBuild\DotNetBuild");
         Add("mySetting1", "value1ForTestEnvironment");
@@ -79,7 +80,7 @@ public class ConfigurationSettingsForTest : ConfigurationSettings
 
 public class ConfigurationSettingsForAcceptance : ConfigurationSettings
 {
-    public ConfigurationSettingsTest()
+    public ConfigurationSettingsForAcceptance()
     {
         Add("baseDir", @"G:\Steven\Werk\Private\DotNetBuild\DotNetBuild");
         Add("mySetting1", "value1ForAcceptanceEnvironment");
