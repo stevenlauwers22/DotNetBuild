@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using DotNetBuild.Runner.ScriptCs.Targets;
+using Xunit;
 
 namespace DotNetBuild.Tests.Runner.ScriptCs.Targets.Given_a_TargetBuilder
 {
@@ -13,7 +14,7 @@ namespace DotNetBuild.Tests.Runner.ScriptCs.Targets.Given_a_TargetBuilder
 
         protected override TargetBuilder CreateSubjectUnderTest()
         {
-            return new TargetBuilder(TestData.GenerateString());
+            return new TargetBuilder(TestData.GenerateString(), TestData.GenerateString());
         }
 
         protected override void Act()

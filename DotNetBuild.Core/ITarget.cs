@@ -4,7 +4,7 @@ namespace DotNetBuild.Core
 {
     public interface ITarget
     {
-        string Name { get; }
+        string Description { get; }
         bool ContinueOnError { get; }
         IEnumerable<ITarget> DependsOn { get; }
 

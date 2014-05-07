@@ -22,7 +22,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetResolver
 
             _targetType = typeof(ITarget);
             _assemblyWrapper = new Mock<IAssemblyWrapper>();
-            _assemblyWrapper.Setup(a => a.Get<ITarget>(It.Is<TargetTypeFilter>(f => f.Target == _targetName))).Returns(_targetType);
+            _assemblyWrapper.Setup(a => a.Get<ITarget>(It.Is<TargetTypeFilter>(f => f.TargetName == _targetName))).Returns(_targetType);
 
             _typeActivator = new Mock<ITypeActivator>();
         }
@@ -40,7 +40,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetResolver
         [Fact]
         public void Gets_the_Target_type()
         {
-            _assemblyWrapper.Verify(a => a.Get<ITarget>(It.Is<TargetTypeFilter>(f => f.Target == _targetName)));
+            _assemblyWrapper.Verify(a => a.Get<ITarget>(It.Is<TargetTypeFilter>(f => f.TargetName == _targetName)));
         }
 
         [Fact]

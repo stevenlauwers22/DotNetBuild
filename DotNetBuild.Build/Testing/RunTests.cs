@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using DotNetBuild.Core;
 using DotNetBuild.Tasks;
 
@@ -23,10 +24,11 @@ namespace DotNetBuild.Build.Testing
 
         public bool Execute(IConfigurationSettings configurationSettings)
         {
+            var baseDir = configurationSettings.Get<string>("baseDir");
             var xunitTask = new XunitTask
             {
-                XunitExe = @"C:\Projects\DotNetBuild\DotNetBuild\packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe",
-                Assembly = @"C:\Projects\DotNetBuild\DotNetBuild\DotNetBuild.Tests\bin\Release\DotNetBuild.Tests.dll"
+                XunitExe = Path.Combine(baseDir, @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe"),
+                Assembly = Path.Combine(baseDir, @"DotNetBuild.Tests\bin\Release\DotNetBuild.Tests.dll")
             };
 
             return xunitTask.Execute();

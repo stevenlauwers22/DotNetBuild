@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using DotNetBuild.Core;
 
-namespace DotNetBuild.Tests.Runner.ScriptCs.Targets
+namespace DotNetBuild.Runner.ScriptCs.Targets
 {
-    public static class TargetRepository
+    public static class TargetRegistry
     {
-        private static readonly IDictionary<string, ITarget> TargetRegistry;
+        private static readonly IDictionary<string, ITarget> Registrations;
 
-        static TargetRepository()
+        static TargetRegistry()
         {
-            TargetRegistry = new Dictionary<string, ITarget>();
+            Registrations = new Dictionary<string, ITarget>();
         }
 
         public static ITarget Get(string key)
         {
-            if (!TargetRegistry.ContainsKey(key))
+            if (!Registrations.ContainsKey(key))
                 return null;
 
-            var value = TargetRegistry[key];
+            var value = Registrations[key];
             return value;
         }
 
@@ -30,7 +30,7 @@ namespace DotNetBuild.Tests.Runner.ScriptCs.Targets
             if (value == null)
                 throw new ArgumentNullException("value");
 
-            TargetRegistry[key] = value;
+            Registrations[key] = value;
         }
     }
 }

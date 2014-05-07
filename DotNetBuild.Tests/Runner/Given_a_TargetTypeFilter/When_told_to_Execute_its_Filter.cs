@@ -45,7 +45,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetTypeFilter
 
         private class Dummy : ITarget
         {
-            public string Name
+            public string Description
             {
                 get { return "Dummy"; }
             }
@@ -68,7 +68,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetTypeFilter
 
         private class DummyTarget : ITarget
         {
-            public string Name
+            public string Description
             {
                 get { return "Dummy target"; }
             }
@@ -91,7 +91,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetTypeFilter
 
         private class DummyNoMatchTarget : ITarget
         {
-            public string Name
+            public string Description
             {
                 get { return "DummyNoMatch target"; }
             }

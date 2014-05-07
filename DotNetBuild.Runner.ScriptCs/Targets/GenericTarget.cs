@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using DotNetBuild.Core;
 
-namespace DotNetBuild.Tests.Runner.ScriptCs.Targets
+namespace DotNetBuild.Runner.ScriptCs.Targets
 {
     public class GenericTarget 
         : ITarget
     {
-        private readonly string _name;
+        private readonly string _description;
         private readonly IList<Func<ITarget>> _dependsOn; 
 
-        public GenericTarget(string name)
+        public GenericTarget(string description)
         {
-            _name = name;
+            _description = description;
             _dependsOn = new List<Func<ITarget>>();
         }
 
-        public string Name
+        public string Description
         {
-            get { return _name; }
+            get { return _description; }
         }
 
         public bool ContinueOnError

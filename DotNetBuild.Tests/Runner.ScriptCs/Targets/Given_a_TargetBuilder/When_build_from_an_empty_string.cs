@@ -1,4 +1,5 @@
 ﻿using System;
+using DotNetBuild.Runner.ScriptCs.Targets;
 using Xunit;
 
 namespace DotNetBuild.Tests.Runner.ScriptCs.Targets.Given_a_TargetBuilder

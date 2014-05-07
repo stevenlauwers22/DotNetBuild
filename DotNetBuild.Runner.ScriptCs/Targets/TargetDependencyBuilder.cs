@@ -1,4 +1,4 @@
-﻿namespace DotNetBuild.Tests.Runner.ScriptCs.Targets
+﻿namespace DotNetBuild.Runner.ScriptCs.Targets
 {
     public interface ITargetDependencyBuilder 
         : ITargetBuilder

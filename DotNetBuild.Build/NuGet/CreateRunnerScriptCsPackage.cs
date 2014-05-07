@@ -6,11 +6,11 @@ using DotNetBuild.Tasks.NuGet;
 
 namespace DotNetBuild.Build.NuGet
 {
-    public class CreateCorePackage : ITarget, IWantToReadState
+    public class CreateRunnerScriptCsPackage : ITarget, IWantToReadState
     {
         public string Name
         {
-            get { return "Create Core NuGet package"; }
+            get { return "Create ScriptCs Runner NuGet package"; }
         }
 
         public bool ContinueOnError
@@ -29,8 +29,8 @@ namespace DotNetBuild.Build.NuGet
             var nugetPackTask = new Pack
             {
                 NuGetExe = Path.Combine(baseDir, @"packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe"),
-                NuSpecFile = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild\DotNetBuild.nuspec"),
-                OutputDir = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild"),
+                NuSpecFile = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild.Runner.ScriptCs\DotNetBuild.Runner.ScriptCs.nuspec"),
+                OutputDir = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild.Runner.ScriptCs"),
                 Version = _stateReader.Get<string>("VersionNumber")
             };
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using DotNetBuild.Core;
 using DotNetBuild.Tasks;
 
@@ -23,9 +24,10 @@ namespace DotNetBuild.Build.Compilation
 
         public bool Execute(IConfigurationSettings configurationSettings)
         {
+            var baseDir = configurationSettings.Get<string>("baseDir");
             var msBuildTask = new MsBuildTask
             {
-                Project = @"C:\Projects\DotNetBuild\DotNetBuild\DotNetBuild.sln",
+                Project = Path.Combine(baseDir, "DotNetBuild.sln"),
                 Target = "Rebuild",
                 Parameters = "Configuration=Release"
             };

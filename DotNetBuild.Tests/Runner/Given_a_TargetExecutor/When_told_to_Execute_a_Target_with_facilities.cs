@@ -49,7 +49,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetExecutor
 
         private class TestTarget : TestFacilityAcceptor, ITarget
         {
-            public string Name
+            public string Description
             {
                 get { return "TestTarget"; }
             }
@@ -66,7 +66,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetExecutor
 
             public bool Execute(IConfigurationSettings configurationSettings)
             {
-                Debug.WriteLine("{0} - executing", Name);
+                Debug.WriteLine("{0} - executing", Description);
                 return true;
             }
         }

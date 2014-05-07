@@ -6,7 +6,7 @@ namespace DotNetBuild.Tests.TestAssembly
 {
     public class Dummy2Target : ITarget
     {
-        public string Name
+        public string Description
         {
             get { return "Dummy target 2"; }
         }
@@ -23,7 +23,7 @@ namespace DotNetBuild.Tests.TestAssembly
 
         public bool Execute(IConfigurationSettings configurationSettings)
         {
-            Debug.WriteLine("{0} - executing", Name);
+            Debug.WriteLine("{0} - executing", Description);
             return true;
         }
     }

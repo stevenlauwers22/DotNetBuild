@@ -64,7 +64,7 @@ namespace DotNetBuild.Runner
         {
             try
             {
-                _logger.WriteBlockStart(target.Name);
+                _logger.WriteBlockStart(target.Description);
                 _logger.Write("Target executing");
 
                 if (target.DependsOn != null && target.DependsOn.Any())
@@ -117,7 +117,7 @@ namespace DotNetBuild.Runner
             }
             finally
             {
-                _logger.WriteBlockEnd(target.Name);
+                _logger.WriteBlockEnd(target.Description);
             }
         }
     }

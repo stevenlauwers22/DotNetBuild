@@ -36,7 +36,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetInspector
 
         private class Dummy1Target : ITarget
         {
-            public string Name
+            public string Description
             {
                 get { return "Dummy target 1"; }
             }
@@ -53,14 +53,14 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetInspector
 
             public bool Execute(IConfigurationSettings configurationSettings)
             {
-                Debug.WriteLine("{0} - executing", Name);
+                Debug.WriteLine("{0} - executing", Description);
                 return true;
             }
         }
 
         private class Dummy2Target : ITarget
         {
-            public string Name
+            public string Description
             {
                 get { return "Dummy target 2"; }
             }
@@ -77,7 +77,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetInspector
 
             public bool Execute(IConfigurationSettings configurationSettings)
             {
-                Debug.WriteLine("{0} - executing", Name);
+                Debug.WriteLine("{0} - executing", Description);
                 return true;
             }
         }

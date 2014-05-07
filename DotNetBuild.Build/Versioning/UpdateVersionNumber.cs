@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using DotNetBuild.Core;
 using DotNetBuild.Core.Facilities.Logging;
 using DotNetBuild.Core.Facilities.State;
@@ -25,14 +26,14 @@ namespace DotNetBuild.Build.Versioning
 
         public bool Execute(IConfigurationSettings configurationSettings)
         {
-            // TODO: don't use full path + clean up assemblyinfo task
+            var baseDir = configurationSettings.Get<string>("baseDir");
             var assemblyInfoTask = new AssemblyInfo
             {
                 AssemblyInfoFiles = new[]
                 {
-                    @"C:\Projects\DotNetBuild\DotNetBuild\DotNetBuild.Core\Properties\AssemblyInfo.cs",
-                    @"C:\Projects\DotNetBuild\DotNetBuild\DotNetBuild.Runner\Properties\AssemblyInfo.cs",
-                    @"C:\Projects\DotNetBuild\DotNetBuild\DotNetBuild.Runner.CommandLine\Properties\AssemblyInfo.cs"
+                    Path.Combine(baseDir, @"DotNetBuild.Core\Properties\AssemblyInfo.cs"),
+                    Path.Combine(baseDir, @"DotNetBuild.Runner\Properties\AssemblyInfo.cs"),
+                    Path.Combine(baseDir, @"DotNetBuild.Runner.CommandLine\Properties\AssemblyInfo.cs")
                 },
                 AssemblyBuildNumberType="AutoIncrement",
                 AssemblyBuildNumberFormat="0",

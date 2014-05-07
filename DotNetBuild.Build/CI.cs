@@ -25,6 +25,8 @@ namespace DotNetBuild.Build
                     new Compilation.BuildRelease(),
                     new Testing.RunTests(),
                     new NuGet.CreateCorePackage(),
+                    new NuGet.CreateRunnerCommandLinePackage(),
+                    new NuGet.CreateRunnerScriptCsPackage(),
                     new NuGet.CreateTasksPackage()
                 };
             }

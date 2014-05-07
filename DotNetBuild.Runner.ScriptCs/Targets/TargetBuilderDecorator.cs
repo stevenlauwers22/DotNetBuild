@@ -1,7 +1,7 @@
 ﻿using System;
 using DotNetBuild.Core;
 
-namespace DotNetBuild.Tests.Runner.ScriptCs.Targets
+namespace DotNetBuild.Runner.ScriptCs.Targets
 {
     public abstract class TargetBuilderDecorator 
         : ITargetBuilder

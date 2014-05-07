@@ -67,5 +67,29 @@ public class BuildRelease : ITarget
     }
 }
 
+public class ConfigurationSettingsForTest : ConfigurationSettings
+{
+    public ConfigurationSettingsTest()
+    {
+        Add("baseDir", @"G:\Steven\Werk\Private\DotNetBuild\DotNetBuild");
+        Add("mySetting1", "value1ForTestEnvironment");
+        Add("mySetting2", "value2ForTestEnvironment");
+    }
+}
+
+public class ConfigurationSettingsForAcceptance : ConfigurationSettings
+{
+    public ConfigurationSettingsTest()
+    {
+        Add("baseDir", @"G:\Steven\Werk\Private\DotNetBuild\DotNetBuild");
+        Add("mySetting1", "value1ForAcceptanceEnvironment");
+        Add("mySetting2", "value2ForAcceptanceEnvironment");
+    }
+}
+
+/* TARGET AND CONFIGURATIONSETTINGS SHOULD BE DETERMINED BASED ON SCRIPT ARGUMENTS */
+var target = new CI();
+var configurationSettings = new ConfigurationSettingsForTest();
+
 var dotNetBuild = Require<DotNetBuildScriptPackContext>();
-dotNetBuild.Run(new CI(), null);
+dotNetBuild.Run(target, configurationSettings);

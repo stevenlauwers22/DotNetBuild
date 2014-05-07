@@ -27,6 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Build", "DotNet
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildScriptCs", "BuildScriptCs", "{09EB6761-627A-453C-808F-11D5A6A687D9}"
 	ProjectSection(SolutionItems) = preProject
+		DotNetBuild.BuildScriptCs\CI-fluent.csx = DotNetBuild.BuildScriptCs\CI-fluent.csx
 		DotNetBuild.BuildScriptCs\CI.csx = DotNetBuild.BuildScriptCs\CI.csx
 	EndProjectSection
 EndProject

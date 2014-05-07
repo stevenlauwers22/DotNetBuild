@@ -1,7 +1,7 @@
 ﻿using System;
 using DotNetBuild.Core;
 
-namespace DotNetBuild.Tests.Runner.ScriptCs.Targets
+namespace DotNetBuild.Runner.ScriptCs.Targets
 {
     public interface ITargetBuilder
     {
@@ -15,14 +15,14 @@ namespace DotNetBuild.Tests.Runner.ScriptCs.Targets
         : ITargetBuilder
     {
         private readonly GenericTarget _target;
-        
-        public TargetBuilder(string name)
+
+        public TargetBuilder(string name, string description)
         {
-            if (string.IsNullOrEmpty(name)) 
+            if (string.IsNullOrEmpty(name))
                 throw new ArgumentNullException("name");
 
-            _target = new GenericTarget(name);
-            TargetRepository.Add(name, _target);
+            _target = new GenericTarget(description);
+            TargetRegistry.Add(name, _target);
         }
 
         public ITarget GetTarget()
@@ -38,7 +38,7 @@ namespace DotNetBuild.Tests.Runner.ScriptCs.Targets
 
         public ITargetDependencyBuilder DependsOn(string target)
         {
-            _target.AddDependency(() => TargetRepository.Get(target));
+            _target.AddDependency(() => TargetRegistry.Get(target));
             return new TargetDependencyBuilder(this);
         }
 
