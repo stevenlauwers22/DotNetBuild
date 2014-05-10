@@ -10,12 +10,12 @@ namespace DotNetBuild.Tests.Runner.Facilities.State.Given_a_StateWriter
     {
         private Mock<IStateRegistry> _stateRegistry;
         private String _key;
-        private object _value;
+        private Object _value;
 
         protected override void Arrange()
         {
             _key = TestData.GenerateString();
-            _value = new object();
+            _value = new Object();
 
             _stateRegistry = new Mock<IStateRegistry>();
         }

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Linq;
-using DotNetBuild.Runner.Facilities.State;
 using Xunit;
 
-namespace DotNetBuild.Tests.Runner.Facilities.State.Given_a_StateRegistry
+namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
 {
-    public class When_told_to_Add_state
-        : TestSpecification<StateRegistry>
+    public class When_told_to_Add_setting
+        : TestSpecification<ConfigurationSettingsTest>
     {
         private String _key;
         private Object _value;
@@ -17,9 +16,9 @@ namespace DotNetBuild.Tests.Runner.Facilities.State.Given_a_StateRegistry
             _value = new Object();
         }
 
-        protected override StateRegistry CreateSubjectUnderTest()
+        protected override ConfigurationSettingsTest CreateSubjectUnderTest()
         {
-            return new StateRegistry();
+            return new ConfigurationSettingsTest();
         }
 
         protected override void Act()
@@ -28,7 +27,7 @@ namespace DotNetBuild.Tests.Runner.Facilities.State.Given_a_StateRegistry
         }
 
         [Fact]
-        public void Registry_contains_the_state()
+        public void Registry_contains_the_setting()
         {
             var item = Sut.Registrations.SingleOrDefault(kvp => kvp.Key == _key);
             Assert.NotNull(item);

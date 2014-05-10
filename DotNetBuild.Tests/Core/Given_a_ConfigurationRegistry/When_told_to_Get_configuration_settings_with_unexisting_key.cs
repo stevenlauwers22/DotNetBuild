@@ -1,20 +1,21 @@
 ﻿using System;
+using DotNetBuild.Core;
 using Xunit;
 
 namespace DotNetBuild.Tests.Core.Given_a_ConfigurationRegistry
 {
     public class When_told_to_Get_configuration_settings_with_unexisting_key
-        : TestSpecification<ConfigurationRegistryTest>
+        : TestSpecification<ConfigurationRegistry>
     {
         private String _key;
-        private object _result;
+        private Object _result;
 
         protected override void Arrange()
         {
             _key = TestData.GenerateString();
         }
 
-        protected override ConfigurationRegistryTest CreateSubjectUnderTest()
+        protected override ConfigurationRegistry CreateSubjectUnderTest()
         {
             return new ConfigurationRegistryTest();
         }

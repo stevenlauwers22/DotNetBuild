@@ -14,14 +14,14 @@ namespace DotNetBuild.Tests
             return Guid.NewGuid().ToString();
         }
 
-        public static decimal GenerateDecimal()
+        public static Decimal GenerateDecimal()
         {
             var generator = new Random();
-            var value = new decimal(generator.NextDouble() * generator.Next());
+            var value = new Decimal(generator.NextDouble() * generator.Next());
             return value;
         }
 
-        public static bool GenerateBoolean()
+        public static Boolean GenerateBoolean()
         {
             var generator = new Random();
             var value = generator.Next();

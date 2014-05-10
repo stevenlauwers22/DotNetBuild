@@ -6,9 +6,9 @@ namespace DotNetBuild.Runner.Targets
     public interface ITargetBuilder
     {
         ITarget GetTarget();
-        ITargetBuilder ContinueOnError(bool continueOnError);
+        ITargetBuilder ContinueOnError(Boolean continueOnError);
         ITargetDependencyBuilder DependsOn(String target);
-        ITargetBuilder Do(Func<IConfigurationSettings, bool> executeFunc);
+        ITargetBuilder Do(Func<IConfigurationSettings, Boolean> executeFunc);
     }
 
     public class TargetBuilder 
@@ -35,7 +35,7 @@ namespace DotNetBuild.Runner.Targets
             return _target;
         }
 
-        public ITargetBuilder ContinueOnError(bool continueOnError)
+        public ITargetBuilder ContinueOnError(Boolean continueOnError)
         {
             _target.ContinueOnError = continueOnError;
             return this;
@@ -47,7 +47,7 @@ namespace DotNetBuild.Runner.Targets
             return new TargetDependencyBuilder(this);
         }
 
-        public ITargetBuilder Do(Func<IConfigurationSettings, bool> executeFunc)
+        public ITargetBuilder Do(Func<IConfigurationSettings, Boolean> executeFunc)
         {
             _target.ExecuteFunc = executeFunc;
             return this;

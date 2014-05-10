@@ -6,7 +6,7 @@ using Xunit;
 namespace DotNetBuild.Tests.Core.Given_a_ConfigurationRegistry
 {
     public class When_told_to_Get_configuration_settings
-        : TestSpecification<ConfigurationRegistryTest>
+        : TestSpecification<ConfigurationRegistry>
     {
         private String _key;
         private IConfigurationSettings _value;
@@ -18,7 +18,7 @@ namespace DotNetBuild.Tests.Core.Given_a_ConfigurationRegistry
             _value = new Mock<IConfigurationSettings>().Object;
         }
 
-        protected override ConfigurationRegistryTest CreateSubjectUnderTest()
+        protected override ConfigurationRegistry CreateSubjectUnderTest()
         {
             var sut = new ConfigurationRegistryTest();
             sut.Add(_key, _value);

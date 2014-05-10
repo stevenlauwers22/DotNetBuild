@@ -50,7 +50,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetTypeFilter
                 get { return "Dummy"; }
             }
 
-            public bool ContinueOnError
+            public Boolean ContinueOnError
             {
                 get { return false; }
             }
@@ -60,7 +60,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetTypeFilter
                 get { return null; }
             }
 
-            public bool Execute(IConfigurationSettings configurationSettings)
+            public Boolean Execute(IConfigurationSettings configurationSettings)
             {
                 return true;
             }
@@ -73,7 +73,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetTypeFilter
                 get { return "Dummy target"; }
             }
 
-            public bool ContinueOnError
+            public Boolean ContinueOnError
             {
                 get { return false; }
             }
@@ -83,7 +83,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetTypeFilter
                 get { return null; }
             }
 
-            public bool Execute(IConfigurationSettings configurationSettings)
+            public Boolean Execute(IConfigurationSettings configurationSettings)
             {
                 return true;
             }
@@ -96,7 +96,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetTypeFilter
                 get { return "DummyNoMatch target"; }
             }
 
-            public bool ContinueOnError
+            public Boolean ContinueOnError
             {
                 get { return false; }
             }
@@ -106,7 +106,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetTypeFilter
                 get { return null; }
             }
 
-            public bool Execute(IConfigurationSettings configurationSettings)
+            public Boolean Execute(IConfigurationSettings configurationSettings)
             {
                 return true;
             }

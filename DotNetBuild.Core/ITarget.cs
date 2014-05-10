@@ -6,9 +6,9 @@ namespace DotNetBuild.Core
     public interface ITarget
     {
         String Description { get; }
-        bool ContinueOnError { get; }
+        Boolean ContinueOnError { get; }
         IEnumerable<ITarget> DependsOn { get; }
 
-        bool Execute(IConfigurationSettings configurationSettings);
+        Boolean Execute(IConfigurationSettings configurationSettings);
     }
 }

@@ -10,16 +10,16 @@ namespace DotNetBuild.Tests.Runner.Facilities.State.Given_a_StateReader
     {
         private Mock<IStateRegistry> _stateRegistry;
         private String _key;
-        private object _value;
-        private object _result;
+        private Object _value;
+        private Object _result;
 
         protected override void Arrange()
         {
             _key = TestData.GenerateString();
-            _value = new object();
+            _value = new Object();
 
             _stateRegistry = new Mock<IStateRegistry>();
-            _stateRegistry.Setup(r => r.Get<object>(_key)).Returns(_value);
+            _stateRegistry.Setup(r => r.Get<Object>(_key)).Returns(_value);
         }
 
         protected override StateReader CreateSubjectUnderTest()
@@ -29,13 +29,13 @@ namespace DotNetBuild.Tests.Runner.Facilities.State.Given_a_StateReader
 
         protected override void Act()
         {
-            _result = Sut.Get<object>(_key);
+            _result = Sut.Get<Object>(_key);
         }
 
         [Fact]
         public void Gets_the_state_from_the_registry()
         {
-            _stateRegistry.Verify(r => r.Get<object>(_key));
+            _stateRegistry.Verify(r => r.Get<Object>(_key));
         }
 
         [Fact]

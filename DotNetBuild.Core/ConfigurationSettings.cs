@@ -10,28 +10,36 @@ namespace DotNetBuild.Core
 
     public abstract class ConfigurationSettings : IConfigurationSettings
     {
-        private readonly IDictionary<String, object> _settings;
+        private readonly IDictionary<String, Object> _registrations;
 
         protected ConfigurationSettings()
         {
-            _settings = new Dictionary<String, object>();
+            _registrations = new Dictionary<String, Object>();
         }
 
-        protected void Add(String key, object value)
+        public IEnumerable<KeyValuePair<String, Object>> Registrations
         {
-            _settings[key] = value;
+            get { return _registrations; }
         }
 
         public T Get<T>(String key)
         {
-            var settingPresent = _settings.ContainsKey(key);
-            if (!settingPresent)
-            {
+            if (!_registrations.ContainsKey(key))
                 return default(T);
-            }
 
-            var value = _settings[key];
+            var value = _registrations[key];
             return (T)value;
+        }
+
+        protected void Add(String key, Object value)
+        {
+            if (String.IsNullOrEmpty(key))
+                throw new ArgumentNullException("key");
+
+            if (value == null)
+                throw new ArgumentNullException("value");
+
+            _registrations[key] = value;
         }
     }
 }

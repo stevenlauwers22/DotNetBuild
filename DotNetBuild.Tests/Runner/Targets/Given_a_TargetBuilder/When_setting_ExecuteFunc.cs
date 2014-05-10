@@ -7,7 +7,7 @@ namespace DotNetBuild.Tests.Runner.Targets.Given_a_TargetBuilder
 {
     public class When_setting_ExecuteFunc : TestSpecification<TargetBuilder>
     {
-        private Func<IConfigurationSettings, bool> _executeFunc;
+        private Func<IConfigurationSettings, Boolean> _executeFunc;
 
         protected override void Arrange()
         {

@@ -1,11 +1,12 @@
-﻿using DotNetBuild.Runner.Targets;
+﻿using System;
+using DotNetBuild.Runner.Targets;
 using Xunit;
 
 namespace DotNetBuild.Tests.Runner.Targets.Given_a_TargetBuilder
 {
     public class When_setting_ContinueOnError : TestSpecification<TargetBuilder>
     {
-        private bool _continueOnError;
+        private Boolean _continueOnError;
 
         protected override void Arrange()
         {

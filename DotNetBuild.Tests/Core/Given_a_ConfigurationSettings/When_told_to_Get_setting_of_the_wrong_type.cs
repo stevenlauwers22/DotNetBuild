@@ -4,7 +4,7 @@ using Xunit;
 
 namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
 {
-    public class When_told_to_Get_a_setting_of_the_wrong_type
+    public class When_told_to_Get_setting_of_the_wrong_type
         : TestSpecification<ConfigurationSettings>
     {
         private String _key;
@@ -19,7 +19,10 @@ namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
 
         protected override ConfigurationSettings CreateSubjectUnderTest()
         {
-            return new ConfigurationSettingsTest(_key, _value);
+            var configurationSettings = new ConfigurationSettingsTest();
+            configurationSettings.Add(_key, _value);
+
+            return configurationSettings;
         }
 
         protected override void Act()
@@ -31,14 +34,6 @@ namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
         public void Throws_an_exception()
         {
             Assert.NotNull(_exception);
-        }
-
-        private class ConfigurationSettingsTest : ConfigurationSettings
-        {
-            public ConfigurationSettingsTest(String key, object value)
-            {
-                Add(key, value);
-            }
         }
     }
 }

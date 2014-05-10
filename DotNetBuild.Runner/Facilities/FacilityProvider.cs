@@ -6,7 +6,7 @@ namespace DotNetBuild.Runner.Facilities
 {
     public interface IFacilityProvider
     {
-        void InjectIfRequired(object value);
+        void InjectIfRequired(Object value);
     }
 
     public abstract class FacilityProvider<TFacilityAcceptor, TFacility> : IFacilityProvider
@@ -23,7 +23,7 @@ namespace DotNetBuild.Runner.Facilities
             _logger = logger;
         }
 
-        public void InjectIfRequired(object value)
+        public void InjectIfRequired(Object value)
         {
             var facilityAcceptor = value as TFacilityAcceptor;
             if (facilityAcceptor == null)

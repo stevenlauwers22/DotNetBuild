@@ -7,8 +7,8 @@ namespace DotNetBuild.Tests.Runner.Given_a_AssemblyTypeFilter
     public class When_told_to_Get_its_Filter
         : TestSpecification<AssemblyTypeFilter>
     {
-        private Func<Type, bool> _filter;
-        private Func<Type, bool> _result;
+        private Func<Type, Boolean> _filter;
+        private Func<Type, Boolean> _result;
 
         protected override void Arrange()
         {

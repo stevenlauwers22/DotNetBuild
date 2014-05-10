@@ -1,11 +1,10 @@
 using System;
-using DotNetBuild.Runner.Facilities.State;
 using Xunit;
 
-namespace DotNetBuild.Tests.Runner.Facilities.State.Given_a_StateRegistry
+namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
 {
-    public class When_told_to_Add_state_without_passing_in_a_value
-        : TestSpecification<StateRegistry>
+    public class When_told_to_Add_setting_without_passing_in_a_value
+        : TestSpecification<ConfigurationSettingsTest>
     {
         private String _key;
         private Object _value;
@@ -17,9 +16,9 @@ namespace DotNetBuild.Tests.Runner.Facilities.State.Given_a_StateRegistry
             _value = null;
         }
 
-        protected override StateRegistry CreateSubjectUnderTest()
+        protected override ConfigurationSettingsTest CreateSubjectUnderTest()
         {
-            return new StateRegistry();
+            return new ConfigurationSettingsTest();
         }
 
         protected override void Act()

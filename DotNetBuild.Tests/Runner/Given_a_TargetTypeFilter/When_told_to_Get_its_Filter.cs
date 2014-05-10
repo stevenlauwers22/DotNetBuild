@@ -7,7 +7,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetTypeFilter
     public class When_told_to_Get_its_Filter
         : TestSpecification<TargetTypeFilter>
     {
-        private Func<Type, bool> _result;
+        private Func<Type, Boolean> _result;
 
         protected override void Arrange()
         {

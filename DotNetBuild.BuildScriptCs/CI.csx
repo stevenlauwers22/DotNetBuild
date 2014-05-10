@@ -15,7 +15,7 @@ public class CI : ITarget
         get { return "Continuous integration target"; }
     }
 
-    public bool ContinueOnError
+    public Boolean ContinueOnError
     {
         get { return false; }
     }
@@ -31,7 +31,7 @@ public class CI : ITarget
         }
     }
 
-    public bool Execute(IConfigurationSettings configurationSettings)
+    public Boolean Execute(IConfigurationSettings configurationSettings)
     {
         return true;
     }
@@ -44,7 +44,7 @@ public class BuildRelease : ITarget
         get { return "Build in release mode"; }
     }
 
-    public bool ContinueOnError
+    public Boolean ContinueOnError
     {
         get { return false; }
     }
@@ -54,7 +54,7 @@ public class BuildRelease : ITarget
         get { return null; }
     }
 
-    public bool Execute(IConfigurationSettings configurationSettings)
+    public Boolean Execute(IConfigurationSettings configurationSettings)
     {
         var baseDir = configurationSettings.Get<String>("baseDir");
         var msBuildTask = new MsBuildTask

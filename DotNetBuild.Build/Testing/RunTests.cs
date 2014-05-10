@@ -13,7 +13,7 @@ namespace DotNetBuild.Build.Testing
             get { return "Run tests"; }
         }
 
-        public bool ContinueOnError
+        public Boolean ContinueOnError
         {
             get { return false; }
         }
@@ -23,7 +23,7 @@ namespace DotNetBuild.Build.Testing
             get { return null; }
         }
 
-        public bool Execute(IConfigurationSettings configurationSettings)
+        public Boolean Execute(IConfigurationSettings configurationSettings)
         {
             var baseDir = configurationSettings.Get<String>("baseDir");
             var xunitTask = new XunitTask

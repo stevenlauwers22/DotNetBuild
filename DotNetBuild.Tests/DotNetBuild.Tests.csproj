@@ -43,7 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Given_a_ConfigurationRegistry\ConfigurationRegistryTest.cs" />
-    <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Get_a_setting_that_does_not_exist.cs" />
+    <Compile Include="Core\Given_a_ConfigurationSettings\ConfigurationSettingsTest.cs" />
+    <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Get_setting_with_unexisting_key_default_value.cs" />
+    <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Add_setting_without_passing_in_a_value.cs" />
+    <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Add_setting.cs" />
+    <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Add_setting_without_passing_in_a_key.cs" />
+    <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Add_setting_with_existing_key.cs" />
+    <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Get_setting_with_unexisting_key.cs" />
     <Compile Include="Core\Given_a_ConfigurationRegistry\When_told_to_Add_configuration_settings.cs" />
     <Compile Include="Core\Given_a_ConfigurationRegistry\When_told_to_Add_configuration_settings_without_passing_in_a_key.cs" />
     <Compile Include="Core\Given_a_ConfigurationRegistry\When_told_to_Add_configuration_settings_without_passing_in_a_value.cs" />
@@ -95,8 +101,8 @@
     <Compile Include="Runner\Given_a_ConfigurationResolver\When_told_to_Resolve_a_Configuration_with_no_assembly_wrapper.cs" />
     <Compile Include="Runner\Given_a_ConfigurationResolver\When_told_to_Resolve_a_Configuration_with_no_configuration_registry.cs" />
     <Compile Include="Runner\Given_a_ConfigurationResolver\When_told_to_Resolve_a_Configuration_with_no_configuration_selector_type.cs" />
-    <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Get_a_setting_of_the_wrong_type.cs" />
-    <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Get_a_setting.cs" />
+    <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Get_setting_of_the_wrong_type.cs" />
+    <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Get_setting.cs" />
     <Compile Include="Runner\Facilities\State\Given_a_StateRegistry\StaticTests\When_having_multiple_StateRegistry_instances.cs" />
     <Compile Include="Runner\Given_a_TargetExecutor\When_told_to_Execute_a_Target_with_facilities.cs" />
     <Compile Include="Runner\Given_a_TargetExecutor\When_told_to_Execute_a_Target_with_a_safe_exception.cs" />

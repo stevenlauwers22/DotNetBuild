@@ -8,13 +8,13 @@ namespace DotNetBuild.Tests.Runner.Facilities.State.Given_a_StateRegistry
         : TestSpecification<StateRegistry>
     {
         private String _key;
-        private object _value;
+        private Object _value;
         private InvalidCastException _exception;
 
         protected override void Arrange()
         {
             _key = TestData.GenerateString();
-            _value = new object();
+            _value = new Object();
         }
 
         protected override StateRegistry CreateSubjectUnderTest()

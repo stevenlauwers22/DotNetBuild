@@ -8,7 +8,7 @@ namespace DotNetBuild.Tests.Runner.Targets.Given_a_TargetRegistry
         : TestSpecification<TargetRegistry>
     {
         private String _key;
-        private object _result;
+        private Object _result;
 
         protected override void Arrange()
         {

@@ -8,7 +8,7 @@ namespace DotNetBuild.Tests.Runner.Facilities.State.Given_a_StateRegistry
         : TestSpecification<StateRegistry>
     {
         private String _key;
-        private object _result;
+        private Object _result;
 
         protected override void Arrange()
         {
@@ -22,7 +22,7 @@ namespace DotNetBuild.Tests.Runner.Facilities.State.Given_a_StateRegistry
 
         protected override void Act()
         {
-            _result = Sut.Get<object>(_key);
+            _result = Sut.Get<Object>(_key);
         }
 
         [Fact]

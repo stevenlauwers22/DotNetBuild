@@ -4,7 +4,7 @@ using Xunit;
 
 namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
 {
-    public class When_told_to_Get_a_setting_that_does_not_exist
+    public class When_told_to_Get_setting_with_unexisting_key
         : TestSpecification<ConfigurationSettings>
     {
         private String _key;
@@ -29,10 +29,6 @@ namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
         public void Returns_the_setting()
         {
             Assert.Null(_result);
-        }
-
-        private class ConfigurationSettingsTest : ConfigurationSettings
-        {
         }
     }
 }

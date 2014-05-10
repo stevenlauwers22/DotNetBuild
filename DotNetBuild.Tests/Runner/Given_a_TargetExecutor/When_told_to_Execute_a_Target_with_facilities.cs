@@ -55,7 +55,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetExecutor
                 get { return "TestTarget"; }
             }
 
-            public bool ContinueOnError
+            public Boolean ContinueOnError
             {
                 get { return false; }
             }
@@ -65,7 +65,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetExecutor
                 get { return null; }
             }
 
-            public bool Execute(IConfigurationSettings configurationSettings)
+            public Boolean Execute(IConfigurationSettings configurationSettings)
             {
                 Debug.WriteLine("{0} - executing", Description);
                 return true;

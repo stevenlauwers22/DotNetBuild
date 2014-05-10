@@ -14,7 +14,7 @@ namespace DotNetBuild.Build.NuGet
             get { return "Create Tasks NuGet package"; }
         }
 
-        public bool ContinueOnError
+        public Boolean ContinueOnError
         {
             get { return false; }
         }
@@ -24,7 +24,7 @@ namespace DotNetBuild.Build.NuGet
             get { return null; }
         }
 
-        public bool Execute(IConfigurationSettings configurationSettings)
+        public Boolean Execute(IConfigurationSettings configurationSettings)
         {
             var baseDir = configurationSettings.Get<String>("baseDir");
             var nugetPackTask = new Pack

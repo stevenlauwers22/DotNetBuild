@@ -31,7 +31,7 @@ namespace DotNetBuild.Tasks.NuGet
             return parameters.ToString();
         }
 
-        private static bool IsValidExe(string exe)
+        private static Boolean IsValidExe(string exe)
         {
             if (string.IsNullOrEmpty(exe)) 
                 return false;

@@ -4,15 +4,15 @@ namespace DotNetBuild.Runner
 {
     public interface IAssemblyTypeFilter
     {
-        Func<Type, bool> Filter { get; }
+        Func<Type, Boolean> Filter { get; }
     }
 
     public class AssemblyTypeFilter 
         : IAssemblyTypeFilter
     {
-        private readonly Func<Type, bool> _filter;
+        private readonly Func<Type, Boolean> _filter;
 
-        public AssemblyTypeFilter(Func<Type, bool> filter)
+        public AssemblyTypeFilter(Func<Type, Boolean> filter)
         {
             if (filter == null) 
                 throw new ArgumentNullException("filter");
@@ -20,7 +20,7 @@ namespace DotNetBuild.Runner
             _filter = filter;
         }
 
-        public Func<Type, bool> Filter
+        public Func<Type, Boolean> Filter
         {
             get { return _filter; }
         }

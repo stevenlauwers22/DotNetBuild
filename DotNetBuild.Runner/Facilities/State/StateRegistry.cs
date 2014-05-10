@@ -6,20 +6,20 @@ namespace DotNetBuild.Runner.Facilities.State
     public interface IStateRegistry
     {
         T Get<T>(String key);
-        void Add(String key, object value);
+        void Add(String key, Object value);
     }
 
     public class StateRegistry
         : IStateRegistry
     {
-        private static IDictionary<String, object> _registrations;
+        private static IDictionary<String, Object> _registrations;
 
         public StateRegistry()
         {
-            _registrations = new Dictionary<String, object>();
+            _registrations = new Dictionary<String, Object>();
         }
 
-        public IEnumerable<KeyValuePair<String, object>> Registrations
+        public IEnumerable<KeyValuePair<String, Object>> Registrations
         {
             get { return _registrations; }
         }
@@ -33,7 +33,7 @@ namespace DotNetBuild.Runner.Facilities.State
             return (T)value;
         }
 
-        public void Add(String key, object value)
+        public void Add(String key, Object value)
         {
             if (String.IsNullOrEmpty(key)) 
                 throw new ArgumentNullException("key");

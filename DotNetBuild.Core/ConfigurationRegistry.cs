@@ -10,7 +10,7 @@ namespace DotNetBuild.Core
 
     public abstract class ConfigurationRegistry : IConfigurationRegistry
     {
-        private static IDictionary<String, IConfigurationSettings> _registrations;
+        private readonly IDictionary<String, IConfigurationSettings> _registrations;
 
         protected ConfigurationRegistry()
         {

@@ -4,8 +4,8 @@
     {
         public ConfigurationRegistry()
         {
-            Add(new ConfigurationSettingsForTest(), configurationName => configurationName == "Test");
-            Add(new ConfigurationSettingsForAcceptance(), configurationName => configurationName == "Acceptance");
+            Add("test", new ConfigurationSettingsForTest());
+            Add("acceptance", new ConfigurationSettingsForAcceptance());
         }
     }
 }

@@ -11,7 +11,7 @@ namespace DotNetBuild.Build
             get { return "Continuous integration target"; }
         }
 
-        public bool ContinueOnError
+        public Boolean ContinueOnError
         {
             get { return false; }
         }
@@ -33,7 +33,7 @@ namespace DotNetBuild.Build
             }
         }
 
-        public bool Execute(IConfigurationSettings configurationSettings)
+        public Boolean Execute(IConfigurationSettings configurationSettings)
         {
             return true;
         }

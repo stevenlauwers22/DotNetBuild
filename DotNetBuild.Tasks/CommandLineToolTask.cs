@@ -5,7 +5,7 @@ namespace DotNetBuild.Tasks
 {
     public abstract class CommandLineToolTask
     {
-        public bool Execute()
+        public Boolean Execute()
         {
             var process = new Process
             {

@@ -45,7 +45,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetInspector
                 get { return "Dummy target 1"; }
             }
 
-            public bool ContinueOnError
+            public Boolean ContinueOnError
             {
                 get { return false; }
             }
@@ -55,7 +55,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetInspector
                 get { return new List<ITarget> { new Dummy2Target() }; }
             }
 
-            public bool Execute(IConfigurationSettings configurationSettings)
+            public Boolean Execute(IConfigurationSettings configurationSettings)
             {
                 Debug.WriteLine("{0} - executing", Description);
                 return true;
@@ -69,7 +69,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetInspector
                 get { return "Dummy target 2"; }
             }
 
-            public bool ContinueOnError
+            public Boolean ContinueOnError
             {
                 get { return false; }
             }
@@ -79,7 +79,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetInspector
                 get { return new List<ITarget> { new Dummy1Target() }; }
             }
 
-            public bool Execute(IConfigurationSettings configurationSettings)
+            public Boolean Execute(IConfigurationSettings configurationSettings)
             {
                 Debug.WriteLine("{0} - executing", Description);
                 return true;

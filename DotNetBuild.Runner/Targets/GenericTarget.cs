@@ -22,7 +22,7 @@ namespace DotNetBuild.Runner.Targets
             get { return _description; }
         }
 
-        public bool ContinueOnError
+        public Boolean ContinueOnError
         {
             get; set;
         }
@@ -32,7 +32,7 @@ namespace DotNetBuild.Runner.Targets
             get { return _dependsOn.Select(t => t()).ToList(); }
         }
 
-        public Func<IConfigurationSettings, bool> ExecuteFunc
+        public Func<IConfigurationSettings, Boolean> ExecuteFunc
         {
             get; set;
         }
@@ -42,7 +42,7 @@ namespace DotNetBuild.Runner.Targets
             _dependsOn.Add(target);
         }
 
-        public bool Execute(IConfigurationSettings configurationSettings)
+        public Boolean Execute(IConfigurationSettings configurationSettings)
         {
             if (ExecuteFunc == null)
                 return true;

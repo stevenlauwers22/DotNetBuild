@@ -20,7 +20,7 @@ namespace DotNetBuild.Runner.Exceptions
             get { return _circularDependencies; }
         }
 
-        private static object GetCircularDependencyChain(IEnumerable<Type> circularDependencies)
+        private static Object GetCircularDependencyChain(IEnumerable<Type> circularDependencies)
         {
             var callTree = Environment.NewLine + circularDependencies.Aggregate(String.Empty, (current, circularDependency) => current + (" => " + circularDependency + Environment.NewLine)) + " => repeat from beginning ...";
             return callTree;

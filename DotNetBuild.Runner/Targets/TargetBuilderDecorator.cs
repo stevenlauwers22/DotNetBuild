@@ -21,7 +21,7 @@ namespace DotNetBuild.Runner.Targets
             return TargetBuilder.GetTarget();
         }
 
-        public ITargetBuilder ContinueOnError(bool continueOnError)
+        public ITargetBuilder ContinueOnError(Boolean continueOnError)
         {
             return TargetBuilder.ContinueOnError(continueOnError);
         }
@@ -31,7 +31,7 @@ namespace DotNetBuild.Runner.Targets
             return TargetBuilder.DependsOn(target);
         }
 
-        public ITargetBuilder Do(Func<IConfigurationSettings, bool> executeFunc)
+        public ITargetBuilder Do(Func<IConfigurationSettings, Boolean> executeFunc)
         {
             return TargetBuilder.Do(executeFunc);
         }

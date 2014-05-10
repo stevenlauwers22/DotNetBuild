@@ -22,7 +22,7 @@ namespace DotNetBuild.Runner
             return new List<Type>();
         }
 
-        private static bool HasCircularDependencies(ITarget target, ICollection<Type> targetTypes)
+        private static Boolean HasCircularDependencies(ITarget target, ICollection<Type> targetTypes)
         {
             var targetType = target.GetType();
             if (targetTypes.Count(t => t == targetType) == 1)

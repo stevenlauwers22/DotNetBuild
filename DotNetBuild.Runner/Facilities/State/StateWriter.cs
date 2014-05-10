@@ -16,7 +16,7 @@ namespace DotNetBuild.Runner.Facilities.State
             _stateRegistry = stateRegistry;
         }
 
-        public void Add(String key, object value)
+        public void Add(String key, Object value)
         {
             _stateRegistry.Add(key, value);
         }

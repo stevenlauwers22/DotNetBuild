@@ -12,7 +12,7 @@ namespace DotNetBuild.Tests.TestAssembly
             get { return "Dummy target 1"; }
         }
 
-        public bool ContinueOnError
+        public Boolean ContinueOnError
         {
             get { return false; }
         }
@@ -22,7 +22,7 @@ namespace DotNetBuild.Tests.TestAssembly
             get { return new List<ITarget> { new Dummy2Target() }; }
         }
 
-        public bool Execute(IConfigurationSettings configurationSettings)
+        public Boolean Execute(IConfigurationSettings configurationSettings)
         {
             Debug.WriteLine("{0} - executing", Description);
             return true;

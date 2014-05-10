@@ -15,7 +15,7 @@ namespace DotNetBuild.Build.Versioning
             get { return "Update version number"; }
         }
 
-        public bool ContinueOnError
+        public Boolean ContinueOnError
         {
             get { return false; }
         }
@@ -25,7 +25,7 @@ namespace DotNetBuild.Build.Versioning
             get { return null; }
         }
 
-        public bool Execute(IConfigurationSettings configurationSettings)
+        public Boolean Execute(IConfigurationSettings configurationSettings)
         {
             var baseDir = configurationSettings.Get<String>("baseDir");
             var assemblyInfoTask = new AssemblyInfo
