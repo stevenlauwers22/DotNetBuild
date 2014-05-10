@@ -1,4 +1,5 @@
-﻿using DotNetBuild.Runner.Facilities.Logging;
+﻿using System;
+using DotNetBuild.Runner.Facilities.Logging;
 using Moq;
 using Xunit;
 
@@ -8,7 +9,7 @@ namespace DotNetBuild.Tests.Runner.Facilities.Logging.Given_a_Logger
         : TestSpecification<Logger>
     {
         private Mock<DotNetBuild.Runner.Infrastructure.Logging.ILogger> _logger;
-        private string _message;
+        private String _message;
 
         protected override void Arrange()
         {
@@ -27,7 +28,7 @@ namespace DotNetBuild.Tests.Runner.Facilities.Logging.Given_a_Logger
         }
 
         [Fact]
-        public void Gets_the_state_from_repository()
+        public void Writes_the_message_to_the_log()
         {
             _logger.Verify(r => r.Write(_message));
         }

@@ -10,7 +10,7 @@ namespace DotNetBuild.Runner.Exceptions
         private readonly IEnumerable<Type> _typeImplementations;
 
         public UnableToDetermineCorrectImplementationException(Type type, IEnumerable<Type> typeImplementations)
-            : base(-18, string.Format("Implementation for type '{0}' could not be determined, multiple matching types were found", type.FullName))
+            : base(-18, String.Format("Implementation for type '{0}' could not be determined, multiple matching types were found", type.FullName))
         {
             _type = type;
             _typeImplementations = typeImplementations;

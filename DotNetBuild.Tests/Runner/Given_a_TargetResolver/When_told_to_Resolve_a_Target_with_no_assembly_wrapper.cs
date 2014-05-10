@@ -8,7 +8,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetResolver
     public class When_told_to_Resolve_a_Target_with_no_assembly_wrapper
         : TestSpecification<TargetResolver>
     {
-        private string _targetName;
+        private String _targetName;
         private IAssemblyWrapper _assemblyWrapper;
         private Mock<ITypeActivator> _typeActivator;
         private ArgumentNullException _exception;

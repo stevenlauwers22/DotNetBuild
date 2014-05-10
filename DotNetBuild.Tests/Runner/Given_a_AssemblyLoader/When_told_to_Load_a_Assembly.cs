@@ -8,7 +8,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_AssemblyLoader
     public class When_told_to_Load_a_Assembly
         : TestSpecification<AssemblyLoader>
     {
-        private string _assembly;
+        private String _assembly;
         private IAssemblyWrapper _result;
 
         protected override void Arrange()

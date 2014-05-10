@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using DotNetBuild.Core;
 using DotNetBuild.Tasks;
@@ -7,7 +8,7 @@ namespace DotNetBuild.Build.Compilation
 {
     public class BuildRelease : ITarget
     {
-        public string Name
+        public String Description
         {
             get { return "Build in release mode"; }
         }
@@ -24,7 +25,7 @@ namespace DotNetBuild.Build.Compilation
 
         public bool Execute(IConfigurationSettings configurationSettings)
         {
-            var baseDir = configurationSettings.Get<string>("baseDir");
+            var baseDir = configurationSettings.Get<String>("baseDir");
             var msBuildTask = new MsBuildTask
             {
                 Project = Path.Combine(baseDir, "DotNetBuild.sln"),

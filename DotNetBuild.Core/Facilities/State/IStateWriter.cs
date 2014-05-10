@@ -1,8 +1,10 @@
-﻿namespace DotNetBuild.Core.Facilities.State
+﻿using System;
+
+namespace DotNetBuild.Core.Facilities.State
 {
     public interface IStateWriter
         : IFacility
     {
-        void Add(string key, object value);
+        void Add(String key, object value);
     }
 }

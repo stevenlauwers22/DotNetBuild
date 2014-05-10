@@ -1,7 +1,6 @@
 ﻿using System;
 using DotNetBuild.Core;
 using DotNetBuild.Runner;
-using DotNetBuild.Runner.Infrastructure.Logging;
 using Moq;
 using Xunit;
 
@@ -20,7 +19,6 @@ namespace DotNetBuild.Tests.Runner.Given_a_BuildRunner
         private Mock<ITargetResolver> _targetResolver;
         private Mock<ITarget> _target;
         private Mock<ITargetExecutor> _targetExecutor;
-        private Mock<ILogger> _logger;
 
         protected override void Arrange()
         {
@@ -41,12 +39,11 @@ namespace DotNetBuild.Tests.Runner.Given_a_BuildRunner
             _configurationResolver.Setup(csr => csr.Resolve(_configurationName, _assembly.Object)).Returns(_configurationSettings.Object);
 
             _targetExecutor = new Mock<ITargetExecutor>();
-            _logger = new Mock<ILogger>();
         }
 
         protected override BuildRunner CreateSubjectUnderTest()
         {
-            return new BuildRunner(_assemblyLoader.Object, _configurationResolver.Object, _targetResolver.Object, _targetExecutor.Object, _logger.Object);
+            return new BuildRunner(_assemblyLoader.Object, _configurationResolver.Object, _targetResolver.Object, _targetExecutor.Object);
         }
 
         protected override void Act()

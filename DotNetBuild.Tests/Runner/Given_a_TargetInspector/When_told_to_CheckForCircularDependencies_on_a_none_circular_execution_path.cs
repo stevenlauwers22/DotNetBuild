@@ -36,7 +36,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetInspector
 
         private class Dummy1Target : ITarget
         {
-            public string Description
+            public String Description
             {
                 get { return "Dummy target 1"; }
             }
@@ -60,7 +60,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetInspector
 
         private class Dummy2Target : ITarget
         {
-            public string Description
+            public String Description
             {
                 get { return "Dummy target 2"; }
             }

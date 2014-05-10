@@ -10,7 +10,7 @@ namespace DotNetBuild.Runner.Exceptions
         private readonly IEnumerable<Type> _circularDependencies;
 
         public UnableToExecuteTargetWithCircularDependenciesException(ICollection<Type> circularDependencies)
-            : base(-17, string.Format("A circular dependency was found: {0}", GetCircularDependencyChain(circularDependencies)))
+            : base(-17, String.Format("A circular dependency was found: {0}", GetCircularDependencyChain(circularDependencies)))
         {
             _circularDependencies = circularDependencies;
         }
@@ -22,7 +22,7 @@ namespace DotNetBuild.Runner.Exceptions
 
         private static object GetCircularDependencyChain(IEnumerable<Type> circularDependencies)
         {
-            var callTree = Environment.NewLine + circularDependencies.Aggregate(string.Empty, (current, circularDependency) => current + (" => " + circularDependency + Environment.NewLine)) + " => repeat from beginning ...";
+            var callTree = Environment.NewLine + circularDependencies.Aggregate(String.Empty, (current, circularDependency) => current + (" => " + circularDependency + Environment.NewLine)) + " => repeat from beginning ...";
             return callTree;
         }
     }

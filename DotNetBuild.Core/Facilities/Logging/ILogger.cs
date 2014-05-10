@@ -5,7 +5,7 @@ namespace DotNetBuild.Core.Facilities.Logging
     public interface ILogger
         : IFacility
     {
-        void LogInfo(string message);
-        void LogError(string message, Exception exception);
+        void LogInfo(String message);
+        void LogError(String message, Exception exception);
     }
 }

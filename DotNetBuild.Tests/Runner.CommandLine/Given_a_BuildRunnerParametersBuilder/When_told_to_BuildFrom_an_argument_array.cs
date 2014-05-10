@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using DotNetBuild.Runner;
 using DotNetBuild.Runner.CommandLine;
 using Xunit;
@@ -8,11 +9,11 @@ namespace DotNetBuild.Tests.Runner.CommandLine.Given_a_BuildRunnerParametersBuil
     public class When_told_to_BuildFrom_an_argument_array
         : TestSpecification<BuildRunnerParametersBuilder>
     {
-        private string[] _args;
-        private string _assembly;
-        private string _target;
-        private string _configuration;
-        private string _additionalParameterInvalid;
+        private String[] _args;
+        private String _assembly;
+        private String _target;
+        private String _configuration;
+        private String _additionalParameterInvalid;
         private BuildRunnerParameters _result;
 
         protected override void Arrange()

@@ -1,4 +1,5 @@
-﻿using DotNetBuild.Core;
+﻿using System;
+using DotNetBuild.Core;
 using DotNetBuild.Runner;
 using Moq;
 using Xunit;
@@ -8,10 +9,9 @@ namespace DotNetBuild.Tests.Runner.Given_a_ConfigurationResolver
     public class When_told_to_Resolve_a_Configuration_with_no_configuration_registry_type
         : TestSpecification<ConfigurationResolver>
     {
-        private string _configurationName;
+        private String _configurationName;
         private Mock<IAssemblyWrapper> _assemblyWrapper;
         private Mock<ITypeActivator> _typeActivator;
-        private Mock<IConfigurationSelector> _configurationSelector;
         private IConfigurationSettings _result;
 
         protected override void Arrange()
@@ -19,12 +19,11 @@ namespace DotNetBuild.Tests.Runner.Given_a_ConfigurationResolver
             _configurationName = TestData.GenerateString();
             _assemblyWrapper = new Mock<IAssemblyWrapper>();
             _typeActivator = new Mock<ITypeActivator>();
-            _configurationSelector = new Mock<IConfigurationSelector>();
         }
 
         protected override ConfigurationResolver CreateSubjectUnderTest()
         {
-            return new ConfigurationResolver(_configurationSelector.Object, _typeActivator.Object);
+            return new ConfigurationResolver(_typeActivator.Object);
         }
 
         protected override void Act()

@@ -12,7 +12,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_AssemblyWrapper
         : TestSpecification<AssemblyWrapper>
     {
         private Assembly _assembly;
-        private string _target;
+        private String _target;
         private Type _result;
 
         protected override void Arrange()
@@ -28,7 +28,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_AssemblyWrapper
 
         protected override void Act()
         {
-            _result = Sut.Get<ITarget>(new AssemblyTypeFilter(t => string.Equals(t.Name, _target)));
+            _result = Sut.Get<ITarget>(new AssemblyTypeFilter(t => String.Equals(t.Name, _target)));
         }
 
         [Fact]

@@ -9,12 +9,11 @@ namespace DotNetBuild.Tests.Runner.Given_a_ConfigurationResolver
     public class When_told_to_Resolve_a_Configuration
         : TestSpecification<ConfigurationResolver>
     {
-        private string _configurationName;
+        private String _configurationName;
         private Mock<IAssemblyWrapper> _assemblyWrapper;
         private Type _configurationRegistryType;
         private Mock<ITypeActivator> _typeActivator;
         private Mock<IConfigurationRegistry> _configurationRegistry;
-        private Mock<IConfigurationSelector> _configurationSelector;
         private Mock<IConfigurationSettings> _configurationSettings;
         private IConfigurationSettings _result;
 
@@ -26,18 +25,17 @@ namespace DotNetBuild.Tests.Runner.Given_a_ConfigurationResolver
             _assemblyWrapper = new Mock<IAssemblyWrapper>();
             _assemblyWrapper.Setup(a => a.Get<IConfigurationRegistry>()).Returns(_configurationRegistryType);
 
+            _configurationSettings = new Mock<IConfigurationSettings>();
             _configurationRegistry = new Mock<IConfigurationRegistry>();
+            _configurationRegistry.Setup(r => r.Get(_configurationName)).Returns(_configurationSettings.Object);
+
             _typeActivator = new Mock<ITypeActivator>();
             _typeActivator.Setup(ta => ta.Activate<IConfigurationRegistry>(_configurationRegistryType)).Returns(_configurationRegistry.Object);
-
-            _configurationSettings = new Mock<IConfigurationSettings>();
-            _configurationSelector = new Mock<IConfigurationSelector>();
-            _configurationSelector.Setup(cs => cs.Select(_configurationName, _configurationRegistry.Object)).Returns(_configurationSettings.Object);
         }
 
         protected override ConfigurationResolver CreateSubjectUnderTest()
         {
-            return new ConfigurationResolver(_configurationSelector.Object, _typeActivator.Object);
+            return new ConfigurationResolver(_typeActivator.Object);
         }
 
         protected override void Act()
@@ -60,7 +58,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_ConfigurationResolver
         [Fact]
         public void Selects_the_ConfigurationSettings()
         {
-            _configurationSelector.Verify(cs => cs.Select(_configurationName, _configurationRegistry.Object));
+            _configurationRegistry.Verify(r => r.Get(_configurationName));
         }
 
         [Fact]

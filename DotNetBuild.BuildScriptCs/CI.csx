@@ -10,7 +10,7 @@ using DotNetBuild.Runner.ScriptCs;
 
 public class CI : ITarget
 {
-    public string Description
+    public String Description
     {
         get { return "Continuous integration target"; }
     }
@@ -56,7 +56,7 @@ public class BuildRelease : ITarget
 
     public bool Execute(IConfigurationSettings configurationSettings)
     {
-        var baseDir = configurationSettings.Get<string>("baseDir");
+        var baseDir = configurationSettings.Get<String>("baseDir");
         var msBuildTask = new MsBuildTask
         {
             Project = Path.Combine(baseDir, "DotNetBuild.sln"),

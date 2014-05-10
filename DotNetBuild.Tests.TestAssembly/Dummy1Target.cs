@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using DotNetBuild.Core;
 
@@ -6,7 +7,7 @@ namespace DotNetBuild.Tests.TestAssembly
 {
     public class Dummy1Target : ITarget
     {
-        public string Description
+        public String Description
         {
             get { return "Dummy target 1"; }
         }

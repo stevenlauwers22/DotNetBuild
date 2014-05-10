@@ -6,19 +6,19 @@ namespace DotNetBuild.Runner.Facilities.State
     public class StateReader 
         : IStateReader
     {
-        private readonly IStateRepository _stateRepository;
+        private readonly IStateRegistry _stateRegistry;
 
-        public StateReader(IStateRepository stateRepository)
+        public StateReader(IStateRegistry stateRegistry)
         {
-            if (stateRepository == null) 
-                throw new ArgumentNullException("stateRepository");
+            if (stateRegistry == null) 
+                throw new ArgumentNullException("stateRegistry");
 
-            _stateRepository = stateRepository;
+            _stateRegistry = stateRegistry;
         }
 
-        public T Get<T>(string key)
+        public T Get<T>(String key)
         {
-            return _stateRepository.Get<T>(key);
+            return _stateRegistry.Get<T>(key);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
     public class When_told_to_Get_a_setting_of_the_wrong_type
         : TestSpecification<ConfigurationSettings>
     {
-        private string _key;
+        private String _key;
         private decimal _value;
         private InvalidCastException _exception;
 
@@ -24,7 +24,7 @@ namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
 
         protected override void Act()
         {
-            _exception = TestHelpers.CatchException<InvalidCastException>(() => Sut.Get<string>(_key));
+            _exception = TestHelpers.CatchException<InvalidCastException>(() => Sut.Get<String>(_key));
         }
 
         [Fact]
@@ -35,7 +35,7 @@ namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
 
         private class ConfigurationSettingsTest : ConfigurationSettings
         {
-            public ConfigurationSettingsTest(string key, object value)
+            public ConfigurationSettingsTest(String key, object value)
             {
                 Add(key, value);
             }

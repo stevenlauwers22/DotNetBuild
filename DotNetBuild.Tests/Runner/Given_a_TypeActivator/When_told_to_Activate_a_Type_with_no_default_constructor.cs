@@ -40,7 +40,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TypeActivator
 
         private class DummyType : IType
         {
-            public DummyType(string name)
+            public DummyType(String name)
             {
                 Debug.WriteLine(name);
             }

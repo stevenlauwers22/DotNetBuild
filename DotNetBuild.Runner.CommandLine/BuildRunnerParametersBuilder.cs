@@ -5,17 +5,17 @@ namespace DotNetBuild.Runner.CommandLine
 {
     public interface IBuildRunnerParametersBuilder
     {
-        BuildRunnerParameters BuildFrom(string[] args);
+        BuildRunnerParameters BuildFrom(String[] args);
     }
     public class BuildRunnerParametersBuilder
         : IBuildRunnerParametersBuilder
     {
-        public BuildRunnerParameters BuildFrom(string[] args)
+        public BuildRunnerParameters BuildFrom(String[] args)
         {
-            string assembly = null;
-            string target = null;
-            string configuration = null;
-            var additionalParameters = new Dictionary<string, string>();
+            String assembly = null;
+            String target = null;
+            String configuration = null;
+            var additionalParameters = new Dictionary<String, String>();
             foreach (var arg in args)
             {
                 if (arg == null)

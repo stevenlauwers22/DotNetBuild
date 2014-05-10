@@ -1,17 +1,18 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
 
 namespace DotNetBuild.Runner
 {
     public interface IAssemblyLoader
     {
-        IAssemblyWrapper Load(string assembly);
+        IAssemblyWrapper Load(String assembly);
     }
 
     public class AssemblyLoader 
         : IAssemblyLoader
     {
-        public IAssemblyWrapper Load(string assembly)
+        public IAssemblyWrapper Load(String assembly)
         {
             var assemblyFileInfo = new FileInfo(assembly);
             if (!assemblyFileInfo.Exists) 

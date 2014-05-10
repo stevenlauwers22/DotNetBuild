@@ -8,7 +8,7 @@ namespace DotNetBuild.Runner.CommandLine
 {
     public class DotNetBuild
     {
-        public static int Main(string[] args)
+        public static int Main(String[] args)
         {
             var container = TinyIoCContainer.Current;
             Container.Install(container);

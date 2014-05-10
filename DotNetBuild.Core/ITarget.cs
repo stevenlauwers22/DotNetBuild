@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DotNetBuild.Core
 {
     public interface ITarget
     {
-        string Description { get; }
+        String Description { get; }
         bool ContinueOnError { get; }
         IEnumerable<ITarget> DependsOn { get; }
 

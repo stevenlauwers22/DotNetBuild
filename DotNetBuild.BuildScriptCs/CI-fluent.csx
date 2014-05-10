@@ -14,7 +14,7 @@ using DotNetBuild.Runner.ScriptCs;
     .Target("Build in release mode")
     .ContinueOnError(false)
     .Do(configurationSettings => {
-        var baseDir = configurationSettings.Get<string>("baseDir");
+        var baseDir = configurationSettings.Get<String>("baseDir");
         var msBuildTask = new MsBuildTask
         {
             Project = Path.Combine(baseDir, "DotNetBuild.sln"),

@@ -9,7 +9,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetResolver
     public class When_told_to_Resolve_a_Target
         : TestSpecification<TargetResolver>
     {
-        private string _targetName;
+        private String _targetName;
         private Mock<IAssemblyWrapper> _assemblyWrapper;
         private Type _targetType;
         private Mock<ITypeActivator> _typeActivator;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using DotNetBuild.Core;
 using DotNetBuild.Core.Facilities.Logging;
@@ -9,7 +10,7 @@ namespace DotNetBuild.Build.Versioning
 {
     public class UpdateVersionNumber : ITarget, IWantToWriteState, IWantToLog
     {
-        public string Name
+        public String Description
         {
             get { return "Update version number"; }
         }
@@ -26,7 +27,7 @@ namespace DotNetBuild.Build.Versioning
 
         public bool Execute(IConfigurationSettings configurationSettings)
         {
-            var baseDir = configurationSettings.Get<string>("baseDir");
+            var baseDir = configurationSettings.Get<String>("baseDir");
             var assemblyInfoTask = new AssemblyInfo
             {
                 AssemblyInfoFiles = new[]

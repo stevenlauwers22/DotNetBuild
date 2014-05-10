@@ -30,7 +30,7 @@ namespace DotNetBuild.Runner.Facilities
                 return;
 
             var facility = GetFacility();
-            var facilityLogMessage = string.Format("Injecting facility {0} into {1}", facility.GetType().FullName, value.GetType().FullName);
+            var facilityLogMessage = String.Format("Injecting facility {0} into {1}", facility.GetType().FullName, value.GetType().FullName);
             _logger.Write(facilityLogMessage);
 
             facilityAcceptor.Inject(facility);

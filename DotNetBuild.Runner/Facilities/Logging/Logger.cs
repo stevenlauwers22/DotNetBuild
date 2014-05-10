@@ -16,12 +16,12 @@ namespace DotNetBuild.Runner.Facilities.Logging
             _logger = logger;
         }
 
-        public void LogInfo(string message)
+        public void LogInfo(String message)
         {
             _logger.Write(message);
         }
 
-        public void LogError(string message, Exception exception)
+        public void LogError(String message, Exception exception)
         {
             _logger.WriteError(message, exception);
         }

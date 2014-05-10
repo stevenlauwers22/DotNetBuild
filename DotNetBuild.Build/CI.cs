@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DotNetBuild.Core;
 
 namespace DotNetBuild.Build
 {
     public class CI : ITarget
     {
-        public string Name
+        public String Description
         {
             get { return "Continuous integration target"; }
         }

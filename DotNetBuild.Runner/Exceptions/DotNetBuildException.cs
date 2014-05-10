@@ -7,12 +7,12 @@ namespace DotNetBuild.Runner.Exceptions
     {
         private readonly int _errorCode;
 
-        protected DotNetBuildException(int errorCode, string message)
+        protected DotNetBuildException(int errorCode, String message)
             : this(errorCode, message, null)
         {
         }
 
-        protected DotNetBuildException(int errorCode, string message, Exception innerException)
+        protected DotNetBuildException(int errorCode, String message, Exception innerException)
             : base(message, innerException)
         {
             _errorCode = errorCode;

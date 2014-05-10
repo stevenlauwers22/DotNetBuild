@@ -39,7 +39,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigurationRegistration.cs" />
     <Compile Include="ConfigurationRegistry.cs" />
     <Compile Include="ConfigurationSettings.cs" />
     <Compile Include="Facilities\IFacility.cs" />

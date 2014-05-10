@@ -8,7 +8,7 @@ namespace DotNetBuild.Runner.Exceptions
         private readonly Type _targetType;
 
         public UnableToActivateTargetException(Type targetType)
-            : base(-14, string.Format("Target of type '{0}' could not be activated", targetType.FullName))
+            : base(-14, String.Format("Target of type '{0}' could not be activated", targetType.FullName))
         {
             _targetType = targetType;
         }

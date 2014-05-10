@@ -6,7 +6,7 @@ namespace DotNetBuild.Runner
 {
     public interface ITargetResolver
     {
-        ITarget Resolve(string targetName, IAssemblyWrapper assembly);
+        ITarget Resolve(String targetName, IAssemblyWrapper assembly);
     }
 
     public class TargetResolver 
@@ -22,9 +22,9 @@ namespace DotNetBuild.Runner
             _typeActivator = typeActivator;
         }
 
-        public ITarget Resolve(string targetName, IAssemblyWrapper assembly)
+        public ITarget Resolve(String targetName, IAssemblyWrapper assembly)
         {
-            if (string.IsNullOrEmpty(targetName))
+            if (String.IsNullOrEmpty(targetName))
                 throw new ArgumentNullException("targetName");
 
             if (assembly == null) 

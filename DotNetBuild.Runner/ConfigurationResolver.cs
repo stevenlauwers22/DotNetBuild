@@ -6,30 +6,23 @@ namespace DotNetBuild.Runner
 {
     public interface IConfigurationResolver
     {
-        IConfigurationSettings Resolve(string configurationName, IAssemblyWrapper assemblyWrapper);
+        IConfigurationSettings Resolve(String configurationName, IAssemblyWrapper assemblyWrapper);
     }
 
     public class ConfigurationResolver 
         : IConfigurationResolver
     {
-        private readonly IConfigurationSelector _configurationSelector;
         private readonly ITypeActivator _typeActivator;
 
-        public ConfigurationResolver(
-            IConfigurationSelector configurationSelector,
-            ITypeActivator typeActivator)
+        public ConfigurationResolver(ITypeActivator typeActivator)
         {
-            if (configurationSelector == null) 
-                throw new ArgumentNullException("configurationSelector");
-
             if (typeActivator == null) 
                 throw new ArgumentNullException("typeActivator");
 
-            _configurationSelector = configurationSelector;
             _typeActivator = typeActivator;
         }
 
-        public IConfigurationSettings Resolve(string configurationName, IAssemblyWrapper assembly)
+        public IConfigurationSettings Resolve(String configurationName, IAssemblyWrapper assembly)
         {
             if (assembly == null)
                 throw new ArgumentNullException("assembly");
@@ -42,7 +35,7 @@ namespace DotNetBuild.Runner
             if (configurationRegistry == null)
                 throw new UnableToActivateConfigurationRegistryException(configurationRegistryType);
 
-            var configurationSettings = _configurationSelector.Select(configurationName, configurationRegistry);
+            var configurationSettings = configurationRegistry.Get(configurationName);
             return configurationSettings;
         }
     }

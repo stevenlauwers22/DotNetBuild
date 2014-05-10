@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using DotNetBuild.Core;
 using DotNetBuild.Runner;
@@ -49,7 +50,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetExecutor
 
         private class TestTarget : TestFacilityAcceptor, ITarget
         {
-            public string Description
+            public String Description
             {
                 get { return "TestTarget"; }
             }

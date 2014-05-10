@@ -9,7 +9,7 @@ namespace DotNetBuild.Tests
             return Guid.NewGuid();
         }
 
-        public static string GenerateString()
+        public static String GenerateString()
         {
             return Guid.NewGuid().ToString();
         }

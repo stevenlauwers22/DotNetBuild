@@ -6,19 +6,19 @@ namespace DotNetBuild.Runner.Facilities.State
     public class StateWriter 
         : IStateWriter
     {
-        private readonly IStateRepository _stateRepository;
+        private readonly IStateRegistry _stateRegistry;
 
-        public StateWriter(IStateRepository stateRepository)
+        public StateWriter(IStateRegistry stateRegistry)
         {
-            if (stateRepository == null) 
-                throw new ArgumentNullException("stateRepository");
+            if (stateRegistry == null) 
+                throw new ArgumentNullException("stateRegistry");
 
-            _stateRepository = stateRepository;
+            _stateRegistry = stateRegistry;
         }
 
-        public void Add(string key, object value)
+        public void Add(String key, object value)
         {
-            _stateRepository.Add(key, value);
+            _stateRegistry.Add(key, value);
         }
     }
 }

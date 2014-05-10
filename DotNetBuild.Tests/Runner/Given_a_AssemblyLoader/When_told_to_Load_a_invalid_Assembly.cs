@@ -1,4 +1,5 @@
-﻿using DotNetBuild.Runner;
+﻿using System;
+using DotNetBuild.Runner;
 using Xunit;
 
 namespace DotNetBuild.Tests.Runner.Given_a_AssemblyLoader
@@ -6,7 +7,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_AssemblyLoader
     public class When_told_to_Load_a_invalid_Assembly
         : TestSpecification<AssemblyLoader>
     {
-        private string _assembly;
+        private String _assembly;
         private IAssemblyWrapper _result;
 
         protected override void Arrange()

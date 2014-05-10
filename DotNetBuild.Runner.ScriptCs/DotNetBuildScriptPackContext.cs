@@ -3,16 +3,19 @@ using DotNetBuild.Core;
 using DotNetBuild.Runner.Exceptions;
 using DotNetBuild.Runner.Infrastructure.Logging;
 using DotNetBuild.Runner.Infrastructure.TinyIoC;
-using DotNetBuild.Runner.ScriptCs.Targets;
+using DotNetBuild.Runner.Targets;
 using ScriptCs.Contracts;
 
 namespace DotNetBuild.Runner.ScriptCs
 {
     public class DotNetBuildScriptPackContext : IScriptPackContext
     {
-        public int Run(string targetName, string configurationName)
+        public int Run(String targetName, String configurationName)
         {
-            return Run(TargetRegistry.Get(targetName), null);
+            var container = TinyIoCContainer.Current;
+            var targetRegistry = container.Resolve<ITargetRegistry>();
+            var target = targetRegistry.Get(targetName);
+            return Run(target, null);
         }
 
         public int Run(ITarget target, IConfigurationSettings configurationSettings)

@@ -19,8 +19,7 @@ namespace DotNetBuild.Runner.Configuration
             container.Register<IAssemblyLoader, AssemblyLoader>();
             container.Register<IBuildRunner, BuildRunner>();
             container.Register<IConfigurationResolver, ConfigurationResolver>();
-            container.Register<IConfigurationSelector, ConfigurationSelector>();
-            container.Register<IStateRepository, StateRepository>();
+            container.Register<IStateRegistry, StateRegistry>();
             container.Register<ITargetExecutor, TargetExecutor>();
             container.Register<ITargetInspector, TargetInspector>();
             container.Register<ITargetResolver, TargetResolver>();

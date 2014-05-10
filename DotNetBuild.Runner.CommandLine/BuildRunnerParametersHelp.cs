@@ -1,3 +1,4 @@
+using System;
 using DotNetBuild.Runner.Infrastructure.Logging;
 
 namespace DotNetBuild.Runner.CommandLine
@@ -19,13 +20,13 @@ namespace DotNetBuild.Runner.CommandLine
                 BuildRunnerParametersConstants.Configuration + "[Configuration] ");
 
             logger.Write("Description:");
-            logger.Write("\tstarts a build using the DotNetBuild runner");
+            logger.Write("\tStarts a build using the DotNetBuild runner");
 
             logger.Write("Parameters:");
             logger.Write("\t" + BuildRunnerParametersConstants.Assembly + "\tThe Path to the assembly you want to execute");
             logger.Write("\t" + BuildRunnerParametersConstants.Target + "\tOPTIONAL The target you want to run");
             logger.Write("\t" + BuildRunnerParametersConstants.Configuration + "\tOPTIONAL The configuration you want to use");
-            logger.Write(string.Empty);
+            logger.Write(String.Empty);
         }
     }
 }

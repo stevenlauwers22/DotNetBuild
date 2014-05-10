@@ -5,18 +5,18 @@ namespace DotNetBuild.Runner
     public class TargetTypeFilter 
         : AssemblyTypeFilter
     {
-        private readonly string _targetName;
+        private readonly String _targetName;
 
-        public TargetTypeFilter(string targetName)
-            : base(t => string.Equals(t.Name.Replace("Target", null), targetName.Replace("Target", null), StringComparison.OrdinalIgnoreCase))
+        public TargetTypeFilter(String targetName)
+            : base(t => String.Equals(t.Name.Replace("Target", null), targetName.Replace("Target", null), StringComparison.OrdinalIgnoreCase))
         {
-            if (string.IsNullOrEmpty(targetName))
+            if (String.IsNullOrEmpty(targetName))
                 throw new ArgumentNullException("targetName");
 
             _targetName = targetName;
         }
 
-        public string TargetName
+        public String TargetName
         {
             get { return _targetName; }
         }

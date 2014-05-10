@@ -5,26 +5,41 @@ namespace DotNetBuild.Core
 {
     public interface IConfigurationRegistry
     {
-        IEnumerable<ConfigurationRegistration> Registrations { get; }
+        IConfigurationSettings Get(String key);
     }
 
     public abstract class ConfigurationRegistry : IConfigurationRegistry
     {
-        private readonly ICollection<ConfigurationRegistration> _registrations;
+        private static IDictionary<String, IConfigurationSettings> _registrations;
 
         protected ConfigurationRegistry()
         {
-            _registrations = new List<ConfigurationRegistration>();
+            _registrations = new Dictionary<string, IConfigurationSettings>();
         }
 
-        public IEnumerable<ConfigurationRegistration> Registrations
+        public IEnumerable<KeyValuePair<String, IConfigurationSettings>> Registrations
         {
             get { return _registrations; }
         }
 
-        protected void Add(IConfigurationSettings configurationSettings, Func<string, bool> useIf)
+        public IConfigurationSettings Get(String key)
         {
-            _registrations.Add(new ConfigurationRegistration(configurationSettings, useIf));
+            if (!_registrations.ContainsKey(key))
+                return null;
+
+            var value = _registrations[key];
+            return value;
+        }
+
+        protected void Add(String key, IConfigurationSettings value)
+        {
+            if (String.IsNullOrEmpty(key))
+                throw new ArgumentNullException("key");
+
+            if (value == null)
+                throw new ArgumentNullException("value");
+
+            _registrations[key] = value;
         }
     }
 }

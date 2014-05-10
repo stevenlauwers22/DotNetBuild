@@ -1,4 +1,5 @@
-﻿using DotNetBuild.Core;
+﻿using System;
+using DotNetBuild.Core;
 using Xunit;
 
 namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
@@ -6,9 +7,9 @@ namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
     public class When_told_to_Get_a_setting
         : TestSpecification<ConfigurationSettings>
     {
-        private string _key;
-        private string _value;
-        private string _result;
+        private String _key;
+        private String _value;
+        private String _result;
 
         protected override void Arrange()
         {
@@ -23,7 +24,7 @@ namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
 
         protected override void Act()
         {
-            _result = Sut.Get<string>(_key);
+            _result = Sut.Get<String>(_key);
         }
 
         [Fact]
@@ -34,7 +35,7 @@ namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
 
         private class ConfigurationSettingsTest : ConfigurationSettings
         {
-            public ConfigurationSettingsTest(string key, object value)
+            public ConfigurationSettingsTest(String key, object value)
             {
                 Add(key, value);
             }

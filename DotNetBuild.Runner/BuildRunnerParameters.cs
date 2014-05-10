@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DotNetBuild.Runner
 {
     public class BuildRunnerParameters
     {
-        private readonly string _assembly;
-        private readonly string _target;
-        private readonly string _configuration;
-        private readonly IEnumerable<KeyValuePair<string, string>> _additionalParameters;
+        private readonly String _assembly;
+        private readonly String _target;
+        private readonly String _configuration;
+        private readonly IEnumerable<KeyValuePair<String, String>> _additionalParameters;
 
-        public BuildRunnerParameters(string assembly, string target, string configuration, IEnumerable<KeyValuePair<string, string>> additionalParameters)
+        public BuildRunnerParameters(String assembly, String target, String configuration, IEnumerable<KeyValuePair<String, String>> additionalParameters)
         {
             _assembly = assembly;
             _target = target;
@@ -17,22 +18,22 @@ namespace DotNetBuild.Runner
             _additionalParameters = additionalParameters;
         }
 
-        public string Assembly
+        public String Assembly
         {
             get { return _assembly; }
         }
 
-        public string Target
+        public String Target
         {
             get { return _target; }
         }
 
-        public string Configuration
+        public String Configuration
         {
             get { return _configuration; }
         }
 
-        public IEnumerable<KeyValuePair<string, string>> AdditionalParameters
+        public IEnumerable<KeyValuePair<String, String>> AdditionalParameters
         {
             get { return _additionalParameters; }
         }

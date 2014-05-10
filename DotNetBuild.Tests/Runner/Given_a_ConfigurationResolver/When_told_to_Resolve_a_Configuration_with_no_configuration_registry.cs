@@ -10,11 +10,10 @@ namespace DotNetBuild.Tests.Runner.Given_a_ConfigurationResolver
     public class When_told_to_Resolve_a_Configuration_with_no_configuration_registry
         : TestSpecification<ConfigurationResolver>
     {
-        private string _configurationName;
+        private String _configurationName;
         private Mock<IAssemblyWrapper> _assemblyWrapper;
         private Type _configurationRegistryType;
         private Mock<ITypeActivator> _typeActivator;
-        private Mock<IConfigurationSelector> _configurationSelector;
         private UnableToActivateConfigurationRegistryException _exception;
 
         protected override void Arrange()
@@ -26,12 +25,11 @@ namespace DotNetBuild.Tests.Runner.Given_a_ConfigurationResolver
             _assemblyWrapper.Setup(a => a.Get<IConfigurationRegistry>()).Returns(_configurationRegistryType);
 
             _typeActivator = new Mock<ITypeActivator>();
-            _configurationSelector = new Mock<IConfigurationSelector>();
         }
 
         protected override ConfigurationResolver CreateSubjectUnderTest()
         {
-            return new ConfigurationResolver(_configurationSelector.Object, _typeActivator.Object);
+            return new ConfigurationResolver(_typeActivator.Object);
         }
 
         protected override void Act()
