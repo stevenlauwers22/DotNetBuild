@@ -47,10 +47,16 @@
     <Compile Include="Facilities\Logging\IWantToLog.cs" />
     <Compile Include="Facilities\State\IStateReader.cs" />
     <Compile Include="Facilities\State\IStateWriter.cs" />
-    <Compile Include="ITarget.cs" />
+    <Compile Include="IConfigurator.cs" />
+    <Compile Include="Targets\ITarget.cs" />
     <Compile Include="Facilities\State\IWantToReadState.cs" />
     <Compile Include="Facilities\State\IWantToWriteState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Targets\TargetBuilder.cs" />
+    <Compile Include="Targets\TargetBuilderDecorator.cs" />
+    <Compile Include="Targets\TargetBuilderExtension.cs" />
+    <Compile Include="Targets\TargetDependencyBuilder.cs" />
+    <Compile Include="Targets\TargetRegistry.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

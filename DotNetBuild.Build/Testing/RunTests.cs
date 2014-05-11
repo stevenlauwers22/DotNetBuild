@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using DotNetBuild.Core;
+using DotNetBuild.Core.Targets;
 using DotNetBuild.Tasks;
 
 namespace DotNetBuild.Build.Testing

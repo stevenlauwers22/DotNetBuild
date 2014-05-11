@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using DotNetBuild.Core;
+using DotNetBuild.Core.Targets;
 
 namespace DotNetBuild.Tests.TestAssembly
 {

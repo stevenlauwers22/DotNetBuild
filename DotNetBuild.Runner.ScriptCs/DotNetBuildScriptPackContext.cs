@@ -1,33 +1,26 @@
 ﻿using System;
-using DotNetBuild.Core;
+using DotNetBuild.Runner.Configuration;
 using DotNetBuild.Runner.Exceptions;
 using DotNetBuild.Runner.Infrastructure.Logging;
 using DotNetBuild.Runner.Infrastructure.TinyIoC;
-using DotNetBuild.Runner.Targets;
 using ScriptCs.Contracts;
 
 namespace DotNetBuild.Runner.ScriptCs
 {
     public class DotNetBuildScriptPackContext : IScriptPackContext
     {
-        public int Run(String targetName, String configurationName)
+        public int Run(String targetName, String configurationName, Action configure)
         {
             var container = TinyIoCContainer.Current;
-            var targetRegistry = container.Resolve<ITargetRegistry>();
-            var target = targetRegistry.Get(targetName);
-            return Run(target, null);
-        }
+            Container.Install(container);
 
-        public int Run(ITarget target, IConfigurationSettings configurationSettings)
-        {
-            var container = TinyIoCContainer.Current;
             var logger = container.Resolve<ILogger>();
             logger.Write("DotNetBuild started");
 
             try
             {
                 var buildRunner = container.Resolve<IBuildRunner>();
-                buildRunner.Run(target, configurationSettings);
+                buildRunner.Run(configure, targetName, configurationName);
             }
             catch (DotNetBuildException exception)
             {

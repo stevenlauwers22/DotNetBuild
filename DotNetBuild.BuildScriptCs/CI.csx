@@ -8,6 +8,18 @@ using DotNetBuild.Core;
 using DotNetBuild.Tasks;
 using DotNetBuild.Runner.ScriptCs;
 
+/* TARGET AND CONFIGURATIONSETTINGS SHOULD BE DETERMINED BASED ON SCRIPT ARGUMENTS */
+var target = "ci";
+var configurationSettings = "test";
+
+var dotNetBuild = Require<DotNetBuildScriptPackContext>();
+dotNetBuild.Run(target, configurationSettings, () => {
+	"ci".Target(new CI());
+
+	"test".Configure(new ConfigurationSettingsForTest());
+	"acceptance".Configure(new ConfigurationSettingsForAcceptance());
+});
+
 public class CI : ITarget
 {
     public String Description
@@ -87,10 +99,3 @@ public class ConfigurationSettingsForAcceptance : ConfigurationSettings
         Add("mySetting2", "value2ForAcceptanceEnvironment");
     }
 }
-
-/* TARGET AND CONFIGURATIONSETTINGS SHOULD BE DETERMINED BASED ON SCRIPT ARGUMENTS */
-var target = new CI();
-var configurationSettings = new ConfigurationSettingsForTest();
-
-var dotNetBuild = Require<DotNetBuildScriptPackContext>();
-dotNetBuild.Run(target, configurationSettings);

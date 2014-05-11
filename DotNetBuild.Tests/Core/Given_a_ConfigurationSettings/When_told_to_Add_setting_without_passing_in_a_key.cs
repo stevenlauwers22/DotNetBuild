@@ -1,7 +1,4 @@
 ﻿using System;
-using DotNetBuild.Core;
-using DotNetBuild.Tests.Core.Given_a_ConfigurationRegistry;
-using Moq;
 using Xunit;
 
 namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings

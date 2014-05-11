@@ -13,7 +13,7 @@ namespace DotNetBuild.Runner.Exceptions
         }
 
         public UnableToExecuteTargetException(Type targetType, Exception innerException)
-            : base(-16, String.Format("An error occured while executing target '{0}'", targetType.FullName), innerException)
+            : base(-15, String.Format("An error occured while executing target '{0}'", targetType.FullName), innerException)
         {
             _targetType = targetType;
         }

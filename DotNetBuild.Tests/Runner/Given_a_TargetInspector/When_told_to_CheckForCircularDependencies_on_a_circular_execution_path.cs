@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using DotNetBuild.Core;
+using DotNetBuild.Core.Targets;
 using DotNetBuild.Runner;
 using Xunit;
 

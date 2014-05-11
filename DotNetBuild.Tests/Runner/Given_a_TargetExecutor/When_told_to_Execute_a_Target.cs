@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DotNetBuild.Core;
+using DotNetBuild.Core.Targets;
 using DotNetBuild.Runner;
 using DotNetBuild.Runner.Infrastructure.Logging;
 using Moq;

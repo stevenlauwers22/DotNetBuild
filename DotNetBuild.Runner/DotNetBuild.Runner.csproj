@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\Container.cs" />
+    <Compile Include="Exceptions\UnableToFindConfigurationException.cs" />
+    <Compile Include="Exceptions\UnableToFindTargetException.cs" />
     <Compile Include="Facilities\Logging\Logger.cs" />
     <Compile Include="Facilities\Logging\LoggerFacilityProvider.cs" />
     <Compile Include="Facilities\State\StateReader.cs" />
@@ -54,33 +56,23 @@
     <Compile Include="Facilities\State\StateReaderFacilityProvider.cs" />
     <Compile Include="Facilities\State\StateRegistry.cs" />
     <Compile Include="Facilities\State\StateWriterFacilityProvider.cs" />
-    <Compile Include="AssemblyLoader.cs" />
-    <Compile Include="AssemblyTypeFilter.cs" />
-    <Compile Include="AssemblyWrapper.cs" />
+    <Compile Include="Infrastructure\Reflection\AssemblyLoader.cs" />
+    <Compile Include="Infrastructure\Reflection\TypeFilter.cs" />
+    <Compile Include="Infrastructure\Reflection\AssemblyWrapper.cs" />
     <Compile Include="BuildRunner.cs" />
-    <Compile Include="BuildRunnerParameters.cs" />
-    <Compile Include="ConfigurationResolver.cs" />
-    <Compile Include="Exceptions\UnableToExecuteTargetsWithCircularDependenciesException.cs" />
+    <Compile Include="Exceptions\UnableToExecuteTargetWithCircularDependenciesException.cs" />
     <Compile Include="Exceptions\DotNetBuildException.cs" />
-    <Compile Include="Exceptions\UnableToActivateConfigurationRegistryException.cs" />
-    <Compile Include="Exceptions\UnableToActivateTargetException.cs" />
-    <Compile Include="Exceptions\UnableToActivateTargetWithNoDefaultConstructorException.cs" />
+    <Compile Include="Exceptions\UnableToActivateConfiguratorException.cs" />
+    <Compile Include="Exceptions\UnableToActivateTypeWithNoDefaultConstructorException.cs" />
     <Compile Include="Exceptions\UnableToDetermineCorrectImplementationException.cs" />
     <Compile Include="Exceptions\UnableToExecuteTargetException.cs" />
     <Compile Include="Exceptions\UnableToLoadAssemblyException.cs" />
-    <Compile Include="Exceptions\UnableToResolveTargetException.cs" />
+    <Compile Include="Exceptions\UnableToResolveConfiguratorException.cs" />
     <Compile Include="TargetInspector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TargetExecutor.cs" />
-    <Compile Include="TargetResolver.cs" />
-    <Compile Include="Targets\GenericTarget.cs" />
-    <Compile Include="Targets\TargetBuilder.cs" />
-    <Compile Include="Targets\TargetBuilderDecorator.cs" />
-    <Compile Include="Targets\TargetBuilderExtension.cs" />
-    <Compile Include="Targets\TargetDependencyBuilder.cs" />
-    <Compile Include="Targets\TargetRegistry.cs" />
-    <Compile Include="TargetTypeFilter.cs" />
-    <Compile Include="TypeActivator.cs" />
+    <Compile Include="ConfiguratorResolver.cs" />
+    <Compile Include="Infrastructure\Reflection\TypeActivator.cs" />
     <Compile Include="Infrastructure\TinyIoC\TinyIoC.cs" />
   </ItemGroup>
   <ItemGroup>

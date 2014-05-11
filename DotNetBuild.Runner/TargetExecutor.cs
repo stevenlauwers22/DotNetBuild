@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DotNetBuild.Core;
+using DotNetBuild.Core.Targets;
 using DotNetBuild.Runner.Exceptions;
 using DotNetBuild.Runner.Facilities;
 using DotNetBuild.Runner.Infrastructure.Logging;

@@ -37,9 +37,9 @@
   <ItemGroup>
     <Compile Include="Compilation\BuildRelease.cs" />
     <Compile Include="CI.cs" />
-    <Compile Include="ConfigurationRegistry.cs" />
     <Compile Include="ConfigurationSettingsForAcceptance.cs" />
     <Compile Include="ConfigurationSettingsForTest.cs" />
+    <Compile Include="Configurator.cs" />
     <Compile Include="NuGet\CreateRunnerScriptCsPackage.cs" />
     <Compile Include="NuGet\CreateRunnerCommandLinePackage.cs" />
     <Compile Include="NuGet\CreateTasksPackage.cs" />

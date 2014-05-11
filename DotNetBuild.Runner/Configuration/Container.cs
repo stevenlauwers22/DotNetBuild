@@ -1,8 +1,10 @@
 ﻿using DotNetBuild.Core.Facilities.Logging;
 using DotNetBuild.Core.Facilities.State;
+using DotNetBuild.Core.Targets;
 using DotNetBuild.Runner.Facilities;
 using DotNetBuild.Runner.Facilities.Logging;
 using DotNetBuild.Runner.Facilities.State;
+using DotNetBuild.Runner.Infrastructure.Reflection;
 using DotNetBuild.Runner.Infrastructure.TinyIoC;
 
 namespace DotNetBuild.Runner.Configuration
@@ -17,15 +19,16 @@ namespace DotNetBuild.Runner.Configuration
             container.Register((c, p) => c.Resolve<Infrastructure.Logging.ILoggerFactory>().CreateLogger());
 
             container.Register<IAssemblyLoader, AssemblyLoader>();
-            container.Register<IBuildRunner, BuildRunner>();
-            container.Register<IConfigurationResolver, ConfigurationResolver>();
-            container.Register<IStateRegistry, StateRegistry>();
-            container.Register<ITargetExecutor, TargetExecutor>();
-            container.Register<ITargetInspector, TargetInspector>();
-            container.Register<ITargetResolver, TargetResolver>();
             container.Register<ITypeActivator, TypeActivator>();
 
+            container.Register<IBuildRunner, BuildRunner>();
+            container.Register<IConfiguratorResolver, ConfiguratorResolver>();
+            container.Register<ITargetExecutor, TargetExecutor>();
+            container.Register<ITargetInspector, TargetInspector>();
+            container.Register<ITargetRegistry, TargetRegistry>();
+
             container.Register<ILogger, Logger>();
+            container.Register<IStateRegistry, StateRegistry>();
             container.Register<IStateReader, StateReader>();
             container.Register<IStateWriter, StateWriter>();
             container.Register((c, p) => new LoggerFacilityProvider(c.Resolve<Infrastructure.Logging.ILogger>(), c.Resolve<ILogger>));
