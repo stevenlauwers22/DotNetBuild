@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using DotNetBuild.Core;
-using DotNetBuild.Core.Targets;
 using DotNetBuild.Runner.Exceptions;
 using DotNetBuild.Runner.Infrastructure.Reflection;
 using DotNetBuild.Tests.TestAssembly;

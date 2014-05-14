@@ -6,13 +6,14 @@ namespace DotNetBuild.Core
     public interface IConfigurationSettings
     {
         T Get<T>(String key);
+        void Add(String key, Object value);
     }
 
-    public abstract class ConfigurationSettings : IConfigurationSettings
+    public class ConfigurationSettings : IConfigurationSettings
     {
         private readonly IDictionary<String, Object> _registrations;
 
-        protected ConfigurationSettings()
+        public ConfigurationSettings()
         {
             _registrations = new Dictionary<String, Object>();
         }
@@ -31,7 +32,7 @@ namespace DotNetBuild.Core
             return (T)value;
         }
 
-        protected void Add(String key, Object value)
+        public void Add(String key, Object value)
         {
             if (String.IsNullOrEmpty(key))
                 throw new ArgumentNullException("key");

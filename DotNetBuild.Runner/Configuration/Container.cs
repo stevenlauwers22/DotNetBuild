@@ -1,6 +1,6 @@
-﻿using DotNetBuild.Core.Facilities.Logging;
+﻿using DotNetBuild.Core;
+using DotNetBuild.Core.Facilities.Logging;
 using DotNetBuild.Core.Facilities.State;
-using DotNetBuild.Core.Targets;
 using DotNetBuild.Runner.Facilities;
 using DotNetBuild.Runner.Facilities.Logging;
 using DotNetBuild.Runner.Facilities.State;
@@ -22,10 +22,15 @@ namespace DotNetBuild.Runner.Configuration
             container.Register<ITypeActivator, TypeActivator>();
 
             container.Register<IBuildRunner, BuildRunner>();
+
             container.Register<IConfiguratorResolver, ConfiguratorResolver>();
+            container.Register<IConfigurationRegistry, ConfigurationRegistry>();
+            ConfigurationBuilderExtension.ResolveConfigurationRegistry(container.Resolve<IConfigurationRegistry>);
+
             container.Register<ITargetExecutor, TargetExecutor>();
             container.Register<ITargetInspector, TargetInspector>();
             container.Register<ITargetRegistry, TargetRegistry>();
+            TargetBuilderExtension.ResolveTargetRegistry(container.Resolve<ITargetRegistry>);
 
             container.Register<ILogger, Logger>();
             container.Register<IStateRegistry, StateRegistry>();

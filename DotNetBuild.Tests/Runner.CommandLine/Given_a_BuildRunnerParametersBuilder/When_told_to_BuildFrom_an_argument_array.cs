@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using DotNetBuild.Runner;
 using DotNetBuild.Runner.CommandLine;
 using Xunit;
 

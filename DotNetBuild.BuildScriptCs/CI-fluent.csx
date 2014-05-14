@@ -7,12 +7,9 @@ using DotNetBuild.Core;
 using DotNetBuild.Tasks;
 using DotNetBuild.Runner.ScriptCs;
 
-/* TARGET AND CONFIGURATIONSETTINGS SHOULD BE DETERMINED BASED ON SCRIPT ARGUMENTS */
-var target = "ci";
-var configurationSettings = "test";
-
 var dotNetBuild = Require<DotNetBuildScriptPackContext>();
-dotNetBuild.Run("ci", "test", () {
+
+dotNetBuild.Configure(() => {
 	"ci"
 		.Target("Continuous integration target")
 		.ContinueOnError(false)
@@ -42,3 +39,9 @@ dotNetBuild.Run("ci", "test", () {
 		.Configure()
 		.AddSetting("baseDir", @"G:\Steven\Werk\Private\DotNetBuild\DotNetBuild");
 });
+
+/* TARGET AND CONFIGURATIONSETTINGS SHOULD BE DETERMINED BASED ON SCRIPT ARGUMENTS */
+var target = "ci";
+var configurationSettings = "test";
+
+dotNetBuild.Run("ci", "test");

@@ -1,5 +1,4 @@
 ﻿using System;
-using DotNetBuild.Runner.Configuration;
 using DotNetBuild.Runner.Exceptions;
 using DotNetBuild.Runner.Infrastructure.Logging;
 using DotNetBuild.Runner.Infrastructure.TinyIoC;
@@ -9,18 +8,21 @@ namespace DotNetBuild.Runner.ScriptCs
 {
     public class DotNetBuildScriptPackContext : IScriptPackContext
     {
-        public int Run(String targetName, String configurationName, Action configure)
+        public void Configure(Action configuration)
+        {
+            configuration();
+        }
+
+        public int Run(String targetName, String configurationName)
         {
             var container = TinyIoCContainer.Current;
-            Container.Install(container);
-
             var logger = container.Resolve<ILogger>();
             logger.Write("DotNetBuild started");
 
             try
             {
                 var buildRunner = container.Resolve<IBuildRunner>();
-                buildRunner.Run(configure, targetName, configurationName);
+                buildRunner.Run(targetName, configurationName);
             }
             catch (DotNetBuildException exception)
             {

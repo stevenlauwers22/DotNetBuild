@@ -1,5 +1,4 @@
 ﻿using DotNetBuild.Core;
-using DotNetBuild.Core.Targets;
 
 namespace DotNetBuild.Build
 {
@@ -8,6 +7,9 @@ namespace DotNetBuild.Build
         public void Configure()
         {
             "ci".Target(new CI());
+
+            "test".Configure(new ConfigurationSettingsForTest());
+            "acceptance".Configure(new ConfigurationSettingsForAcceptance());
         }
     }
 }

@@ -19,7 +19,7 @@ namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
 
         protected override ConfigurationSettings CreateSubjectUnderTest()
         {
-            var configurationSettings = new ConfigurationSettingsTest();
+            var configurationSettings = new ConfigurationSettings();
             configurationSettings.Add(_key, _value);
 
             return configurationSettings;

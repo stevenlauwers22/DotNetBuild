@@ -1,6 +1,5 @@
 ﻿using System;
 using DotNetBuild.Core;
-using DotNetBuild.Core.Targets;
 using DotNetBuild.Runner.Exceptions;
 using DotNetBuild.Runner.Infrastructure.Reflection;
 
@@ -9,7 +8,7 @@ namespace DotNetBuild.Runner
     public interface IBuildRunner
     {
         void Run(String assemblyName, String targetName, String configurationName);
-        void Run(Action configure, String targetName, String configurationName);
+        void Run(String targetName, String configurationName);
     }
 
     public class BuildRunner 
@@ -60,13 +59,12 @@ namespace DotNetBuild.Runner
             if (configurator == null)
                 throw new UnableToResolveConfiguratorException(assemblyName);
 
-            Run(configurator.Configure, targetName, configurationName);
+            configurator.Configure();
+            Run(targetName, configurationName);
         }
 
-        public void Run(Action configure, String targetName, String configurationName)
+        public void Run(String targetName, String configurationName)
         {
-            configure();
-
             var target = _targetRegistry.Get(targetName);
             if (target == null)
                 throw new UnableToFindTargetException(targetName);

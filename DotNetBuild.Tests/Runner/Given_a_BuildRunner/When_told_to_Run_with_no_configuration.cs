@@ -1,6 +1,5 @@
 ﻿using System;
 using DotNetBuild.Core;
-using DotNetBuild.Core.Targets;
 using DotNetBuild.Runner;
 using DotNetBuild.Runner.Infrastructure.Reflection;
 using Moq;

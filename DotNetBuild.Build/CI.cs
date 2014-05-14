@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using DotNetBuild.Core;
-using DotNetBuild.Core.Targets;
 
 namespace DotNetBuild.Build
 {

@@ -17,7 +17,7 @@ namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
 
         protected override ConfigurationSettings CreateSubjectUnderTest()
         {
-            return new ConfigurationSettingsTest();
+            return new ConfigurationSettings();
         }
 
         protected override void Act()

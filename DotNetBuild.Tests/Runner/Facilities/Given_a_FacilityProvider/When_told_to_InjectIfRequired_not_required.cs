@@ -30,7 +30,7 @@ namespace DotNetBuild.Tests.Runner.Facilities.Given_a_FacilityProvider
         }
 
         [Fact]
-        public void Wraps_the_assembly()
+        public void Does_not_inject_the_facility()
         {
             _testFacilityAcceptor.Verify(fa => fa.Inject(_testFacility), Times.Never);
         }

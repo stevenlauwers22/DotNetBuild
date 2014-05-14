@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using DotNetBuild.Core;
 using DotNetBuild.Core.Facilities.State;
-using DotNetBuild.Core.Targets;
 using DotNetBuild.Tasks.NuGet;
 
 namespace DotNetBuild.Build.NuGet

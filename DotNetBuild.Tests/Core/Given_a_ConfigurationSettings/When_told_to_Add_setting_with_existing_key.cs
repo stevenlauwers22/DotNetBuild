@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using DotNetBuild.Core;
 using Xunit;
 
 namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
 {
     public class When_told_to_Add_setting_with_existing_key
-        : TestSpecification<ConfigurationSettingsTest>
+        : TestSpecification<ConfigurationSettings>
     {
         private String _key;
         private Object _value;
@@ -18,9 +19,9 @@ namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
             _valueNew = new Object();
         }
 
-        protected override ConfigurationSettingsTest CreateSubjectUnderTest()
+        protected override ConfigurationSettings CreateSubjectUnderTest()
         {
-            var sut = new ConfigurationSettingsTest();
+            var sut = new ConfigurationSettings();
             sut.Add(_key, _value);
 
             return sut;

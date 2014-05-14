@@ -4,7 +4,6 @@ using System.IO;
 using DotNetBuild.Core;
 using DotNetBuild.Core.Facilities.Logging;
 using DotNetBuild.Core.Facilities.State;
-using DotNetBuild.Core.Targets;
 using MSBuild.ExtensionPack.Framework;
 
 namespace DotNetBuild.Build.Versioning

@@ -7,18 +7,22 @@ using System.Collections.Generic;
 using DotNetBuild.Core;
 using DotNetBuild.Tasks;
 using DotNetBuild.Runner.ScriptCs;
-
-/* TARGET AND CONFIGURATIONSETTINGS SHOULD BE DETERMINED BASED ON SCRIPT ARGUMENTS */
-var target = "ci";
-var configurationSettings = "test";
+using ScriptCs.Contracts;
 
 var dotNetBuild = Require<DotNetBuildScriptPackContext>();
-dotNetBuild.Run(target, configurationSettings, () => {
+
+dotNetBuild.Configure(() => {
 	"ci".Target(new CI());
 
 	"test".Configure(new ConfigurationSettingsForTest());
 	"acceptance".Configure(new ConfigurationSettingsForAcceptance());
 });
+
+/* TARGET AND CONFIGURATIONSETTINGS SHOULD BE DETERMINED BASED ON SCRIPT ARGUMENTS */
+var target = "ci";
+var configurationSettings = "test";
+
+dotNetBuild.Run(target, configurationSettings);
 
 public class CI : ITarget
 {

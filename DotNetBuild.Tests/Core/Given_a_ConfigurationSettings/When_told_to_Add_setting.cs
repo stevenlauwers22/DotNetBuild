@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using DotNetBuild.Core;
 using Xunit;
 
 namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
 {
     public class When_told_to_Add_setting
-        : TestSpecification<ConfigurationSettingsTest>
+        : TestSpecification<ConfigurationSettings>
     {
         private String _key;
         private Object _value;
@@ -16,9 +17,9 @@ namespace DotNetBuild.Tests.Core.Given_a_ConfigurationSettings
             _value = new Object();
         }
 
-        protected override ConfigurationSettingsTest CreateSubjectUnderTest()
+        protected override ConfigurationSettings CreateSubjectUnderTest()
         {
-            return new ConfigurationSettingsTest();
+            return new ConfigurationSettings();
         }
 
         protected override void Act()

@@ -40,6 +40,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurationRegistry.cs" />
     <Compile Include="Configuration\Container.cs" />
     <Compile Include="Exceptions\UnableToFindConfigurationException.cs" />
     <Compile Include="Exceptions\UnableToFindTargetException.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="ConfiguratorResolver.cs" />
     <Compile Include="Infrastructure\Reflection\TypeActivator.cs" />
     <Compile Include="Infrastructure\TinyIoC\TinyIoC.cs" />
+    <Compile Include="TargetRegistry.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DotNetBuild.Core\DotNetBuild.Core.csproj">

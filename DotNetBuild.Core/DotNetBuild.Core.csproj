@@ -39,8 +39,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigurationRegistry.cs" />
     <Compile Include="ConfigurationSettings.cs" />
+    <Compile Include="IConfigurationRegistry.cs" />
     <Compile Include="Facilities\IFacility.cs" />
     <Compile Include="Facilities\IFacilityAcceptor.cs" />
     <Compile Include="Facilities\Logging\ILogger.cs" />
@@ -48,16 +48,19 @@
     <Compile Include="Facilities\State\IStateReader.cs" />
     <Compile Include="Facilities\State\IStateWriter.cs" />
     <Compile Include="IConfigurator.cs" />
-    <Compile Include="Targets\ITarget.cs" />
+    <Compile Include="ITarget.cs" />
     <Compile Include="Facilities\State\IWantToReadState.cs" />
     <Compile Include="Facilities\State\IWantToWriteState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Targets\TargetBuilder.cs" />
-    <Compile Include="Targets\TargetBuilderDecorator.cs" />
-    <Compile Include="Targets\TargetBuilderExtension.cs" />
-    <Compile Include="Targets\TargetDependencyBuilder.cs" />
-    <Compile Include="Targets\TargetRegistry.cs" />
+    <Compile Include="ITargetRegistry.cs" />
+    <Compile Include="ConfigurationBuilder.cs" />
+    <Compile Include="TargetBuilder.cs" />
+    <Compile Include="TargetBuilderDecorator.cs" />
+    <Compile Include="TargetBuilderExtension.cs" />
+    <Compile Include="ConfigurationBuilderExtension.cs" />
+    <Compile Include="TargetDependencyBuilder.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
