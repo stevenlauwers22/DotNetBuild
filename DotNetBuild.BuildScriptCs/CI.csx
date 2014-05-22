@@ -72,7 +72,7 @@ public class BuildRelease : ITarget
 
     public Boolean Execute(IConfigurationSettings configurationSettings)
     {
-        var baseDir = configurationSettings.Get<String>("baseDir");
+        const string baseDir = @"..\";
         var msBuildTask = new MsBuildTask
         {
             Project = Path.Combine(baseDir, "DotNetBuild.sln"),
@@ -88,9 +88,7 @@ public class ConfigurationSettingsForTest : ConfigurationSettings
 {
     public ConfigurationSettingsForTest()
     {
-        Add("baseDir", @"G:\Steven\Werk\Private\DotNetBuild\DotNetBuild");
-        Add("mySetting1", "value1ForTestEnvironment");
-        Add("mySetting2", "value2ForTestEnvironment");
+        Add("MyProperty", "ValueForTest");
     }
 }
 
@@ -98,8 +96,6 @@ public class ConfigurationSettingsForAcceptance : ConfigurationSettings
 {
     public ConfigurationSettingsForAcceptance()
     {
-        Add("baseDir", @"G:\Steven\Werk\Private\DotNetBuild\DotNetBuild");
-        Add("mySetting1", "value1ForAcceptanceEnvironment");
-        Add("mySetting2", "value2ForAcceptanceEnvironment");
+        Add("MyProperty", "ValueForAcceptance");
     }
 }

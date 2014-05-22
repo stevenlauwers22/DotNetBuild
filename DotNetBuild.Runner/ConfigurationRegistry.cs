@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using DotNetBuild.Core;
 
 namespace DotNetBuild.Runner
@@ -20,10 +21,10 @@ namespace DotNetBuild.Runner
 
         public IConfigurationSettings Get(String key)
         {
-            if (!_registrations.ContainsKey(key))
-                return null;
+            if (String.IsNullOrEmpty(key))
+                throw new ArgumentNullException("key");
 
-            var value = _registrations[key];
+            var value = _registrations.SingleOrDefault(registration => String.Equals(registration.Key, key, StringComparison.OrdinalIgnoreCase)).Value;
             return value;
         }
 

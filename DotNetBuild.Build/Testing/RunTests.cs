@@ -25,7 +25,7 @@ namespace DotNetBuild.Build.Testing
 
         public Boolean Execute(IConfigurationSettings configurationSettings)
         {
-            var baseDir = configurationSettings.Get<String>("baseDir");
+            const string baseDir = @"..\";
             var xunitTask = new XunitTask
             {
                 XunitExe = Path.Combine(baseDir, @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe"),

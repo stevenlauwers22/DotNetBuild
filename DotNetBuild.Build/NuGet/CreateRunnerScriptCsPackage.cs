@@ -26,7 +26,7 @@ namespace DotNetBuild.Build.NuGet
 
         public Boolean Execute(IConfigurationSettings configurationSettings)
         {
-            var baseDir = configurationSettings.Get<String>("baseDir");
+            const string baseDir = @"..\";
             var nugetPackTask = new Pack
             {
                 NuGetExe = Path.Combine(baseDir, @"packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe"),

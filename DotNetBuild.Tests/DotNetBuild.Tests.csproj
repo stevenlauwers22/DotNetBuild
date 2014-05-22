@@ -42,6 +42,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Runner\Facilities\State\Given_a_StateRegistry\When_told_to_Get_state_with_different_case.cs" />
     <Compile Include="Runner\Given_a_ConfigurationRegistry\StaticTests\When_having_multiple_ConfigurationRegistry_instances.cs" />
     <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Get_setting_with_unexisting_key_default_value.cs" />
     <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Add_setting_without_passing_in_a_value.cs" />
@@ -54,10 +55,12 @@
     <Compile Include="Runner\Given_a_ConfigurationRegistry\When_told_to_Add_configuration_settings_without_passing_in_a_value.cs" />
     <Compile Include="Runner\Given_a_ConfigurationRegistry\When_told_to_Add_configuration_settings_with_existing_key.cs" />
     <Compile Include="Runner\Given_a_ConfigurationRegistry\When_told_to_Get_configuration_settings.cs" />
+    <Compile Include="Runner\Given_a_ConfigurationRegistry\When_told_to_Get_configuration_settings_with_different_casing.cs" />
     <Compile Include="Runner\Given_a_ConfigurationRegistry\When_told_to_Get_configuration_settings_with_unexisting_key.cs" />
     <Compile Include="Runner\Given_a_BuildRunner\When_told_to_Run_with_no_configuration_that_exists.cs" />
     <Compile Include="Runner\Given_a_BuildRunner\When_told_to_Run_with_no_configuration.cs" />
     <Compile Include="Runner\Given_a_BuildRunner\When_told_to_Run_with_no_configurator.cs" />
+    <Compile Include="Runner\Given_a_TargetRegistry\When_told_to_Get_target_with_different_casing.cs" />
     <Compile Include="Runner\Infrastructure\Reflection\Given_a_AssemblyWrapper\When_told_to_Get_one_type_with_no_filter.cs" />
     <Compile Include="Runner\Given_a_TargetRegistry\StaticTests\When_having_multiple_TargetRegistry_instances.cs" />
     <Compile Include="Runner\Given_a_TargetRegistry\When_told_to_Add_target.cs" />

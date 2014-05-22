@@ -27,7 +27,7 @@ namespace DotNetBuild.Build.Versioning
 
         public Boolean Execute(IConfigurationSettings configurationSettings)
         {
-            var baseDir = configurationSettings.Get<String>("baseDir");
+            const string baseDir = @"..\";
             var assemblyInfoTask = new AssemblyInfo
             {
                 AssemblyInfoFiles = new[]

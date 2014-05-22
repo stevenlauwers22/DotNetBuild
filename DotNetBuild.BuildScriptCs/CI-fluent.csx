@@ -20,7 +20,7 @@ dotNetBuild.Configure(() => {
 		.Target("Build in release mode")
 		.ContinueOnError(false)
 		.Do(configurationSettings => {
-			var baseDir = configurationSettings.Get<String>("baseDir");
+            const string baseDir = @"..\";
 			var msBuildTask = new MsBuildTask
 			{
 				Project = Path.Combine(baseDir, "DotNetBuild.sln"),
@@ -33,11 +33,11 @@ dotNetBuild.Configure(() => {
 
 	"test"
 		.Configure()
-		.AddSetting("baseDir", @"G:\Steven\Werk\Private\DotNetBuild\DotNetBuild");
+        .AddSetting("MyProperty", @"ValueForTest");
 
 	"acceptance"
 		.Configure()
-		.AddSetting("baseDir", @"G:\Steven\Werk\Private\DotNetBuild\DotNetBuild");
+        .AddSetting("MyProperty", @"ValueForAcceptance");
 });
 
 /* TARGET AND CONFIGURATIONSETTINGS SHOULD BE DETERMINED BASED ON SCRIPT ARGUMENTS */

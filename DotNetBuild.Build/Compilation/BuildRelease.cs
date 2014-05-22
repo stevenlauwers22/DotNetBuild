@@ -25,10 +25,10 @@ namespace DotNetBuild.Build.Compilation
 
         public Boolean Execute(IConfigurationSettings configurationSettings)
         {
-            var baseDir = configurationSettings.Get<String>("baseDir");
+            const string baseDir = @"..\";
             var msBuildTask = new MsBuildTask
             {
-                Project = Path.Combine(baseDir, "DotNetBuild.sln"),
+                Project = Path.Combine(baseDir, @"DotNetBuild.sln"),
                 Target = "Rebuild",
                 Parameters = "Configuration=Release"
             };

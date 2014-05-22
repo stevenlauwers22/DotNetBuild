@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DotNetBuild.Runner.Facilities.State
 {
@@ -26,11 +27,14 @@ namespace DotNetBuild.Runner.Facilities.State
 
         public T Get<T>(String key)
         {
-            if (!_registrations.ContainsKey(key))
-                return default(T);
+            if (String.IsNullOrEmpty(key))
+                throw new ArgumentNullException("key");
 
-            var value = _registrations[key];
-            return (T)value;
+            var value = _registrations.SingleOrDefault(registration => String.Equals(registration.Key, key, StringComparison.OrdinalIgnoreCase)).Value;
+            if (value == null)
+                return default(T);
+            
+            return (T) value;
         }
 
         public void Add(String key, Object value)

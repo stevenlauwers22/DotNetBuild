@@ -6,7 +6,7 @@ namespace DotNetBuild.Build
     {
         public ConfigurationSettingsForTest()
         {
-            Add("baseDir", @"G:\Steven\Werk\Private\DotNetBuild\DotNetBuild");
+            Add("MyProperty", @"ValueForTest");
         }
     }
 }

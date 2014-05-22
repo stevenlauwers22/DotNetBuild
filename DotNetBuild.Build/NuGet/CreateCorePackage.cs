@@ -26,12 +26,12 @@ namespace DotNetBuild.Build.NuGet
 
         public Boolean Execute(IConfigurationSettings configurationSettings)
         {
-            var baseDir = configurationSettings.Get<String>("baseDir");
+            const string baseDir = @"..\";
             var nugetPackTask = new Pack
             {
                 NuGetExe = Path.Combine(baseDir, @"packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe"),
-                NuSpecFile = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild\DotNetBuild.nuspec"),
-                OutputDir = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild"),
+                NuSpecFile = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild\DotNetBuild.Core.nuspec"),
+                OutputDir = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild.Core"),
                 Version = _stateReader.Get<String>("VersionNumber")
             };
 

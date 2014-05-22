@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>DotNetBuild</id>
+    <id>DotNetBuild.Core</id>
     <version>$version$</version>
-    <title>DotNetBuild</title>
+    <title>DotNetBuild.Core</title>
     <authors>Steven Lauwers</authors>
     <owners>Steven Lauwers</owners>
     <description>Use .NET scripts to build your .NET code</description>
     <language>en-US</language>
     <projectUrl>https://github.com/stevenlauwers22/dotnetbuild</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <tags>DotNetBuild DotNet MSBuild</tags>
+    <tags>DotNetBuild.Core DotNetBuild DotNet MSBuild</tags>
   </metadata>
   <files>
     <file src="..\..\DotNetBuild.Core\bin\Release\DotNetBuild.Core.dll" target="lib\net45" />
