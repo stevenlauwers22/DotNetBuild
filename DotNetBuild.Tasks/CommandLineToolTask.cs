@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 
 namespace DotNetBuild.Tasks
 {
@@ -7,11 +8,15 @@ namespace DotNetBuild.Tasks
     {
         public Boolean Execute()
         {
+            var toolPath = GetToolPath();
+            if (!IsValidExe(toolPath))
+                throw new InvalidOperationException(string.Format("{0} could not be found.", toolPath));
+
             var process = new Process
             {
                 StartInfo =
                 {
-                    FileName = GetToolPath(),
+                    FileName = toolPath,
                     Arguments = GetToolArguments(),
                     UseShellExecute = false,
                     CreateNoWindow = false
@@ -36,5 +41,17 @@ namespace DotNetBuild.Tasks
 
         protected abstract string GetToolPath();
         protected abstract string GetToolArguments();
+
+        protected static Boolean IsValidExe(string exe)
+        {
+            if (string.IsNullOrEmpty(exe))
+                return false;
+
+            var exePathInfo = new FileInfo(exe);
+            if (!exePathInfo.Exists)
+                return false;
+
+            return true;
+        }
     }
 }

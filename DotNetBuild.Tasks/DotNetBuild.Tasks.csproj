@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="CommandLineToolTask.cs" />
+    <Compile Include="ExecTask.cs" />
     <Compile Include="MsBuildTask.cs" />
     <Compile Include="NuGet\Pack.cs" />
     <Compile Include="NuGet\Push.cs" />

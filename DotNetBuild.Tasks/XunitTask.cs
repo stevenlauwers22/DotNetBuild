@@ -1,5 +1,3 @@
-using System;
-using System.IO;
 using System.Text;
 
 namespace DotNetBuild.Tasks
@@ -12,10 +10,7 @@ namespace DotNetBuild.Tasks
 
         protected override string GetToolPath()
         {
-            if (IsValidExe(XunitExe))
-                return XunitExe;
-
-            throw new InvalidOperationException("XunitExe could not be found.");
+            return XunitExe;
         }
 
         protected override string GetToolArguments()
@@ -24,18 +19,6 @@ namespace DotNetBuild.Tasks
             parameters.Append(Assembly + " ");
 
             return parameters.ToString();
-        }
-
-        private static Boolean IsValidExe(string exe)
-        {
-            if (string.IsNullOrEmpty(exe))
-                return false;
-
-            var exePathInfo = new FileInfo(exe);
-            if (!exePathInfo.Exists)
-                return false;
-
-            return true;
         }
     }
 }

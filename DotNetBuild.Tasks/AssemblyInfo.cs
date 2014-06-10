@@ -5,7 +5,7 @@
 // This task is based on the AssemblyInfo task written by Neil Enns (http://code.msdn.microsoft.com/AssemblyInfoTaskvers). It is used here with permission.
 //-----------------------------------------------------------------------
 
-namespace MSBuild.ExtensionPack.Framework
+namespace DotNetBuild.Tasks
 {
     using System;
     using System.Globalization;
@@ -1606,7 +1606,7 @@ namespace MSBuild.ExtensionPack.Framework
     }
 }
 
-namespace MSBuild.ExtensionPack.Framework
+namespace DotNetBuild.Tasks
 {
     using System;
     using System.Collections.Generic;
@@ -1749,7 +1749,7 @@ namespace MSBuild.ExtensionPack.Framework
     }
 }
 
-namespace MSBuild.ExtensionPack.Framework
+namespace DotNetBuild.Tasks
 {
     using System;
     using System.Globalization;

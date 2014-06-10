@@ -47,17 +47,5 @@ namespace DotNetBuild.Tasks
 
             return parameters.ToString();
         }
-
-        private static Boolean IsValidExe(string exe)
-        {
-            if (string.IsNullOrEmpty(exe)) 
-                return false;
-
-            var exePathInfo = new FileInfo(exe);
-            if (!exePathInfo.Exists)
-                return false;
-
-            return true;
-        }
     }
 }
