@@ -32,7 +32,6 @@ namespace DotNetBuild.Core
         private static GenericTarget GenerateTarget(string name, string description)
         {
             // Generate a class at runtime, otherwise the circular dependency resolver can't distinguish different generic targets from another
-            
             var assemblyName = new AssemblyName(String.Format("DotNetBuild.Core.RuntimeTypes.{0}", Guid.NewGuid()));
             var assemblyBuilder = AppDomain.CurrentDomain.DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run);
             var moduleBuilder = assemblyBuilder.DefineDynamicModule(assemblyName.Name);
