@@ -44,8 +44,8 @@
     <Compile Include="Configuration\Container.cs" />
     <Compile Include="Exceptions\UnableToFindConfigurationException.cs" />
     <Compile Include="Exceptions\UnableToFindTargetException.cs" />
+    <Compile Include="Facilities\FacilityProvider.cs" />
     <Compile Include="Facilities\Logging\Logger.cs" />
-    <Compile Include="Facilities\Logging\LoggerFacilityProvider.cs" />
     <Compile Include="Facilities\State\StateReader.cs" />
     <Compile Include="Facilities\State\StateWriter.cs" />
     <Compile Include="Infrastructure\Logging\ILoggerFactory.cs" />
@@ -53,10 +53,7 @@
     <Compile Include="Infrastructure\Logging\Loggers\StandardLogger.cs" />
     <Compile Include="Infrastructure\Logging\ILogger.cs" />
     <Compile Include="Infrastructure\Logging\Loggers\TeamCityLogger.cs" />
-    <Compile Include="Facilities\FacilityProvider.cs" />
-    <Compile Include="Facilities\State\StateReaderFacilityProvider.cs" />
     <Compile Include="Facilities\State\StateRegistry.cs" />
-    <Compile Include="Facilities\State\StateWriterFacilityProvider.cs" />
     <Compile Include="Infrastructure\Reflection\AssemblyLoader.cs" />
     <Compile Include="Infrastructure\Reflection\TypeFilter.cs" />
     <Compile Include="Infrastructure\Reflection\AssemblyWrapper.cs" />

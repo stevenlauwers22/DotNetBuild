@@ -23,7 +23,7 @@ namespace DotNetBuild.Build.Compilation
             get { return null; }
         }
 
-        public Boolean Execute(IConfigurationSettings configurationSettings)
+        public Boolean Execute(TargetExecutionContext context)
         {
             const string baseDir = @"..\";
             var msBuildTask = new MsBuildTask

@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using DotNetBuild.Core;
+using DotNetBuild.Core.Facilities;
 using DotNetBuild.Runner.Exceptions;
-using DotNetBuild.Runner.Facilities;
 using DotNetBuild.Runner.Infrastructure.Logging;
 
 namespace DotNetBuild.Runner
@@ -18,7 +17,7 @@ namespace DotNetBuild.Runner
     {
         private readonly ITargetInspector _targetInspector;
         private readonly ILogger _logger;
-        private readonly IEnumerable<IFacilityProvider> _facilityProviders;
+        private readonly IFacilityProvider _facilityProvider;
 
         public TargetExecutor(ITargetInspector targetInspector, ILogger logger)
             : this(targetInspector, logger, null)
@@ -28,7 +27,7 @@ namespace DotNetBuild.Runner
         public TargetExecutor(
             ITargetInspector targetInspector, 
             ILogger logger,
-            IEnumerable<IFacilityProvider> facilityProviders)
+            IFacilityProvider facilityProvider)
         {
             if (targetInspector == null) 
                 throw new ArgumentNullException("targetInspector");
@@ -38,7 +37,7 @@ namespace DotNetBuild.Runner
 
             _targetInspector = targetInspector;
             _logger = logger;
-            _facilityProviders = facilityProviders;
+            _facilityProvider = facilityProvider;
         }
 
         public void Execute(ITarget target, IConfigurationSettings configurationSettings)
@@ -75,15 +74,8 @@ namespace DotNetBuild.Runner
                     }
                 }
 
-                if (_facilityProviders != null && _facilityProviders.Any())
-                {
-                    foreach (var facilityProvider in _facilityProviders)
-                    {
-                        facilityProvider.InjectIfRequired(target);
-                    }
-                }
-
-                var success = target.Execute(configurationSettings);
+                var context = new TargetExecutionContext(configurationSettings, _facilityProvider);
+                var success = target.Execute(context);
                 if (!success)
                     throw new UnableToExecuteTargetException(target.GetType());
 

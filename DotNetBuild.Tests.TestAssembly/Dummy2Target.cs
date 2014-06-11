@@ -22,7 +22,7 @@ namespace DotNetBuild.Tests.TestAssembly
             get { return null; }
         }
 
-        public Boolean Execute(IConfigurationSettings configurationSettings)
+        public Boolean Execute(TargetExecutionContext context)
         {
             Debug.WriteLine("{0} - executing", Description);
             return true;

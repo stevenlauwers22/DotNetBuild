@@ -9,6 +9,6 @@ namespace DotNetBuild.Core
         Boolean ContinueOnError { get; }
         IEnumerable<ITarget> DependsOn { get; }
 
-        Boolean Execute(IConfigurationSettings configurationSettings);
+        Boolean Execute(TargetExecutionContext context);
     }
 }

@@ -25,7 +25,7 @@ namespace DotNetBuild.Core
             return TargetBuilder.DependsOn(target);
         }
 
-        public ITargetBuilder Do(Func<IConfigurationSettings, Boolean> executeFunc)
+        public ITargetBuilder Do(Func<TargetExecutionContext, Boolean> executeFunc)
         {
             return TargetBuilder.Do(executeFunc);
         }

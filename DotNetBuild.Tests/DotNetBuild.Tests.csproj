@@ -75,18 +75,11 @@
     <Compile Include="Core\Given_a_TargetBuilder\When_setting_DependsOn_multiple_targets.cs" />
     <Compile Include="Core\Given_a_TargetBuilder\When_setting_DependsOn_target.cs" />
     <Compile Include="Core\Given_a_TargetBuilder\When_setting_ExecuteFunc.cs" />
-    <Compile Include="Runner\Facilities\Logging\Given_a_LoggerFacilityProvider\When_told_to_InjectIfRequired.cs" />
     <Compile Include="Runner\Facilities\Logging\Given_a_Logger\When_told_to_LogError.cs" />
     <Compile Include="Runner\Facilities\Logging\Given_a_Logger\When_told_to_LogInfo.cs" />
     <Compile Include="Runner\Facilities\State\Given_a_StateReader\When_told_to_Get_state.cs" />
     <Compile Include="Runner\Facilities\State\Given_a_StateWriter\When_told_to_Add_state.cs" />
     <Compile Include="Runner\Facilities\TestFacility.cs" />
-    <Compile Include="Runner\Facilities\TestFacilityAcceptor.cs" />
-    <Compile Include="Runner\Facilities\TestFacilityProvider.cs" />
-    <Compile Include="Runner\Facilities\Given_a_FacilityProvider\When_told_to_InjectIfRequired.cs" />
-    <Compile Include="Runner\Facilities\Given_a_FacilityProvider\When_told_to_InjectIfRequired_not_required.cs" />
-    <Compile Include="Runner\Facilities\State\Given_a_StateWriterFacilityProvider\When_told_to_InjectIfRequired.cs" />
-    <Compile Include="Runner\Facilities\State\Given_a_StateReaderFacilityProvider\When_told_to_InjectIfRequired.cs" />
     <Compile Include="Runner\Infrastructure\Reflection\Given_a_AssemblyLoader\When_told_to_Load_an_invalid_Assembly.cs" />
     <Compile Include="Runner\Infrastructure\Reflection\Given_a_AssemblyLoader\When_told_to_Load_a_Assembly.cs" />
     <Compile Include="Runner\Infrastructure\Reflection\Given_a_TypeFilter\When_told_to_Get_its_Filter.cs" />
@@ -109,7 +102,6 @@
     <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Get_setting_of_the_wrong_type.cs" />
     <Compile Include="Core\Given_a_ConfigurationSettings\When_told_to_Get_setting.cs" />
     <Compile Include="Runner\Facilities\State\Given_a_StateRegistry\StaticTests\When_having_multiple_StateRegistry_instances.cs" />
-    <Compile Include="Runner\Given_a_TargetExecutor\When_told_to_Execute_a_Target_with_facilities.cs" />
     <Compile Include="Runner\Given_a_TargetExecutor\When_told_to_Execute_a_Target_with_a_safe_exception.cs" />
     <Compile Include="Runner\Given_a_TargetExecutor\When_told_to_Execute_a_Target_with_a_safe_exception_and_continue_on_error.cs" />
     <Compile Include="Runner\Given_a_TargetInspector\When_told_to_CheckForCircularDependencies_on_a_none_circular_execution_path.cs" />

@@ -47,7 +47,7 @@ public class CI : ITarget
         }
     }
 
-    public Boolean Execute(IConfigurationSettings configurationSettings)
+    public Boolean Execute(TargetExecutionContext context)
     {
         return true;
     }
@@ -70,7 +70,7 @@ public class BuildRelease : ITarget
         get { return null; }
     }
 
-    public Boolean Execute(IConfigurationSettings configurationSettings)
+    public Boolean Execute(TargetExecutionContext context)
     {
         const string baseDir = @"..\";
         var msBuildTask = new MsBuildTask

@@ -4,11 +4,11 @@ using System.IO;
 using DotNetBuild.Core;
 using DotNetBuild.Core.Facilities.Logging;
 using DotNetBuild.Core.Facilities.State;
-using MSBuild.ExtensionPack.Framework;
+using DotNetBuild.Tasks;
 
 namespace DotNetBuild.Build.Versioning
 {
-    public class UpdateVersionNumber : ITarget, IWantToWriteState, IWantToLog
+    public class UpdateVersionNumber : ITarget
     {
         public String Description
         {
@@ -25,7 +25,7 @@ namespace DotNetBuild.Build.Versioning
             get { return null; }
         }
 
-        public Boolean Execute(IConfigurationSettings configurationSettings)
+        public Boolean Execute(TargetExecutionContext context)
         {
             const string baseDir = @"..\";
             var assemblyInfoTask = new AssemblyInfo
@@ -43,22 +43,10 @@ namespace DotNetBuild.Build.Versioning
             };
 
             var result = assemblyInfoTask.Execute();
-            _logger.LogInfo("Building version: " +assemblyInfoTask.MaxAssemblyVersion);
-            _stateWriter.Add("VersionNumber", assemblyInfoTask.MaxAssemblyVersion);
+            context.FacilityProvider.Get<ILogger>().LogInfo("Building version: " +assemblyInfoTask.MaxAssemblyVersion);
+            context.FacilityProvider.Get<IStateWriter>().Add("VersionNumber", assemblyInfoTask.MaxAssemblyVersion);
 
             return result;
-        }
-
-        private IStateWriter _stateWriter;
-        public void Inject(IStateWriter stateWriter)
-        {
-            _stateWriter = stateWriter;
-        }
-
-        private ILogger _logger;
-        public void Inject(ILogger logger)
-        {
-            _logger = logger;
         }
     }
 }

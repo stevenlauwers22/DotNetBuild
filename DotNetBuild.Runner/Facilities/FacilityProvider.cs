@@ -1,41 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using DotNetBuild.Core.Facilities;
-using DotNetBuild.Runner.Infrastructure.Logging;
 
 namespace DotNetBuild.Runner.Facilities
 {
-    public interface IFacilityProvider
+    public class FacilityProvider
+        : IFacilityProvider
     {
-        void InjectIfRequired(Object value);
-    }
+        private readonly IEnumerable<IFacility> _facilities;
 
-    public abstract class FacilityProvider<TFacilityAcceptor, TFacility> : IFacilityProvider
-        where TFacilityAcceptor : class, IFacilityAcceptor<TFacility>
-        where TFacility : class, IFacility
-    {
-        private readonly ILogger _logger;
-
-        protected FacilityProvider(ILogger logger)
+        public FacilityProvider(IEnumerable<IFacility> facilities)
         {
-            if (logger == null) 
-                throw new ArgumentNullException("logger");
+            if (facilities == null) 
+                throw new ArgumentNullException("facilities");
 
-            _logger = logger;
+            _facilities = facilities;
         }
 
-        public void InjectIfRequired(Object value)
+        public TFacility Get<TFacility>() where TFacility : IFacility
         {
-            var facilityAcceptor = value as TFacilityAcceptor;
-            if (facilityAcceptor == null)
-                return;
-
-            var facility = GetFacility();
-            var facilityLogMessage = String.Format("Injecting facility {0} into {1}", facility.GetType().FullName, value.GetType().FullName);
-            _logger.Write(facilityLogMessage);
-
-            facilityAcceptor.Inject(facility);
+            var facility = _facilities.OfType<TFacility>().SingleOrDefault();
+            return facility;
         }
-
-        protected abstract TFacility GetFacility();
     }
 }

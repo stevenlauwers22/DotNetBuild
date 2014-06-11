@@ -1,4 +1,5 @@
 ﻿using DotNetBuild.Core;
+using DotNetBuild.Core.Facilities;
 using DotNetBuild.Core.Facilities.Logging;
 using DotNetBuild.Core.Facilities.State;
 using DotNetBuild.Runner.Facilities;
@@ -36,15 +37,12 @@ namespace DotNetBuild.Runner.Configuration
             container.Register<IStateRegistry, StateRegistry>();
             container.Register<IStateReader, StateReader>();
             container.Register<IStateWriter, StateWriter>();
-            container.Register((c, p) => new LoggerFacilityProvider(c.Resolve<Infrastructure.Logging.ILogger>(), c.Resolve<ILogger>));
-            container.Register((c, p) => new StateReaderFacilityProvider(c.Resolve<Infrastructure.Logging.ILogger>(), c.Resolve<IStateReader>));
-            container.Register((c, p) => new StateWriterFacilityProvider(c.Resolve<Infrastructure.Logging.ILogger>(), c.Resolve<IStateWriter>));
-            container.RegisterMultiple<IFacilityProvider>(new []
+            container.Register<IFacilityProvider>((c, p) => new FacilityProvider(new IFacility[]
             {
-                typeof (LoggerFacilityProvider),
-                typeof (StateReaderFacilityProvider),
-                typeof (StateWriterFacilityProvider)
-            });
+                c.Resolve<ILogger>(),
+                c.Resolve<IStateReader>(),
+                c.Resolve<IStateWriter>()
+            }));
         }
     }
 }

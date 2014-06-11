@@ -10,7 +10,7 @@ namespace DotNetBuild.Core
     {
         ITargetBuilder ContinueOnError(Boolean continueOnError);
         ITargetDependencyBuilder DependsOn(String target);
-        ITargetBuilder Do(Func<IConfigurationSettings, Boolean> executeFunc);
+        ITargetBuilder Do(Func<TargetExecutionContext, Boolean> executeFunc);
     }
 
     public class TargetBuilder
@@ -69,7 +69,7 @@ namespace DotNetBuild.Core
             return new TargetDependencyBuilder(this);
         }
 
-        public ITargetBuilder Do(Func<IConfigurationSettings, Boolean> executeFunc)
+        public ITargetBuilder Do(Func<TargetExecutionContext, Boolean> executeFunc)
         {
             _target.ExecuteFunc = executeFunc;
             return this;
@@ -103,7 +103,7 @@ namespace DotNetBuild.Core
                 get { return _dependsOn.Select(t => t()).ToList(); }
             }
 
-            public Func<IConfigurationSettings, Boolean> ExecuteFunc
+            public Func<TargetExecutionContext, Boolean> ExecuteFunc
             {
                 get;
                 set;
@@ -114,12 +114,12 @@ namespace DotNetBuild.Core
                 _dependsOn.Add(target);
             }
 
-            public Boolean Execute(IConfigurationSettings configurationSettings)
+            public Boolean Execute(TargetExecutionContext context)
             {
                 if (ExecuteFunc == null)
                     return true;
 
-                return ExecuteFunc(configurationSettings);
+                return ExecuteFunc(context);
             }
         }
     }

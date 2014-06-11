@@ -51,7 +51,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetInspector
                 get { return new List<ITarget> { new Dummy2Target() }; }
             }
 
-            public Boolean Execute(IConfigurationSettings configurationSettings)
+            public Boolean Execute(TargetExecutionContext context)
             {
                 Debug.WriteLine("{0} - executing", Description);
                 return true;
@@ -75,7 +75,7 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetInspector
                 get { return null; }
             }
 
-            public Boolean Execute(IConfigurationSettings configurationSettings)
+            public Boolean Execute(TargetExecutionContext context)
             {
                 Debug.WriteLine("{0} - executing", Description);
                 return true;

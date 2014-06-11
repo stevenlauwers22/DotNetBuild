@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Text;
 
 namespace DotNetBuild.Tasks.NuGet
@@ -33,18 +32,6 @@ namespace DotNetBuild.Tasks.NuGet
                 parameters.Append("-Version " + Version + " ");
 
             return parameters.ToString();
-        }
-
-        private static Boolean IsValidExe(string exe)
-        {
-            if (string.IsNullOrEmpty(exe)) 
-                return false;
-
-            var exePathInfo = new FileInfo(exe);
-            if (!exePathInfo.Exists)
-                return false;
-
-            return true;
         }
     }
 }

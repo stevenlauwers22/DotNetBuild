@@ -19,7 +19,7 @@ dotNetBuild.Configure(() => {
 	"buildRelease"
 		.Target("Build in release mode")
 		.ContinueOnError(false)
-		.Do(configurationSettings => {
+		.Do(context => {
             const string baseDir = @"..\";
 			var msBuildTask = new MsBuildTask
 			{

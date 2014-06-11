@@ -24,11 +24,11 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetExecutor
             _exceptionToThrow = new InvalidOperationException();
             _dependentTarget = new Mock<ITarget>();
             _dependentTarget.Setup(t => t.ContinueOnError).Returns(false);
-            _dependentTarget.Setup(t => t.Execute(It.IsAny<IConfigurationSettings>())).Throws(_exceptionToThrow);
+            _dependentTarget.Setup(t => t.Execute(It.IsAny<TargetExecutionContext>())).Throws(_exceptionToThrow);
 
             _target = new Mock<ITarget>();
             _target.Setup(t => t.DependsOn).Returns(new List<ITarget> { _dependentTarget.Object });
-            _target.Setup(t => t.Execute(It.IsAny<IConfigurationSettings>())).Returns(true);
+            _target.Setup(t => t.Execute(It.IsAny<TargetExecutionContext>())).Returns(true);
 
             _targetInspector = new Mock<ITargetInspector>();
             _targetInspector.Setup(ti => ti.CheckForCircularDependencies(_target.Object)).Returns(new List<Type>());
@@ -49,13 +49,13 @@ namespace DotNetBuild.Tests.Runner.Given_a_TargetExecutor
         [Fact]
         public void Executes_the_dependent_Target()
         {
-            _dependentTarget.Verify(t => t.Execute(It.IsAny<IConfigurationSettings>()));
+            _dependentTarget.Verify(t => t.Execute(It.IsAny<TargetExecutionContext>()));
         }
 
         [Fact]
         public void Does_not_execute_the_Target()
         {
-            _target.Verify(t => t.Execute(It.IsAny<IConfigurationSettings>()), Times.Never);
+            _target.Verify(t => t.Execute(It.IsAny<TargetExecutionContext>()), Times.Never);
         }
 
         [Fact]

@@ -33,7 +33,7 @@ namespace DotNetBuild.Build
             }
         }
 
-        public Boolean Execute(IConfigurationSettings configurationSettings)
+        public Boolean Execute(TargetExecutionContext context)
         {
             return true;
         }
