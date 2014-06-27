@@ -55,7 +55,7 @@ public class CI : ITarget
 
 public class BuildRelease : ITarget
 {
-    public string Description
+    public String Description
     {
         get { return "Build in release mode"; }
     }
@@ -72,7 +72,7 @@ public class BuildRelease : ITarget
 
     public Boolean Execute(TargetExecutionContext context)
     {
-        const string baseDir = @"..\";
+        const String baseDir = @"..\";
         var msBuildTask = new MsBuildTask
         {
             Project = Path.Combine(baseDir, "DotNetBuild.sln"),

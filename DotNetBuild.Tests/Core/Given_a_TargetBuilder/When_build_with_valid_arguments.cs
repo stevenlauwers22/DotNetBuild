@@ -1,4 +1,5 @@
-﻿using DotNetBuild.Core;
+﻿using System;
+using DotNetBuild.Core;
 using Moq;
 using Xunit;
 
@@ -7,8 +8,8 @@ namespace DotNetBuild.Tests.Core.Given_a_TargetBuilder
     public class When_build_with_valid_arguments : TestSpecification<TargetBuilder>
     {
         private Mock<ITargetRegistry> _targetRegistry;
-        private string _name;
-        private string _description;
+        private String _name;
+        private String _description;
         private ITarget _result;
 
         protected override void Arrange()

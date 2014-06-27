@@ -3,9 +3,9 @@ using DotNetBuild.Core;
 using DotNetBuild.Runner;
 using Xunit;
 
-namespace DotNetBuild.Tests.Core.Given_a_TargetBuilder
+namespace DotNetBuild.Tests.Core.Given_a_ConfigurationBuilder
 {
-    public class When_build_with_no_name : TestSpecification<TargetBuilder>
+    public class When_build_with_no_name : TestSpecification<ConfigurationBuilder>
     {
         private String _name;
         private ArgumentNullException _exception;
@@ -15,14 +15,14 @@ namespace DotNetBuild.Tests.Core.Given_a_TargetBuilder
             _name = null;
         }
 
-        protected override TargetBuilder CreateSubjectUnderTest()
+        protected override ConfigurationBuilder CreateSubjectUnderTest()
         {
             return null;
         }
 
         protected override void Act()
         {
-            _exception = TestHelpers.CatchException<ArgumentNullException>(() => new TargetBuilder(new TargetRegistry(), _name, _name));
+            _exception = TestHelpers.CatchException<ArgumentNullException>(() => new ConfigurationBuilder(new ConfigurationRegistry(), _name));
         }
 
         [Fact]

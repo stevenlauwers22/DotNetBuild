@@ -25,7 +25,7 @@ namespace DotNetBuild.Build.Compilation
 
         public Boolean Execute(TargetExecutionContext context)
         {
-            const string baseDir = @"..\";
+            const String baseDir = @"..\";
             var msBuildTask = new MsBuildTask
             {
                 Project = Path.Combine(baseDir, @"DotNetBuild.sln"),

@@ -10,7 +10,7 @@ namespace DotNetBuild.Tasks
         {
             var toolPath = GetToolPath();
             if (!IsValidExe(toolPath))
-                throw new InvalidOperationException(string.Format("{0} could not be found.", toolPath));
+                throw new InvalidOperationException(String.Format("{0} could not be found.", toolPath));
 
             var process = new Process
             {
@@ -24,7 +24,7 @@ namespace DotNetBuild.Tasks
             };
 
             var environmentVariables = Environment.GetEnvironmentVariables();
-            foreach (string environmentVariableKey in environmentVariables.Keys)
+            foreach (String environmentVariableKey in environmentVariables.Keys)
             {
                 if (process.StartInfo.EnvironmentVariables.ContainsKey(environmentVariableKey))
                     continue;
@@ -39,12 +39,12 @@ namespace DotNetBuild.Tasks
             return exitCode == 0;
         }
 
-        protected abstract string GetToolPath();
-        protected abstract string GetToolArguments();
+        protected abstract String GetToolPath();
+        protected abstract String GetToolArguments();
 
-        protected static Boolean IsValidExe(string exe)
+        protected static Boolean IsValidExe(String exe)
         {
-            if (string.IsNullOrEmpty(exe))
+            if (String.IsNullOrEmpty(exe))
                 return false;
 
             var exePathInfo = new FileInfo(exe);

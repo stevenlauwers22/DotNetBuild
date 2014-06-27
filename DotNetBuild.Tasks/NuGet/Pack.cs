@@ -6,12 +6,12 @@ namespace DotNetBuild.Tasks.NuGet
     public class Pack
         : CommandLineToolTask
     {
-        public string NuGetExe { get; set; }
-        public string NuSpecFile { get; set; }
-        public string OutputDir { get; set; }
-        public string Version { get; set; }
+        public String NuGetExe { get; set; }
+        public String NuSpecFile { get; set; }
+        public String OutputDir { get; set; }
+        public String Version { get; set; }
 
-        protected override string GetToolPath()
+        protected override String GetToolPath()
         {
             if (IsValidExe(NuGetExe))
                 return NuGetExe;
@@ -19,16 +19,16 @@ namespace DotNetBuild.Tasks.NuGet
             throw new InvalidOperationException("NuGetExe could not be found.");
         }
 
-        protected override string GetToolArguments()
+        protected override String GetToolArguments()
         {
             var parameters = new StringBuilder();
             parameters.Append("pack ");
             parameters.Append(NuSpecFile + " ");
 
-            if (!string.IsNullOrEmpty(OutputDir))
+            if (!String.IsNullOrEmpty(OutputDir))
                 parameters.Append("-OutputDir " + OutputDir + " ");
 
-            if (!string.IsNullOrEmpty(Version))
+            if (!String.IsNullOrEmpty(Version))
                 parameters.Append("-Version " + Version + " ");
 
             return parameters.ToString();

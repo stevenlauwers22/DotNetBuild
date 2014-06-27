@@ -8,17 +8,17 @@ namespace DotNetBuild.Tasks
     public class MsBuildTask
         : CommandLineToolTask
     {
-        public string MsBuildExe { get; set; }
-        public string Project { get; set; }
-        public string Target { get; set; }
-        public string Parameters { get; set; }
+        public String MsBuildExe { get; set; }
+        public String Project { get; set; }
+        public String Target { get; set; }
+        public String Parameters { get; set; }
 
-        protected override string GetToolPath()
+        protected override String GetToolPath()
         {
             if (IsValidExe(MsBuildExe))
                 return MsBuildExe;
 
-            var alternativeMsBuildExes = new List<string>
+            var alternativeMsBuildExes = new List<String>
             {
                 Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), @"Microsoft.Net\Framework\v4.0.30319\MSBuild.exe"),
                 Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), @"Microsoft.Net\Framework\v3.5\MSBuild.exe"),
@@ -34,15 +34,15 @@ namespace DotNetBuild.Tasks
             throw new InvalidOperationException("MsBuildExe could not be found.");
         }
 
-        protected override string GetToolArguments()
+        protected override String GetToolArguments()
         {
             var parameters = new StringBuilder();
             parameters.Append(Project + " ");
 
-            if (!string.IsNullOrEmpty(Target))
+            if (!String.IsNullOrEmpty(Target))
                 parameters.Append("/t:" + Target + " ");
 
-            if (!string.IsNullOrEmpty(Parameters))
+            if (!String.IsNullOrEmpty(Parameters))
                 parameters.Append("/p:" + Parameters + " ");
 
             return parameters.ToString();

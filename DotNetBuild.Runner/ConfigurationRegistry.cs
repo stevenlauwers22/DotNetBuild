@@ -11,7 +11,7 @@ namespace DotNetBuild.Runner
 
         public ConfigurationRegistry()
         {
-            _registrations = new Dictionary<string, IConfigurationSettings>();
+            _registrations = new Dictionary<String, IConfigurationSettings>();
         }
 
         public IEnumerable<KeyValuePair<String, IConfigurationSettings>> Registrations

@@ -29,7 +29,7 @@ namespace DotNetBuild.Core
             _targetRegistry.Add(name, _target);
         }
 
-        private static GenericTarget GenerateTarget(string name, string description)
+        private static GenericTarget GenerateTarget(String name, String description)
         {
             // Generate a class at runtime, otherwise the circular dependency resolver can't distinguish different generic targets from another
             var assemblyName = new AssemblyName(String.Format("DotNetBuild.Core.RuntimeTypes.{0}", Guid.NewGuid()));
@@ -37,7 +37,7 @@ namespace DotNetBuild.Core
             var moduleBuilder = assemblyBuilder.DefineDynamicModule(assemblyName.Name);
             var baseClass = typeof(GenericTarget);
             var typeBuilder = moduleBuilder.DefineType(String.Format("{0}.{1}", assemblyName, name), TypeAttributes.Public, baseClass);
-            var constructorArguments = new[] { typeof(string) };
+            var constructorArguments = new[] { typeof(String) };
             var constructorBuilder = typeBuilder.DefineConstructor(MethodAttributes.Public, CallingConventions.Standard, constructorArguments);
             var constructorGenerator = constructorBuilder.GetILGenerator();
 

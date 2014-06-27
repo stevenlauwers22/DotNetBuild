@@ -20,7 +20,7 @@ dotNetBuild.Configure(() => {
 		.Target("Build in release mode")
 		.ContinueOnError(false)
 		.Do(context => {
-            const string baseDir = @"..\";
+            const String baseDir = @"..\";
 			var msBuildTask = new MsBuildTask
 			{
 				Project = Path.Combine(baseDir, "DotNetBuild.sln"),

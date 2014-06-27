@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 
 namespace DotNetBuild.Tasks
@@ -5,15 +6,15 @@ namespace DotNetBuild.Tasks
     public class XunitTask
         : CommandLineToolTask
     {
-        public string XunitExe { get; set; }
-        public string Assembly { get; set; }
+        public String XunitExe { get; set; }
+        public String Assembly { get; set; }
 
-        protected override string GetToolPath()
+        protected override String GetToolPath()
         {
             return XunitExe;
         }
 
-        protected override string GetToolArguments()
+        protected override String GetToolArguments()
         {
             var parameters = new StringBuilder();
             parameters.Append(Assembly + " ");

@@ -1,17 +1,19 @@
-﻿namespace DotNetBuild.Tasks
+﻿using System;
+
+namespace DotNetBuild.Tasks
 {
     public class ExecTask
         : CommandLineToolTask
     {
-        public string ToolExe { get; set; }
-        public string ToolArguments { get; set; }
+        public String ToolExe { get; set; }
+        public String ToolArguments { get; set; }
 
-        protected override string GetToolPath()
+        protected override String GetToolPath()
         {
             return ToolExe;
         }
 
-        protected override string GetToolArguments()
+        protected override String GetToolArguments()
         {
             return ToolArguments;
         }

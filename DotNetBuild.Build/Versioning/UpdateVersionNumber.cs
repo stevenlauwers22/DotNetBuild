@@ -27,7 +27,7 @@ namespace DotNetBuild.Build.Versioning
 
         public Boolean Execute(TargetExecutionContext context)
         {
-            const string baseDir = @"..\";
+            const String baseDir = @"..\";
             var assemblyInfoTask = new AssemblyInfo
             {
                 AssemblyInfoFiles = new[]
