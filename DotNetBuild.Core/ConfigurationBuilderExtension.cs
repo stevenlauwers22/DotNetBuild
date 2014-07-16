@@ -25,11 +25,11 @@ namespace DotNetBuild.Core
         private static IConfigurationRegistry GetConfigurationRegistry()
         {
             if (_resolveConfigurationRegistry == null)
-                throw new InvalidOperationException("DotNotBuild hasn't been configured yet");
+                throw new InvalidOperationException("DotNetBuild hasn't been configured yet");
 
             var configurationRegistry = _resolveConfigurationRegistry();
             if (configurationRegistry == null)
-                throw new InvalidOperationException("DotNotBuild hasn't been configured yet");
+                throw new InvalidOperationException("DotNetBuild hasn't been configured yet");
 
             return configurationRegistry;
         }

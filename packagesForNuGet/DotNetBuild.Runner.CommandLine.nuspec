@@ -6,17 +6,17 @@
     <title>DotNetBuild.Runner.CommandLine</title>
     <authors>Steven Lauwers</authors>
     <owners>Steven Lauwers</owners>
-    <description>Commandline runner for DotNetBuild scripts</description>
+    <description>Commandline runner support for DotNetBuild scripts</description>
     <language>en-US</language>
     <projectUrl>https://github.com/stevenlauwers22/dotnetbuild</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>DotNetBuild.Runner.CommandLine DotNetBuild.Runner DotNetBuild DotNet MSBuild</tags>
 	<dependencies>
       <dependency id="DotNetBuild.Core" version="$version$" />
+      <dependency id="DotNetBuild.Runner" version="$version$" />
 	</dependencies>
   </metadata>
   <files>
-    <file src="..\..\DotNetBuild.Runner\bin\Release\DotNetBuild.Runner.dll" target="tools\net45" />
-    <file src="..\..\DotNetBuild.Runner.CommandLine\bin\Release\DotNetBuild.Runner.CommandLine.exe" target="tools\net45" />
+    <file src="..\DotNetBuild.Runner.CommandLine\bin\Release\DotNetBuild.Runner.CommandLine.exe" target="tools\net45" />
   </files>
 </package>

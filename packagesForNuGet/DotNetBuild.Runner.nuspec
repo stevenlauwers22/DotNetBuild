@@ -1,22 +1,21 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>DotNetBuild.Runner.ScriptCs</id>
+    <id>DotNetBuild.Runner</id>
     <version>$version$</version>
-    <title>DotNetBuild.Runner.ScriptCs</title>
+    <title>DotNetBuild.Runner</title>
     <authors>Steven Lauwers</authors>
     <owners>Steven Lauwers</owners>
-    <description>ScriptCs runner for DotNetBuild scripts</description>
+    <description>Runner support for DotNetBuild scripts</description>
     <language>en-US</language>
     <projectUrl>https://github.com/stevenlauwers22/dotnetbuild</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <tags>DotNetBuild.Runner.ScriptCs DotNetBuild.Runner DotNetBuild DotNet MSBuild</tags>
+    <tags>DotNetBuild.Runner DotNetBuild DotNet MSBuild</tags>
     <dependencies>
       <dependency id="DotNetBuild.Core" version="$version$" />
     </dependencies>
   </metadata>
   <files>
-    <file src="..\..\DotNetBuild.Runner\bin\Release\DotNetBuild.Runner.dll" target="lib\net45" />
-    <file src="..\..\DotNetBuild.Runner.ScriptCs\bin\Release\DotNetBuild.Runner.ScriptCs.dll" target="lib\net45" />
+    <file src="..\DotNetBuild.Runner\bin\Release\DotNetBuild.Runner.dll" target="lib\net45" />
   </files>
 </package>

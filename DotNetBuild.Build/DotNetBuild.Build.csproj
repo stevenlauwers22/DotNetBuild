@@ -40,6 +40,7 @@
     <Compile Include="ConfigurationSettingsForAcceptance.cs" />
     <Compile Include="ConfigurationSettingsForTest.cs" />
     <Compile Include="Configurator.cs" />
+    <Compile Include="NuGet\CreateRunnerPackage.cs" />
     <Compile Include="NuGet\CreateRunnerScriptCsPackage.cs" />
     <Compile Include="NuGet\CreateRunnerCommandLinePackage.cs" />
     <Compile Include="NuGet\CreateTasksPackage.cs" />

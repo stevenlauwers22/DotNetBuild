@@ -28,6 +28,9 @@ namespace DotNetBuild.Build.Versioning
         public Boolean Execute(TargetExecutionContext context)
         {
             const String baseDir = @"..\";
+            const String assemblyMajorVersion = "1";
+            const String assemblyMinorVersion = "0";
+            const String assemblyBuildNumber = "0";
             var assemblyInfoTask = new AssemblyInfo
             {
                 AssemblyInfoFiles = new[]
@@ -36,15 +39,24 @@ namespace DotNetBuild.Build.Versioning
                     Path.Combine(baseDir, @"DotNetBuild.Runner\Properties\AssemblyInfo.cs"),
                     Path.Combine(baseDir, @"DotNetBuild.Runner.CommandLine\Properties\AssemblyInfo.cs")
                 },
-                AssemblyBuildNumberType="AutoIncrement",
-                AssemblyBuildNumberFormat="0",
-                AssemblyFileBuildNumberType="AutoIncrement",
-                AssemblyFileBuildNumberFormat="0"
+                AssemblyInformationalVersion = String.Format("{0}.{1}.{2}-alpha", assemblyMajorVersion, assemblyMinorVersion, assemblyBuildNumber),
+                UpdateAssemblyInformationalVersion = true,
+                AssemblyMajorVersion = assemblyMajorVersion,
+                AssemblyMinorVersion = assemblyMinorVersion,
+                AssemblyBuildNumber = assemblyBuildNumber,
+                AssemblyRevisionType = "AutoIncrement",
+                AssemblyRevisionFormat = "0",
+                AssemblyFileMajorVersion = assemblyMajorVersion,
+                AssemblyFileMinorVersion = assemblyMinorVersion,
+                AssemblyFileBuildNumber = assemblyBuildNumber,
+                AssemblyFileRevisionType = "AutoIncrement",
+                AssemblyFileRevisionFormat = "0",
             };
 
             var result = assemblyInfoTask.Execute();
-            context.FacilityProvider.Get<ILogger>().LogInfo("Building version: " +assemblyInfoTask.MaxAssemblyVersion);
-            context.FacilityProvider.Get<IStateWriter>().Add("VersionNumber", assemblyInfoTask.MaxAssemblyVersion);
+            context.FacilityProvider.Get<ILogger>().LogInfo("Building assembly version: " + assemblyInfoTask.MaxAssemblyVersion);
+            context.FacilityProvider.Get<ILogger>().LogInfo("Building assembly informational version: " + assemblyInfoTask.AssemblyInformationalVersion);
+            context.FacilityProvider.Get<IStateWriter>().Add("VersionNumber", assemblyInfoTask.AssemblyInformationalVersion);
 
             return result;
         }

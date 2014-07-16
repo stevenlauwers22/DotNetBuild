@@ -30,8 +30,8 @@ namespace DotNetBuild.Build.NuGet
             var nugetPackTask = new Pack
             {
                 NuGetExe = Path.Combine(baseDir, @"packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe"),
-                NuSpecFile = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild.Runner.ScriptCs\DotNetBuild.Runner.ScriptCs.nuspec"),
-                OutputDir = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild.Runner.ScriptCs"),
+                NuSpecFile = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild.Runner.ScriptCs.nuspec"),
+                OutputDir = Path.Combine(baseDir, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
             };
 

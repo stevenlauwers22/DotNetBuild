@@ -7,11 +7,11 @@ using DotNetBuild.Tasks.NuGet;
 
 namespace DotNetBuild.Build.NuGet
 {
-    public class CreateRunnerCommandLinePackage : ITarget
+    public class CreateRunnerPackage : ITarget
     {
         public String Description
         {
-            get { return "Create CommandLine Runner NuGet package"; }
+            get { return "Create Runner NuGet package"; }
         }
 
         public Boolean ContinueOnError
@@ -30,7 +30,7 @@ namespace DotNetBuild.Build.NuGet
             var nugetPackTask = new Pack
             {
                 NuGetExe = Path.Combine(baseDir, @"packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe"),
-                NuSpecFile = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild.Runner.CommandLine.nuspec"),
+                NuSpecFile = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild.Runner.nuspec"),
                 OutputDir = Path.Combine(baseDir, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
             };

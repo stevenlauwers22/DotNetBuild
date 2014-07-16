@@ -34,3 +34,5 @@
 /DotNetBuild.Runner.ScriptCs/DotNetBuild.Runner.ScriptCs.csproj.user
 /DotNetBuild.BuildScriptCs/DotNetBuild.BuildScriptCs.cshell
 /DotNetBuild.BuildScriptCs/DotNetBuild.BuildScriptCs.xml
+
+/DotNetBuild.Core/DotNetBuild.Core.csproj.user

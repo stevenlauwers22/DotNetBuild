@@ -4,7 +4,6 @@ namespace DotNetBuild.Core
 {
     public static class TargetBuilderExtension
     {
-
         public static ITargetBuilder Target(this String name)
         {
             var description = name;
@@ -32,11 +31,11 @@ namespace DotNetBuild.Core
         private static ITargetRegistry GetTargetRegistry()
         {
             if (_resolveTargetRegistry == null)
-                throw new InvalidOperationException("DotNotBuild hasn't been configured yet");
+                throw new InvalidOperationException("DotNetBuild hasn't been configured yet");
 
             var targetRegistry = _resolveTargetRegistry();
             if (targetRegistry == null)
-                throw new InvalidOperationException("DotNotBuild hasn't been configured yet");
+                throw new InvalidOperationException("DotNetBuild hasn't been configured yet");
 
             return targetRegistry;
         }

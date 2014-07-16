@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>DotNetBuild.Core</id>
+    <id>DotNetBuild.Tasks</id>
     <version>$version$</version>
-    <title>DotNetBuild.Core</title>
+    <title>DotNetBuild.Tasks</title>
     <authors>Steven Lauwers</authors>
     <owners>Steven Lauwers</owners>
-    <description>Use .NET scripts to build your .NET code</description>
+    <description>Common tasks for DotNetBuild scripts</description>
     <language>en-US</language>
     <projectUrl>https://github.com/stevenlauwers22/dotnetbuild</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <tags>DotNetBuild.Core DotNetBuild DotNet MSBuild</tags>
+    <tags>DotNetBuild.Tasks DotNetBuild DotNet MSBuild</tags>
   </metadata>
   <files>
-    <file src="..\..\DotNetBuild.Core\bin\Release\DotNetBuild.Core.dll" target="lib\net45" />
+    <file src="..\DotNetBuild.Tasks\bin\Release\DotNetBuild.Tasks.dll" target="lib\net45" />
   </files>
 </package>

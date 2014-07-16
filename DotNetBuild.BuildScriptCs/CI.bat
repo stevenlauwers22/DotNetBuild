@@ -7,5 +7,5 @@ copy ..\DotNetBuild.Runner.ScriptCs\bin\Debug\DotNetBuild.Runner.ScriptCs.pdb .\
 copy ..\DotNetBuild.Tasks\bin\Debug\DotNetBuild.Tasks.dll .\bin\DotNetBuild.Tasks.dll /y
 copy ..\DotNetBuild.Tasks\bin\Debug\DotNetBuild.Tasks.pdb .\bin\DotNetBuild.Tasks.pdb /y
 
-scriptcs CI.csx
+scriptcs CI.csx -- ci test
 pause

@@ -3,11 +3,12 @@
 #r "DotNetBuild.Runner.dll"
 #r "DotNetBuild.Runner.ScriptCs.dll"
 
-using System.Collections.Generic;
 using DotNetBuild.Core;
+using DotNetBuild.Core.Facilities.Logging;
+using DotNetBuild.Core.Facilities.State;
 using DotNetBuild.Tasks;
+using DotNetBuild.Tasks.NuGet;
 using DotNetBuild.Runner.ScriptCs;
-using ScriptCs.Contracts;
 
 var dotNetBuild = Require<DotNetBuildScriptPackContext>();
 
@@ -18,11 +19,9 @@ dotNetBuild.Configure(() => {
 	"acceptance".Configure(new ConfigurationSettingsForAcceptance());
 });
 
-/* TARGET AND CONFIGURATIONSETTINGS SHOULD BE DETERMINED BASED ON SCRIPT ARGUMENTS */
-var target = "ci";
-var configurationSettings = "test";
-
-dotNetBuild.Run(target, configurationSettings);
+var target = Env.ScriptArgs[0];
+var configuration = Env.ScriptArgs[1];
+dotNetBuild.Run(target, configuration);
 
 public class CI : ITarget
 {
