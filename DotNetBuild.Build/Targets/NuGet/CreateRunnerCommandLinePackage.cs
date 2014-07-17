@@ -5,7 +5,7 @@ using DotNetBuild.Core;
 using DotNetBuild.Core.Facilities.State;
 using DotNetBuild.Tasks.NuGet;
 
-namespace DotNetBuild.Build.NuGet
+namespace DotNetBuild.Build.Targets.NuGet
 {
     public class CreateRunnerCommandLinePackage : ITarget
     {

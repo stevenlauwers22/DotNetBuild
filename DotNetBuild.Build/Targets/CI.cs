@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using DotNetBuild.Build.Targets.Compilation;
+using DotNetBuild.Build.Targets.NuGet;
+using DotNetBuild.Build.Targets.Testing;
+using DotNetBuild.Build.Targets.Versioning;
 using DotNetBuild.Core;
 
-namespace DotNetBuild.Build
+namespace DotNetBuild.Build.Targets
 {
     public class CI : ITarget
     {
@@ -22,14 +26,14 @@ namespace DotNetBuild.Build
             {
                 return new List<ITarget>
                 {
-                    new Versioning.UpdateVersionNumber(),
-                    new Compilation.BuildRelease(),
-                    new Testing.RunTests(),
-                    new NuGet.CreateCorePackage(),
-                    new NuGet.CreateRunnerPackage(),
-                    new NuGet.CreateRunnerCommandLinePackage(),
-                    new NuGet.CreateRunnerScriptCsPackage(),
-                    new NuGet.CreateTasksPackage()
+                    new UpdateVersionNumber(),
+                    new BuildRelease(),
+                    new RunTests(),
+                    new CreateCorePackage(),
+                    new CreateRunnerPackage(),
+                    new CreateRunnerCommandLinePackage(),
+                    new CreateRunnerScriptCsPackage(),
+                    new CreateTasksPackage()
                 };
             }
         }

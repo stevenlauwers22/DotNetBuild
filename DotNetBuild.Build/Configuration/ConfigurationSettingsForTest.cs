@@ -1,6 +1,6 @@
 ﻿using DotNetBuild.Core;
 
-namespace DotNetBuild.Build
+namespace DotNetBuild.Build.Configuration
 {
     public class ConfigurationSettingsForTest : ConfigurationSettings
     {

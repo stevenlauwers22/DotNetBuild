@@ -1,4 +1,6 @@
-﻿using DotNetBuild.Core;
+﻿using DotNetBuild.Build.Configuration;
+using DotNetBuild.Build.Targets;
+using DotNetBuild.Core;
 
 namespace DotNetBuild.Build
 {

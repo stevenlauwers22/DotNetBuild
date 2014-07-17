@@ -6,7 +6,7 @@ using DotNetBuild.Core.Facilities.Logging;
 using DotNetBuild.Core.Facilities.State;
 using DotNetBuild.Tasks;
 
-namespace DotNetBuild.Build.Versioning
+namespace DotNetBuild.Build.Targets.Versioning
 {
     public class UpdateVersionNumber : ITarget
     {

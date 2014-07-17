@@ -4,13 +4,13 @@ using System.IO;
 using DotNetBuild.Core;
 using DotNetBuild.Tasks;
 
-namespace DotNetBuild.Build.Testing
+namespace DotNetBuild.Build.Targets.Compilation
 {
-    public class RunTests : ITarget
+    public class BuildRelease : ITarget
     {
         public String Description
         {
-            get { return "Run tests"; }
+            get { return "Build in release mode"; }
         }
 
         public Boolean ContinueOnError
@@ -26,13 +26,14 @@ namespace DotNetBuild.Build.Testing
         public Boolean Execute(TargetExecutionContext context)
         {
             const String baseDir = @"..\";
-            var xunitTask = new XunitTask
+            var msBuildTask = new MsBuildTask
             {
-                XunitExe = Path.Combine(baseDir, @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe"),
-                Assembly = Path.Combine(baseDir, @"DotNetBuild.Tests\bin\Release\DotNetBuild.Tests.dll")
+                Project = Path.Combine(baseDir, @"DotNetBuild.sln"),
+                Target = "Rebuild",
+                Parameters = "Configuration=Release"
             };
 
-            return xunitTask.Execute();
+            return msBuildTask.Execute();
         }
     }
 }
