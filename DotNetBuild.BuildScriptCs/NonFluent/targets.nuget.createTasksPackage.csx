@@ -1,3 +1,6 @@
+using DotNetBuild.Core.Facilities.State;
+using DotNetBuild.Tasks.NuGet;
+
 public class CreateTasksPackage : ITarget
 {
     public String Description

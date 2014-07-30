@@ -1,25 +1,13 @@
-#r "DotNetBuild.Core.dll"
-#r "DotNetBuild.Tasks.dll"
-#r "DotNetBuild.Runner.dll"
-#r "DotNetBuild.Runner.ScriptCs.dll"
-
 #load configuration.csx
 #load targets.ci.csx
-#load tasks.compilation.buildRelease.csx
-#load tasks.nuget.createCorePackage.csx
-#load tasks.nuget.createRunnerCommandLinePackage.csx
-#load tasks.nuget.createRunnerPackage.csx
-#load tasks.nuget.createRunnerScriptCsPackage.csx
-#load tasks.nuget.createTasksPackage.csx
-#load tasks.testing.runTests.csx
-#load tasks.versioning.updateVersionNumber.csx
-
-using DotNetBuild.Core;
-using DotNetBuild.Core.Facilities.Logging;
-using DotNetBuild.Core.Facilities.State;
-using DotNetBuild.Tasks;
-using DotNetBuild.Tasks.NuGet;
-using DotNetBuild.Runner.ScriptCs;
+#load targets.compilation.buildRelease.csx
+#load targets.nuget.createCorePackage.csx
+#load targets.nuget.createRunnerCommandLinePackage.csx
+#load targets.nuget.createRunnerPackage.csx
+#load targets.nuget.createRunnerScriptCsPackage.csx
+#load targets.nuget.createTasksPackage.csx
+#load targets.testing.runTests.csx
+#load targets.versioning.updateVersionNumber.csx
 
 var dotNetBuild = Require<DotNetBuildScriptPackContext>();
 

@@ -1,3 +1,5 @@
+using DotNetBuild.Tasks;
+
 public class RunTests : ITarget
 {
     public String Description

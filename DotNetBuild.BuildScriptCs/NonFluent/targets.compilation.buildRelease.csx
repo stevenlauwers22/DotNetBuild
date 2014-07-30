@@ -1,3 +1,5 @@
+using DotNetBuild.Tasks;
+
 public class BuildRelease : ITarget
 {
     public String Description

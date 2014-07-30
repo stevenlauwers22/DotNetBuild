@@ -1,8 +1,3 @@
-#r "DotNetBuild.Core.dll"
-#r "DotNetBuild.Tasks.dll"
-#r "DotNetBuild.Runner.dll"
-#r "DotNetBuild.Runner.ScriptCs.dll"
-
 using DotNetBuild.Core;
 using DotNetBuild.Core.Facilities.Logging;
 using DotNetBuild.Core.Facilities.State;

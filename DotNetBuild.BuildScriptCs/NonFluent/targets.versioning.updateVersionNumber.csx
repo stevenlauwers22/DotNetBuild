@@ -1,3 +1,7 @@
+using DotNetBuild.Core.Facilities.Logging;
+using DotNetBuild.Core.Facilities.State;
+using DotNetBuild.Tasks;
+
 public class UpdateVersionNumber : ITarget
 {
     public String Description
