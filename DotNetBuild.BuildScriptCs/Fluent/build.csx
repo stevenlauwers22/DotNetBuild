@@ -7,21 +7,18 @@ using DotNetBuild.Runner.ScriptCs;
 
 var dotNetBuild = Require<DotNetBuildScriptPackContext>();
 
-dotNetBuild.Configure(() => {
-	"ci"
-		.Target("Continuous integration target")
-		.DependsOn("updateVersionNumber")
-            .And("buildRelease")
-            .And("runTests")
-            .And("createCorePackage")
-            .And("createRunnerPackage")
-            .And("createRunnerCommandLinePackage")
-            .And("createRunnerScriptCsPackage")
-            .And("createTasksPackage");
-    
-    "updateVersionNumber"
-        .Target("Update version number")
-		.Do(context => {
+dotNetBuild.AddTarget("ci", "Continuous integration target", c 
+    => c.DependsOn("updateVersionNumber")
+        .And("buildRelease")
+        .And("runTests")
+        .And("createCorePackage")
+        .And("createRunnerPackage")
+        .And("createRunnerCommandLinePackage")
+        .And("createRunnerScriptCsPackage")
+        .And("createTasksPackage"));
+
+dotNetBuild.AddTarget("updateVersionNumber", "Update version number", c 
+    => c.Do(context => {
             const String baseDir = @"..\";
             const String assemblyMajorVersion = "1";
             const String assemblyMinorVersion = "0";
@@ -54,11 +51,10 @@ dotNetBuild.Configure(() => {
             context.FacilityProvider.Get<IStateWriter>().Add("VersionNumber", assemblyInfoTask.AssemblyInformationalVersion);
 
             return result;
-		});
-    
-	"buildRelease"
-		.Target("Build in release mode")
-		.Do(context => {
+		}));
+
+dotNetBuild.AddTarget("buildRelease", "Build in release mode", c 
+	=> c.Do(context => {
             const String baseDir = @"..\";
 			var msBuildTask = new MsBuildTask
 			{
@@ -68,11 +64,10 @@ dotNetBuild.Configure(() => {
 			};
 
 			return msBuildTask.Execute();
-		});
-    
-	"runTests"
-		.Target("Run tests")
-		.Do(context => {
+		}));
+
+dotNetBuild.AddTarget("runTests", "Run tests", c 
+	=> c.Do(context => {
             const String baseDir = @"..\";
             var xunitTask = new XunitTask
             {
@@ -81,11 +76,10 @@ dotNetBuild.Configure(() => {
             };
 
             return xunitTask.Execute();
-		});
-    
-	"createCorePackage"
-		.Target("Create Core NuGet package")
-		.Do(context => {
+		}));
+
+dotNetBuild.AddTarget("createCorePackage", "Create Core NuGet package", c 
+    => c.Do(context => {
             const String baseDir = @"..\";
             var nugetPackTask = new Pack
             {
@@ -96,11 +90,10 @@ dotNetBuild.Configure(() => {
             };
 
             return nugetPackTask.Execute();
-		});
-    
-	"createRunnerPackage"
-		.Target("Create Runner NuGet package")
-		.Do(context => {
+		}));
+
+dotNetBuild.AddTarget("createRunnerPackage", "Create Runner NuGet package", c 
+    => c.Do(context => {
             const String baseDir = @"..\";
             var nugetPackTask = new Pack
             {
@@ -111,11 +104,10 @@ dotNetBuild.Configure(() => {
             };
 
             return nugetPackTask.Execute();
-		});
-    
-	"createRunnerCommandLinePackage"
-		.Target("Create CommandLine Runner NuGet package")
-		.Do(context => {
+		}));
+
+dotNetBuild.AddTarget("createRunnerCommandLinePackage", "Create CommandLine Runner NuGet package", c 
+    => c.Do(context => {
             const String baseDir = @"..\";
             var nugetPackTask = new Pack
             {
@@ -126,11 +118,10 @@ dotNetBuild.Configure(() => {
             };
 
             return nugetPackTask.Execute();
-		});
-    
-	"createRunnerScriptCsPackage"
-		.Target("Create ScriptCs Runner NuGet package")
-		.Do(context => {
+		}));
+
+dotNetBuild.AddTarget("createRunnerScriptCsPackage", "Create ScriptCs Runner NuGet package", c 
+    => c.Do(context => {
             const String baseDir = @"..\";
             var nugetPackTask = new Pack
             {
@@ -141,11 +132,10 @@ dotNetBuild.Configure(() => {
             };
 
             return nugetPackTask.Execute();
-		});
-    
-	"createTasksPackage"
-		.Target("Create Tasks NuGet package")
-		.Do(context => {
+		}));
+
+dotNetBuild.AddTarget("createTasksPackage", "Create Tasks NuGet package", c 
+    => c.Do(context => {
             const String baseDir = @"..\";
             var nugetPackTask = new Pack
             {
@@ -156,16 +146,13 @@ dotNetBuild.Configure(() => {
             };
 
             return nugetPackTask.Execute();
-		});
-    
-	"test"
-		.Configure()
-        .AddSetting("MyProperty", @"ValueForTest");
+		}));
 
-	"acceptance"
-		.Configure()
-        .AddSetting("MyProperty", @"ValueForAcceptance");
-});
+dotNetBuild.AddConfiguration("test", c 
+	=> c.AddSetting("MyProperty", @"ValueForTest"));
+
+dotNetBuild.AddConfiguration("acceptance", c 
+	=> c.AddSetting("MyProperty", @"ValueForAcceptance"));
 
 var target = Env.ScriptArgs[0];
 var configuration = Env.ScriptArgs[1];

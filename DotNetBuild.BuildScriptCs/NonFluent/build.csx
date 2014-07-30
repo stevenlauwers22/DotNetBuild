@@ -10,13 +10,9 @@
 #load targets.versioning.updateVersionNumber.csx
 
 var dotNetBuild = Require<DotNetBuildScriptPackContext>();
-
-dotNetBuild.Configure(() => {
-	"ci".Target(new CI());
-
-	"test".Configure(new ConfigurationSettingsForTest());
-	"acceptance".Configure(new ConfigurationSettingsForAcceptance());
-});
+dotNetBuild.AddTarget("ci", new CI());
+dotNetBuild.AddConfiguration("test", new ConfigurationSettingsForTest());
+dotNetBuild.AddConfiguration("acceptance", new ConfigurationSettingsForAcceptance());
 
 var target = Env.ScriptArgs[0];
 var configuration = Env.ScriptArgs[1];

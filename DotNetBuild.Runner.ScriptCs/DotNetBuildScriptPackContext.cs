@@ -1,4 +1,5 @@
 ﻿using System;
+using DotNetBuild.Core;
 using DotNetBuild.Runner.Infrastructure.Logging;
 using DotNetBuild.Runner.Infrastructure.TinyIoC;
 using ScriptCs.Contracts;
@@ -7,9 +8,26 @@ namespace DotNetBuild.Runner.ScriptCs
 {
     public class DotNetBuildScriptPackContext : IScriptPackContext
     {
-        public void Configure(Action configuration)
+        public void AddTarget(String name, String description, Action<ITargetBuilder> targetConfigurator)
         {
-            configuration();
+            var targetBuilder = name.Target(description);
+            targetConfigurator(targetBuilder);
+        }
+
+        public void AddTarget(String name, ITarget target)
+        {
+            name.Target(target);
+        }
+
+        public void AddConfiguration(String name, Action<IConfigurationBuilder> settingsConfigurator)
+        {
+            var settings = name.Configure();
+            settingsConfigurator(settings);
+        }
+
+        public void AddConfiguration(String name, IConfigurationSettings settings)
+        {
+            name.Configure(settings);
         }
 
         public void Run(String targetName, String configurationName)
