@@ -1,7 +1,7 @@
 using System;
 using DotNetBuild.Runner.Infrastructure.Logging;
 
-namespace DotNetBuild.Runner.CommandLine
+namespace DotNetBuild.Runner
 {
     public interface IBuildRunnerParametersHelp
     {
@@ -24,7 +24,7 @@ namespace DotNetBuild.Runner.CommandLine
 
             logger.Write("Parameters:");
             logger.Write("\t" + BuildRunnerParametersConstants.Assembly + "\tThe Path to the assembly you want to execute");
-            logger.Write("\t" + BuildRunnerParametersConstants.Target + "\tOPTIONAL The target you want to run");
+            logger.Write("\t" + BuildRunnerParametersConstants.Target + "\tThe target you want to run");
             logger.Write("\t" + BuildRunnerParametersConstants.Configuration + "\tOPTIONAL The configuration you want to use");
             logger.Write(String.Empty);
         }

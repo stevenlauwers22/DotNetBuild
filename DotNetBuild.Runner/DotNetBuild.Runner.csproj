@@ -40,6 +40,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildRunnerParameters.cs" />
+    <Compile Include="BuildRunnerParametersBuilder.cs" />
+    <Compile Include="BuildRunnerParametersConstants.cs" />
+    <Compile Include="BuildRunnerParametersHelp.cs" />
     <Compile Include="ConfigurationRegistry.cs" />
     <Compile Include="Configuration\Container.cs" />
     <Compile Include="Exceptions\UnableToFindConfigurationException.cs" />

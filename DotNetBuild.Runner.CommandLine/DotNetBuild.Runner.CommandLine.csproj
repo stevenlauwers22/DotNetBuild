@@ -38,12 +38,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuildRunnerParameters.cs" />
-    <Compile Include="BuildRunnerParametersBuilder.cs" />
     <Compile Include="DotNetBuild.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BuildRunnerParametersHelp.cs" />
-    <Compile Include="BuildRunnerParametersConstants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

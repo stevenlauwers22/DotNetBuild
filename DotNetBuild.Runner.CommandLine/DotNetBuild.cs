@@ -1,5 +1,4 @@
 ﻿using System;
-using DotNetBuild.Runner.Configuration;
 using DotNetBuild.Runner.Exceptions;
 using DotNetBuild.Runner.Infrastructure.Logging;
 using DotNetBuild.Runner.Infrastructure.TinyIoC;
@@ -8,34 +7,30 @@ namespace DotNetBuild.Runner.CommandLine
 {
     public class DotNetBuild
     {
-        public static int Main(String[] args)
-        {
-            var container = TinyIoCContainer.Current;
-            Container.Install(container);
+        private readonly String[] _args;
+        private readonly TinyIoCContainer _container;
 
-            var logger = container.Resolve<ILogger>();
+        public DotNetBuild(String[] args, TinyIoCContainer container)
+        {
+            _args = args;
+            _container = container;
+        }
+
+        public int Run()
+        {
+            var buildRunnerParametersBuilder = _container.Resolve<IBuildRunnerParametersBuilder>();
+            var buildRunnerParameters = buildRunnerParametersBuilder.BuildFrom(_args);
+            var logger = _container.Resolve<ILogger>();
             logger.Write("DotNetBuild started");
 
             try
             {
-                var buildRunnerParametersBuilder = new BuildRunnerParametersBuilder();
-                var buildRunnerParameters = buildRunnerParametersBuilder.BuildFrom(args);
-                if (buildRunnerParameters != null)
-                {
-                    logger.Write("Command parsed: " + buildRunnerParameters.GetType());
-                    
-                    var buildRunner = container.Resolve<IBuildRunner>();
-                    buildRunner.Run(buildRunnerParameters.Assembly, buildRunnerParameters.Target, buildRunnerParameters.Configuration);
-                }
-                else
-                {
-                    logger.Write("Command could not be understood due to invalid command line parameters.");
-                    logger.Write("Usage of the application:");
-                    PrintHelp(logger);
-                }
+                var buildRunner = _container.Resolve<IBuildRunner>();
+                buildRunner.Run(buildRunnerParameters.Assembly, buildRunnerParameters.Target, buildRunnerParameters.Configuration);
             }
             catch (DotNetBuildException exception)
             {
+                PrintHelp(logger);
                 PrintExpectedException(exception, logger);
                 return exception.ErrorCode;
             }
@@ -52,9 +47,11 @@ namespace DotNetBuild.Runner.CommandLine
             return 0;
         }
 
-        private static void PrintHelp(ILogger logger)
+        private void PrintHelp(ILogger logger)
         {
-            var commandHelp = new BuildRunnerParametersHelp();
+            logger.Write("Usage of the application:");
+
+            var commandHelp = _container.Resolve<IBuildRunnerParametersHelp>();
             commandHelp.Print(logger);
         }
 

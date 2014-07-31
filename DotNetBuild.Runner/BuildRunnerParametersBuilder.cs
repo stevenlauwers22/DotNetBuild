@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace DotNetBuild.Runner.CommandLine
+namespace DotNetBuild.Runner
 {
     public interface IBuildRunnerParametersBuilder
     {
@@ -15,7 +14,6 @@ namespace DotNetBuild.Runner.CommandLine
             String assembly = null;
             String target = null;
             String configuration = null;
-            var additionalParameters = new Dictionary<String, String>();
             foreach (var arg in args)
             {
                 if (arg == null)
@@ -38,22 +36,9 @@ namespace DotNetBuild.Runner.CommandLine
                     configuration = arg.Substring(BuildRunnerParametersConstants.Configuration.Length);
                     continue;
                 }
-
-                var argSeparatorIndex = arg.IndexOf(":", StringComparison.InvariantCulture);
-                if (argSeparatorIndex == -1)
-                {
-                    continue;
-                }
-
-                var argKey = arg.Substring(0, argSeparatorIndex);
-                if (argKey.StartsWith("-"))
-                    argKey = argKey.Remove(0, 1);
-
-                var argValue = arg.Substring(argSeparatorIndex + 1);
-                additionalParameters[argKey] = argValue;
             }
 
-            var parameters = new BuildRunnerParameters(assembly, target, configuration, additionalParameters);
+            var parameters = new BuildRunnerParameters(assembly, target, configuration);
             return parameters;
         }
     }

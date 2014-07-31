@@ -6,13 +6,21 @@ namespace DotNetBuild.Runner.ScriptCs
 {
     public class DotNetBuildScriptPack : IScriptPack
     {
+        private string[] _args;
+
         IScriptPackContext IScriptPack.GetContext()
         {
-            return new DotNetBuildScriptPackContext();
+            var container = TinyIoCContainer.Current;
+            Container.Install(container);
+
+            var dotNetBuild = new DotNetBuildScriptPackContext(_args, container);
+            return dotNetBuild;
         }
 
         void IScriptPack.Initialize(IScriptPackSession session)
         {
+            _args = session.ScriptArgs;
+
             session.AddReference("ScriptCs.Contracts.dll");
             session.AddReference("DotNetBuild.Core.dll");
             session.AddReference("DotNetBuild.Runner.dll");
@@ -20,9 +28,6 @@ namespace DotNetBuild.Runner.ScriptCs
             session.ImportNamespace("DotNetBuild.Core");
             session.ImportNamespace("DotNetBuild.Runner");
             session.ImportNamespace("DotNetBuild.Runner.ScriptCs");
-
-            var container = TinyIoCContainer.Current;
-            Container.Install(container);
         }
 
         void IScriptPack.Terminate()
