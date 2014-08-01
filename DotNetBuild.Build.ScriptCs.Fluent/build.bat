@@ -8,5 +8,5 @@ copy ..\DotNetBuild.Runner.ScriptCs\bin\Debug\ScriptCs.Contracts.dll .\bin\Scrip
 copy ..\DotNetBuild.Tasks\bin\Debug\DotNetBuild.Tasks.dll .\bin\DotNetBuild.Tasks.dll /y
 copy ..\DotNetBuild.Tasks\bin\Debug\DotNetBuild.Tasks.pdb .\bin\DotNetBuild.Tasks.pdb /y
 
-scriptcs build.csx -- target:ci configuration:test
+scriptcs build.csx -- target:CI configuration:test
 pause

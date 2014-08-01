@@ -46,6 +46,8 @@
     <Compile Include="Core\ConfigurationBuilderTests\Build_with_no_name.cs" />
     <Compile Include="Core\ConfigurationBuilderTests\Build_with_valid_arguments.cs" />
     <Compile Include="Core\ConfigurationBuilderTests\Add_setting.cs" />
+    <Compile Include="Core\ConfigurationSettingsTests\Get_setting_without_passing_in_a_key.cs" />
+    <Compile Include="Runner\ConfigurationRegistryTests\Get_configuration_settings_without_passing_in_a_key.cs" />
     <Compile Include="Runner\Facilities\State\StateRegistryTests\Get_state_with_different_case.cs" />
     <Compile Include="Runner\ConfigurationRegistryTests\StaticTests\Multiple_ConfigurationRegistry_instances.cs" />
     <Compile Include="Core\ConfigurationSettingsTests\Get_setting_with_unexisting_key_default_value.cs" />
@@ -66,6 +68,7 @@
     <Compile Include="Runner\BuildRunnerTests\Run_with_no_configurator.cs" />
     <Compile Include="Runner\TargetRegistryTests\Get_target_with_different_casing.cs" />
     <Compile Include="Runner\Infrastructure\Reflection\AssemblyWrapperTests\Get_one_type_with_no_filter.cs" />
+    <Compile Include="Runner\TargetRegistryTests\Get_target_without_passing_in_a_key.cs" />
     <Compile Include="Runner\TargetRegistryTests\StaticTests\Multiple_TargetRegistry_instances.cs" />
     <Compile Include="Runner\TargetRegistryTests\Add_target.cs" />
     <Compile Include="Runner\TargetRegistryTests\Add_target_without_passing_in_a_key.cs" />

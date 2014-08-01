@@ -27,9 +27,6 @@ namespace DotNetBuild.Runner.Facilities.State
 
         public T Get<T>(String key)
         {
-            if (String.IsNullOrEmpty(key))
-                throw new ArgumentNullException("key");
-
             var value = _registrations.SingleOrDefault(registration => String.Equals(registration.Key, key, StringComparison.OrdinalIgnoreCase)).Value;
             if (value == null)
                 return default(T);

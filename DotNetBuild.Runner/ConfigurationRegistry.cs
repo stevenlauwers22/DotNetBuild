@@ -21,9 +21,6 @@ namespace DotNetBuild.Runner
 
         public IConfigurationSettings Get(String key)
         {
-            if (String.IsNullOrEmpty(key))
-                throw new ArgumentNullException("key");
-
             var value = _registrations.SingleOrDefault(registration => String.Equals(registration.Key, key, StringComparison.OrdinalIgnoreCase)).Value;
             return value;
         }

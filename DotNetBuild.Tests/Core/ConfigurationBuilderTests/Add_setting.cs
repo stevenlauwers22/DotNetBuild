@@ -8,7 +8,7 @@ namespace DotNetBuild.Tests.Core.ConfigurationBuilderTests
     public class Add_setting : TestSpecification<ConfigurationBuilder>
     {
         private String _key;
-        private string _value;
+        private String _value;
 
         protected override void Arrange()
         {

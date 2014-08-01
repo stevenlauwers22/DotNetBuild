@@ -69,14 +69,9 @@ namespace DotNetBuild.Runner
             if (target == null)
                 throw new UnableToFindTargetException(targetName);
 
-            IConfigurationSettings configurationSettings = null;
-            if (!String.IsNullOrEmpty(configurationName))
-            {
-                configurationSettings = _configurationRegistry.Get(configurationName);
-
-                if (configurationSettings == null)
-                    throw new UnableToFindConfigurationException(configurationName);
-            }
+            var configurationSettings = _configurationRegistry.Get(configurationName);
+            if (configurationSettings == null && !String.IsNullOrEmpty(configurationName))
+                throw new UnableToFindConfigurationException(configurationName);
 
             _targetExecutor.Execute(target, configurationSettings);
         }

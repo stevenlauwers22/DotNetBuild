@@ -25,6 +25,9 @@ namespace DotNetBuild.Core
 
         public T Get<T>(String key)
         {
+            if (String.IsNullOrEmpty(key))
+                return default(T);
+
             if (!_registrations.ContainsKey(key))
                 return default(T);
 
