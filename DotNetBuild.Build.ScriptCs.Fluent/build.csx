@@ -67,9 +67,10 @@ dotNetBuild.AddTarget("buildRelease", "Build in release mode", c
 dotNetBuild.AddTarget("runTests", "Run tests", c 
 	=> c.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+            var xunitExe = context.ConfigurationSettings.Get<String>("PathToXUnitRunnerExe");
             var xunitTask = new XunitTask
             {
-                XunitExe = Path.Combine(solutionDirectory, @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe"),
+                XunitExe = Path.Combine(solutionDirectory, xunitExe),
                 Assembly = Path.Combine(solutionDirectory, @"DotNetBuild.Tests\bin\Release\DotNetBuild.Tests.dll")
             };
 
@@ -79,9 +80,10 @@ dotNetBuild.AddTarget("runTests", "Run tests", c
 dotNetBuild.AddTarget("createCorePackage", "Create Core NuGet package", c 
     => c.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+            var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetPackTask = new Pack
             {
-                NuGetExe = Path.Combine(solutionDirectory, @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe"),
+                NuGetExe = Path.Combine(solutionDirectory, nugetExe),
                 NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Core.nuspec"),
                 OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
@@ -93,9 +95,10 @@ dotNetBuild.AddTarget("createCorePackage", "Create Core NuGet package", c
 dotNetBuild.AddTarget("createRunnerPackage", "Create Runner NuGet package", c 
     => c.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+            var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetPackTask = new Pack
             {
-                NuGetExe = Path.Combine(solutionDirectory, @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe"),
+                NuGetExe = Path.Combine(solutionDirectory, nugetExe),
                 NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.nuspec"),
                 OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
@@ -107,9 +110,10 @@ dotNetBuild.AddTarget("createRunnerPackage", "Create Runner NuGet package", c
 dotNetBuild.AddTarget("createRunnerCommandLinePackage", "Create CommandLine Runner NuGet package", c 
     => c.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+            var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetPackTask = new Pack
             {
-                NuGetExe = Path.Combine(solutionDirectory, @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe"),
+                NuGetExe = Path.Combine(solutionDirectory, nugetExe),
                 NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.CommandLine.nuspec"),
                 OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
@@ -121,9 +125,10 @@ dotNetBuild.AddTarget("createRunnerCommandLinePackage", "Create CommandLine Runn
 dotNetBuild.AddTarget("createRunnerScriptCsPackage", "Create ScriptCs Runner NuGet package", c 
     => c.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+            var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetPackTask = new Pack
             {
-                NuGetExe = Path.Combine(solutionDirectory, @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe"),
+                NuGetExe = Path.Combine(solutionDirectory, nugetExe),
                 NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.ScriptCs.nuspec"),
                 OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
@@ -135,9 +140,10 @@ dotNetBuild.AddTarget("createRunnerScriptCsPackage", "Create ScriptCs Runner NuG
 dotNetBuild.AddTarget("createTasksPackage", "Create Tasks NuGet package", c 
     => c.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+            var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetPackTask = new Pack
             {
-                NuGetExe = Path.Combine(solutionDirectory, @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe"),
+                NuGetExe = Path.Combine(solutionDirectory, nugetExe),
                 NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Tasks.nuspec"),
                 OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
@@ -148,10 +154,14 @@ dotNetBuild.AddTarget("createTasksPackage", "Create Tasks NuGet package", c
 
 dotNetBuild.AddConfiguration("test", c 
 	=> c.AddSetting("SolutionDirectory", @"..\")
+        .AddSetting("PathToNuGetExe", @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe")
+        .AddSetting("PathToXUnitRunnerExe", @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe")
 );
 
 dotNetBuild.AddConfiguration("acceptance", c 
 	=> c.AddSetting("SolutionDirectory", @"..\")
+        .AddSetting("PathToNuGetExe", @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe")
+        .AddSetting("PathToXUnitRunnerExe", @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe")
 );
 
 dotNetBuild.RunFromScriptArguments();

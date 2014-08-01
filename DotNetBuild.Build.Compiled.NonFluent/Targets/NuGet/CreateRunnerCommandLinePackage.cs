@@ -27,9 +27,10 @@ namespace DotNetBuild.Build.Compiled.NonFluent.Targets.NuGet
         public Boolean Execute(TargetExecutionContext context)
         {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+            var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetPackTask = new Pack
             {
-                NuGetExe = Path.Combine(solutionDirectory, @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe"),
+                NuGetExe = Path.Combine(solutionDirectory, nugetExe),
                 NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.CommandLine.nuspec"),
                 OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")

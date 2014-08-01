@@ -26,9 +26,10 @@ namespace DotNetBuild.Build.Compiled.NonFluent.Targets.Testing
         public Boolean Execute(TargetExecutionContext context)
         {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+            var xunitExe = context.ConfigurationSettings.Get<String>("PathToXUnitRunnerExe");
             var xunitTask = new XunitTask
             {
-                XunitExe = Path.Combine(solutionDirectory, @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe"),
+                XunitExe = Path.Combine(solutionDirectory, xunitExe),
                 Assembly = Path.Combine(solutionDirectory, @"DotNetBuild.Tests\bin\Release\DotNetBuild.Tests.dll")
             };
 

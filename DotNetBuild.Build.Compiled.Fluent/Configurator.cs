@@ -81,9 +81,10 @@ namespace DotNetBuild.Build.Compiled.Fluent
                 .Do(context =>
                 {
                     var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+                    var xunitExe = context.ConfigurationSettings.Get<String>("PathToXUnitRunnerExe");
                     var xunitTask = new XunitTask
                     {
-                        XunitExe = Path.Combine(solutionDirectory, @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe"),
+                        XunitExe = Path.Combine(solutionDirectory, xunitExe),
                         Assembly = Path.Combine(solutionDirectory, @"DotNetBuild.Tests\bin\Release\DotNetBuild.Tests.dll")
                     };
 
@@ -95,9 +96,10 @@ namespace DotNetBuild.Build.Compiled.Fluent
                 .Do(context =>
                 {
                     var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+                    var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
                     var nugetPackTask = new Pack
                     {
-                        NuGetExe = Path.Combine(solutionDirectory, @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe"),
+                        NuGetExe = Path.Combine(solutionDirectory, nugetExe),
                         NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Core.nuspec"),
                         OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                         Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
@@ -111,9 +113,10 @@ namespace DotNetBuild.Build.Compiled.Fluent
                 .Do(context =>
                 {
                     var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+                    var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
                     var nugetPackTask = new Pack
                     {
-                        NuGetExe = Path.Combine(solutionDirectory, @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe"),
+                        NuGetExe = Path.Combine(solutionDirectory, nugetExe),
                         NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.nuspec"),
                         OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                         Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
@@ -127,9 +130,10 @@ namespace DotNetBuild.Build.Compiled.Fluent
                 .Do(context =>
                 {
                     var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+                    var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
                     var nugetPackTask = new Pack
                     {
-                        NuGetExe = Path.Combine(solutionDirectory, @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe"),
+                        NuGetExe = Path.Combine(solutionDirectory, nugetExe),
                         NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.CommandLine.nuspec"),
                         OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                         Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
@@ -143,9 +147,10 @@ namespace DotNetBuild.Build.Compiled.Fluent
                 .Do(context =>
                 {
                     var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+                    var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
                     var nugetPackTask = new Pack
                     {
-                        NuGetExe = Path.Combine(solutionDirectory, @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe"),
+                        NuGetExe = Path.Combine(solutionDirectory, nugetExe),
                         NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.ScriptCs.nuspec"),
                         OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                         Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
@@ -159,9 +164,10 @@ namespace DotNetBuild.Build.Compiled.Fluent
                 .Do(context =>
                 {
                     var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+                    var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
                     var nugetPackTask = new Pack
                     {
-                        NuGetExe = Path.Combine(solutionDirectory, @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe"),
+                        NuGetExe = Path.Combine(solutionDirectory, nugetExe),
                         NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Tasks.nuspec"),
                         OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                         Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
@@ -172,11 +178,15 @@ namespace DotNetBuild.Build.Compiled.Fluent
 
             "test"
                 .Configure()
-                .AddSetting("SolutionDirectory", @"..\");
+                .AddSetting("SolutionDirectory", @"..\")
+                .AddSetting("PathToNuGetExe", @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe")
+                .AddSetting("PathToXUnitRunnerExe", @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe");
 
             "acceptance"
                 .Configure()
-                .AddSetting("SolutionDirectory", @"..\");
+                .AddSetting("SolutionDirectory", @"..\")
+                .AddSetting("PathToNuGetExe", @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe")
+                .AddSetting("PathToXUnitRunnerExe", @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe");
         }
     }
 }
