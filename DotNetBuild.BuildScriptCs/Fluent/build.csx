@@ -1,9 +1,7 @@
-using DotNetBuild.Core;
 using DotNetBuild.Core.Facilities.Logging;
 using DotNetBuild.Core.Facilities.State;
 using DotNetBuild.Tasks;
 using DotNetBuild.Tasks.NuGet;
-using DotNetBuild.Runner.ScriptCs;
 
 var dotNetBuild = Require<DotNetBuildScriptPackContext>();
 

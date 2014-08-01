@@ -17,4 +17,3 @@ dotNetBuild.AddConfiguration("acceptance", new ConfigurationSettingsForAcceptanc
 var target = Env.ScriptArgs[0];
 var configuration = Env.ScriptArgs[1];
 dotNetBuild.Run(target, configuration);
-dotNetBuild.RunFromScriptArguments();

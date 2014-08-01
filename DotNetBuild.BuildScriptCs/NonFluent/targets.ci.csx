@@ -16,7 +16,14 @@ public class CI : ITarget
         {
             return new List<ITarget>
             {
-                new BuildRelease()
+                new UpdateVersionNumber(),
+                new BuildRelease(),
+                new RunTests(),
+                new CreateCorePackage(),
+                new CreateRunnerPackage(),
+                new CreateRunnerCommandLinePackage(),
+                new CreateRunnerScriptCsPackage(),
+                new CreateTasksPackage()
             };
         }
     }
