@@ -3,54 +3,54 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build.Compiled", "Build.Compiled", "{259D3DF4-2815-4086-9927-2AFDDE256155}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Build.Compiled.Fluent", "DotNetBuild.Build.Compiled.Fluent\DotNetBuild.Build.Compiled.Fluent.csproj", "{137FDE29-9D51-4F5D-A63F-A5063C3D3B69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Build.Compiled.NonFluent", "DotNetBuild.Build.Compiled.NonFluent\DotNetBuild.Build.Compiled.NonFluent.csproj", "{2CC8AB38-DF99-41B1-884B-4EFAA37FF6C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build.ScriptCs.Fluent", "Build.ScriptCs.Fluent", "{A8EB6974-F235-48DE-99D1-928DC6442A61}"
+	ProjectSection(SolutionItems) = preProject
+		DotNetBuild.Build.ScriptCs.Fluent\build.bat = DotNetBuild.Build.ScriptCs.Fluent\build.bat
+		DotNetBuild.Build.ScriptCs.Fluent\build.csx = DotNetBuild.Build.ScriptCs.Fluent\build.csx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build.ScriptCs.NonFluent", "Build.ScriptCs.NonFluent", "{D831367A-D1B8-4C35-98F4-F432C8A46FBB}"
+	ProjectSection(SolutionItems) = preProject
+		DotNetBuild.Build.ScriptCs.NonFluent\build.bat = DotNetBuild.Build.ScriptCs.NonFluent\build.bat
+		DotNetBuild.Build.ScriptCs.NonFluent\build.csx = DotNetBuild.Build.ScriptCs.NonFluent\build.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\configuration.csx = DotNetBuild.Build.ScriptCs.NonFluent\configuration.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\targets.ci.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.ci.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\targets.compilation.buildRelease.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.compilation.buildRelease.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\targets.deploy.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.deploy.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createCorePackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createCorePackage.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerCommandLinePackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerCommandLinePackage.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerPackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerPackage.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerScriptCsPackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerScriptCsPackage.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createTasksPackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createTasksPackage.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\targets.testing.runTests.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.testing.runTests.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\targets.versioning.updateVersionNumber.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.versioning.updateVersionNumber.csx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{DF735577-ADB0-4D0D-A8EB-B29F91AB336E}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Core", "DotNetBuild.Core\DotNetBuild.Core.csproj", "{8B2FEC24-DC07-4B6C-8F5B-ABF90D40C9D8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Tests", "DotNetBuild.Tests\DotNetBuild.Tests.csproj", "{827B207D-2429-4C05-A769-186C7CB35FC3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Tests.TestAssembly", "DotNetBuild.Tests.TestAssembly\DotNetBuild.Tests.TestAssembly.csproj", "{EA116E5A-B97D-47D4-8375-A72B28DF61B1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Runner", "DotNetBuild.Runner\DotNetBuild.Runner.csproj", "{B12BBF26-D91F-4516-99E8-0AE27A40069E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Runner.CommandLine", "DotNetBuild.Runner.CommandLine\DotNetBuild.Runner.CommandLine.csproj", "{B477828C-5A65-4B3A-A180-42782F420AA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Tasks", "DotNetBuild.Tasks\DotNetBuild.Tasks.csproj", "{3C191818-AD7D-49C5-8AA6-6034852AF35D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{DF735577-ADB0-4D0D-A8EB-B29F91AB336E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{698F167C-511A-4098-91ED-C345864A9D8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Runner.ScriptCs", "DotNetBuild.Runner.ScriptCs\DotNetBuild.Runner.ScriptCs.csproj", "{8FF41F36-65F1-4503-BEA2-06F0FAC850AF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks", "Tasks", "{B5C358E9-A7D2-4AB1-8251-8338038B6EC1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build.Compiled", "Build.Compiled", "{EB5D7DE2-7032-4757-9E4F-1E739D75DBC4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Tasks", "DotNetBuild.Tasks\DotNetBuild.Tasks.csproj", "{3C191818-AD7D-49C5-8AA6-6034852AF35D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Build", "DotNetBuild.Build\DotNetBuild.Build.csproj", "{2CC8AB38-DF99-41B1-884B-4EFAA37FF6C3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{698F167C-511A-4098-91ED-C345864A9D8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Runner.ScriptCs", "DotNetBuild.Runner.ScriptCs\DotNetBuild.Runner.ScriptCs.csproj", "{8FF41F36-65F1-4503-BEA2-06F0FAC850AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Tests", "DotNetBuild.Tests\DotNetBuild.Tests.csproj", "{827B207D-2429-4C05-A769-186C7CB35FC3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fluent", "Fluent", "{8BB062C2-89FD-42B5-938B-F90B86AEA0AD}"
-	ProjectSection(SolutionItems) = preProject
-		DotNetBuild.BuildScriptCs\Fluent\build.bat = DotNetBuild.BuildScriptCs\Fluent\build.bat
-		DotNetBuild.BuildScriptCs\Fluent\build.csx = DotNetBuild.BuildScriptCs\Fluent\build.csx
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NonFluent", "NonFluent", "{DF8DF230-9025-461D-A485-EAC0AD5ECE9F}"
-	ProjectSection(SolutionItems) = preProject
-		DotNetBuild.BuildScriptCs\NonFluent\build.bat = DotNetBuild.BuildScriptCs\NonFluent\build.bat
-		DotNetBuild.BuildScriptCs\NonFluent\build.csx = DotNetBuild.BuildScriptCs\NonFluent\build.csx
-		DotNetBuild.BuildScriptCs\NonFluent\configuration.csx = DotNetBuild.BuildScriptCs\NonFluent\configuration.csx
-		DotNetBuild.BuildScriptCs\NonFluent\targets.ci.csx = DotNetBuild.BuildScriptCs\NonFluent\targets.ci.csx
-		DotNetBuild.BuildScriptCs\NonFluent\targets.compilation.buildRelease.csx = DotNetBuild.BuildScriptCs\NonFluent\targets.compilation.buildRelease.csx
-		DotNetBuild.BuildScriptCs\NonFluent\targets.deploy.csx = DotNetBuild.BuildScriptCs\NonFluent\targets.deploy.csx
-		DotNetBuild.BuildScriptCs\NonFluent\targets.nuget.createCorePackage.csx = DotNetBuild.BuildScriptCs\NonFluent\targets.nuget.createCorePackage.csx
-		DotNetBuild.BuildScriptCs\NonFluent\targets.nuget.createRunnerCommandLinePackage.csx = DotNetBuild.BuildScriptCs\NonFluent\targets.nuget.createRunnerCommandLinePackage.csx
-		DotNetBuild.BuildScriptCs\NonFluent\targets.nuget.createRunnerPackage.csx = DotNetBuild.BuildScriptCs\NonFluent\targets.nuget.createRunnerPackage.csx
-		DotNetBuild.BuildScriptCs\NonFluent\targets.nuget.createRunnerScriptCsPackage.csx = DotNetBuild.BuildScriptCs\NonFluent\targets.nuget.createRunnerScriptCsPackage.csx
-		DotNetBuild.BuildScriptCs\NonFluent\targets.nuget.createTasksPackage.csx = DotNetBuild.BuildScriptCs\NonFluent\targets.nuget.createTasksPackage.csx
-		DotNetBuild.BuildScriptCs\NonFluent\targets.testing.runTests.csx = DotNetBuild.BuildScriptCs\NonFluent\targets.testing.runTests.csx
-		DotNetBuild.BuildScriptCs\NonFluent\targets.versioning.updateVersionNumber.csx = DotNetBuild.BuildScriptCs\NonFluent\targets.versioning.updateVersionNumber.csx
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build.ScriptCs", "Build.ScriptCs", "{A8EB6974-F235-48DE-99D1-928DC6442A61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Tests.TestAssembly", "DotNetBuild.Tests.TestAssembly\DotNetBuild.Tests.TestAssembly.csproj", "{EA116E5A-B97D-47D4-8375-A72B28DF61B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -88,6 +88,9 @@ Global
 		{8FF41F36-65F1-4503-BEA2-06F0FAC850AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FF41F36-65F1-4503-BEA2-06F0FAC850AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FF41F36-65F1-4503-BEA2-06F0FAC850AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{137FDE29-9D51-4F5D-A63F-A5063C3D3B69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{137FDE29-9D51-4F5D-A63F-A5063C3D3B69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{137FDE29-9D51-4F5D-A63F-A5063C3D3B69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,9 +102,8 @@ Global
 		{B12BBF26-D91F-4516-99E8-0AE27A40069E} = {DF735577-ADB0-4D0D-A8EB-B29F91AB336E}
 		{B477828C-5A65-4B3A-A180-42782F420AA1} = {DF735577-ADB0-4D0D-A8EB-B29F91AB336E}
 		{3C191818-AD7D-49C5-8AA6-6034852AF35D} = {B5C358E9-A7D2-4AB1-8251-8338038B6EC1}
-		{2CC8AB38-DF99-41B1-884B-4EFAA37FF6C3} = {EB5D7DE2-7032-4757-9E4F-1E739D75DBC4}
+		{2CC8AB38-DF99-41B1-884B-4EFAA37FF6C3} = {259D3DF4-2815-4086-9927-2AFDDE256155}
 		{8FF41F36-65F1-4503-BEA2-06F0FAC850AF} = {DF735577-ADB0-4D0D-A8EB-B29F91AB336E}
-		{8BB062C2-89FD-42B5-938B-F90B86AEA0AD} = {A8EB6974-F235-48DE-99D1-928DC6442A61}
-		{DF8DF230-9025-461D-A485-EAC0AD5ECE9F} = {A8EB6974-F235-48DE-99D1-928DC6442A61}
+		{137FDE29-9D51-4F5D-A63F-A5063C3D3B69} = {259D3DF4-2815-4086-9927-2AFDDE256155}
 	EndGlobalSection
 EndGlobal
