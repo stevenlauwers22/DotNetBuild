@@ -5,13 +5,13 @@ using Xunit;
 namespace DotNetBuild.Tests.Runner.BuildRunnerParametersBuilderTests
 {
     public class BuildFrom_an_argument_array
-        : TestSpecification<BuildRunnerParametersBuilder>
+        : TestSpecification<BuildRunnerParametersReader>
     {
         private String[] _args;
         private String _assembly;
         private String _target;
         private String _configuration;
-        private BuildRunnerParameters _result;
+        private String _result;
 
         protected override void Arrange()
         {
@@ -29,32 +29,20 @@ namespace DotNetBuild.Tests.Runner.BuildRunnerParametersBuilderTests
             };
         }
 
-        protected override BuildRunnerParametersBuilder CreateSubjectUnderTest()
+        protected override BuildRunnerParametersReader CreateSubjectUnderTest()
         {
-            return new BuildRunnerParametersBuilder();
+            return new BuildRunnerParametersReader();
         }
 
         protected override void Act()
         {
-            _result = Sut.BuildFrom(_args);
+            _result = Sut.Read(BuildRunnerParametersConstants.Target, _args);
         }
 
         [Fact]
-        public void Reads_the_assembly_parameter()
+        public void Reads_the_requested_parameter()
         {
-            Assert.Equal(_assembly, _result.Assembly);
-        }
-
-        [Fact]
-        public void Reads_the_target_parameter()
-        {
-            Assert.Equal(_target, _result.Target);
-        }
-
-        [Fact]
-        public void Reads_the_configuration_parameter()
-        {
-            Assert.Equal(_configuration, _result.Configuration);
+            Assert.Equal(_target, _result);
         }
     }
 }

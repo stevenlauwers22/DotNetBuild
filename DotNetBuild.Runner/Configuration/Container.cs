@@ -23,7 +23,7 @@ namespace DotNetBuild.Runner.Configuration
             container.Register<ITypeActivator, TypeActivator>();
 
             container.Register<IBuildRunner, BuildRunner>();
-            container.Register<IBuildRunnerParametersBuilder, BuildRunnerParametersBuilder>();
+            container.Register<IBuildRunnerParametersReader, BuildRunnerParametersReader>();
             container.Register<IBuildRunnerParametersHelp, BuildRunnerParametersHelp>();
 
             container.Register<IConfiguratorResolver, ConfiguratorResolver>();

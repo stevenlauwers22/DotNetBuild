@@ -40,8 +40,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuildRunnerParameters.cs" />
-    <Compile Include="BuildRunnerParametersBuilder.cs" />
+    <Compile Include="BuildRunnerParametersReader.cs" />
     <Compile Include="BuildRunnerParametersConstants.cs" />
     <Compile Include="BuildRunnerParametersHelp.cs" />
     <Compile Include="ConfigurationRegistry.cs" />

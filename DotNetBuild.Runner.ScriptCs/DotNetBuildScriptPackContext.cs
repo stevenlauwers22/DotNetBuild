@@ -40,26 +40,15 @@ namespace DotNetBuild.Runner.ScriptCs
             name.Configure(settings);
         }
 
-        public void Run(String assembly, String target, String configuration)
+        public void RunFromScriptArguments()
         {
-            var buildRunnerParameters = new BuildRunnerParameters(assembly, target, configuration);
-            Run(buildRunnerParameters);
+            var buildRunnerParametersBuilder = _container.Resolve<IBuildRunnerParametersReader>();
+            var target = buildRunnerParametersBuilder.Read(BuildRunnerParametersConstants.Target, _args);
+            var configuration = buildRunnerParametersBuilder.Read(BuildRunnerParametersConstants.Configuration, _args);
+            Run(target, configuration);
         }
 
         public void Run(String target, String configuration)
-        {
-            var buildRunnerParameters = new BuildRunnerParameters(null, target, configuration);
-            Run(buildRunnerParameters);
-        }
-
-        public void RunFromScriptArguments()
-        {
-            var buildRunnerParametersBuilder = _container.Resolve<IBuildRunnerParametersBuilder>();
-            var buildRunnerParameters = buildRunnerParametersBuilder.BuildFrom(_args);
-            Run(buildRunnerParameters);
-        }
-
-        private void Run(BuildRunnerParameters buildRunnerParameters)
         {
             var logger = _container.Resolve<ILogger>();
             logger.Write("DotNetBuild started");
@@ -67,14 +56,7 @@ namespace DotNetBuild.Runner.ScriptCs
             try
             {
                 var buildRunner = _container.Resolve<IBuildRunner>();
-                if (buildRunnerParameters.Assembly != null)
-                {
-                    buildRunner.Run(buildRunnerParameters.Assembly, buildRunnerParameters.Target, buildRunnerParameters.Configuration);
-                }
-                else
-                {
-                    buildRunner.Run(buildRunnerParameters.Target, buildRunnerParameters.Configuration);
-                }
+                buildRunner.Run(target, configuration);
             }
             catch (DotNetBuildException exception)
             {

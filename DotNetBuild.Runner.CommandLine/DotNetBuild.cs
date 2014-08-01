@@ -18,15 +18,17 @@ namespace DotNetBuild.Runner.CommandLine
 
         public int Run()
         {
-            var buildRunnerParametersBuilder = _container.Resolve<IBuildRunnerParametersBuilder>();
-            var buildRunnerParameters = buildRunnerParametersBuilder.BuildFrom(_args);
+            var buildRunnerParametersBuilder = _container.Resolve<IBuildRunnerParametersReader>();
+            var assembly = buildRunnerParametersBuilder.Read(BuildRunnerParametersConstants.Assembly, _args);
+            var target = buildRunnerParametersBuilder.Read(BuildRunnerParametersConstants.Target, _args);
+            var configuration = buildRunnerParametersBuilder.Read(BuildRunnerParametersConstants.Configuration, _args);
             var logger = _container.Resolve<ILogger>();
             logger.Write("DotNetBuild started");
 
             try
             {
                 var buildRunner = _container.Resolve<IBuildRunner>();
-                buildRunner.Run(buildRunnerParameters.Assembly, buildRunnerParameters.Target, buildRunnerParameters.Configuration);
+                buildRunner.Run(assembly, target, configuration);
             }
             catch (DotNetBuildException exception)
             {

@@ -13,7 +13,4 @@ var dotNetBuild = Require<DotNetBuildScriptPackContext>();
 dotNetBuild.AddTarget("ci", new CI());
 dotNetBuild.AddConfiguration("test", new ConfigurationSettingsForTest());
 dotNetBuild.AddConfiguration("acceptance", new ConfigurationSettingsForAcceptance());
-
-var target = Env.ScriptArgs[0];
-var configuration = Env.ScriptArgs[1];
-dotNetBuild.Run(target, configuration);
+dotNetBuild.RunFromScriptArguments();

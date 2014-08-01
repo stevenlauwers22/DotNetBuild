@@ -17,7 +17,7 @@ dotNetBuild.AddTarget("ci", "Continuous integration target", c
 
 dotNetBuild.AddTarget("updateVersionNumber", "Update version number", c 
     => c.Do(context => {
-            const String baseDir = @"..\";
+            const String baseDir = @"..\..\";
             const String assemblyMajorVersion = "1";
             const String assemblyMinorVersion = "0";
             const String assemblyBuildNumber = "0";
@@ -53,7 +53,7 @@ dotNetBuild.AddTarget("updateVersionNumber", "Update version number", c
 
 dotNetBuild.AddTarget("buildRelease", "Build in release mode", c 
 	=> c.Do(context => {
-            const String baseDir = @"..\";
+            const String baseDir = @"..\..\";
 			var msBuildTask = new MsBuildTask
 			{
 				Project = Path.Combine(baseDir, "DotNetBuild.sln"),
@@ -66,7 +66,7 @@ dotNetBuild.AddTarget("buildRelease", "Build in release mode", c
 
 dotNetBuild.AddTarget("runTests", "Run tests", c 
 	=> c.Do(context => {
-            const String baseDir = @"..\";
+            const String baseDir = @"..\..\";
             var xunitTask = new XunitTask
             {
                 XunitExe = Path.Combine(baseDir, @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe"),
@@ -78,7 +78,7 @@ dotNetBuild.AddTarget("runTests", "Run tests", c
 
 dotNetBuild.AddTarget("createCorePackage", "Create Core NuGet package", c 
     => c.Do(context => {
-            const String baseDir = @"..\";
+            const String baseDir = @"..\..\";
             var nugetPackTask = new Pack
             {
                 NuGetExe = Path.Combine(baseDir, @"packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe"),
@@ -92,7 +92,7 @@ dotNetBuild.AddTarget("createCorePackage", "Create Core NuGet package", c
 
 dotNetBuild.AddTarget("createRunnerPackage", "Create Runner NuGet package", c 
     => c.Do(context => {
-            const String baseDir = @"..\";
+            const String baseDir = @"..\..\";
             var nugetPackTask = new Pack
             {
                 NuGetExe = Path.Combine(baseDir, @"packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe"),
@@ -106,7 +106,7 @@ dotNetBuild.AddTarget("createRunnerPackage", "Create Runner NuGet package", c
 
 dotNetBuild.AddTarget("createRunnerCommandLinePackage", "Create CommandLine Runner NuGet package", c 
     => c.Do(context => {
-            const String baseDir = @"..\";
+            const String baseDir = @"..\..\";
             var nugetPackTask = new Pack
             {
                 NuGetExe = Path.Combine(baseDir, @"packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe"),
@@ -120,7 +120,7 @@ dotNetBuild.AddTarget("createRunnerCommandLinePackage", "Create CommandLine Runn
 
 dotNetBuild.AddTarget("createRunnerScriptCsPackage", "Create ScriptCs Runner NuGet package", c 
     => c.Do(context => {
-            const String baseDir = @"..\";
+            const String baseDir = @"..\..\";
             var nugetPackTask = new Pack
             {
                 NuGetExe = Path.Combine(baseDir, @"packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe"),
@@ -134,7 +134,7 @@ dotNetBuild.AddTarget("createRunnerScriptCsPackage", "Create ScriptCs Runner NuG
 
 dotNetBuild.AddTarget("createTasksPackage", "Create Tasks NuGet package", c 
     => c.Do(context => {
-            const String baseDir = @"..\";
+            const String baseDir = @"..\..\";
             var nugetPackTask = new Pack
             {
                 NuGetExe = Path.Combine(baseDir, @"packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe"),
@@ -147,11 +147,11 @@ dotNetBuild.AddTarget("createTasksPackage", "Create Tasks NuGet package", c
 		}));
 
 dotNetBuild.AddConfiguration("test", c 
-	=> c.AddSetting("MyProperty", @"ValueForTest"));
+	=> c.AddSetting("MyProperty", @"ValueForTest")
+);
 
 dotNetBuild.AddConfiguration("acceptance", c 
-	=> c.AddSetting("MyProperty", @"ValueForAcceptance"));
+	=> c.AddSetting("MyProperty", @"ValueForAcceptance")
+);
 
-var target = Env.ScriptArgs[0];
-var configuration = Env.ScriptArgs[1];
-dotNetBuild.Run(target, configuration);
+dotNetBuild.RunFromScriptArguments();
