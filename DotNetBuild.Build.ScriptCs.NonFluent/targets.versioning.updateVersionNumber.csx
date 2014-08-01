@@ -21,7 +21,7 @@ public class UpdateVersionNumber : ITarget
 
     public Boolean Execute(TargetExecutionContext context)
     {
-        const String baseDir = @"..\";
+        var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
         const String assemblyMajorVersion = "1";
         const String assemblyMinorVersion = "0";
         const String assemblyBuildNumber = "0";
@@ -29,9 +29,9 @@ public class UpdateVersionNumber : ITarget
         {
             AssemblyInfoFiles = new[]
             {
-                Path.Combine(baseDir, @"DotNetBuild.Core\Properties\AssemblyInfo.cs"),
-                Path.Combine(baseDir, @"DotNetBuild.Runner\Properties\AssemblyInfo.cs"),
-                Path.Combine(baseDir, @"DotNetBuild.Runner.CommandLine\Properties\AssemblyInfo.cs")
+                Path.Combine(solutionDirectory, @"DotNetBuild.Core\Properties\AssemblyInfo.cs"),
+                Path.Combine(solutionDirectory, @"DotNetBuild.Runner\Properties\AssemblyInfo.cs"),
+                Path.Combine(solutionDirectory, @"DotNetBuild.Runner.CommandLine\Properties\AssemblyInfo.cs")
             },
             AssemblyInformationalVersion = String.Format("{0}.{1}.{2}-alpha", assemblyMajorVersion, assemblyMinorVersion, assemblyBuildNumber),
             UpdateAssemblyInformationalVersion = true,

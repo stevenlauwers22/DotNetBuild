@@ -14,6 +14,7 @@
     <dependencies>
       <dependency id="DotNetBuild.Core" version="$version$" />
       <dependency id="DotNetBuild.Runner" version="$version$" />
+      <dependency id="ScriptCs.Contracts" version="0.9.0" />
     </dependencies>
   </metadata>
   <files>

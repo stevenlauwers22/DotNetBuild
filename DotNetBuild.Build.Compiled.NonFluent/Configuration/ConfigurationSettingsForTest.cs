@@ -6,7 +6,7 @@ namespace DotNetBuild.Build.Compiled.NonFluent.Configuration
     {
         public ConfigurationSettingsForTest()
         {
-            Add("MyProperty", @"ValueForTest");
+            Add("SolutionDirectory", @"..\");
         }
     }
 }

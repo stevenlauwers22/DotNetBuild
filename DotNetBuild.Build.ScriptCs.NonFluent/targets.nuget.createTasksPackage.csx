@@ -20,12 +20,12 @@ public class CreateTasksPackage : ITarget
 
     public Boolean Execute(TargetExecutionContext context)
     {
-        const String baseDir = @"..\";
+        var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
         var nugetPackTask = new Pack
         {
-            NuGetExe = Path.Combine(baseDir, @"packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe"),
-            NuSpecFile = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild.Tasks.nuspec"),
-            OutputDir = Path.Combine(baseDir, @"packagesForNuGet\"),
+            NuGetExe = Path.Combine(solutionDirectory, @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe"),
+            NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Tasks.nuspec"),
+            OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
             Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
         };
 

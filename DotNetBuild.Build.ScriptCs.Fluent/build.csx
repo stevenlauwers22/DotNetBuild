@@ -17,7 +17,7 @@ dotNetBuild.AddTarget("ci", "Continuous integration target", c
 
 dotNetBuild.AddTarget("updateVersionNumber", "Update version number", c 
     => c.Do(context => {
-            const String baseDir = @"..\";
+            var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             const String assemblyMajorVersion = "1";
             const String assemblyMinorVersion = "0";
             const String assemblyBuildNumber = "0";
@@ -25,9 +25,9 @@ dotNetBuild.AddTarget("updateVersionNumber", "Update version number", c
             {
                 AssemblyInfoFiles = new[]
                 {
-                    Path.Combine(baseDir, @"DotNetBuild.Core\Properties\AssemblyInfo.cs"),
-                    Path.Combine(baseDir, @"DotNetBuild.Runner\Properties\AssemblyInfo.cs"),
-                    Path.Combine(baseDir, @"DotNetBuild.Runner.CommandLine\Properties\AssemblyInfo.cs")
+                    Path.Combine(solutionDirectory, @"DotNetBuild.Core\Properties\AssemblyInfo.cs"),
+                    Path.Combine(solutionDirectory, @"DotNetBuild.Runner\Properties\AssemblyInfo.cs"),
+                    Path.Combine(solutionDirectory, @"DotNetBuild.Runner.CommandLine\Properties\AssemblyInfo.cs")
                 },
                 AssemblyInformationalVersion = String.Format("{0}.{1}.{2}-alpha", assemblyMajorVersion, assemblyMinorVersion, assemblyBuildNumber),
                 UpdateAssemblyInformationalVersion = true,
@@ -53,10 +53,10 @@ dotNetBuild.AddTarget("updateVersionNumber", "Update version number", c
 
 dotNetBuild.AddTarget("buildRelease", "Build in release mode", c 
 	=> c.Do(context => {
-            const String baseDir = @"..\";
+            var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
 			var msBuildTask = new MsBuildTask
 			{
-				Project = Path.Combine(baseDir, "DotNetBuild.sln"),
+				Project = Path.Combine(solutionDirectory, "DotNetBuild.sln"),
 				Target = "Rebuild",
 				Parameters = "Configuration=Release"
 			};
@@ -66,11 +66,11 @@ dotNetBuild.AddTarget("buildRelease", "Build in release mode", c
 
 dotNetBuild.AddTarget("runTests", "Run tests", c 
 	=> c.Do(context => {
-            const String baseDir = @"..\";
+            var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var xunitTask = new XunitTask
             {
-                XunitExe = Path.Combine(baseDir, @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe"),
-                Assembly = Path.Combine(baseDir, @"DotNetBuild.Tests\bin\Release\DotNetBuild.Tests.dll")
+                XunitExe = Path.Combine(solutionDirectory, @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe"),
+                Assembly = Path.Combine(solutionDirectory, @"DotNetBuild.Tests\bin\Release\DotNetBuild.Tests.dll")
             };
 
             return xunitTask.Execute();
@@ -78,12 +78,12 @@ dotNetBuild.AddTarget("runTests", "Run tests", c
 
 dotNetBuild.AddTarget("createCorePackage", "Create Core NuGet package", c 
     => c.Do(context => {
-            const String baseDir = @"..\";
+            var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var nugetPackTask = new Pack
             {
-                NuGetExe = Path.Combine(baseDir, @"packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe"),
-                NuSpecFile = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild.Core.nuspec"),
-                OutputDir = Path.Combine(baseDir, @"packagesForNuGet\"),
+                NuGetExe = Path.Combine(solutionDirectory, @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe"),
+                NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Core.nuspec"),
+                OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
             };
 
@@ -92,12 +92,12 @@ dotNetBuild.AddTarget("createCorePackage", "Create Core NuGet package", c
 
 dotNetBuild.AddTarget("createRunnerPackage", "Create Runner NuGet package", c 
     => c.Do(context => {
-            const String baseDir = @"..\";
+            var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var nugetPackTask = new Pack
             {
-                NuGetExe = Path.Combine(baseDir, @"packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe"),
-                NuSpecFile = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild.Runner.nuspec"),
-                OutputDir = Path.Combine(baseDir, @"packagesForNuGet\"),
+                NuGetExe = Path.Combine(solutionDirectory, @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe"),
+                NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.nuspec"),
+                OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
             };
 
@@ -106,12 +106,12 @@ dotNetBuild.AddTarget("createRunnerPackage", "Create Runner NuGet package", c
 
 dotNetBuild.AddTarget("createRunnerCommandLinePackage", "Create CommandLine Runner NuGet package", c 
     => c.Do(context => {
-            const String baseDir = @"..\";
+            var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var nugetPackTask = new Pack
             {
-                NuGetExe = Path.Combine(baseDir, @"packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe"),
-                NuSpecFile = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild.Runner.CommandLine.nuspec"),
-                OutputDir = Path.Combine(baseDir, @"packagesForNuGet\"),
+                NuGetExe = Path.Combine(solutionDirectory, @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe"),
+                NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.CommandLine.nuspec"),
+                OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
             };
 
@@ -120,12 +120,12 @@ dotNetBuild.AddTarget("createRunnerCommandLinePackage", "Create CommandLine Runn
 
 dotNetBuild.AddTarget("createRunnerScriptCsPackage", "Create ScriptCs Runner NuGet package", c 
     => c.Do(context => {
-            const String baseDir = @"..\";
+            var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var nugetPackTask = new Pack
             {
-                NuGetExe = Path.Combine(baseDir, @"packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe"),
-                NuSpecFile = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild.Runner.ScriptCs.nuspec"),
-                OutputDir = Path.Combine(baseDir, @"packagesForNuGet\"),
+                NuGetExe = Path.Combine(solutionDirectory, @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe"),
+                NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.ScriptCs.nuspec"),
+                OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
             };
 
@@ -134,12 +134,12 @@ dotNetBuild.AddTarget("createRunnerScriptCsPackage", "Create ScriptCs Runner NuG
 
 dotNetBuild.AddTarget("createTasksPackage", "Create Tasks NuGet package", c 
     => c.Do(context => {
-            const String baseDir = @"..\";
+            var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var nugetPackTask = new Pack
             {
-                NuGetExe = Path.Combine(baseDir, @"packages\NuGet.CommandLine.2.7.3\tools\NuGet.exe"),
-                NuSpecFile = Path.Combine(baseDir, @"packagesForNuGet\DotNetBuild.Tasks.nuspec"),
-                OutputDir = Path.Combine(baseDir, @"packagesForNuGet\"),
+                NuGetExe = Path.Combine(solutionDirectory, @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe"),
+                NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Tasks.nuspec"),
+                OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
             };
 
@@ -147,11 +147,11 @@ dotNetBuild.AddTarget("createTasksPackage", "Create Tasks NuGet package", c
 		}));
 
 dotNetBuild.AddConfiguration("test", c 
-	=> c.AddSetting("MyProperty", @"ValueForTest")
+	=> c.AddSetting("SolutionDirectory", @"..\")
 );
 
 dotNetBuild.AddConfiguration("acceptance", c 
-	=> c.AddSetting("MyProperty", @"ValueForAcceptance")
+	=> c.AddSetting("SolutionDirectory", @"..\")
 );
 
 dotNetBuild.RunFromScriptArguments();

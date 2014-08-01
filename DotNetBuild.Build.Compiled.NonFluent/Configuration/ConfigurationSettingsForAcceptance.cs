@@ -6,7 +6,7 @@ namespace DotNetBuild.Build.Compiled.NonFluent.Configuration
     {
         public ConfigurationSettingsForAcceptance()
         {
-            Add("MyProperty", @"ValueForAcceptance");
+            Add("SolutionDirectory", @"..\");
         }
     }
 }

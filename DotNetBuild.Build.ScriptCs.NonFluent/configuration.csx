@@ -2,7 +2,7 @@ public class ConfigurationSettingsForTest : ConfigurationSettings
 {
     public ConfigurationSettingsForTest()
     {
-        Add("MyProperty", "ValueForTest");
+        Add("SolutionDirectory", @"..\");
     }
 }
 
@@ -10,6 +10,6 @@ public class ConfigurationSettingsForAcceptance : ConfigurationSettings
 {
     public ConfigurationSettingsForAcceptance()
     {
-        Add("MyProperty", "ValueForAcceptance");
+        Add("SolutionDirectory", @"..\");
     }
 }

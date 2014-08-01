@@ -19,10 +19,10 @@ public class BuildRelease : ITarget
 
     public Boolean Execute(TargetExecutionContext context)
     {
-        const String baseDir = @"..\";
+        var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
         var msBuildTask = new MsBuildTask
         {
-            Project = Path.Combine(baseDir, "DotNetBuild.sln"),
+            Project = Path.Combine(solutionDirectory, "DotNetBuild.sln"),
             Target = "Rebuild",
             Parameters = "Configuration=Release"
         };
