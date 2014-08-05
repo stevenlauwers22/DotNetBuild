@@ -1,10 +1,10 @@
-/DotNetBuild.Build.Compiled.Fluent/obj
-/DotNetBuild.Build.Compiled.Fluent/bin
-/DotNetBuild.Build.Compiled.Fluent/DotNetBuild.Build.Compiled.Fluent.csproj.user
+/DotNetBuild.Build.Assembly.Fluent/obj
+/DotNetBuild.Build.Assembly.Fluent/bin
+/DotNetBuild.Build.Assembly.Fluent/DotNetBuild.Build.Assembly.Fluent.csproj.user
 
-/DotNetBuild.Build.Compiled.NonFluent/obj
-/DotNetBuild.Build.Compiled.NonFluent/bin
-/DotNetBuild.Build.Compiled.Fluent/DotNetBuild.Build.Compiled.NonFluent.csproj.user
+/DotNetBuild.Build.Assembly.NonFluent/obj
+/DotNetBuild.Build.Assembly.NonFluent/bin
+/DotNetBuild.Build.Assembly.Fluent/DotNetBuild.Build.Assembly.NonFluent.csproj.user
 
 /DotNetBuild.Core/obj
 /DotNetBuild.Core/bin
@@ -14,9 +14,9 @@
 /DotNetBuild.Runner/obj
 /DotNetBuild.Runner/DotNetBuild.Runner.csproj.user
 
-/DotNetBuild.Runner.CommandLine/bin
-/DotNetBuild.Runner.CommandLine/obj
-/DotNetBuild.Runner.CommandLine/DotNetBuild.Runner.CommandLine.csproj.user
+/DotNetBuild.Runner.Assembly/bin
+/DotNetBuild.Runner.Assembly/obj
+/DotNetBuild.Runner.Assembly/DotNetBuild.Runner.Assembly.csproj.user
 
 /DotNetBuild.Runner.ScriptCs/obj
 /DotNetBuild.Runner.ScriptCs/bin
