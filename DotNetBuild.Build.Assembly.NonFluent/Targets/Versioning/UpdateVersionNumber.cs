@@ -37,20 +37,20 @@ namespace DotNetBuild.Build.Assembly.NonFluent.Targets.Versioning
                 {
                     Path.Combine(solutionDirectory, @"DotNetBuild.Core\Properties\AssemblyInfo.cs"),
                     Path.Combine(solutionDirectory, @"DotNetBuild.Runner\Properties\AssemblyInfo.cs"),
-                    Path.Combine(solutionDirectory, @"DotNetBuild.Runner.Assembly\Properties\AssemblyInfo.cs")
+                    Path.Combine(solutionDirectory, @"DotNetBuild.Runner.Assembly\Properties\AssemblyInfo.cs"),
+                    Path.Combine(solutionDirectory, @"DotNetBuild.Runner.ScriptCs\Properties\AssemblyInfo.cs"),
+                    Path.Combine(solutionDirectory, @"DotNetBuild.Tasks\Properties\AssemblyInfo.cs")
                 },
                 AssemblyInformationalVersion = String.Format("{0}.{1}.{2}-alpha", assemblyMajorVersion, assemblyMinorVersion, assemblyBuildNumber),
                 UpdateAssemblyInformationalVersion = true,
                 AssemblyMajorVersion = assemblyMajorVersion,
                 AssemblyMinorVersion = assemblyMinorVersion,
                 AssemblyBuildNumber = assemblyBuildNumber,
-                AssemblyRevisionType = "AutoIncrement",
-                AssemblyRevisionFormat = "0",
+                AssemblyRevision = "0",
                 AssemblyFileMajorVersion = assemblyMajorVersion,
                 AssemblyFileMinorVersion = assemblyMinorVersion,
                 AssemblyFileBuildNumber = assemblyBuildNumber,
-                AssemblyFileRevisionType = "AutoIncrement",
-                AssemblyFileRevisionFormat = "0",
+                AssemblyFileRevision = "0"
             };
 
             var result = assemblyInfoTask.Execute();
