@@ -9,6 +9,7 @@ namespace DotNetBuild.Build.Assembly.NonFluent
         public void Configure()
         {
             "ci".Target(new CI());
+            "deploy".Target(new Deploy());
 
             "test".Configure(new ConfigurationSettingsForTest());
             "acceptance".Configure(new ConfigurationSettingsForAcceptance());

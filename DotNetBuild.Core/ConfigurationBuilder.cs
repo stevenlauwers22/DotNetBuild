@@ -11,7 +11,7 @@ namespace DotNetBuild.Core
         : IConfigurationBuilder
     {
         private readonly IConfigurationRegistry _configurationRegistry;
-        private readonly ConfigurationSettings _configurationSettings;
+        private readonly IConfigurationSettings _configurationSettings;
 
         public ConfigurationBuilder(IConfigurationRegistry configurationRegistry, String name)
         {

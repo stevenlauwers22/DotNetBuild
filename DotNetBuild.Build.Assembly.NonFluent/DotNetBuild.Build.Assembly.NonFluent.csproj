@@ -41,6 +41,7 @@
     <Compile Include="Configuration\ConfigurationSettingsForAcceptance.cs" />
     <Compile Include="Configuration\ConfigurationSettingsForTest.cs" />
     <Compile Include="Configurator.cs" />
+    <Compile Include="Targets\NuGet\PublishCorePackage.cs" />
     <Compile Include="Targets\NuGet\CreateRunnerPackage.cs" />
     <Compile Include="Targets\NuGet\CreateRunnerScriptCsPackage.cs" />
     <Compile Include="Targets\NuGet\CreateRunnerCommandLinePackage.cs" />

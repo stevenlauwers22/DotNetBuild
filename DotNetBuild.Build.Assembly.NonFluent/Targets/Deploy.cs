@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DotNetBuild.Build.Assembly.NonFluent.Targets.NuGet;
 using DotNetBuild.Core;
 
 namespace DotNetBuild.Build.Assembly.NonFluent.Targets
@@ -18,12 +19,17 @@ namespace DotNetBuild.Build.Assembly.NonFluent.Targets
 
         public IEnumerable<ITarget> DependsOn
         {
-            get { return null; }
+            get
+            {
+                return new List<ITarget>
+                {
+                    new PublishCorePackage()
+                };
+            }
         }
 
         public Boolean Execute(TargetExecutionContext context)
         {
-            // TODO
             return true;
         }
     }
