@@ -1,8 +1,8 @@
-﻿using DotNetBuild.Build.Compiled.NonFluent.Configuration;
-using DotNetBuild.Build.Compiled.NonFluent.Targets;
+﻿using DotNetBuild.Build.Assembly.NonFluent.Configuration;
+using DotNetBuild.Build.Assembly.NonFluent.Targets;
 using DotNetBuild.Core;
 
-namespace DotNetBuild.Build.Compiled.NonFluent
+namespace DotNetBuild.Build.Assembly.NonFluent
 {
     public class Configurator : IConfigurator
     {

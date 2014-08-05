@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build.Compiled", "Build.Compiled", "{259D3DF4-2815-4086-9927-2AFDDE256155}"
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build.Assembly", "Build.Assembly", "{259D3DF4-2815-4086-9927-2AFDDE256155}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Build.Compiled.Fluent", "DotNetBuild.Build.Compiled.Fluent\DotNetBuild.Build.Compiled.Fluent.csproj", "{137FDE29-9D51-4F5D-A63F-A5063C3D3B69}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Build.Assembly.Fluent", "DotNetBuild.Build.Compiled.Fluent\DotNetBuild.Build.Assembly.Fluent.csproj", "{137FDE29-9D51-4F5D-A63F-A5063C3D3B69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Build.Compiled.NonFluent", "DotNetBuild.Build.Compiled.NonFluent\DotNetBuild.Build.Compiled.NonFluent.csproj", "{2CC8AB38-DF99-41B1-884B-4EFAA37FF6C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Build.Assembly.NonFluent", "DotNetBuild.Build.Compiled.NonFluent\DotNetBuild.Build.Assembly.NonFluent.csproj", "{2CC8AB38-DF99-41B1-884B-4EFAA37FF6C3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build.ScriptCs.Fluent", "Build.ScriptCs.Fluent", "{A8EB6974-F235-48DE-99D1-928DC6442A61}"
 	ProjectSection(SolutionItems) = preProject
@@ -24,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build.ScriptCs.NonFluent", 
 		DotNetBuild.Build.ScriptCs.NonFluent\targets.compilation.buildRelease.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.compilation.buildRelease.csx
 		DotNetBuild.Build.ScriptCs.NonFluent\targets.deploy.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.deploy.csx
 		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createCorePackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createCorePackage.csx
-		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerCommandLinePackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerCommandLinePackage.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerAssemblyPackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerAssemblyPackage.csx
 		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerPackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerPackage.csx
 		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerScriptCsPackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerScriptCsPackage.csx
 		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createTasksPackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createTasksPackage.csx
@@ -38,7 +36,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Core", "DotNetB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Runner", "DotNetBuild.Runner\DotNetBuild.Runner.csproj", "{B12BBF26-D91F-4516-99E8-0AE27A40069E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Runner.CommandLine", "DotNetBuild.Runner.CommandLine\DotNetBuild.Runner.CommandLine.csproj", "{B477828C-5A65-4B3A-A180-42782F420AA1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Runner.Assembly", "DotNetBuild.Runner.CommandLine\DotNetBuild.Runner.Assembly.csproj", "{B477828C-5A65-4B3A-A180-42782F420AA1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Runner.ScriptCs", "DotNetBuild.Runner.ScriptCs\DotNetBuild.Runner.ScriptCs.csproj", "{8FF41F36-65F1-4503-BEA2-06F0FAC850AF}"
 EndProject

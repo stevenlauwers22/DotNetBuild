@@ -5,7 +5,7 @@ using DotNetBuild.Core;
 using DotNetBuild.Core.Facilities.State;
 using DotNetBuild.Tasks.NuGet;
 
-namespace DotNetBuild.Build.Compiled.NonFluent.Targets.NuGet
+namespace DotNetBuild.Build.Assembly.NonFluent.Targets.NuGet
 {
     public class CreateCorePackage : ITarget
     {

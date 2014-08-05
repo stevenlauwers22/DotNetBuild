@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using DotNetBuild.Build.Compiled.NonFluent.Targets.Compilation;
-using DotNetBuild.Build.Compiled.NonFluent.Targets.NuGet;
-using DotNetBuild.Build.Compiled.NonFluent.Targets.Testing;
-using DotNetBuild.Build.Compiled.NonFluent.Targets.Versioning;
+using DotNetBuild.Build.Assembly.NonFluent.Targets.Compilation;
+using DotNetBuild.Build.Assembly.NonFluent.Targets.NuGet;
+using DotNetBuild.Build.Assembly.NonFluent.Targets.Testing;
+using DotNetBuild.Build.Assembly.NonFluent.Targets.Versioning;
 using DotNetBuild.Core;
 
-namespace DotNetBuild.Build.Compiled.NonFluent.Targets
+namespace DotNetBuild.Build.Assembly.NonFluent.Targets
 {
     public class CI : ITarget
     {
@@ -31,7 +31,7 @@ namespace DotNetBuild.Build.Compiled.NonFluent.Targets
                     new RunTests(),
                     new CreateCorePackage(),
                     new CreateRunnerPackage(),
-                    new CreateRunnerCommandLinePackage(),
+                    new CreateRunnerAssemblyPackage(),
                     new CreateRunnerScriptCsPackage(),
                     new CreateTasksPackage()
                 };

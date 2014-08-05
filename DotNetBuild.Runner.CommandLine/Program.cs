@@ -2,7 +2,7 @@
 using DotNetBuild.Runner.Configuration;
 using DotNetBuild.Runner.Infrastructure.TinyIoC;
 
-namespace DotNetBuild.Runner.CommandLine
+namespace DotNetBuild.Runner.Assembly
 {
     public class Program
     {

@@ -21,7 +21,7 @@ public class CI : ITarget
                 new RunTests(),
                 new CreateCorePackage(),
                 new CreateRunnerPackage(),
-                new CreateRunnerCommandLinePackage(),
+                new CreateRunnerAssemblyPackage(),
                 new CreateRunnerScriptCsPackage(),
                 new CreateTasksPackage()
             };

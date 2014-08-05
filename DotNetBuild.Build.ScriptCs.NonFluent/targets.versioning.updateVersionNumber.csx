@@ -31,7 +31,7 @@ public class UpdateVersionNumber : ITarget
             {
                 Path.Combine(solutionDirectory, @"DotNetBuild.Core\Properties\AssemblyInfo.cs"),
                 Path.Combine(solutionDirectory, @"DotNetBuild.Runner\Properties\AssemblyInfo.cs"),
-                Path.Combine(solutionDirectory, @"DotNetBuild.Runner.CommandLine\Properties\AssemblyInfo.cs")
+                Path.Combine(solutionDirectory, @"DotNetBuild.Runner.Assembly\Properties\AssemblyInfo.cs")
             },
             AssemblyInformationalVersion = String.Format("{0}.{1}.{2}-alpha", assemblyMajorVersion, assemblyMinorVersion, assemblyBuildNumber),
             UpdateAssemblyInformationalVersion = true,

@@ -3,7 +3,7 @@ using DotNetBuild.Runner.Exceptions;
 using DotNetBuild.Runner.Infrastructure.Logging;
 using DotNetBuild.Runner.Infrastructure.TinyIoC;
 
-namespace DotNetBuild.Runner.CommandLine
+namespace DotNetBuild.Runner.Assembly
 {
     public class DotNetBuild
     {

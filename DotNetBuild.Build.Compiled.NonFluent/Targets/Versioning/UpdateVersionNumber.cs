@@ -6,7 +6,7 @@ using DotNetBuild.Core.Facilities.Logging;
 using DotNetBuild.Core.Facilities.State;
 using DotNetBuild.Tasks;
 
-namespace DotNetBuild.Build.Compiled.NonFluent.Targets.Versioning
+namespace DotNetBuild.Build.Assembly.NonFluent.Targets.Versioning
 {
     public class UpdateVersionNumber : ITarget
     {
@@ -37,7 +37,7 @@ namespace DotNetBuild.Build.Compiled.NonFluent.Targets.Versioning
                 {
                     Path.Combine(solutionDirectory, @"DotNetBuild.Core\Properties\AssemblyInfo.cs"),
                     Path.Combine(solutionDirectory, @"DotNetBuild.Runner\Properties\AssemblyInfo.cs"),
-                    Path.Combine(solutionDirectory, @"DotNetBuild.Runner.CommandLine\Properties\AssemblyInfo.cs")
+                    Path.Combine(solutionDirectory, @"DotNetBuild.Runner.Assembly\Properties\AssemblyInfo.cs")
                 },
                 AssemblyInformationalVersion = String.Format("{0}.{1}.{2}-alpha", assemblyMajorVersion, assemblyMinorVersion, assemblyBuildNumber),
                 UpdateAssemblyInformationalVersion = true,

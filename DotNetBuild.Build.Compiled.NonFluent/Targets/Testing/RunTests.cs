@@ -4,7 +4,7 @@ using System.IO;
 using DotNetBuild.Core;
 using DotNetBuild.Tasks;
 
-namespace DotNetBuild.Build.Compiled.NonFluent.Targets.Testing
+namespace DotNetBuild.Build.Assembly.NonFluent.Targets.Testing
 {
     public class RunTests : ITarget
     {

@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2CC8AB38-DF99-41B1-884B-4EFAA37FF6C3}</ProjectGuid>
+    <ProjectGuid>{137FDE29-9D51-4F5D-A63F-A5063C3D3B69}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DotNetBuild.Build.Compiled.NonFluent</RootNamespace>
-    <AssemblyName>DotNetBuild.Build.Compiled.NonFluent</AssemblyName>
+    <RootNamespace>DotNetBuild.Build.Assembly.Fluent</RootNamespace>
+    <AssemblyName>DotNetBuild.Build.Assembly.Fluent</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -29,26 +29,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Targets\Deploy.cs" />
-    <Compile Include="Targets\Compilation\BuildRelease.cs" />
-    <Compile Include="Targets\CI.cs" />
-    <Compile Include="Configuration\ConfigurationSettingsForAcceptance.cs" />
-    <Compile Include="Configuration\ConfigurationSettingsForTest.cs" />
     <Compile Include="Configurator.cs" />
-    <Compile Include="Targets\NuGet\CreateRunnerPackage.cs" />
-    <Compile Include="Targets\NuGet\CreateRunnerScriptCsPackage.cs" />
-    <Compile Include="Targets\NuGet\CreateRunnerCommandLinePackage.cs" />
-    <Compile Include="Targets\NuGet\CreateTasksPackage.cs" />
-    <Compile Include="Targets\NuGet\CreateCorePackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Targets\Testing\RunTests.cs" />
-    <Compile Include="Targets\Versioning\UpdateVersionNumber.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DotNetBuild.Core\DotNetBuild.Core.csproj">
@@ -60,7 +47,6 @@
       <Name>DotNetBuild.Tasks</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="build.bat" />
   </ItemGroup>

@@ -2,7 +2,7 @@
 #load targets.ci.csx
 #load targets.compilation.buildRelease.csx
 #load targets.nuget.createCorePackage.csx
-#load targets.nuget.createRunnerCommandLinePackage.csx
+#load targets.nuget.createRunnerAssemblyPackage.csx
 #load targets.nuget.createRunnerPackage.csx
 #load targets.nuget.createRunnerScriptCsPackage.csx
 #load targets.nuget.createTasksPackage.csx

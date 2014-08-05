@@ -5,13 +5,13 @@ using DotNetBuild.Core;
 using DotNetBuild.Core.Facilities.State;
 using DotNetBuild.Tasks.NuGet;
 
-namespace DotNetBuild.Build.Compiled.NonFluent.Targets.NuGet
+namespace DotNetBuild.Build.Assembly.NonFluent.Targets.NuGet
 {
-    public class CreateRunnerCommandLinePackage : ITarget
+    public class CreateRunnerAssemblyPackage : ITarget
     {
         public String Description
         {
-            get { return "Create CommandLine Runner NuGet package"; }
+            get { return "Create Assembly Runner NuGet package"; }
         }
 
         public Boolean ContinueOnError
@@ -31,7 +31,7 @@ namespace DotNetBuild.Build.Compiled.NonFluent.Targets.NuGet
             var nugetPackTask = new Pack
             {
                 NuGetExe = Path.Combine(solutionDirectory, nugetExe),
-                NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.CommandLine.nuspec"),
+                NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.Assembly.nuspec"),
                 OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
             };

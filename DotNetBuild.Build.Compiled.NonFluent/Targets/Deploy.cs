@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using DotNetBuild.Core;
 
-namespace DotNetBuild.Build.Compiled.NonFluent.Targets
+namespace DotNetBuild.Build.Assembly.NonFluent.Targets
 {
     public class Deploy : ITarget
     {

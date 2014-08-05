@@ -131,9 +131,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DotNetBuild.Runner.CommandLine\DotNetBuild.Runner.CommandLine.csproj">
+    <ProjectReference Include="..\DotNetBuild.Runner.CommandLine\DotNetBuild.Runner.Assembly.csproj">
       <Project>{b477828c-5a65-4b3a-a180-42782f420aa1}</Project>
-      <Name>DotNetBuild.Runner.CommandLine</Name>
+      <Name>DotNetBuild.Runner.Assembly</Name>
     </ProjectReference>
     <ProjectReference Include="..\DotNetBuild.Runner.ScriptCs\DotNetBuild.Runner.ScriptCs.csproj">
       <Project>{8ff41f36-65f1-4503-bea2-06f0fac850af}</Project>

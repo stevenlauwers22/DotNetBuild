@@ -6,7 +6,7 @@ using DotNetBuild.Core.Facilities.State;
 using DotNetBuild.Tasks;
 using DotNetBuild.Tasks.NuGet;
 
-namespace DotNetBuild.Build.Compiled.Fluent
+namespace DotNetBuild.Build.Assembly.Fluent
 {
     public class Configurator : IConfigurator
     {
@@ -19,7 +19,7 @@ namespace DotNetBuild.Build.Compiled.Fluent
                 .And("runTests")
                 .And("createCorePackage")
                 .And("createRunnerPackage")
-                .And("createRunnerCommandLinePackage")
+                .And("createRunnerAssemblyPackage")
                 .And("createRunnerScriptCsPackage")
                 .And("createTasksPackage");
 
@@ -37,7 +37,7 @@ namespace DotNetBuild.Build.Compiled.Fluent
                         {
                             Path.Combine(solutionDirectory, @"DotNetBuild.Core\Properties\AssemblyInfo.cs"),
                             Path.Combine(solutionDirectory, @"DotNetBuild.Runner\Properties\AssemblyInfo.cs"),
-                            Path.Combine(solutionDirectory, @"DotNetBuild.Runner.CommandLine\Properties\AssemblyInfo.cs")
+                            Path.Combine(solutionDirectory, @"DotNetBuild.Runner.Assembly\Properties\AssemblyInfo.cs")
                         },
                         AssemblyInformationalVersion = String.Format("{0}.{1}.{2}-alpha", assemblyMajorVersion, assemblyMinorVersion, assemblyBuildNumber),
                         UpdateAssemblyInformationalVersion = true,
@@ -125,8 +125,8 @@ namespace DotNetBuild.Build.Compiled.Fluent
                     return nugetPackTask.Execute();
                 });
 
-            "createRunnerCommandLinePackage"
-                .Target("Create CommandLine Runner NuGet package")
+            "createRunnerAssemblyPackage"
+                .Target("Create Assembly Runner NuGet package")
                 .Do(context =>
                 {
                     var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
@@ -134,7 +134,7 @@ namespace DotNetBuild.Build.Compiled.Fluent
                     var nugetPackTask = new Pack
                     {
                         NuGetExe = Path.Combine(solutionDirectory, nugetExe),
-                        NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.CommandLine.nuspec"),
+                        NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.Assembly.nuspec"),
                         OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                         Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
                     };

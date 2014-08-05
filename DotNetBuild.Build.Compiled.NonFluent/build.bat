@@ -1,2 +1,2 @@
-..\DotNetBuild.Runner.CommandLine\bin\Debug\DotNetBuild.Runner.CommandLine.exe assembly:.\bin\Debug\DotNetBuild.Build.Compiled.NonFluent.dll target:CI configuration:Test
+..\DotNetBuild.Runner.Assembly\bin\Debug\DotNetBuild.Runner.Assembly.exe assembly:.\bin\Debug\DotNetBuild.Build.Assembly.NonFluent.dll target:CI configuration:Test
 pause

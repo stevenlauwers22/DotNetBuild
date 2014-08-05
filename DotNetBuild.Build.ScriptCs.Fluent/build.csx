@@ -11,7 +11,7 @@ dotNetBuild.AddTarget("ci", "Continuous integration target", c
         .And("runTests")
         .And("createCorePackage")
         .And("createRunnerPackage")
-        .And("createRunnerCommandLinePackage")
+        .And("createRunnerAssemblyPackage")
         .And("createRunnerScriptCsPackage")
         .And("createTasksPackage"));
 
@@ -27,7 +27,7 @@ dotNetBuild.AddTarget("updateVersionNumber", "Update version number", c
                 {
                     Path.Combine(solutionDirectory, @"DotNetBuild.Core\Properties\AssemblyInfo.cs"),
                     Path.Combine(solutionDirectory, @"DotNetBuild.Runner\Properties\AssemblyInfo.cs"),
-                    Path.Combine(solutionDirectory, @"DotNetBuild.Runner.CommandLine\Properties\AssemblyInfo.cs")
+                    Path.Combine(solutionDirectory, @"DotNetBuild.Runner.Assembly\Properties\AssemblyInfo.cs")
                 },
                 AssemblyInformationalVersion = String.Format("{0}.{1}.{2}-alpha", assemblyMajorVersion, assemblyMinorVersion, assemblyBuildNumber),
                 UpdateAssemblyInformationalVersion = true,
@@ -107,14 +107,14 @@ dotNetBuild.AddTarget("createRunnerPackage", "Create Runner NuGet package", c
             return nugetPackTask.Execute();
 		}));
 
-dotNetBuild.AddTarget("createRunnerCommandLinePackage", "Create CommandLine Runner NuGet package", c 
+dotNetBuild.AddTarget("createRunnerAssemblyPackage", "Create Assembly Runner NuGet package", c 
     => c.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetPackTask = new Pack
             {
                 NuGetExe = Path.Combine(solutionDirectory, nugetExe),
-                NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.CommandLine.nuspec"),
+                NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.Assembly.nuspec"),
                 OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
             };
