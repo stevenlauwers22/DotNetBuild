@@ -25,7 +25,7 @@ public class CreateRunnerAssemblyPackage : ITarget
         var nugetPackTask = new Pack
         {
             NuGetExe = Path.Combine(solutionDirectory, nugetExe),
-            NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.Assembly.nuspec"),
+            NuSpecFile = Path.Combine(solutionDirectory, @"DotNetBuild.Runner.Assembly\package.nuspec"),
             OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
             Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
         };

@@ -25,7 +25,7 @@ public class CreateCorePackage : ITarget
         var nugetPackTask = new Pack
         {
             NuGetExe = Path.Combine(solutionDirectory, nugetExe),
-            NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Core.nuspec"),
+            NuSpecFile = Path.Combine(solutionDirectory, @"DotNetBuild.Core\package.nuspec"),
             OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
             Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
         };

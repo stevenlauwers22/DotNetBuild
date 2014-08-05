@@ -84,7 +84,7 @@ dotNetBuild.AddTarget("createCorePackage", "Create Core NuGet package", c
             var nugetPackTask = new Pack
             {
                 NuGetExe = Path.Combine(solutionDirectory, nugetExe),
-                NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Core.nuspec"),
+                NuSpecFile = Path.Combine(solutionDirectory, @"DotNetBuild.Core\package.nuspec"),
                 OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
             };
@@ -99,7 +99,7 @@ dotNetBuild.AddTarget("createRunnerPackage", "Create Runner NuGet package", c
             var nugetPackTask = new Pack
             {
                 NuGetExe = Path.Combine(solutionDirectory, nugetExe),
-                NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.nuspec"),
+                NuSpecFile = Path.Combine(solutionDirectory, @"DotNetBuild.Runner\package.nuspec"),
                 OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
             };
@@ -114,7 +114,7 @@ dotNetBuild.AddTarget("createRunnerAssemblyPackage", "Create Assembly Runner NuG
             var nugetPackTask = new Pack
             {
                 NuGetExe = Path.Combine(solutionDirectory, nugetExe),
-                NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.Assembly.nuspec"),
+                NuSpecFile = Path.Combine(solutionDirectory, @"DotNetBuild.Runner.Assembly\package.nuspec"),
                 OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
             };
@@ -129,7 +129,7 @@ dotNetBuild.AddTarget("createRunnerScriptCsPackage", "Create ScriptCs Runner NuG
             var nugetPackTask = new Pack
             {
                 NuGetExe = Path.Combine(solutionDirectory, nugetExe),
-                NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Runner.ScriptCs.nuspec"),
+                NuSpecFile = Path.Combine(solutionDirectory, @"DotNetBuild.Runner.ScriptCs\package.nuspec"),
                 OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
             };
@@ -144,7 +144,7 @@ dotNetBuild.AddTarget("createTasksPackage", "Create Tasks NuGet package", c
             var nugetPackTask = new Pack
             {
                 NuGetExe = Path.Combine(solutionDirectory, nugetExe),
-                NuSpecFile = Path.Combine(solutionDirectory, @"packagesForNuGet\DotNetBuild.Tasks.nuspec"),
+                NuSpecFile = Path.Combine(solutionDirectory, @"DotNetBuild.Tasks\package.nuspec"),
                 OutputDir = Path.Combine(solutionDirectory, @"packagesForNuGet\"),
                 Version = context.FacilityProvider.Get<IStateReader>().Get<String>("VersionNumber")
             };
