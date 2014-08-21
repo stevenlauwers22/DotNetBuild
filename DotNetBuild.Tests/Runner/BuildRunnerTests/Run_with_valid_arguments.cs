@@ -13,6 +13,7 @@ namespace DotNetBuild.Tests.Runner.BuildRunnerTests
         private String _assemblyName;
         private String _targetName;
         private String _configurationName;
+        private String[] _parameters;
         private Mock<IAssemblyLoader> _assemblyLoader;
         private Mock<IAssemblyWrapper> _assembly;
         private Mock<IConfiguratorResolver> _configuratorResolver;
@@ -28,6 +29,7 @@ namespace DotNetBuild.Tests.Runner.BuildRunnerTests
             _assemblyName = TestData.GenerateString();
             _targetName = TestData.GenerateString();
             _configurationName = TestData.GenerateString();
+            _parameters = new[] { TestData.GenerateString(), TestData.GenerateString() };
 
             _assembly = new Mock<IAssemblyWrapper>();
             _assemblyLoader = new Mock<IAssemblyLoader>();
@@ -55,7 +57,7 @@ namespace DotNetBuild.Tests.Runner.BuildRunnerTests
 
         protected override void Act()
         {
-            Sut.Run(_assemblyName, _targetName, _configurationName);
+            Sut.Run(_assemblyName, _targetName, _configurationName, _parameters);
         }
 
         [Fact]
@@ -91,7 +93,7 @@ namespace DotNetBuild.Tests.Runner.BuildRunnerTests
         [Fact]
         public void Executes_the_specified_target()
         {
-            _targetExecutor.Verify(te => te.Execute(_target.Object, _configurationSettings.Object));
+            _targetExecutor.Verify(te => te.Execute(_target.Object, _configurationSettings.Object, It.IsAny<IParameterProvider>()));
         }
     }
 }

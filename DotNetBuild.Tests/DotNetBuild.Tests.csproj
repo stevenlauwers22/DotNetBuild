@@ -92,7 +92,7 @@
     <Compile Include="Runner\Infrastructure\Reflection\TypeFilterTests\Get_its_Filter.cs" />
     <Compile Include="Runner\Infrastructure\Reflection\AssemblyWrapperTests\Get_one_type_with_no_filter_and_multiple_matches.cs" />
     <Compile Include="Runner\Infrastructure\Reflection\AssemblyWrapperTests\Get_one_type_with_a_filter.cs" />
-    <Compile Include="Runner\BuildRunnerParametersBuilderTests\BuildFrom_an_argument_array.cs" />
+    <Compile Include="Runner\ParameterProviderTests\Get_value.cs" />
     <Compile Include="Runner\Facilities\State\StateRegistryTests\Add_state_without_passing_in_a_key.cs" />
     <Compile Include="Runner\Facilities\State\StateRegistryTests\Add_state.cs" />
     <Compile Include="Runner\Facilities\State\StateRegistryTests\Add_state_without_passing_in_a_value.cs" />

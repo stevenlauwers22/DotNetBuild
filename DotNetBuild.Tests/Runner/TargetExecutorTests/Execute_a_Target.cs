@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DotNetBuild.Core;
+using DotNetBuild.Core.Facilities;
 using DotNetBuild.Runner;
 using DotNetBuild.Runner.Infrastructure.Logging;
 using Moq;
@@ -20,8 +21,10 @@ namespace DotNetBuild.Tests.Runner.TargetExecutorTests
         private Mock<ITarget> _dependentTarget2B;
         private Mock<ITarget> _dependentTarget3;
         private Mock<IConfigurationSettings> _configurationSettings;
+        private Mock<IParameterProvider> _parameterProvider;
         private Mock<ITargetInspector> _targetInspector;
         private Mock<ILogger> _logger;
+        private Mock<IFacilityProvider> _facilityProvider;
 
         protected override void Arrange()
         {
@@ -65,21 +68,23 @@ namespace DotNetBuild.Tests.Runner.TargetExecutorTests
             _dependentTarget2.Setup(t => t.DependsOn).Returns(depdendentTargets2);
 
             _configurationSettings = new Mock<IConfigurationSettings>();
+            _parameterProvider = new Mock<IParameterProvider>();
 
             _targetInspector = new Mock<ITargetInspector>();
             _targetInspector.Setup(ti => ti.CheckForCircularDependencies(_target.Object)).Returns(new List<Type>());
 
             _logger = new Mock<ILogger>();
+            _facilityProvider = new Mock<IFacilityProvider>();
         }
 
         protected override TargetExecutor CreateSubjectUnderTest()
         {
-            return new TargetExecutor(_targetInspector.Object, _logger.Object);
+            return new TargetExecutor(_targetInspector.Object, _logger.Object, _facilityProvider.Object);
         }
 
         protected override void Act()
         {
-            Sut.Execute(_target.Object, _configurationSettings.Object);
+            Sut.Execute(_target.Object, _configurationSettings.Object, _parameterProvider.Object);
         }
 
         [Fact]
@@ -110,7 +115,8 @@ namespace DotNetBuild.Tests.Runner.TargetExecutorTests
         {
             Assert.NotNull(context);
             Assert.Equal(_configurationSettings.Object, context.ConfigurationSettings);
-            Assert.Equal(null, context.FacilityProvider); //TODO
+            Assert.Equal(_parameterProvider.Object, context.ParameterProvider);
+            Assert.Equal(_facilityProvider.Object, context.FacilityProvider);
             return true;
         }
     }

@@ -40,7 +40,7 @@ namespace DotNetBuild.Tests.Runner.TargetExecutorTests
 
         protected override void Act()
         {
-            _exception = TestHelpers.CatchException(() => Sut.Execute(_target.Object, null));
+            _exception = TestHelpers.CatchException(() => Sut.Execute(_target.Object, null, null));
         }
 
         [Fact]

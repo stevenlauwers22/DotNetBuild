@@ -23,7 +23,11 @@ namespace DotNetBuild.Build.Assembly.NonFluent.Targets
             {
                 return new List<ITarget>
                 {
-                    new PublishCorePackage()
+                    new PublishCorePackage(),
+                    new PublishRunnerPackage(),
+                    new PublishRunnerAssemblyPackage(),
+                    new PublishRunnerScriptCsPackage(),
+                    new PublishTasksPackage()
                 };
             }
         }

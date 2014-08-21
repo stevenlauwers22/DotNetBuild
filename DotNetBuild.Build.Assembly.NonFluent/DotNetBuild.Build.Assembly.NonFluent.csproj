@@ -41,10 +41,14 @@
     <Compile Include="Configuration\ConfigurationSettingsForAcceptance.cs" />
     <Compile Include="Configuration\ConfigurationSettingsForTest.cs" />
     <Compile Include="Configurator.cs" />
+    <Compile Include="Targets\NuGet\PublishTasksPackage.cs" />
+    <Compile Include="Targets\NuGet\PublishRunnerScriptCsPackage.cs" />
+    <Compile Include="Targets\NuGet\PublishRunnerAssemblyPackage.cs" />
+    <Compile Include="Targets\NuGet\PublishRunnerPackage.cs" />
     <Compile Include="Targets\NuGet\PublishCorePackage.cs" />
     <Compile Include="Targets\NuGet\CreateRunnerPackage.cs" />
     <Compile Include="Targets\NuGet\CreateRunnerScriptCsPackage.cs" />
-    <Compile Include="Targets\NuGet\CreateRunnerCommandLinePackage.cs" />
+    <Compile Include="Targets\NuGet\CreateRunnerAssemblyPackage.cs" />
     <Compile Include="Targets\NuGet\CreateTasksPackage.cs" />
     <Compile Include="Targets\NuGet\CreateCorePackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,7 +67,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="build.bat" />
+    <None Include="buildCI.bat" />
+    <None Include="buildDeploy.bat" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

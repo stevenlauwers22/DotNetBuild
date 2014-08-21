@@ -180,12 +180,14 @@ namespace DotNetBuild.Build.Assembly.Fluent
                 .Configure()
                 .AddSetting("SolutionDirectory", @"..\")
                 .AddSetting("PathToNuGetExe", @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe")
+                .AddSetting("NuGetApiKey", "")
                 .AddSetting("PathToXUnitRunnerExe", @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe");
 
             "acceptance"
                 .Configure()
                 .AddSetting("SolutionDirectory", @"..\")
                 .AddSetting("PathToNuGetExe", @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe")
+                .AddSetting("NuGetApiKey", "")
                 .AddSetting("PathToXUnitRunnerExe", @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe");
         }
     }

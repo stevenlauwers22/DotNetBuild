@@ -8,6 +8,7 @@ namespace DotNetBuild.Tasks.NuGet
     {
         public String NuGetExe { get; set; }
         public String NuPkgFile { get; set; }
+        public String Source { get; set; }
         public String ApiKey { get; set; }
 
         protected override String GetToolPath()
@@ -23,6 +24,9 @@ namespace DotNetBuild.Tasks.NuGet
             var parameters = new StringBuilder();
             parameters.Append("push ");
             parameters.Append(NuPkgFile + " ");
+
+            if (!String.IsNullOrEmpty(Source))
+                parameters.Append("-Source " + Source + " ");
 
             if (!String.IsNullOrEmpty(ApiKey))
                 parameters.Append("-ApiKey " + ApiKey + " ");

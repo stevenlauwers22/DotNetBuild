@@ -2,12 +2,12 @@
 using DotNetBuild.Runner;
 using Xunit;
 
-namespace DotNetBuild.Tests.Runner.BuildRunnerParametersBuilderTests
+namespace DotNetBuild.Tests.Runner.ParameterProviderTests
 {
-    public class BuildFrom_an_argument_array
-        : TestSpecification<BuildRunnerParametersReader>
+    public class Get_value
+        : TestSpecification<ParameterProvider>
     {
-        private String[] _args;
+        private String[] _parameters;
         private String _assembly;
         private String _target;
         private String _configuration;
@@ -19,24 +19,24 @@ namespace DotNetBuild.Tests.Runner.BuildRunnerParametersBuilderTests
             _target = TestData.GenerateString();
             _configuration = TestData.GenerateString();
 
-            _args = new[]
+            _parameters = new[]
             {
-                BuildRunnerParametersConstants.Assembly + _assembly,
-                BuildRunnerParametersConstants.Target + _target,
-                BuildRunnerParametersConstants.Configuration + _configuration,
+                ParameterConstants.Assembly + ":" + _assembly,
+                ParameterConstants.Target + ":" + _target,
+                ParameterConstants.Configuration + ":" + _configuration,
                 "foo:bar",
                 null
             };
         }
 
-        protected override BuildRunnerParametersReader CreateSubjectUnderTest()
+        protected override ParameterProvider CreateSubjectUnderTest()
         {
-            return new BuildRunnerParametersReader();
+            return new ParameterProvider(_parameters);
         }
 
         protected override void Act()
         {
-            _result = Sut.Read(BuildRunnerParametersConstants.Target, _args);
+            _result = Sut.Get(ParameterConstants.Target);
         }
 
         [Fact]

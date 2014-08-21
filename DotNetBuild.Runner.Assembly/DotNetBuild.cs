@@ -7,32 +7,31 @@ namespace DotNetBuild.Runner.Assembly
 {
     public class DotNetBuild
     {
-        private readonly String[] _args;
+        private readonly String[] _parameters;
         private readonly TinyIoCContainer _container;
 
-        public DotNetBuild(String[] args, TinyIoCContainer container)
+        public DotNetBuild(String[] parameters, TinyIoCContainer container)
         {
-            _args = args;
+            _parameters = parameters;
             _container = container;
         }
 
         public int Run()
         {
-            var buildRunnerParametersBuilder = _container.Resolve<IBuildRunnerParametersReader>();
-            var assembly = buildRunnerParametersBuilder.Read(BuildRunnerParametersConstants.Assembly, _args);
-            var target = buildRunnerParametersBuilder.Read(BuildRunnerParametersConstants.Target, _args);
-            var configuration = buildRunnerParametersBuilder.Read(BuildRunnerParametersConstants.Configuration, _args);
+            var parameterProvider = new ParameterProvider(_parameters);
+            var assembly = parameterProvider.Get(ParameterConstants.Assembly);
+            var target = parameterProvider.Get(ParameterConstants.Target);
+            var configuration = parameterProvider.Get(ParameterConstants.Configuration);
             var logger = _container.Resolve<ILogger>();
             logger.Write("DotNetBuild started");
 
             try
             {
                 var buildRunner = _container.Resolve<IBuildRunner>();
-                buildRunner.Run(assembly, target, configuration);
+                buildRunner.Run(assembly, target, configuration, _parameters);
             }
             catch (DotNetBuildException exception)
             {
-                PrintHelp(logger);
                 PrintExpectedException(exception, logger);
                 return exception.ErrorCode;
             }
@@ -47,14 +46,6 @@ namespace DotNetBuild.Runner.Assembly
             }
 
             return 0;
-        }
-
-        private void PrintHelp(ILogger logger)
-        {
-            logger.Write("Usage of the application:");
-
-            var commandHelp = _container.Resolve<IBuildRunnerParametersHelp>();
-            commandHelp.Print(logger);
         }
 
         private static void PrintExpectedException(Exception exception, ILogger logger)

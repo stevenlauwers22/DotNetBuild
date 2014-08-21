@@ -155,12 +155,14 @@ dotNetBuild.AddTarget("createTasksPackage", "Create Tasks NuGet package", c
 dotNetBuild.AddConfiguration("test", c 
 	=> c.AddSetting("SolutionDirectory", @"..\")
         .AddSetting("PathToNuGetExe", @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe")
+        .AddSetting("NuGetApiKey", "")
         .AddSetting("PathToXUnitRunnerExe", @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe")
 );
 
 dotNetBuild.AddConfiguration("acceptance", c 
 	=> c.AddSetting("SolutionDirectory", @"..\")
         .AddSetting("PathToNuGetExe", @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe")
+        .AddSetting("NuGetApiKey", "")
         .AddSetting("PathToXUnitRunnerExe", @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe")
 );
 

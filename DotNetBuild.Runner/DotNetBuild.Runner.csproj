@@ -40,9 +40,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuildRunnerParametersReader.cs" />
-    <Compile Include="BuildRunnerParametersConstants.cs" />
-    <Compile Include="BuildRunnerParametersHelp.cs" />
+    <Compile Include="ParameterConstants.cs" />
     <Compile Include="ConfigurationRegistry.cs" />
     <Compile Include="Configuration\Container.cs" />
     <Compile Include="Exceptions\UnableToFindConfigurationException.cs" />
@@ -69,6 +67,7 @@
     <Compile Include="Exceptions\UnableToExecuteTargetException.cs" />
     <Compile Include="Exceptions\UnableToLoadAssemblyException.cs" />
     <Compile Include="Exceptions\UnableToResolveConfiguratorException.cs" />
+    <Compile Include="ParameterProvider.cs" />
     <Compile Include="TargetInspector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TargetExecutor.cs" />

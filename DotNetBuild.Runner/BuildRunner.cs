@@ -7,8 +7,8 @@ namespace DotNetBuild.Runner
 {
     public interface IBuildRunner
     {
-        void Run(String assemblyName, String targetName, String configurationName);
-        void Run(String targetName, String configurationName);
+        void Run(String assemblyName, String targetName, String configurationName, String[] parameters);
+        void Run(String targetName, String configurationName, String[] parameters);
     }
 
     public class BuildRunner 
@@ -49,7 +49,7 @@ namespace DotNetBuild.Runner
             _targetExecutor = targetExecutor;
         }
 
-        public void Run(String assemblyName, String targetName, String configurationName)
+        public void Run(String assemblyName, String targetName, String configurationName, String[] parameters)
         {
             var assembly = _assemblyLoader.Load(assemblyName);
             if (assembly == null)
@@ -60,10 +60,10 @@ namespace DotNetBuild.Runner
                 throw new UnableToResolveConfiguratorException(assemblyName);
 
             configurator.Configure();
-            Run(targetName, configurationName);
+            Run(targetName, configurationName, parameters);
         }
 
-        public void Run(String targetName, String configurationName)
+        public void Run(String targetName, String configurationName, String[] parameters)
         {
             var target = _targetRegistry.Get(targetName);
             if (target == null)
@@ -73,7 +73,8 @@ namespace DotNetBuild.Runner
             if (configurationSettings == null && !String.IsNullOrEmpty(configurationName))
                 throw new UnableToFindConfigurationException(configurationName);
 
-            _targetExecutor.Execute(target, configurationSettings);
+            var parameterProvider = new ParameterProvider(parameters);
+            _targetExecutor.Execute(target, configurationSettings, parameterProvider);
         }
     }
 }

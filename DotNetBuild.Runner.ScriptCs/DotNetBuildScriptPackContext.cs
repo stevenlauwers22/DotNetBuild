@@ -9,12 +9,12 @@ namespace DotNetBuild.Runner.ScriptCs
 {
     public class DotNetBuildScriptPackContext : IScriptPackContext
     {
-        private readonly String[] _args;
+        private readonly String[] _parameters;
         private readonly TinyIoCContainer _container;
 
-        public DotNetBuildScriptPackContext(String[] args, TinyIoCContainer container)
+        public DotNetBuildScriptPackContext(String[] parameters, TinyIoCContainer container)
         {
-            _args = args;
+            _parameters = parameters;
             _container = container;
         }
 
@@ -42,9 +42,9 @@ namespace DotNetBuild.Runner.ScriptCs
 
         public void RunFromScriptArguments()
         {
-            var buildRunnerParametersBuilder = _container.Resolve<IBuildRunnerParametersReader>();
-            var target = buildRunnerParametersBuilder.Read(BuildRunnerParametersConstants.Target, _args);
-            var configuration = buildRunnerParametersBuilder.Read(BuildRunnerParametersConstants.Configuration, _args);
+            var parameterProvider = new ParameterProvider(_parameters);
+            var target = parameterProvider.Get(ParameterConstants.Target);
+            var configuration = parameterProvider.Get(ParameterConstants.Configuration);
             Run(target, configuration);
         }
 
@@ -56,11 +56,10 @@ namespace DotNetBuild.Runner.ScriptCs
             try
             {
                 var buildRunner = _container.Resolve<IBuildRunner>();
-                buildRunner.Run(target, configuration);
+                buildRunner.Run(target, configuration, _parameters);
             }
             catch (DotNetBuildException exception)
             {
-                PrintHelp(logger);
                 PrintExpectedException(exception, logger);
                 throw;
             }
@@ -73,14 +72,6 @@ namespace DotNetBuild.Runner.ScriptCs
             {
                 logger.Write("DotNetBuild finished");
             }
-        }
-
-        private static void PrintHelp(ILogger logger)
-        {
-            logger.Write("Usage of the application:");
-
-            var commandHelp = new BuildRunnerParametersHelp();
-            commandHelp.Print(logger);
         }
 
         private static void PrintExpectedException(Exception exception, ILogger logger)

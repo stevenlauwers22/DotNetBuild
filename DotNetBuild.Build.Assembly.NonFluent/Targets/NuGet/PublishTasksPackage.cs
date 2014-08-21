@@ -6,11 +6,11 @@ using DotNetBuild.Tasks.NuGet;
 
 namespace DotNetBuild.Build.Assembly.NonFluent.Targets.NuGet
 {
-    public class PublishCorePackage : ITarget
+    public class PublishTasksPackage : ITarget
     {
         public String Description
         {
-            get { return "Publish Core NuGet package"; }
+            get { return "Publish Tasks NuGet package"; }
         }
 
         public Boolean ContinueOnError
@@ -28,7 +28,7 @@ namespace DotNetBuild.Build.Assembly.NonFluent.Targets.NuGet
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetApiKey = context.ConfigurationSettings.Get<String>("NuGetApiKey");
-            var nupkgFile = string.Format(@"packagesForNuGet\DotNetBuild.Core.{0}.nupkg", context.ParameterProvider.Get("VersionNumber"));
+            var nupkgFile = string.Format(@"packagesForNuGet\DotNetBuild.Tasks.{0}.nupkg", context.ParameterProvider.Get("VersionNumber"));
             var nugetPackTask = new Push
             {
                 NuGetExe = Path.Combine(solutionDirectory, nugetExe),

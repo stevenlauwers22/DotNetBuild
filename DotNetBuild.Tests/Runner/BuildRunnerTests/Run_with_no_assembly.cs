@@ -14,6 +14,7 @@ namespace DotNetBuild.Tests.Runner.BuildRunnerTests
         private String _assemblyName;
         private String _targetName;
         private String _configurationName;
+        private String[] _parameters;
         private Mock<IAssemblyLoader> _assemblyLoader;
         private Mock<IConfiguratorResolver> _configuratorResolver;
         private Mock<IConfigurationRegistry> _configurationRegistry;
@@ -26,6 +27,7 @@ namespace DotNetBuild.Tests.Runner.BuildRunnerTests
             _assemblyName = null;
             _targetName = null;
             _configurationName = null;
+            _parameters = null;
 
             _assemblyLoader = new Mock<IAssemblyLoader>();
             _configuratorResolver = new Mock<IConfiguratorResolver>();
@@ -41,7 +43,7 @@ namespace DotNetBuild.Tests.Runner.BuildRunnerTests
 
         protected override void Act()
         {
-            _exception = TestHelpers.CatchException<UnableToLoadAssemblyException>(() => Sut.Run(_assemblyName, _targetName, _configurationName));
+            _exception = TestHelpers.CatchException<UnableToLoadAssemblyException>(() => Sut.Run(_assemblyName, _targetName, _configurationName, _parameters));
         }
 
         [Fact]

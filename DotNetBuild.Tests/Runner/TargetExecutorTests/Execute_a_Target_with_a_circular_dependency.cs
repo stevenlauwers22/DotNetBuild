@@ -36,7 +36,7 @@ namespace DotNetBuild.Tests.Runner.TargetExecutorTests
 
         protected override void Act()
         {
-            _exception = TestHelpers.CatchException<UnableToExecuteTargetWithCircularDependenciesException>(() => Sut.Execute(_target.Object, null));
+            _exception = TestHelpers.CatchException<UnableToExecuteTargetWithCircularDependenciesException>(() => Sut.Execute(_target.Object, null, null));
         }
 
         [Fact]

@@ -9,7 +9,7 @@ namespace DotNetBuild.Runner
 {
     public interface ITargetExecutor
     {
-        void Execute(ITarget target, IConfigurationSettings configurationSettings);
+        void Execute(ITarget target, IConfigurationSettings configurationSettings, IParameterProvider parameterProvider);
     }
 
     public class TargetExecutor 
@@ -40,7 +40,7 @@ namespace DotNetBuild.Runner
             _facilityProvider = facilityProvider;
         }
 
-        public void Execute(ITarget target, IConfigurationSettings configurationSettings)
+        public void Execute(ITarget target, IConfigurationSettings configurationSettings, IParameterProvider parameterProvider)
         {
             if (target == null) 
                 throw new ArgumentNullException("target");
@@ -56,10 +56,10 @@ namespace DotNetBuild.Runner
 
             _logger.Write("No circular dependencies found");
             
-            ExecuteTarget(target, configurationSettings);
+            ExecuteTarget(target, configurationSettings, parameterProvider);
         }
 
-        private void ExecuteTarget(ITarget target, IConfigurationSettings configurationSettings)
+        private void ExecuteTarget(ITarget target, IConfigurationSettings configurationSettings, IParameterProvider parameterProvider)
         {
             try
             {
@@ -70,11 +70,11 @@ namespace DotNetBuild.Runner
                 {
                     foreach (var dependentTarget in target.DependsOn)
                     {
-                        ExecuteTarget(dependentTarget, configurationSettings);
+                        ExecuteTarget(dependentTarget, configurationSettings, parameterProvider);
                     }
                 }
 
-                var context = new TargetExecutionContext(configurationSettings, _facilityProvider);
+                var context = new TargetExecutionContext(configurationSettings, parameterProvider, _facilityProvider);
                 var success = target.Execute(context);
                 if (!success)
                     throw new UnableToExecuteTargetException(target.GetType());
