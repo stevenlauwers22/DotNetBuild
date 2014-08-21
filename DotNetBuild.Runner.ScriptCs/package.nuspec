@@ -12,7 +12,6 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>DotNetBuild.Runner.ScriptCs DotNetBuild.Runner DotNetBuild DotNet MSBuild</tags>
     <dependencies>
-      <dependency id="DotNetBuild.Core" version="$version$" />
       <dependency id="DotNetBuild.Runner" version="$version$" />
       <dependency id="ScriptCs.Contracts" version="0.9.0" />
     </dependencies>

@@ -11,12 +11,10 @@
     <projectUrl>https://github.com/stevenlauwers22/dotnetbuild</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>DotNetBuild.Runner.Assembly DotNetBuild.Runner DotNetBuild DotNet MSBuild</tags>
-	<dependencies>
-      <dependency id="DotNetBuild.Core" version="$version$" />
-      <dependency id="DotNetBuild.Runner" version="$version$" />
-	</dependencies>
   </metadata>
   <files>
+    <file src="..\DotNetBuild.Core\bin\Release\DotNetBuild.Core.dll" target="tools\net45" />
+    <file src="..\DotNetBuild.Runner\bin\Release\DotNetBuild.Runner.dll" target="tools\net45" />
     <file src="..\DotNetBuild.Runner.Assembly\bin\Release\DotNetBuild.Runner.Assembly.exe" target="tools\net45" />
   </files>
 </package>
