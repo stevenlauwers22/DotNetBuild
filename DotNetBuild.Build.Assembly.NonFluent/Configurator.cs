@@ -11,8 +11,7 @@ namespace DotNetBuild.Build.Assembly.NonFluent
             "ci".Target(new CI());
             "deploy".Target(new Deploy());
 
-            "test".Configure(new ConfigurationSettingsForTest());
-            "acceptance".Configure(new ConfigurationSettingsForAcceptance());
+            "defaultConfig".Configure(new DefaultConfigurationSettings());
         }
     }
 }

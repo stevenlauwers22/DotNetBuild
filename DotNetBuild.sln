@@ -9,14 +9,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBuild.Build.Assembly.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build.ScriptCs.Fluent", "Build.ScriptCs.Fluent", "{A8EB6974-F235-48DE-99D1-928DC6442A61}"
 	ProjectSection(SolutionItems) = preProject
-		DotNetBuild.Build.ScriptCs.Fluent\build.bat = DotNetBuild.Build.ScriptCs.Fluent\build.bat
 		DotNetBuild.Build.ScriptCs.Fluent\build.csx = DotNetBuild.Build.ScriptCs.Fluent\build.csx
+		DotNetBuild.Build.ScriptCs.Fluent\buildCI.bat = DotNetBuild.Build.ScriptCs.Fluent\buildCI.bat
+		DotNetBuild.Build.ScriptCs.Fluent\buildDeploy.bat = DotNetBuild.Build.ScriptCs.Fluent\buildDeploy.bat
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build.ScriptCs.NonFluent", "Build.ScriptCs.NonFluent", "{D831367A-D1B8-4C35-98F4-F432C8A46FBB}"
 	ProjectSection(SolutionItems) = preProject
-		DotNetBuild.Build.ScriptCs.NonFluent\build.bat = DotNetBuild.Build.ScriptCs.NonFluent\build.bat
 		DotNetBuild.Build.ScriptCs.NonFluent\build.csx = DotNetBuild.Build.ScriptCs.NonFluent\build.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\buildCI.bat = DotNetBuild.Build.ScriptCs.NonFluent\buildCI.bat
+		DotNetBuild.Build.ScriptCs.NonFluent\buildDeploy.bat = DotNetBuild.Build.ScriptCs.NonFluent\buildDeploy.bat
 		DotNetBuild.Build.ScriptCs.NonFluent\configuration.csx = DotNetBuild.Build.ScriptCs.NonFluent\configuration.csx
 		DotNetBuild.Build.ScriptCs.NonFluent\targets.ci.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.ci.csx
 		DotNetBuild.Build.ScriptCs.NonFluent\targets.compilation.buildRelease.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.compilation.buildRelease.csx
@@ -26,6 +28,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build.ScriptCs.NonFluent", 
 		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerPackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerPackage.csx
 		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerScriptCsPackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createRunnerScriptCsPackage.csx
 		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createTasksPackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.createTasksPackage.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.publishCorePackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.publishCorePackage.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.publishRunnerAssemblyPackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.publishRunnerAssemblyPackage.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.publishRunnerPackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.publishRunnerPackage.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.publishRunnerScriptCsPackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.publishRunnerScriptCsPackage.csx
+		DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.publishTasksPackage.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.nuget.publishTasksPackage.csx
 		DotNetBuild.Build.ScriptCs.NonFluent\targets.testing.runTests.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.testing.runTests.csx
 		DotNetBuild.Build.ScriptCs.NonFluent\targets.versioning.updateVersionNumber.csx = DotNetBuild.Build.ScriptCs.NonFluent\targets.versioning.updateVersionNumber.csx
 	EndProjectSection

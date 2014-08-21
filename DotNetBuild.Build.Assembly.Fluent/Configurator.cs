@@ -41,7 +41,7 @@ namespace DotNetBuild.Build.Assembly.Fluent
                             Path.Combine(solutionDirectory, @"DotNetBuild.Runner.ScriptCs\Properties\AssemblyInfo.cs"),
                             Path.Combine(solutionDirectory, @"DotNetBuild.Tasks\Properties\AssemblyInfo.cs")
                         },
-                        AssemblyInformationalVersion = String.Format("{0}.{1}.{2}-alpha", assemblyMajorVersion, assemblyMinorVersion, assemblyBuildNumber),
+                        AssemblyInformationalVersion = String.Format("{0}.{1}.{2}-alpha2", assemblyMajorVersion, assemblyMinorVersion, assemblyBuildNumber),
                         UpdateAssemblyInformationalVersion = true,
                         AssemblyMajorVersion = assemblyMajorVersion,
                         AssemblyMinorVersion = assemblyMinorVersion,
@@ -176,18 +176,109 @@ namespace DotNetBuild.Build.Assembly.Fluent
                     return nugetPackTask.Execute();
                 });
 
-            "test"
-                .Configure()
-                .AddSetting("SolutionDirectory", @"..\")
-                .AddSetting("PathToNuGetExe", @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe")
-                .AddSetting("NuGetApiKey", "")
-                .AddSetting("PathToXUnitRunnerExe", @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe");
+            "deploy"
+                .Target("Deploy to NuGet")
+                .DependsOn("publishCorePackage")
+                .And("publishRunnerPackage")
+                .And("publishRunnerAssemblyPackage")
+                .And("publishRunnerScriptCsPackage")
+                .And("publishTasksPackage");
 
-            "acceptance"
+            "publishCorePackage"
+                .Target("Publish Core NuGet package")
+                .Do(context =>
+                {
+                    var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+                    var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
+                    var nugetApiKey = context.ConfigurationSettings.Get<String>("NuGetApiKey");
+                    var nupkgFile = string.Format(@"packagesForNuGet\DotNetBuild.Core.{0}.nupkg", context.ParameterProvider.Get("VersionNumber"));
+                    var nugetPackTask = new Push
+                    {
+                        NuGetExe = Path.Combine(solutionDirectory, nugetExe),
+                        NuPkgFile = Path.Combine(solutionDirectory, nupkgFile),
+                        ApiKey = nugetApiKey
+                    };
+
+                    return nugetPackTask.Execute();
+                });
+
+            "publishRunnerPackage"
+                .Target("Publish Runner NuGet package")
+                .Do(context =>
+                {
+                    var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+                    var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
+                    var nugetApiKey = context.ConfigurationSettings.Get<String>("NuGetApiKey");
+                    var nupkgFile = string.Format(@"packagesForNuGet\DotNetBuild.Runner.{0}.nupkg", context.ParameterProvider.Get("VersionNumber"));
+                    var nugetPackTask = new Push
+                    {
+                        NuGetExe = Path.Combine(solutionDirectory, nugetExe),
+                        NuPkgFile = Path.Combine(solutionDirectory, nupkgFile),
+                        ApiKey = nugetApiKey
+                    };
+
+                    return nugetPackTask.Execute();
+                });
+
+            "publishRunnerAssemblyPackage"
+                .Target("Publish Assembly Runner NuGet package")
+                .Do(context =>
+                {
+                    var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+                    var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
+                    var nugetApiKey = context.ConfigurationSettings.Get<String>("NuGetApiKey");
+                    var nupkgFile = string.Format(@"packagesForNuGet\DotNetBuild.Runner.Assembly.{0}.nupkg", context.ParameterProvider.Get("VersionNumber"));
+                    var nugetPackTask = new Push
+                    {
+                        NuGetExe = Path.Combine(solutionDirectory, nugetExe),
+                        NuPkgFile = Path.Combine(solutionDirectory, nupkgFile),
+                        ApiKey = nugetApiKey
+                    };
+
+                    return nugetPackTask.Execute();
+                });
+
+            "publishRunnerScriptCsPackage"
+                .Target("Publish ScriptCs Runner NuGet package")
+                .Do(context =>
+                {
+                    var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+                    var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
+                    var nugetApiKey = context.ConfigurationSettings.Get<String>("NuGetApiKey");
+                    var nupkgFile = string.Format(@"packagesForNuGet\DotNetBuild.Runner.ScriptCs.{0}.nupkg", context.ParameterProvider.Get("VersionNumber"));
+                    var nugetPackTask = new Push
+                    {
+                        NuGetExe = Path.Combine(solutionDirectory, nugetExe),
+                        NuPkgFile = Path.Combine(solutionDirectory, nupkgFile),
+                        ApiKey = nugetApiKey
+                    };
+
+                    return nugetPackTask.Execute();
+                });
+
+            "publishTasksPackage"
+                .Target("Publish Tasks NuGet package")
+                .Do(context =>
+                {
+                    var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
+                    var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
+                    var nugetApiKey = context.ConfigurationSettings.Get<String>("NuGetApiKey");
+                    var nupkgFile = string.Format(@"packagesForNuGet\DotNetBuild.Tasks.{0}.nupkg", context.ParameterProvider.Get("VersionNumber"));
+                    var nugetPackTask = new Push
+                    {
+                        NuGetExe = Path.Combine(solutionDirectory, nugetExe),
+                        NuPkgFile = Path.Combine(solutionDirectory, nupkgFile),
+                        ApiKey = nugetApiKey
+                    };
+
+                    return nugetPackTask.Execute();
+                });
+
+            "defaultConfig"
                 .Configure()
                 .AddSetting("SolutionDirectory", @"..\")
                 .AddSetting("PathToNuGetExe", @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe")
-                .AddSetting("NuGetApiKey", "")
+                .AddSetting("NuGetApiKey", "b83c81a0-385f-4208-bc7f-f9fa2759c849")
                 .AddSetting("PathToXUnitRunnerExe", @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe");
         }
     }

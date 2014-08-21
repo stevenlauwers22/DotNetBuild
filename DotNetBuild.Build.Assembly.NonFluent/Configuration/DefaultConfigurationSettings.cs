@@ -2,9 +2,9 @@
 
 namespace DotNetBuild.Build.Assembly.NonFluent.Configuration
 {
-    public class ConfigurationSettingsForTest : ConfigurationSettings
+    public class DefaultConfigurationSettings : ConfigurationSettings
     {
-        public ConfigurationSettingsForTest()
+        public DefaultConfigurationSettings()
         {
             Add("SolutionDirectory", @"..\");
             Add("PathToNuGetExe", @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe");

@@ -12,12 +12,21 @@ public class Deploy : ITarget
 
     public IEnumerable<ITarget> DependsOn
     {
-        get { return null; }
+        get
+        {
+            return new List<ITarget>
+            {
+                new PublishCorePackage(),
+                new PublishRunnerPackage(),
+                new PublishRunnerAssemblyPackage(),
+                new PublishRunnerScriptCsPackage(),
+                new PublishTasksPackage()
+            };
+        }
     }
 
     public Boolean Execute(TargetExecutionContext context)
     {
-        // TODO
         return true;
     }
 }

@@ -38,8 +38,7 @@
     <Compile Include="Targets\Deploy.cs" />
     <Compile Include="Targets\Compilation\BuildRelease.cs" />
     <Compile Include="Targets\CI.cs" />
-    <Compile Include="Configuration\ConfigurationSettingsForAcceptance.cs" />
-    <Compile Include="Configuration\ConfigurationSettingsForTest.cs" />
+    <Compile Include="Configuration\DefaultConfigurationSettings.cs" />
     <Compile Include="Configurator.cs" />
     <Compile Include="Targets\NuGet\PublishTasksPackage.cs" />
     <Compile Include="Targets\NuGet\PublishRunnerScriptCsPackage.cs" />
