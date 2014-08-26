@@ -32,7 +32,7 @@
 
 /DotNetBuild.Tests.TestAssembly/bin
 /DotNetBuild.Tests.TestAssembly/obj
-/DotNetBuild.Tasks/DotNetBuild.Tests.TestAssembly.csproj.user
+/DotNetBuild.Tests.TestAssembly/DotNetBuild.Tests.TestAssembly.csproj.user
 
 /DotNetBuild.ncrunchsolution
 /DotNetBuild.ncrunchsolution.user
