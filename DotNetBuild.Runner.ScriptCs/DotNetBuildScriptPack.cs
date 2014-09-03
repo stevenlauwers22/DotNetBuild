@@ -22,10 +22,6 @@ namespace DotNetBuild.Runner.ScriptCs
         {
             _args = session.ScriptArgs;
 
-            session.AddReference("ScriptCs.Contracts.dll");
-            session.AddReference("DotNetBuild.Core.dll");
-            session.AddReference("DotNetBuild.Runner.dll");
-
             session.ImportNamespace("DotNetBuild.Core");
             session.ImportNamespace("DotNetBuild.Runner");
             session.ImportNamespace("DotNetBuild.Runner.ScriptCs");
