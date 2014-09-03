@@ -157,7 +157,7 @@ dotNetBuild.AddTarget("deploy", "Deploy to NuGet", c
         .And("publishRunnerPackage")
         .And("publishRunnerAssemblyPackage")
         .And("publishRunnerScriptCsPackage")
-        .And("publishTasksPackage");
+        .And("publishTasksPackage"));
 
 dotNetBuild.AddTarget("publishCorePackage", "Publish Core NuGet package", c
 	=> c.Do(context => {
