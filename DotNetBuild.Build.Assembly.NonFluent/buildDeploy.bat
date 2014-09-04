@@ -1,2 +1,2 @@
-..\DotNetBuild.Runner.Assembly\bin\Debug\DotNetBuild.Runner.Assembly.exe assembly:.\bin\Debug\DotNetBuild.Build.Assembly.NonFluent.dll target:Deploy configuration:defaultConfig versionNumber:1.0.0-alpha3
+..\DotNetBuild.Runner.Assembly\bin\Debug\DotNetBuild.Runner.Assembly.exe assembly:.\bin\Debug\DotNetBuild.Build.Assembly.NonFluent.dll target:Deploy configuration:defaultConfig versionNumber:1.0.0
 pause

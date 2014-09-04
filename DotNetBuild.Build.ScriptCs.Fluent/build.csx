@@ -31,7 +31,7 @@ dotNetBuild.AddTarget("updateVersionNumber", "Update version number", c
                     Path.Combine(solutionDirectory, @"DotNetBuild.Runner.ScriptCs\Properties\AssemblyInfo.cs"),
                     Path.Combine(solutionDirectory, @"DotNetBuild.Tasks\Properties\AssemblyInfo.cs")
                 },
-                AssemblyInformationalVersion = String.Format("{0}.{1}.{2}-alpha3", assemblyMajorVersion, assemblyMinorVersion, assemblyBuildNumber),
+                AssemblyInformationalVersion = String.Format("{0}.{1}.{2}", assemblyMajorVersion, assemblyMinorVersion, assemblyBuildNumber),
                 UpdateAssemblyInformationalVersion = true,
                 AssemblyMajorVersion = assemblyMajorVersion,
                 AssemblyMinorVersion = assemblyMinorVersion,
@@ -242,7 +242,7 @@ dotNetBuild.AddTarget("publishTasksPackage", "Publish Tasks NuGet package", c
 dotNetBuild.AddConfiguration("defaultConfig", c 
 	=> c.AddSetting("SolutionDirectory", @"..\")
         .AddSetting("PathToNuGetExe", @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe")
-        .AddSetting("NuGetApiKey", "")
+        .AddSetting("NuGetApiKey", "0400f8f5-27af-4a96-bda1-2a6bee2ced82")
         .AddSetting("PathToXUnitRunnerExe", @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe")
 );
 

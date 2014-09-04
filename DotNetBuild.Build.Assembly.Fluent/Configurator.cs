@@ -41,7 +41,7 @@ namespace DotNetBuild.Build.Assembly.Fluent
                             Path.Combine(solutionDirectory, @"DotNetBuild.Runner.ScriptCs\Properties\AssemblyInfo.cs"),
                             Path.Combine(solutionDirectory, @"DotNetBuild.Tasks\Properties\AssemblyInfo.cs")
                         },
-                        AssemblyInformationalVersion = String.Format("{0}.{1}.{2}-alpha3", assemblyMajorVersion, assemblyMinorVersion, assemblyBuildNumber),
+                        AssemblyInformationalVersion = String.Format("{0}.{1}.{2}", assemblyMajorVersion, assemblyMinorVersion, assemblyBuildNumber),
                         UpdateAssemblyInformationalVersion = true,
                         AssemblyMajorVersion = assemblyMajorVersion,
                         AssemblyMinorVersion = assemblyMinorVersion,
