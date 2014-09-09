@@ -76,7 +76,7 @@ If you know Gulp, this syntax will probably look very familiar.
 Basically there are four ways to create DotNetBuild scripts
 
 1. [ScriptCs - Fluent API](https://github.com/stevenlauwers22/DotNetBuild/wiki/How-do-I-create-a-fluent-DotNetBuild-script-with-ScriptCS)
-2. ScriptCs - Without the fluent API
+2. [ScriptCs - Without the fluent API](https://github.com/stevenlauwers22/DotNetBuild/wiki/How-do-I-create-a-non-fluent-DotNetBuild-script-with-ScriptCS)
 3. Precompiled .NET assembly - Fluent API
 4. Precompiled .NET assembly - Without the fluent API
 
