@@ -80,7 +80,7 @@ Basically there are four ways to create DotNetBuild scripts
 3. Precompiled .NET assembly - Fluent API
 4. Precompiled .NET assembly - Without the fluent API
 
-A cool thing about DotNetBuild is that it doesn't limit you to just one programming language to write your build scripts. If you're using scriptcs you can use any programming language that is supported by the scriptcs runtime (currently only C#, but I believe F# support is on its way). When using the precompiled .NET assembly you can use any programming language that compiled to a .NET assembly.
+A cool thing about DotNetBuild is that it doesn't limit you to just one programming language to write your build scripts. If you're using scriptcs you can use any programming language that is supported by the scriptcs runtime (currently only C#, but I believe F# support is on its way). When using the precompiled .NET assembly you can use any programming language that compiles to a .NET assembly.
 
 ## Can I integrate my DotNetBuild scripts with my CI server?
 
