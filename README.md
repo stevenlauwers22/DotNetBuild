@@ -67,19 +67,18 @@ dotNetBuild.AddConfiguration("defaultConfig", c
 );
 ```
 
-The script above is a part of the DotNetBuild script I use to build DotNetBuild itself :). You can find the entire script [here](https://github.com/stevenlauwers22/DotNetBuild/blob/master/DotNetBuild.Build.ScriptCs.Fluent/build.csx)  
+The script above is a part of the DotNetBuild script I use to build DotNetBuild itself :). You can find the entire script [here](https://github.com/stevenlauwers22/DotNetBuild/blob/master/DotNetBuild.Build.ScriptCs.Fluent/build.csx)
+ 
 If you know Gulp, this syntax will probably look very familiar.
 
 ## How can I create DotNetBuild scripts?
 
 Basically there are four ways to create DotNetBuild scripts
 
-1. ScriptCs - Fluent API
+1. [ScriptCs - Fluent API](https://github.com/stevenlauwers22/DotNetBuild/wiki/How-do-I-create-a-fluent-DotNetBuild-script-with-ScriptCS)
 2. ScriptCs - Without the fluent API
 3. Precompiled .NET assembly - Fluent API
 4. Precompiled .NET assembly - Without the fluent API
-
-TODO: add tutorials for each of these
 
 A cool thing about DotNetBuild is that it doesn't limit you to just one programming language to write your build scripts. If you're using scriptcs you can use any programming language that is supported by the scriptcs runtime (currently only C#, but I believe F# support is on its way). When using the precompiled .NET assembly you can use any programming language that compiled to a .NET assembly.
 
