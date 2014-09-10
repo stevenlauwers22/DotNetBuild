@@ -17,8 +17,10 @@ Anyway things are the way they are. So yes, I created a new 'Make', my apologies
 
 The reason I created this is twofold:
 
-- Primarely, I wanted to be able to create .NET build scripts by using a .NET language
+- Primarely, I wanted to be able to use a real programming languages (.NET ) instead of a markup language (XML) to create build scripts.
 - It started off as an experiment and a technical challange for myself, but I got some very positive feedback so I decided to publish it
+
+Because DotNetBuild is [built on the shoulders of a giant](http://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants) (the .NET Framework), we can write build scripts in a language we already know and benefit of the power and features the framework gives us.
 
 ## What does it look like?
 
@@ -77,8 +79,8 @@ Basically there are four ways to create DotNetBuild scripts
 
 1. [ScriptCs - Fluent API](https://github.com/stevenlauwers22/DotNetBuild/wiki/How-do-I-create-a-fluent-DotNetBuild-script-with-ScriptCS)
 2. [ScriptCs - Without the fluent API](https://github.com/stevenlauwers22/DotNetBuild/wiki/How-do-I-create-a-non-fluent-DotNetBuild-script-with-ScriptCS)
-3. Precompiled .NET assembly - Fluent API
-4. Precompiled .NET assembly - Without the fluent API
+3. [Precompiled .NET assembly - Fluent API](https://github.com/stevenlauwers22/DotNetBuild/wiki/How-do-I-create-a-fluent-DotNetBuild-script-as-a-precompiled-.NET-assembly)
+4. [Precompiled .NET assembly - Without the fluent API](https://github.com/stevenlauwers22/DotNetBuild/wiki/How-do-I-create-a-non-fluent-DotNetBuild-script-as-a-precompiled-.NET-assembly)
 
 A cool thing about DotNetBuild is that it doesn't limit you to just one programming language to write your build scripts. If you're using scriptcs you can use any programming language that is supported by the scriptcs runtime (currently only C#, but I believe F# support is on its way). When using the precompiled .NET assembly you can use any programming language that compiles to a .NET assembly.
 
@@ -86,4 +88,3 @@ A cool thing about DotNetBuild is that it doesn't limit you to just one programm
 
 Yes, custom build steps for TeamCity are on their way.  
 Currently the only way to launch your script from your CI server is by using a command line task. 
-
