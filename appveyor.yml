@@ -9,4 +9,4 @@ init:
   - cinst scriptcs
 
 build_script:
-  - C:\Users\appveyor\AppData\Local\scriptcs\scriptcs.exe .\DotNetBuild.Build.ScriptCs.Fluent\build.csx -- target:ci configuration:defaultConfig
+  - C:\Users\appveyor\AppData\Local\scriptcs\scriptcs.exe .\DotNetBuild.Build.ScriptCs.Fluent\build.csx -- target:ci configuration:appveyorConfig
