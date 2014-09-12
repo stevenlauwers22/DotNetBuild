@@ -13,11 +13,13 @@ namespace DotNetBuild.Runner.Infrastructure.Logging.Loggers
         public void WriteBlockStart(String message)
         {
             Console.WriteLine("START: " + message);
+            Console.WriteLine("------------------");
         }
 
         public void WriteBlockEnd(String message)
         {
             Console.WriteLine("END: " + message);
+            Console.WriteLine("------------------");
         }
 
         public void WriteError(String message, Exception exception)

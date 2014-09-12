@@ -11,21 +11,36 @@ namespace DotNetBuild.Runner.Infrastructure.Logging.Loggers
     {
         public void Write(String message)
         {
+            Console.WriteLine(message);
+
             SendBuildMessage(new BuildMessage { Message = message, Category = BuildMessage.BuildMessageCategory.Information });
         }
 
         public void WriteBlockStart(String message)
         {
+            Console.WriteLine("START: " + message);
+            Console.WriteLine("------------------");
+
             SendBuildMessage(new BuildMessage { Message = "START: " + message, Category = BuildMessage.BuildMessageCategory.Information });
         }
 
         public void WriteBlockEnd(String message)
         {
+            Console.WriteLine("END: " + message);
+            Console.WriteLine("------------------");
+
             SendBuildMessage(new BuildMessage { Message = "END: " + message, Category = BuildMessage.BuildMessageCategory.Information });
         }
 
         public void WriteError(String message, Exception exception)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Error.WriteLine(String.Empty);
+            Console.Error.WriteLine(exception.Message);
+            Console.Error.WriteLine(exception.StackTrace);
+            Console.Error.WriteLine("------------------");
+            Console.ResetColor();
+
             SendBuildMessage(new BuildMessage { Message = message, Category = BuildMessage.BuildMessageCategory.Error, Details = exception.StackTrace });
         }
 
