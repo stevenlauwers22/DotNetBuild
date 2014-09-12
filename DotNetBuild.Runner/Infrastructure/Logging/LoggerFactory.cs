@@ -11,7 +11,7 @@ namespace DotNetBuild.Runner.Infrastructure.Logging
             if (runningFromTeamCity)
                 return new TeamCityLogger();
 
-            var runningFromAppVeyor = Environment.GetEnvironmentVariable("APPVEYOR_API_URL") != null;
+            var runningFromAppVeyor = Environment.GetEnvironmentVariable("APPVEYOR") != null;
             if (runningFromAppVeyor)
                 return new AppVeyorLogger();
 

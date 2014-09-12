@@ -22,7 +22,6 @@ namespace DotNetBuild.Runner.Infrastructure.Logging.Loggers
 
         public void WriteError(String message, Exception exception)
         {
-            // TODO: is it still required to set the foreground color?
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Error.WriteLine(String.Empty);
             Console.Error.WriteLine(exception.Message);
