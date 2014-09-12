@@ -2,7 +2,8 @@ using System;
 
 namespace DotNetBuild.Runner.Infrastructure.Logging.Loggers
 {
-    public class StandardLogger : ILogger
+    public class StandardLogger
+        : ILogger
     {
         public void Write(String message)
         {
@@ -12,22 +13,21 @@ namespace DotNetBuild.Runner.Infrastructure.Logging.Loggers
         public void WriteBlockStart(String message)
         {
             Console.WriteLine("START: " + message);
-            Console.WriteLine("------------------");
         }
 
         public void WriteBlockEnd(String message)
         {
             Console.WriteLine("END: " + message);
-            Console.WriteLine("------------------");
         }
 
         public void WriteError(String message, Exception exception)
         {
+            // TODO: is it still required to set the foreground color?
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(String.Empty);
-            Console.WriteLine(exception.Message);
-            Console.WriteLine(exception.StackTrace);
-            Console.WriteLine("------------------");
+            Console.Error.WriteLine(String.Empty);
+            Console.Error.WriteLine(exception.Message);
+            Console.Error.WriteLine(exception.StackTrace);
+            Console.Error.WriteLine("------------------");
             Console.ResetColor();
         }
     }

@@ -3,7 +3,8 @@ using System;
 namespace DotNetBuild.Runner.Infrastructure.Logging.Loggers
 {
     // http://confluence.jetbrains.com/display/TCD7/Build+Script+Interaction+with+TeamCity#BuildScriptInteractionwithTeamCity-CommonProperties
-    public class TeamCityLogger : ILogger
+    public class TeamCityLogger
+        : ILogger
     {
         public void Write(String message)
         {

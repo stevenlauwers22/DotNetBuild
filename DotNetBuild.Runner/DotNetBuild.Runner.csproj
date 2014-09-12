@@ -38,8 +38,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\Logging\Loggers\AppVeyorLogger.cs" />
     <Compile Include="ParameterConstants.cs" />
     <Compile Include="ConfigurationRegistry.cs" />
     <Compile Include="Configuration\Container.cs" />

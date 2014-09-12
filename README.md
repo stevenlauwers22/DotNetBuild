@@ -86,7 +86,7 @@ A cool thing about DotNetBuild is that it doesn't limit you to just one programm
 
 ## Can I integrate my DotNetBuild scripts with my CI server?
 
-Yes, custom build steps for TeamCity are on their way.  
 Currently the only way to launch your script from your CI server is by using a command line task. 
+A more integrated approach for TeamCity is on its way.
 
 [![Build status](https://ci.appveyor.com/api/projects/status/16k7hn5av5c7tuiv)](https://ci.appveyor.com/project/StevenLauwers/dotnetbuild)
