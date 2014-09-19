@@ -19,4 +19,4 @@ var dotNetBuild = Require<DotNetBuildScriptPackContext>();
 dotNetBuild.AddTarget("ci", new CI());
 dotNetBuild.AddTarget("deploy", new Deploy());
 dotNetBuild.AddConfiguration("defaultConfig", new DefaultConfigurationSettings());
-dotNetBuild.RunFromScriptArguments();
+dotNetBuild.Run();

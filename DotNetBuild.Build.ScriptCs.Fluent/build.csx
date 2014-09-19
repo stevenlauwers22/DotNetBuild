@@ -19,7 +19,7 @@ dotNetBuild.AddTarget("updateVersionNumber", "Update version number", c
     => c.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             const String assemblyMajorVersion = "1";
-            const String assemblyMinorVersion = "0";
+            const String assemblyMinorVersion = "1";
             const String assemblyBuildNumber = "0";
             var assemblyInfoTask = new AssemblyInfo
             {
@@ -253,4 +253,4 @@ dotNetBuild.AddConfiguration("appveyorConfig", c
         .AddSetting("PathToXUnitRunnerExe", @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe")
 );
 
-dotNetBuild.RunFromScriptArguments();
+dotNetBuild.Run();

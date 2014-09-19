@@ -9,7 +9,7 @@ namespace DotNetBuild.Runner.ScriptCs
     {
         private String[] _args;
 
-        IScriptPackContext IScriptPack.GetContext()
+        public IScriptPackContext GetContext()
         {
             var container = TinyIoCContainer.Current;
             Container.Install(container);
@@ -18,7 +18,7 @@ namespace DotNetBuild.Runner.ScriptCs
             return dotNetBuild;
         }
 
-        void IScriptPack.Initialize(IScriptPackSession session)
+        public void Initialize(IScriptPackSession session)
         {
             _args = session.ScriptArgs;
 
@@ -27,7 +27,7 @@ namespace DotNetBuild.Runner.ScriptCs
             session.ImportNamespace("DotNetBuild.Runner.ScriptCs");
         }
 
-        void IScriptPack.Terminate()
+        public void Terminate()
         {
         }
     }

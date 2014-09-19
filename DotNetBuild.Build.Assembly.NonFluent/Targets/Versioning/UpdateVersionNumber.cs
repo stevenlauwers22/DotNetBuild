@@ -29,7 +29,7 @@ namespace DotNetBuild.Build.Assembly.NonFluent.Targets.Versioning
         {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             const String assemblyMajorVersion = "1";
-            const String assemblyMinorVersion = "0";
+            const String assemblyMinorVersion = "1";
             const String assemblyBuildNumber = "0";
             var assemblyInfoTask = new AssemblyInfo
             {

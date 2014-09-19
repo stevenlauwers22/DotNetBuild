@@ -40,7 +40,7 @@ namespace DotNetBuild.Runner.ScriptCs
             name.Configure(settings);
         }
 
-        public void RunFromScriptArguments()
+        public void Run()
         {
             var parameterProvider = new ParameterProvider(_parameters);
             var target = parameterProvider.Get(ParameterConstants.Target);
@@ -48,7 +48,7 @@ namespace DotNetBuild.Runner.ScriptCs
             Run(target, configuration);
         }
 
-        public void Run(String target, String configuration)
+        private void Run(String target, String configuration)
         {
             var logger = _container.Resolve<ILogger>();
             logger.Write("DotNetBuild started");
