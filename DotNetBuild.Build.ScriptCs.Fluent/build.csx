@@ -242,14 +242,14 @@ dotNetBuild.AddTarget("publishTasksPackage", "Publish Tasks NuGet package", c
 dotNetBuild.AddConfiguration("defaultConfig", c 
 	=> c.AddSetting("SolutionDirectory", @"..\")
         .AddSetting("PathToNuGetExe", @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe")
-        .AddSetting("NuGetApiKey", "0400f8f5-27af-4a96-bda1-2a6bee2ced82")
+        .AddSetting("NuGetApiKey", "")
         .AddSetting("PathToXUnitRunnerExe", @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe")
 );
 
 dotNetBuild.AddConfiguration("appveyorConfig", c 
 	=> c.AddSetting("SolutionDirectory", @".\")
         .AddSetting("PathToNuGetExe", @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe")
-        .AddSetting("NuGetApiKey", "0400f8f5-27af-4a96-bda1-2a6bee2ced82")
+        .AddSetting("NuGetApiKey", "")
         .AddSetting("PathToXUnitRunnerExe", @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe")
 );
 

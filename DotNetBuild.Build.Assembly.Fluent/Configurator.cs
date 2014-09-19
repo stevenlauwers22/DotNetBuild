@@ -278,7 +278,7 @@ namespace DotNetBuild.Build.Assembly.Fluent
                 .Configure()
                 .AddSetting("SolutionDirectory", @"..\")
                 .AddSetting("PathToNuGetExe", @"packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe")
-                .AddSetting("NuGetApiKey", "b83c81a0-385f-4208-bc7f-f9fa2759c849")
+                .AddSetting("NuGetApiKey", "")
                 .AddSetting("PathToXUnitRunnerExe", @"packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe");
         }
     }
