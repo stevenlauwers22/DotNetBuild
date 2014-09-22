@@ -5,8 +5,8 @@ using DotNetBuild.Tasks.NuGet;
 
 var dotNetBuild = Require<DotNetBuildScriptPackContext>();
 
-dotNetBuild.AddTarget("ci", "Continuous integration target", c 
-    => c.DependsOn("updateVersionNumber")
+dotNetBuild.AddTarget("ci", "Continuous integration target", t 
+    => t.DependsOn("updateVersionNumber")
         .And("buildRelease")
         .And("runTests")
         .And("createCorePackage")
@@ -15,8 +15,8 @@ dotNetBuild.AddTarget("ci", "Continuous integration target", c
         .And("createRunnerScriptCsPackage")
         .And("createTasksPackage"));
 
-dotNetBuild.AddTarget("updateVersionNumber", "Update version number", c 
-    => c.Do(context => {
+dotNetBuild.AddTarget("updateVersionNumber", "Update version number", t 
+    => t.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             const String assemblyMajorVersion = "1";
             const String assemblyMinorVersion = "1";
@@ -51,8 +51,8 @@ dotNetBuild.AddTarget("updateVersionNumber", "Update version number", c
             return result;
 		}));
 
-dotNetBuild.AddTarget("buildRelease", "Build in release mode", c 
-	=> c.Do(context => {
+dotNetBuild.AddTarget("buildRelease", "Build in release mode", t 
+	=> t.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
 			var msBuildTask = new MsBuildTask
 			{
@@ -64,8 +64,8 @@ dotNetBuild.AddTarget("buildRelease", "Build in release mode", c
 			return msBuildTask.Execute();
 		}));
 
-dotNetBuild.AddTarget("runTests", "Run tests", c 
-	=> c.Do(context => {
+dotNetBuild.AddTarget("runTests", "Run tests", t 
+	=> t.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var xunitExe = context.ConfigurationSettings.Get<String>("PathToXUnitRunnerExe");
             var xunitTask = new XunitTask
@@ -77,8 +77,8 @@ dotNetBuild.AddTarget("runTests", "Run tests", c
             return xunitTask.Execute();
 		}));
 
-dotNetBuild.AddTarget("createCorePackage", "Create Core NuGet package", c 
-    => c.Do(context => {
+dotNetBuild.AddTarget("createCorePackage", "Create Core NuGet package", t 
+    => t.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetPackTask = new Pack
@@ -92,8 +92,8 @@ dotNetBuild.AddTarget("createCorePackage", "Create Core NuGet package", c
             return nugetPackTask.Execute();
 		}));
 
-dotNetBuild.AddTarget("createRunnerPackage", "Create Runner NuGet package", c 
-    => c.Do(context => {
+dotNetBuild.AddTarget("createRunnerPackage", "Create Runner NuGet package", t 
+    => t.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetPackTask = new Pack
@@ -107,8 +107,8 @@ dotNetBuild.AddTarget("createRunnerPackage", "Create Runner NuGet package", c
             return nugetPackTask.Execute();
 		}));
 
-dotNetBuild.AddTarget("createRunnerAssemblyPackage", "Create Assembly Runner NuGet package", c 
-    => c.Do(context => {
+dotNetBuild.AddTarget("createRunnerAssemblyPackage", "Create Assembly Runner NuGet package", t 
+    => t.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetPackTask = new Pack
@@ -122,8 +122,8 @@ dotNetBuild.AddTarget("createRunnerAssemblyPackage", "Create Assembly Runner NuG
             return nugetPackTask.Execute();
 		}));
 
-dotNetBuild.AddTarget("createRunnerScriptCsPackage", "Create ScriptCs Runner NuGet package", c 
-    => c.Do(context => {
+dotNetBuild.AddTarget("createRunnerScriptCsPackage", "Create ScriptCs Runner NuGet package", t 
+    => t.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetPackTask = new Pack
@@ -137,8 +137,8 @@ dotNetBuild.AddTarget("createRunnerScriptCsPackage", "Create ScriptCs Runner NuG
             return nugetPackTask.Execute();
 		}));
 
-dotNetBuild.AddTarget("createTasksPackage", "Create Tasks NuGet package", c 
-    => c.Do(context => {
+dotNetBuild.AddTarget("createTasksPackage", "Create Tasks NuGet package", t 
+    => t.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetPackTask = new Pack
@@ -152,15 +152,15 @@ dotNetBuild.AddTarget("createTasksPackage", "Create Tasks NuGet package", c
             return nugetPackTask.Execute();
 		}));
 
-dotNetBuild.AddTarget("deploy", "Deploy to NuGet", c
-	=> c.DependsOn("publishCorePackage")
+dotNetBuild.AddTarget("deploy", "Deploy to NuGet", t
+	=> t.DependsOn("publishCorePackage")
         .And("publishRunnerPackage")
         .And("publishRunnerAssemblyPackage")
         .And("publishRunnerScriptCsPackage")
         .And("publishTasksPackage"));
 
-dotNetBuild.AddTarget("publishCorePackage", "Publish Core NuGet package", c
-	=> c.Do(context => {
+dotNetBuild.AddTarget("publishCorePackage", "Publish Core NuGet package", t
+	=> t.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetApiKey = context.ConfigurationSettings.Get<String>("NuGetApiKey");
@@ -175,8 +175,8 @@ dotNetBuild.AddTarget("publishCorePackage", "Publish Core NuGet package", c
             return nugetPackTask.Execute();
         }));
 
-dotNetBuild.AddTarget("publishRunnerPackage", "Publish Runner NuGet package", c
-	=> c.Do(context => {
+dotNetBuild.AddTarget("publishRunnerPackage", "Publish Runner NuGet package", t
+	=> t.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetApiKey = context.ConfigurationSettings.Get<String>("NuGetApiKey");
@@ -191,8 +191,8 @@ dotNetBuild.AddTarget("publishRunnerPackage", "Publish Runner NuGet package", c
             return nugetPackTask.Execute();
         }));
 
-dotNetBuild.AddTarget("publishRunnerAssemblyPackage", "Publish Assembly Runner NuGet package", c
-	=> c.Do(context => {
+dotNetBuild.AddTarget("publishRunnerAssemblyPackage", "Publish Assembly Runner NuGet package", t
+	=> t.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetApiKey = context.ConfigurationSettings.Get<String>("NuGetApiKey");
@@ -207,8 +207,8 @@ dotNetBuild.AddTarget("publishRunnerAssemblyPackage", "Publish Assembly Runner N
             return nugetPackTask.Execute();
         }));
 
-dotNetBuild.AddTarget("publishRunnerScriptCsPackage", "Publish ScriptCs Runner NuGet package", c
-	=> c.Do(context => {
+dotNetBuild.AddTarget("publishRunnerScriptCsPackage", "Publish ScriptCs Runner NuGet package", t
+	=> t.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetApiKey = context.ConfigurationSettings.Get<String>("NuGetApiKey");
@@ -223,8 +223,8 @@ dotNetBuild.AddTarget("publishRunnerScriptCsPackage", "Publish ScriptCs Runner N
             return nugetPackTask.Execute();
         }));
 
-dotNetBuild.AddTarget("publishTasksPackage", "Publish Tasks NuGet package", c
-	=> c.Do(context => {
+dotNetBuild.AddTarget("publishTasksPackage", "Publish Tasks NuGet package", t
+	=> t.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var nugetExe = context.ConfigurationSettings.Get<String>("PathToNuGetExe");
             var nugetApiKey = context.ConfigurationSettings.Get<String>("NuGetApiKey");

@@ -18,10 +18,10 @@ namespace DotNetBuild.Runner.ScriptCs
             _container = container;
         }
 
-        public void AddTarget(String name, String description, Action<ITargetBuilder> targetConfigurator)
+        public void AddTarget(String name, String description, Action<ITargetBuilder> targetBuilderConfigurator)
         {
             var targetBuilder = name.Target(description);
-            targetConfigurator(targetBuilder);
+            targetBuilderConfigurator(targetBuilder);
         }
 
         public void AddTarget(String name, ITarget target)
@@ -29,15 +29,15 @@ namespace DotNetBuild.Runner.ScriptCs
             name.Target(target);
         }
 
-        public void AddConfiguration(String name, Action<IConfigurationBuilder> settingsConfigurator)
+        public void AddConfiguration(String name, Action<IConfigurationBuilder> configurationBuilderConfigurator)
         {
-            var settings = name.Configure();
-            settingsConfigurator(settings);
+            var configurationBuilder = name.Configure();
+            configurationBuilderConfigurator(configurationBuilder);
         }
 
-        public void AddConfiguration(String name, IConfigurationSettings settings)
+        public void AddConfiguration(String name, IConfigurationSettings configurationSettings)
         {
-            name.Configure(settings);
+            name.Configure(configurationSettings);
         }
 
         public void Run()

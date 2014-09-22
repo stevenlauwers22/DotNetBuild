@@ -30,13 +30,13 @@ Here's an example:
 ```C#
 var dotNetBuild = Require<DotNetBuildScriptPackContext>();
 
-dotNetBuild.AddTarget("ci", "Continuous integration target", c 
-    => c.DependsOn("buildRelease")
+dotNetBuild.AddTarget("ci", "Continuous integration target", t 
+    => t.DependsOn("buildRelease")
         .And("runTests")
 );
 
-dotNetBuild.AddTarget("buildRelease", "Build in release mode", c 
-	=> c.Do(context => {
+dotNetBuild.AddTarget("buildRelease", "Build in release mode", t 
+	=> t.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
 			var msBuildTask = new MsBuildTask
 			{
@@ -49,8 +49,8 @@ dotNetBuild.AddTarget("buildRelease", "Build in release mode", c
 		})
 );
 
-dotNetBuild.AddTarget("runTests", "Run tests", c 
-	=> c.Do(context => {
+dotNetBuild.AddTarget("runTests", "Run tests", t 
+	=> t.Do(context => {
             var solutionDirectory = context.ConfigurationSettings.Get<String>("SolutionDirectory");
             var xunitExe = context.ConfigurationSettings.Get<String>("PathToXUnitRunnerExe");
             var xunitTask = new XunitTask

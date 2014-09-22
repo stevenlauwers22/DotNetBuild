@@ -10,10 +10,10 @@ namespace DotNetBuild.Core
             return new ConfigurationBuilder(configurationRegistry, name);
         }
 
-        public static void Configure(this String name, IConfigurationSettings settings)
+        public static void Configure(this String name, IConfigurationSettings configurationSettings)
         {
             var configurationRegistry = GetConfigurationRegistry();
-            configurationRegistry.Add(name, settings);
+            configurationRegistry.Add(name, configurationSettings);
         }
 
         private static Func<IConfigurationRegistry> _resolveConfigurationRegistry;
