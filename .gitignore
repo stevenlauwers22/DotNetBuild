@@ -28,7 +28,7 @@
 
 /DotNetBuild.Tests/bin
 /DotNetBuild.Tests/obj
-/DotNetBuild.Tasks/DotNetBuild.Tests.csproj.user
+/DotNetBuild.Tests/DotNetBuild.Tests.csproj.user
 
 /DotNetBuild.Tests.TestAssembly/bin
 /DotNetBuild.Tests.TestAssembly/obj
