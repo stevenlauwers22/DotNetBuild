@@ -1,3 +1,8 @@
+#r "DotNetBuild.Core"
+#r "DotNetBuild.Runner"
+#r "DotNetBuild.Runner.ScriptCs"
+#r "DotNetBuild.Tasks"
+
 using DotNetBuild.Core.Facilities.Logging;
 using DotNetBuild.Core.Facilities.State;
 using DotNetBuild.Tasks;
