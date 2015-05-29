@@ -6,9 +6,9 @@ os: Windows Server 2012
 
 init:
   - git config --global core.autocrlf input
-  - cinst scriptcs
+  - cinst scriptcs -y
 
 build_script:
-  - C:\Users\appveyor\AppData\Local\scriptcs\scriptcs.exe .\DotNetBuild.Build.ScriptCs.Fluent\build.csx -- target:ci configuration:appveyorConfig
+  - C:\ProgramData\chocolatey\bin\scriptcs.exe .\DotNetBuild.Build.ScriptCs.Fluent\build.csx -- target:ci configuration:appveyorConfig
   
 test: off
