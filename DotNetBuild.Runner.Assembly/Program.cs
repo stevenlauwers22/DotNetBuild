@@ -8,9 +8,7 @@ namespace DotNetBuild.Runner.Assembly
     {
         public static int Main(String[] args)
         {
-            var container = TinyIoCContainer.Current;
-            Container.Install(container);
-
+            var container = TinyIoCContainer.Current.RegisterDotNetBuild();
             var dotNetBuild = new DotNetBuild(args, container);
             return dotNetBuild.Run();
         }

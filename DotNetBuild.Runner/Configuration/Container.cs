@@ -10,9 +10,9 @@ using DotNetBuild.Runner.Infrastructure.TinyIoC;
 
 namespace DotNetBuild.Runner.Configuration
 {
-    public class Container
+    public static class ContainerRegistrations
     {
-        public static void Install(TinyIoCContainer container)
+        public static TinyIoCContainer RegisterDotNetBuild(this TinyIoCContainer container)
         {
             container.Register(container);
 
@@ -43,6 +43,8 @@ namespace DotNetBuild.Runner.Configuration
                 c.Resolve<IStateReader>(),
                 c.Resolve<IStateWriter>()
             }));
+
+            return container;
         }
     }
 }
