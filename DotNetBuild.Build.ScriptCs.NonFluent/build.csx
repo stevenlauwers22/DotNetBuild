@@ -1,3 +1,8 @@
+#r "DotNetBuild.Core.dll"
+#r "DotNetBuild.Runner.dll"
+#r "DotNetBuild.Runner.ScriptCs.dll"
+#r "DotNetBuild.Tasks.dll"
+
 #load configuration.csx
 #load targets.ci.csx
 #load targets.deploy.csx
