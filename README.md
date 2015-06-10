@@ -4,6 +4,8 @@
 
 DotNetBuild is a build system written in C#. A build system allows you to automate your work by scripting all repetitive actions into executable tasks.
 
+[![Build status](https://ci.appveyor.com/api/projects/status/16k7hn5av5c7tuiv)](https://ci.appveyor.com/project/StevenLauwers/dotnetbuild)
+
 ## Why yet another 'Make' alternative?
 
 Within the .NET eco-system builds are often automated with the help of MSBuild scripts. I have used MSBuild extensively during the last few years but I never had a lot of joy in writing MSBuild scripts. Using a markup language (XML) to create build scripts never felt right to me.
@@ -86,8 +88,8 @@ A cool thing about DotNetBuild is that it doesn't limit you to just one programm
 
 ## Can I integrate my DotNetBuild scripts with my CI server?
 
-We have specific integrations for TeamCity and AppVeyor that send update messages to your CI server so you'll get immediate feedback about what DotNetBuild is doing. DotNetBuild will automatically detect if it's being run from any of these CI servers, so there's no additional configuration required from your side.
+We have specific integrations for [TeamCity](https://www.jetbrains.com/teamcity/) and [AppVeyor](http://www.appveyor.com/) that send messages to your CI server so you'll get immediate feedback about what DotNetBuild is doing. DotNetBuild will automatically detect if it's being run from any of these CI servers, so there's no additional configuration required from your side.
 
-Currently the only way to launch your script from your CI server is by using a command line task. Custom build steps for TeamCity are still being developed.
+You can launch your DotNetBuild script from your CI server by using a command line task. Checkout the [appveyor.yml](https://github.com/stevenlauwers22/DotNetBuild/blob/master/appveyor.yml) file in the DotNetBuild repo to see how I got my DotNetBuild scriptcs script working from within appveyor.
 
-[![Build status](https://ci.appveyor.com/api/projects/status/16k7hn5av5c7tuiv)](https://ci.appveyor.com/project/StevenLauwers/dotnetbuild)
+If you're using TeamCity, you can either use a command line task or you can use our [DotNetBuild plugin for TeamCity](https://github.com/stevenlauwers22/DotNetBuild.TeamCity). Currently the plugin only supports precompiled DotNetBuild assemblies. Support for scriptcs is still being developed.
