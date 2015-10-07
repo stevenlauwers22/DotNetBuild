@@ -20,7 +20,7 @@ Anyway things are the way they are. So yes, I created a new 'Make', my apologies
 The reason I created this is twofold:
 
 - Primarely, I wanted to be able to use a real programming languages (.NET ) instead of a markup language (XML) to create build scripts.
-- It started off as an experiment and a technical challange for myself, but I got some very positive feedback so I decided to publish it
+- It started off as an experiment and a technical challenge for myself, but I got some very positive feedback so I decided to publish it
 
 Because DotNetBuild is [built on the shoulders of a giant](http://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants) (the .NET Framework), we can write build scripts in a language we already know and benefit of the power and features the framework gives us.
 
